@@ -1,0 +1,78 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ * require_directory ./
+ *= require bootstrap_and_overrides
+ *= require bootstrap-datepicker
+ */
+@import "utils.css.scss";
+
+$main-background: #BBD7E2;
+$titles: #4a7081;
+
+ /* Sticky footer styles
+      -------------------------------------------------- */
+html, body {
+	height: 100%;
+	/* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	/* Negative indent footer by it's height */
+	margin: 0 auto -40px;
+}
+
+/* Set the fixed height of the footer here */
+#push {
+	height: 60px;
+}
+#footer {
+	height: 40px;
+}
+
+body {
+	background: image-url('background.png') $main-background;
+}
+
+footer {
+	background-color: rgba(255, 255, 255, 0.4);
+	color: $titles;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	font: 12px Helvetica, "Helvetica Neue", Arial, Geneva, sans-serif;
+	@include box-shadow(0, 0, 6px, rgba(0, 0, 0, 0.3));
+
+	.container {
+		padding-top: 14px;
+	}
+}
+
+.solid {
+	border: 1px solid #606060;
+	@include box-shadow(0, 2px, 5px, rgba(0, 0, 0, 0.28));
+	background-color: #ffffff;
+	padding: 20px;
+}
+
+header.navbar {
+	margin-bottom: 24px;
+}
+
+#error_explanation {
+	color: #f00;
+	ul {
+	  list-style: none;
+	  margin: 0 0 18px 0;
+	}
+}

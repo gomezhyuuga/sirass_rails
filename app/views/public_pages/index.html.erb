@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title><%= full_title('Sistema de Registro y Administración de Servicio Social') %></title>
+  <%= csrf_meta_tags %>
+
+  <%= render 'shared/shim' %>
+  <%= render 'shared/seo' %>
+  <%= render 'shared/livereload' %>
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
+	<%= stylesheet_link_tag "public_pages/index", :media => "all" %>
+</head>
+<body>
+	<div id="wrap">
+		<!-- Header
+		============================== -->
+		<header class="gradient">
+			<div class="container row">
+				<div class="span9">
+					<h1>SiRASS, <em>Servicio Social</em></h1>
+					<p>Servicio Social simplificado. Olv&iacute;date de llenar
+					tus formatos a mano y de las tediosas revisiones.</p>
+					<% if logged_in? %>
+						 <p>
+						 	<%= link_to 'Cerrar sesión', logout_path, class: 'btn btn-danger btn-large' %>
+						 <!-- Haz iniciado sesión como: <%= link_to current_user.username, current_user.user_page, class: 'username' %> -->
+						  <%= link_to current_user.user_page, class: 'btn btn-primary btn-large' do %>
+						  	<i class="icon-user"></i>
+						  	<%= current_user.username %>
+						  <% end %>
+						 </p>
+					<% else %>
+						<%= link_to 'Inicia sesión', login_path, class: "btn btn-primary btn-large" %>
+						<%= link_to 'Regístrate', registro_path, class: "btn btn-inverse btn-large" %>
+					<% end %>
+				</div>
+				<div class="span2 pull-right">
+					<%= image_tag 'UACM_SS_logo.png' %>
+				</div>
+	    	</div>
+		</header>
+		<% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+		<!-- Contenido
+		============================== -->
+		<div class="container content solid">
+			<ul class="thumbnails">
+				<li class="span4">
+					<h2>Programas</h2>
+					<%= link_to programas_path, {class: "thumbnail", id: "programas"} do %>
+						<%= image_tag '300x108.gif' %>
+					<% end %>
+					<p>Conoce todos los programas de Servicio Social que ofrece para ti la UACM.</p>
+				</li>
+				<li class="span4">
+					<h2>Proceso</h2>
+					<%= link_to proceso_path, {class: "thumbnail", id: "proceso"} do %>
+						<%= image_tag '300x108.gif' %>
+					<% end %>
+					<p>Echa un vistazo a los procesos que se deben llevar a cabo para realizar tu Servicio Social.</p>
+				</li>
+				<li class="span4">
+					<h2>Ayuda</h2>
+					<%= link_to ayuda_path, {class: "thumbnail", id: "ayuda"} do %>
+						<%= image_tag '300x108.gif' %>
+					<% end %>
+					<p>Aclara tus dudas respecto a qu&eacute; necesitas para realizar tu Servicio Social.</p>
+				</li>
+			</ul>
+		</div>
+		<%= render 'shared/debug' %>
+		<div id="push"></div>
+	</div>
+	<!-- Footer
+	============================== -->
+	<%= render 'layouts/footer' %>
+	<!-- Scripts
+	============================== -->
+	<%= javascript_include_tag "application" %>
+</body>
+</html>

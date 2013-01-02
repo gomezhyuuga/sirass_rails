@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= csrf_meta_tags %>
+
+  <%= render 'shared/shim' %>
+  <%= render 'shared/livereload' %>
+  <%= render 'shared/seo' %>
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "prestadors", :media => "all" %>
+  <%= yield(:head) %>
+</head>
+<body id="<%= controller_name %>-<%= action_name %>">
+  <div id="wrap">
+    <%= render 'layouts/header' %>
+    
+    <div class="container">
+      <div class="row">
+        <!-- Sidebar
+        ============================== -->
+        <%= render 'layouts/prestador/sidebar' %>
+        <!-- Contenido
+        ============================== -->
+        <div class="span8 solid">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+          <% end %>
+
+          <%= yield %>
+        </div>
+      </div><!--/row-->
+    </div> <!-- /container -->
+
+
+    <%= render 'shared/debug' %>
+    <div id="push"></div>
+  </div>
+  <%= render 'layouts/footer' %>
+  <!-- Javascripts
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <%= javascript_include_tag "application" %>
+</body>
+</html>

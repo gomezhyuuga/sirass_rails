@@ -1,0 +1,21 @@
+<% provide(:title, 'Editar información de prestador') %>
+<h1>Editar información</h1>
+<%= render 'shared/error_messages', object: @prestador %>
+
+<%= simple_form_for @prestador, html: { class: 'form-horizontal' },
+	defaults: { input_html: { class: 'input-block-level' } } do |f| %>
+	<!-- prestador fields -->
+	<%= render 'prestadors/fields', f: f %>
+	<div class="row form-vertical">
+		<div class="span6">
+			<!-- user fields -->
+			<legend>Datos de usuario</legend>
+			<%= f.simple_fields_for :user do |builder| %>
+				<%= render 'users/fields', f: builder %>
+			<% end %>
+		</div>
+	</div>
+	<div class="form-actions">
+		<%= button_tag "Actualizar", type: "submit", class: "btn btn-success btn-large" %>
+	</div>
+<% end %>

@@ -1,0 +1,10 @@
+<legend>Datos de la institución</legend>
+<%= f.input :domicilio %>
+<%= f.input :area %>
+<%= f.input :responsable %>
+<%= f.input :cargo %>
+<%= f.input :tel do %>
+	<%= f.text_field :tel, class: "input-medium", placeholder: '########'  %>
+	Ext.
+	<%= f.text_field :telExt, class: "input-mini", placeholder: '#####' %>
+<% end %>

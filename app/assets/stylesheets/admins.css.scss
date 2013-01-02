@@ -1,0 +1,50 @@
+// Place all the styles related to the admins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#institucions-index .span8.solid table {
+	td:nth-child(3), th:nth-child(3) {
+		text-align: center !important;
+	}
+	td:nth-child(4) {
+		width: 90px;
+	}
+}
+
+#lista-prestadores {
+	th {
+		text-align: center;
+		
+		&:nth-child(2) {
+			width: 100px;
+		}
+		&:nth-child(3) {
+			width: 55px;
+		}
+		&:nth-child(4) {
+			width: 90px;
+		}
+	}
+	td {
+		&:nth-child(3) {
+			text-align: center;
+		}
+	}
+}
+
+.well-show p {
+		*zoom: 1;
+		&:before, &:after{
+			display: table;
+			content: "";
+		}
+		&:after {
+				clear: both;
+		}
+		&>strong {
+			float: left;
+			width: 78px;
+			margin-right: 10px;
+			text-align: right;
+		}
+	}
+	

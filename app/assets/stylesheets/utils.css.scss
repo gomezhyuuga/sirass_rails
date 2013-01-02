@@ -1,0 +1,50 @@
+@mixin box-shadow($x, $y, $blur, $color) {
+	-moz-box-shadow: $x $y $blur $color;
+	-webkit-box-shadow: $x $y $blur $color;
+	box-shadow: $x $y $blur $color;
+}
+
+@mixin mbox-shadow($shadows...) {
+	-moz-box-shadow: $shadows;
+	-webkit-box-shadow: $shadows;
+	box-shadow: $shadows;
+}
+
+@mixin gradient($start, $end, $angle: -90deg) {
+	background-image: -o-linear-gradient($angle, $start 0%, $end 100%);
+	background-image: -moz-linear-gradient($angle, $start 0%, $end 100%);
+	background-image: -webkit-linear-gradient($angle, $start 0%, $end 100%);
+	background-image: -ms-linear-gradient($angle, $start 0%, $end 100%);
+	background-image: linear-gradient($angle, $start 0%, $end 100%);
+}
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  padding: 20px;
+  @include box_sizing;
+
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+.block {
+	display: block;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}

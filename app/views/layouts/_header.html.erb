@@ -1,0 +1,50 @@
+<header class="navbar navbar-static-top">
+  <nav class="navbar-inner">
+    <div class="container">
+      <a class="brand" href=<%= root_path %>>SiRASS</a>
+      <ul class="nav">
+        <li><%= link_to "Programas", programas_path  %></li>
+        <li><%= link_to "Proceso", proceso_path  %></li>
+        <li><%= link_to "Ayuda", ayuda_path  %></li>
+      </ul>
+
+      <% if logged_in? %>
+        <!-- opciones de cuenta -->
+        <ul class="nav pull-right">
+          <li class="divider-vertical"></li>
+          <li class="dropdown">
+            <a href="#"
+              class="dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-user icon-white"></i>
+              <%= current_user.username %>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to current_user.user_page do %>
+                <i class="icon-user"></i>
+                Perfil
+                <% end %>
+              </li>
+              <!-- links especificos de usuario -->
+              <%= render 'layouts/prestador/headerLinks' if current_user.prestador %>
+              <%= render 'layouts/admin/headerLinks' if current_user.admin %>
+              <li class="divider"></li>
+              <li>
+                <%= link_to logout_path, method: "delete" do %>
+                  <i class="icon-off"></i>
+                  Cerrar sesión
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="nav pull-right">
+          <li><%= link_to "Iniciar sesión", login_path, class: "nav-link" %></li>
+          <li><%= link_to "Regístrate", registro_path, class: "nav-link" %></li>
+        </ul>
+      <% end %>
+    </div>
+  </nav>
+</header>

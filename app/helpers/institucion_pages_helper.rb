@@ -1,0 +1,2 @@
+module InstitucionPagesHelper
+end

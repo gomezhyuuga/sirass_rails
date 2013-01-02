@@ -1,0 +1,52 @@
+<h1>Información del prestador</h1>
+<div class="row well-show">
+	<div class="span4">
+		<p>
+			<strong>Usuario</strong> <%= @prestador.user.username %>
+		</p>
+		<p>
+			<strong>Nombre</strong> <%= "#{@prestador.nombre} #{@prestador.aPaterno} #{@prestador.aMaterno}" %>
+		</p>
+		<p>
+			<strong>Edad</strong> <%= distance_of_time_in_words_to_now(@prestador.nacimiento) %>
+		</p>
+		<p>
+			<strong>Sexo</strong> <%= @prestador.sexo %>
+		</p>
+
+	</div>
+	<% if can? :manage, @prestador %>
+		<div class="span2 pull-right">
+			<%= render 'admin_btn', obj: @prestador, size: 'btn-large' %>
+		</div>
+	<% end %>
+</div>
+
+<h2>Domicilio</h2>
+<div class="row well-show">
+	<div class="span4">
+		<p>
+			<strong>Calle</strong> <%= @prestador.dCalle %>
+		</p>
+		<p class="clearfix">
+			<strong>Número ext./int.</strong> <%= @prestador.dNumExt %> | <%= @prestador.dNumInt %>
+		</p>
+		<p>
+			<strong>Código postal</strong> <%= @prestador.dCP %>
+		</p>
+	</div>
+	<div class="span4">
+		<p>
+			<strong>Delegación</strong> <%= @prestador.dDelegacion %>
+		</p>
+		<p>
+			<strong>Colonia</strong> <%= @prestador.dColonia %>
+		</p>
+		<p>
+			<strong>Teléfono</strong> <%= @prestador.telCasa %>
+		</p>
+		<p>
+			<strong>Celular</strong> <%= @prestador.telCel %>
+		</p>
+	</div>
+</div>

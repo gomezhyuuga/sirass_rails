@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="span6">
+		<!-- Datos personales
+		============================== -->
+		<legend>Datos personales</legend>
+		<%= f.input :nombre, placeholder: 'Juan Carlos' %>
+		<%= f.input :aPaterno, placeholder: 'Rodríguez' %>
+		<%= f.input :aMaterno, label: 'Apellido Materno', placeholder: 'Perea' %>
+		<%= f.input :nacimiento, label: 'Fecha de nacimiento', as: :string,
+			input_html: { 'data-behaviour' => 'datepicker'} %>
+		<%= f.input :sexo, collection: [:Masculino, :Femenino], as: :radio_buttons, item_wrapper_class: 'inline' %>
+	</div> <!-- fin datos personales -->
+	<div class="span6">
+		<!-- Domicilio
+		============================== -->
+		<legend>Domicilio</legend>
+		<%= f.input :dCalle, label: 'Calle', placeholder: 'Av. De las Culturas' %>
+		<%= f.input :dNumExt, label: 'Número exterior/interior' do %>
+			<%= f.input_field :dNumExt, placeholder: 'Exterior', class: "input-mini" %>
+			<%= f.input_field :dNumInt, placeholder: 'Interior', class: "input-mini" %>
+		<% end %>
+		<%= f.input :dCP, label: 'Código postal', placeholder: '#####', input_html: {class: 'input-mini'} %>
+		<%= f.input :dDelegacion, label: 'Delegación/Municipio', placeholder: 'Azcapotzalco' %>
+		<%= f.input :dColonia, label: 'Colonia', placeholder: 'Clavería' %>
+		<%= f.input :telCasa, label: 'Teléfono', placeholder: '12345678' %>
+		<%= f.input :telCel, label: 'Celular', placeholder: '5512345678' %>
+	</div> <!-- fin domicilio -->
+</div> <!-- fin row -->

@@ -1,0 +1,35 @@
+<% provide(:title, 'Lista de Prestadores') %>
+<% if @prestadors.any? %>
+	<%= will_paginate %>
+		<table class="table table-striped table-bordered table-hover" id="lista-prestadores">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Usuario</th>
+					<th>Inscripción</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @prestadors.each do |prestador| %>
+					<tr>
+						<td>
+							<%= link_to "#{prestador.nombre} #{prestador.aPaterno} #{prestador.aMaterno}", prestador %>
+						</td>
+						<td>
+							<%= prestador.user.username %>
+						</td>
+						<td>
+							<%= link_to '2', '#' %>
+						</td>
+						<td>
+							<%= render 'admin_btn', obj: prestador, size: 'btn-mini' %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<%= will_paginate %>
+<% else %>
+<h1>No se encontraron prestadores</h1>
+<% end %>
