@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateInstitucionUsers < ActiveRecord::Migration
   def change
     create_table :institucion_users do |t|

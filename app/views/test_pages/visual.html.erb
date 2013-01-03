@@ -1,49 +1,44 @@
-<a href="#" class="btn btn-large btn-primary">This is a button</a>
-<a href="#" class="btn btn-large btn-success">This is a button</a>
-<a href="#" class="btn btn-large btn-danger">This is a button</a>
-<a href="#" class="btn btn-large btn-inverse">This is a button</a>
-<a href="#" class="btn btn-large btn-warning">This is a button</a>
-<p></p>
-<a href="#" class="btn btn-large btn-info">This is a button</a>
-<a href="#" class="btn btn-large">This is a button</a>
+<style type="text/css">
+button { margin-top: 10px; }
+</style>
+
+<% %w[large . small mini].each do |size| %>
+<% %w[primary success danger inverse warning info btn].each do |color| %>
+<%= button_tag 'This is a button', class: "btn btn-#{size} btn-#{color}" %>
+<% end %>
 <hr>
-<a href="#" class="btn btn-primary">This is a button</a>
-<a href="#" class="btn btn-success">This is a button</a>
-<a href="#" class="btn btn-danger">This is a button</a>
-<a href="#" class="btn btn-inverse">This is a button</a>
-<a href="#" class="btn btn-warning">This is a button</a>
-<a href="#" class="btn btn-info">This is a button</a>
-<a href="#" class="btn">This is a button</a>
-<hr>
-<a href="#" class="btn btn-small btn-primary">This is a button</a>
-<a href="#" class="btn btn-small btn-success">This is a button</a>
-<a href="#" class="btn btn-small btn-danger">This is a button</a>
-<a href="#" class="btn btn-small btn-inverse">This is a button</a>
-<a href="#" class="btn btn-small btn-warning">This is a button</a>
-<a href="#" class="btn btn-small btn-info">This is a button</a>
-<a href="#" class="btn btn-small">This is a button</a>
-<hr>
-<a href="#" class="btn btn-mini btn-primary">This is a button</a>
-<a href="#" class="btn btn-mini btn-success">This is a button</a>
-<a href="#" class="btn btn-mini btn-danger">This is a button</a>
-<a href="#" class="btn btn-mini btn-inverse">This is a button</a>
-<a href="#" class="btn btn-mini btn-warning">This is a button</a>
-<a href="#" class="btn btn-mini btn-info">This is a button</a>
-<a href="#" class="btn btn-mini">This is a button</a>
-<hr>
+<% end %>
+
+
 <h1>Forms</h1>
-<form action="#" class="form-horizontal">
-	<div class="control-group">
-		<label for="field" class="control-label">Campo</label>
-		<div class="controls">
-			<input type="text" />
-		</div>
+<%= simple_form_for @prestador, html: {class: 'form-horizontal'} do |f| %>
+<div class="row">
+	<div class="span4">
+		<%= f.input :nombre, label: "URL", input_html: {type: :url},
+		hint: 'Firefox, Chrome y Opera' %>
+		<%= f.input :aPaterno, label: "Color", input_html: {type: :color}, 
+		hint: 'Chrome y Opera' %>
+		<%= f.input :aMaterno, label: "Date", input_html: {type: :date},
+		hint: 'Chrome, Safari y Opera' %>
+		<%= f.input :sexo, label: "Datepicker", input_html: { 'data-behaviour' => 'datepicker'},
+		hint: 'bootstrap-datepicker' %>
+		<%= f.input :dCalle, label: 'Chosen', collection: @instituciones, label_method: :nombre,
+		input_html: {'data-placeholder' => 'Escoge una', class: 'chzn-select' }, hint: 'Chosen selects' %>
 	</div>
-	<div class="form-actions">
-		<input type="submit" value="Enviar" class="btn btn-success" />
+	<div class="span4">
+		<%= f.input :nombre, label: "Time", input_html: {type: :time},
+		hint: 'Chrome y Opera' %>
+		<%= f.input :nombre, label: "Email", input_html: {type: :email},
+		hint: 'Chrome, Firefox y Opera' %>
+		<%= f.input :nombre, label: "Number", input_html: {type: :number, max: 5, min: 1},
+		hint: 'Chrome, Safari y Opera' %>
+		<%= f.input :nombre, label: "Range", input_html: {type: :range, max: 15, min: 1},
+		hint: 'Chrome, Safari y Opera' %>
 	</div>
-</form>
-<hr>
+</div>
+
+
+<% end %>
 <a href="#" class="btn btn-large btn-danger">
 	One line <br>
 	Second line

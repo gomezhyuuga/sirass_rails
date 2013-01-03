@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module SessionsHelper
 
 	def require_role(role)

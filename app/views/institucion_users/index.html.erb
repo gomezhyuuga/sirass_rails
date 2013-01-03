@@ -1,1 +1,39 @@
-<% provide(:title, 'Lista de instituciones') %>
+<% provide(:title, 'Lista de institucion_users Afiliadas') %>
+<% if @institucion_users.any? %>
+	<%= will_paginate @institucion_users %>
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Institución</th>
+					<th>Plantel</th>
+					<th>Responsable</th>
+					<th>Usuario</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @institucion_users.each do |i| %>
+					<tr>
+						<td>
+							<%= link_to truncate(i.institucion.nombre, length: 50), admin_institucion_path(i.institucion) %>
+						</td>
+						<td>
+							<%= link_to truncate(i.plantel.nombre), admin_plantel_path(i.plantel) %>
+						</td>
+						<td>
+							<%= i.responsable %>
+						</td>
+						<td>
+							<%= i.user.username %>
+						</td>
+						<td>
+							
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<%= will_paginate %>
+<% else %>
+<h1>No se encontraron institucion_users afiliadas</h1>
+<% end %>

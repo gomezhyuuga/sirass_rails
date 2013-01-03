@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PrestadorPagesController < ApplicationController
 	before_filter :require_login
 	layout 'prestador'

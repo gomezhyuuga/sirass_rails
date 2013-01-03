@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: users
@@ -74,6 +75,7 @@ describe User do
     end
     describe "of institucion" do
       institucion = buildModel(:institucion_user)
+      institucion.institucion = Institucion.find_or_create_by_nombre("Institucion prueba")
       institucion.user = buildModel(:user)
       institucion.save!
 

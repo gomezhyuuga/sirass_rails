@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CompleteFieldsForPrestador < ActiveRecord::Migration
   def up
   	add_column :prestadors, :sexo, :string

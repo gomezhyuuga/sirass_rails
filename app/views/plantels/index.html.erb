@@ -9,7 +9,7 @@
 				<th>ID</th>
 				<th>Nombre</th>
 				<th>Institucion</th>
-				<th>Acciones</th>
+				<th class="input-small">Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -17,7 +17,7 @@
 			<tr>
 				<td><%= p.id %></td>
 				<td><%= p.nombre %></td>
-				<td><%= p.institucion.nombre %></td>
+				<td><%= link_to truncate(p.institucion.nombre), admin_institucion_path(p.institucion) %></td>
 				<td>
 					<%= render 'institucions/plantel_admin_btn', obj: p, size: 'btn-small' %>
 				</td>

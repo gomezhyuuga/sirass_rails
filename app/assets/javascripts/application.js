@@ -15,8 +15,15 @@
 //= require twitter/bootstrap
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
+//= require chosen-jquery
 // require_tree .
 
 $(document).on("focus", "[data-behaviour~='datepicker']", function(e){
     $(this).datepicker({"format": "dd-mm-yyyy", "weekStart": 1, "autoclose": true, "language": 'es'});
+});
+
+// var chzn_changed;
+
+$(document).ready(function() {
+	$('.chzn-select').chosen({no_results_text: "Sin resultados"});
 });

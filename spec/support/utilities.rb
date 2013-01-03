@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# -*- encoding : utf-8 -*-
 
 include ApplicationHelper
 
@@ -44,8 +44,7 @@ def buildModel(model)
 		tel					=	Faker::PhoneNumber.phone_number
 		telExt 			= "12345"
 
-		InstitucionUser.new(institucion_id: 2,
-	  	plantel_id: 2,
+		InstitucionUser.new(
 	  	domicilio: domicilio,
 	  	area: area,
 	  	responsable: responsable,

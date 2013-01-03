@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# -*- encoding : utf-8 -*-
 class PrestadorsController < ApplicationController
 	before_filter :require_login, except: [:create, :new]
 	
@@ -47,12 +47,7 @@ class PrestadorsController < ApplicationController
 	def update
 		@prestador = Prestador.find(params[:id])
 		# Si el password está en blanco quiere decir que no se desea actualizar
-		if params[:prestador][:user_attributes][:password].blank?
-			# Borrar de los parámetros para que se trate como nil y no haya
-			# problemas al validar
-			params[:prestador][:user_attributes].delete(:password)
-			params[:prestador][:user_attributes].delete(:password_confirmation)
-		end
+		check_password_update(params, :prestador)
 		
 		# Actualización de datos
 		if @prestador.update_attributes(params[:prestador])

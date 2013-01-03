@@ -95,8 +95,10 @@ namespace :db do
 		end
 
 		# Crear instituciones
-		InstitucionUser.create!(institucion_id: 2,
-	  	plantel_id: 2,
+		institucion = Institucion.create!(nombre: Faker::Company.name)
+		plantel = Plantel.new(nombre: Faker::Company.name, institucion: institucion)
+		plantel.save!
+		i = InstitucionUser.new(
 	  	domicilio: "Eugenia",
 	  	area: "Oficina de Servicio Social",
 	  	responsable: "Martha G. Tera Ponce",
@@ -109,6 +111,9 @@ namespace :db do
 	  		password_confirmation: 'foobar'
   		}
 		)
+		i.institucion = institucion
+		i.plantel = plantel
+		i.save!
 		44.times do |n|
 			username = "institucion#{n+2}"
 			password = "foobar"

@@ -1,10 +1,11 @@
+# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: institucion_users
 #
 #  id             :integer          not null, primary key
 #  institucion_id :integer          not null
-#  plantel_id     :integer          not null
+#  plantel_id     :integer
 #  domicilio      :string(255)      not null
 #  area           :string(255)      not null
 #  responsable    :string(255)      not null
@@ -16,13 +17,15 @@
 #
 
 class InstitucionUser < ActiveRecord::Base
-  attr_accessible :area, :cargo, :domicilio, :institucion_id, :plantel_id, :responsable, :tel, :telExt, :user_attributes
+  attr_accessible :area, :cargo, :domicilio, :responsable, :tel, :telExt, :user_attributes, :plantel_attributes, :institucion_attributes, :institucion_id, :plantel_id
   
-  validates_presence_of :area, :cargo, :domicilio, :responsable, :tel, :telExt, :institucion_id, :plantel_id, :user
+  validates_presence_of :area, :cargo, :domicilio, :responsable, :tel, :telExt, :institucion, :user
 
 	# Relaciones
   has_one :user
+  belongs_to :plantel
+  belongs_to :institucion
   accepts_nested_attributes_for :user
-  # has_one :plantel
-  # has_one :institucion
+  accepts_nested_attributes_for :institucion
+  accepts_nested_attributes_for :plantel
 end

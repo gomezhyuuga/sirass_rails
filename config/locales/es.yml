@@ -1,0 +1,67 @@
+es:
+  # Attributes names common to most models
+  attributes:
+    created_at: "Creado el"
+    updated_at: "Última actualización"
+
+  # Default error messages
+  errors:
+    messages:
+      taken: "ya lo utiliza otro usuario"
+
+  # Active Record models configuration
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Error en validación: %{errors}"
+        blank: 'no puede estar en blanco'
+        too_short: 'es muy corto'
+        invalid: 'inválido'
+        restrict_dependent_destroy:
+          one: "Cannot delete record because a dependent %{record} exists"
+          many: "Cannot delete record because dependent %{record} exist"
+        # Append your own errors here or at the model/attributes scope.
+      models:
+        user:
+          attributes:
+            password:
+              too_short: 'es muy corta (6 carateres mínimo)'
+              confirmation: 'las contraseñas no coinciden'
+        prestador:
+          attributes:
+            sexo:
+              blank: "Debes seleccionar uno"
+
+    # Translate model names. Used in Model.human_name().
+    #models:
+      # For example,
+      #   user: "Dude"
+      user:   "Usuario"
+      institucion_user: "Institución"
+      # will translate User model name to "Dude"
+
+    # Translate model attribute names. Used in Model.human_attribute_name(attribute).
+    attributes:
+      # For example,
+      #   user:
+      #     login: "Handle"
+      # will translate User attribute "login" as "Handle"
+      user:
+        username:   "Nombre de usuario"
+        password:   "Contraseña"
+        password_confirmation:   "Confirmar contraseña"
+        email:      "Email"
+      prestador:
+        aMaterno:     "Apellido Materno"
+        aPaterno:     "Apellido Paterno"
+        nacimiento:   "Fecha de nacimiento"
+        dCalle:       "Calle"
+        dCP:          "Código postal"
+        dDelegacion:  "Delegación"
+        dColonia:     "Colonia"
+        dNumExt:      "Número exterior"
+        dNumInt:      "Número interior"
+      institucion_user:
+        responsable:  "Nombre del responsable"
+        tel:          "Teléfono"
+        telExt:       "Extensión"

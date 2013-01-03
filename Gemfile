@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+
 gem 'rails', '3.2.9'
 gem 'faker'
 gem 'will_paginate'
@@ -7,7 +12,7 @@ gem 'bootstrap-will_paginate'
 gem 'sorcery'
 gem 'simple_form'
 gem 'cancan'
-gem 'bootstrap-datepicker-rails'
+gem 'magic_encoding'
 #gem 'libv8', '~> 3.11.8'
 
 # Gems used only for assets and not required
@@ -24,6 +29,8 @@ group :assets do
   # Bootstrap
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-datepicker-rails'
+  gem 'chosen-rails'
 end
 
 gem 'jquery-rails'

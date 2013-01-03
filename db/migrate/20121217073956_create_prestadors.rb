@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreatePrestadors < ActiveRecord::Migration
   def change
     create_table :prestadors do |t|

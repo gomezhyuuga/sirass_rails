@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: plantels
@@ -10,9 +11,10 @@
 #
 
 class Plantel < ActiveRecord::Base
-  attr_accessible :institucion_id, :nombre
+  attr_accessible :institucion, :nombre, :institucion_id
 
   validates_presence_of :institucion, :nombre
 
   belongs_to :institucion
+  has_one :institucion_user
 end

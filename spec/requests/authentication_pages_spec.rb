@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# -*- encoding : utf-8 -*-
 require 'spec_helper'
 require 'pp'
 
@@ -102,6 +102,7 @@ describe "AuthenticationPages" do
         user = buildModel(:user)
         password = user.password
         institucion = buildModel(:institucion_user)
+        institucion.institucion = Institucion.find_or_create_by_nombre("Institucion prueba")
         institucion.user = user
         institucion.save!
 

@@ -6,13 +6,12 @@
         Inicio
       </a>
     </li>
-    <li class = "nav-header"> Gestionar Perfil </li>
-
-    <li id="gestPerf">
-    	<a href="perfilInst.jsp">
-        <i class="icon-edit"></i> 
-        Editar Datos
-      </a>
+    <li class="nav-header">Gestionar perfil</li>
+    <li id="perfil">
+      <%= link_to edit_institucion_user_path(current_user.institucion_user) do %>
+        <i class="icon-edit"></i>
+        Editar datos
+      <% end %>
     </li>
     <li class = "nav-header">Genestionar Programas </li>
     <li id="sendPropues">

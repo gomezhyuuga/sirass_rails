@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PlantelsController < ApplicationController
 	layout 'admin'
 
@@ -10,7 +11,7 @@ class PlantelsController < ApplicationController
 
 	def edit
 		@plantel = Plantel.find_by_id(params[:id])
-		unless @plantel
+		if !@plantel
 			flash[:error] = "Plantel no encontrado."
 			redirect_to current_user.user_page
 		end
@@ -27,6 +28,6 @@ class PlantelsController < ApplicationController
 	end
 
 	def index
-		@plantels = Plantel.paginate(page: params[:page])
+		@plantels = Plantel.paginate(page: params[:page], order: :institucion_id)
 	end
 end

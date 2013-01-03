@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: institucions
@@ -15,6 +16,7 @@ class Institucion < ActiveRecord::Base
   validates :nombre, presence: true, uniqueness: true
 
   has_many :plantels, dependent: :destroy
+  has_many :institucion_users
   accepts_nested_attributes_for :plantels
 
   def find_uacm
