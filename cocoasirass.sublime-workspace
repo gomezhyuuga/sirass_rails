@@ -183,13 +183,33 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/home/jolmes/.zshrc",
+			"settings":
+			{
+				"buffer_size": 1489,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Gemfile",
+			"settings":
+			{
+				"buffer_size": 1113,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 264.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"c",
+				"Set Syntax: C"
+			],
 			[
 				"ad",
 				"Project: Add Folder"
@@ -512,9 +532,17 @@
 	},
 	"file_history":
 	[
-		"/home/jolmes/railsFolder/sirass_rails/sirass.sublime-project",
-		"/etc/zsh/zshrc",
+		"/home/jolmes/.oh-my-zsh/themes/jolmes.zsh-theme",
+		"/home/jolmes/.oh-my-zsh/themes/zhann.zsh-theme",
+		"/home/jolmes/.oh-my-zsh/themes/kardan.zsh-theme",
+		"/home/jolmes/NetBeansProjects/algoDivi/algoritmoMD.c",
+		"/home/jolmes/Escritorio/saludo.c",
+		"/home/jolmes/.oh-my-zsh/themes/af-magic.zsh-theme",
+		"/home/jolmes/.oh-my-zsh/themes/nanotech.zsh-theme",
+		"/home/jolmes/THEMES",
 		"/home/jolmes/.zshrc",
+		"/etc/zsh/zshrc",
+		"/home/jolmes/railsFolder/sirass_rails/sirass.sublime-project",
 		"/etc/zsh/zlogin",
 		"/home/jolmes/railsFolder/sirass_rails/db/migrate/20130103012610_removeinstitucionfromprogramas.rb",
 		"/home/jolmes/railsFolder/sirass_rails/app/models/institucion.rb",
@@ -631,15 +659,7 @@
 		"/Users/gomezhyuuga/Code/sirass/spec/controllers/prestadors_controller_spec.rb",
 		"/Users/gomezhyuuga/Code/sirass/spec/requests/public_pages_spec.rb",
 		"/Users/gomezhyuuga/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/gomezhyuuga/Code/sirass/spec/spec_helper.rb",
-		"/Users/gomezhyuuga/Code/sirass/db/migrate/20121219013240_create_institucions.rb",
-		"/Users/gomezhyuuga/Code/sirass/db/migrate/20121219013200_create_plantels.rb",
-		"/Users/gomezhyuuga/Code/sirass/db/migrate/20121219010814_add_institucion_user_id_to_users.rb",
-		"/Users/gomezhyuuga/Code/sirass/db/migrate/20121217071630_sorcery_core.rb",
-		"/Users/gomezhyuuga/Code/sirass/db/migrate/20121219004744_create_institucion_users.rb",
-		"/Users/gomezhyuuga/Code/sirass/config/environments/development.rb",
-		"/Users/gomezhyuuga/Code/sirass/db/migrate/20121216231241_devise_create_users.rb",
-		"/Users/gomezhyuuga/.oh-my-zsh/custom/plugins/hyuuga/hyuuga.plugin.zsh"
+		"/Users/gomezhyuuga/Code/sirass/spec/spec_helper.rb"
 	],
 	"find":
 	{
@@ -796,8 +816,63 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/home/jolmes/.zshrc",
+					"settings":
+					{
+						"buffer_size": 1489,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								568,
+								568
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Gemfile",
+					"settings":
+					{
+						"buffer_size": 1113,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1110,
+								1110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1344.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

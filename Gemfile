@@ -13,7 +13,7 @@ gem 'sorcery'
 gem 'simple_form'
 gem 'cancan'
 gem 'magic_encoding'
-#gem 'libv8', '~> 3.11.8'
+gem 'libv8', '~> 3.11.8'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -53,6 +53,6 @@ group :development do
   gem 'annotate'
 end
 
-group :production do
-  gem 'pg', '0.12.2'
-end
+#group :production do
+#  gem 'pg', '0.12.2'
+#end
