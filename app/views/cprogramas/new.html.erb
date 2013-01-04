@@ -1,16 +1,9 @@
-<%= simple_form_for @cprograma do |f| %>
-	<%= f.input :nombre %>
-	<%= f.input :desarrollo%>
-	<%= f.input :evaluacion%>
-	<%= f.input :justificacion%>
-	<%= f.input :lugar%>
-	<%= f.input :nombre%>
-	<%= f.input :objGeneral%>
-	<%= f.input :observaciones%>
-	<%= f.input :plazas%>
-	<%= f.input :recursos%>
-	<%= f.input :resultados%>
-	<%= f.input :vacantes%>
+<% provide(:title, 'Nuevo Programa') %>
+<h2>Registra tu programa de Servicio Social</h2>
+
+<%= simple_form_for @cprograma, html: { class: 'form-horizontal' },
+	defaults: { input_html: { class: 'input-block-level' } } do |f| %>
+	<%= render 'cprogramas/field', f: f %>
 	<div class="form-actions">
 		<%= f.submit 'registrar', :class => 'btn btn-large btn-success'%>
 	</div>

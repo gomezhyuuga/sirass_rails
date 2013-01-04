@@ -65,3 +65,8 @@ es:
         responsable:  "Nombre del responsable"
         tel:          "Teléfono"
         telExt:       "Extensión"
+      cprograma:
+        nombre:        "Nombre del Programa"
+        objGeneral:    "Objetivo General"
+        justificacion: "Justificación"
+        evaluacion:    "Evaluación"
