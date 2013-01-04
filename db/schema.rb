@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230173655) do
+ActiveRecord::Schema.define(:version => 20130104032754) do
 
   create_table "admins", :force => true do |t|
     t.string   "nombre",     :null => false
@@ -22,6 +22,32 @@ ActiveRecord::Schema.define(:version => 20121230173655) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "cprogramas", :force => true do |t|
+    t.integer  "institucion_id"
+    t.string   "cveprograma"
+    t.integer  "categoria_id"
+    t.integer  "status_id"
+    t.string   "nombre"
+    t.text     "objGeneral"
+    t.text     "justificacion"
+    t.text     "desarrollo"
+    t.text     "recursos"
+    t.text     "evaluacion"
+    t.text     "resultados"
+    t.string   "lugar"
+    t.integer  "horario_id"
+    t.integer  "plazas"
+    t.integer  "vacantes"
+    t.text     "observaciones"
+    t.text     "notas"
+    t.integer  "tiempo_id"
+    t.date     "ftiempo"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "cprogramas", ["cveprograma"], :name => "index_cprogramas_on_cveprograma"
 
   create_table "institucion_users", :force => true do |t|
     t.integer  "institucion_id", :null => false
