@@ -1,0 +1,17 @@
+<%= simple_form_for @cprograma do |f| %>
+	<%= f.input :nombre %>
+	<%= f.input :desarrollo%>
+	<%= f.input :evaluacion%>
+	<%= f.input :justificacion%>
+	<%= f.input :lugar%>
+	<%= f.input :nombre%>
+	<%= f.input :objGeneral%>
+	<%= f.input :observaciones%>
+	<%= f.input :plazas%>
+	<%= f.input :recursos%>
+	<%= f.input :resultados%>
+	<%= f.input :vacantes%>
+	<div class="form-actions">
+		<%= f.submit 'registrar', :class => 'btn btn-large btn-success'%>
+	</div>
+<% end %>

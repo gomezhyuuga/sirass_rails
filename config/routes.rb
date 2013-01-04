@@ -6,6 +6,7 @@ Sirass::Application.routes.draw do
   resources :institucion_users, path: "institucions"
   resources :admins
   resources :sessions, only: [:new, :create, :destroy]
+  resources :cprogramas
 
   match '/t/visual',  to: 'test_pages#visual'
 
