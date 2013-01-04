@@ -33,4 +33,7 @@ rerun.txt
 pickle-email-*.html
 
 # Mac
-.DS_Store
+*.DS_Store
+# Sublime
+*.sublime-project
+*.sublime-workspace
