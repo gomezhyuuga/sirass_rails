@@ -8,13 +8,13 @@
 	</a>
 	<ul class="dropdown-menu pull-right">
 		<li>
-			<%= link_to edit_admin_institucion_path(obj) do %>
+			<%= link_to edit_institucion_path(obj) do %>
 			<i class="icon-pencil"></i>
 			Editar
 			<% end %>
 		</li>
 		<li>
-			<%= link_to admin_institucion_path(obj), method: :delete, confirm: 'Estás seguro?' do %>
+			<%= link_to institucion_path(obj), method: :delete, confirm: 'Estás seguro?' do %>
 			<i class="icon-trash"></i>
 			Borrar
 			<% end %>
