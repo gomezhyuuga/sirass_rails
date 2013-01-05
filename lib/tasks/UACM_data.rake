@@ -19,6 +19,14 @@ namespace :db do
 		  Plantel.create!(row.to_hash.symbolize_keys)
 		end
 
+		#Catalogo de tipo_Programa
+		csv_text = File.read("db/tipo.csv")
+		csv = CSV.parse(csv_text, :headers => true)
+		csv.each do |row|
+		  	row = row.to_hash.with_indifferent_access
+			TipoPrograma.create!(row.to_hash.symbolize_keys)
+		end
+
 		# Asignar la institución de la UACM
 		Institucion.find_by_nombre("UACM").update_attribute(:uacm, true)
 	end
