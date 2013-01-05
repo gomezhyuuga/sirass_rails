@@ -9,7 +9,8 @@ class CprogramasController < ApplicationController
 	end
 
 	def new
-		@cprograma = Cprograma.new()
+		@cprograma = Cprograma.new
+		@cprograma.licenciaturas.build
 	end
 
 	def create
@@ -26,8 +27,16 @@ class CprogramasController < ApplicationController
 	def destroy
 		
 	end
+
+	def edit
+		@cprograma = Cprograma.find_by_id(params[:id])
+
+		render 'edit'
+	end
+
 	def update
-		
+		@cprograma = Cprograma.find(params[:id])
+		@cprograma.update_attributes(params[:cprograma])
 	end
 
 end

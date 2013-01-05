@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130104224626) do
+ActiveRecord::Schema.define(:version => 20130105081038) do
 
   create_table "admins", :force => true do |t|
     t.string   "nombre",     :null => false
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(:version => 20130104224626) do
     t.text     "notas"
     t.integer  "tiempo_id"
     t.date     "ftiempo"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "tipo_programa_id"
   end
 
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(:version => 20130104224626) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.boolean  "uacm"
+  end
+
+  create_table "licenciaturas", :force => true do |t|
+    t.integer  "cprograma_id"
+    t.string   "carrera"
+    t.string   "actividad"
+    t.integer  "solicitados"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "plantels", :force => true do |t|

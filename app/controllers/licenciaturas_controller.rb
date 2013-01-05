@@ -1,0 +1,2 @@
+class LicenciaturasController < ApplicationController
+end
