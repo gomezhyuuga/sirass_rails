@@ -15,10 +15,10 @@
 				<% @institucion_users.each do |i| %>
 					<tr>
 						<td>
-							<%= link_to truncate(i.institucion.nombre, length: 50), admin_institucion_path(i.institucion) %>
+							<%= link_to truncate(i.institucion.nombre, length: 50), institucion_path(i.institucion) %>
 						</td>
 						<td>
-							<%= link_to truncate(i.plantel.nombre), admin_plantel_path(i.plantel) %>
+							<%= link_to truncate(i.plantel.nombre), plantel_path(i.plantel) %>
 						</td>
 						<td>
 							<%= i.responsable %>

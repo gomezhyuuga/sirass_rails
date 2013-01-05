@@ -17,7 +17,7 @@ class InstitucionsController < ApplicationController
 		@institucion = Institucion.find_by_id(params[:id])
 		@institucion.destroy
 		flash[:success] = "Institución eliminada correctamente."
-		redirect_to admin_institucions_path
+		redirect_to institucions_path
 	end
 
 	def edit
@@ -32,7 +32,7 @@ class InstitucionsController < ApplicationController
 		@institucion = Institucion.find_by_id(params[:id])
 		if @institucion.update_attributes(params[:institucion])
 			flash[:success] = "Datos actualizados correctamente."
-			redirect_to admin_institucions_path
+			redirect_to institucions_path
 		else
 			flash.now[:error] = "Ha ocurrido un error actualizando los datos."
 			render 'edit'

@@ -17,7 +17,7 @@
 			<tr>
 				<td><%= p.id %></td>
 				<td><%= p.nombre %></td>
-				<td><%= link_to truncate(p.institucion.nombre), admin_institucion_path(p.institucion) %></td>
+				<td><%= link_to truncate(p.institucion.nombre), institucion_path(p.institucion) %></td>
 				<td>
 					<%= render 'institucions/plantel_admin_btn', obj: p, size: 'btn-small' %>
 				</td>

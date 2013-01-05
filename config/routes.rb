@@ -27,7 +27,7 @@ Sirass::Application.routes.draw do
   # Admin
   # resources :institucions, :path => "/admin/institucions"
   # resources :plantels, :path => "/admin/plantels"
-  namespace :admin do
+  scope "/admin" do
     resources :institucions
     resources :plantels
   end
