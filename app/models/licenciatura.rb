@@ -16,5 +16,4 @@ class Licenciatura < ActiveRecord::Base
 
   #Relaciones
   belongs_to :cprograma
-
 end

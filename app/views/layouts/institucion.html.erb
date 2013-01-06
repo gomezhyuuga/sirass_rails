@@ -9,8 +9,9 @@
   <%= render 'shared/seo' %>
 
   <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= yield(:stylesheet) %>
 </head>
-<body>
+<body id="<%= controller_name %>-<%= action_name %>">
   <div id="wrap">
     <%= render 'layouts/header' %>
     
@@ -40,6 +41,7 @@
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag yield(:javascript) %>
+  <%= javascript_include_tag "institucion_users" %>
+  <%= yield(:javascript) %>
 </body>
 </html>
