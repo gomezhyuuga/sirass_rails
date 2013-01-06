@@ -12,17 +12,8 @@
         </tr>
     </thead>
     <tbody id="rows-respo">
-        <tr id="rowr1">
-            <td>
-                <%= f.input_field :encargado, :class => "input-medium" %>
-            </td>
-            <td> 
-                <%= f.input_field :cargo, :class => "input-medium" %>
-            </td>
-            <td>
-                <%= f.input_field :email, :class => "input-medium" %>
-            </td>
-            <td><input class="btn btn-mini btn-danger" type="button" id="elim1" onclick="" value="Eliminar" /></td>
-        </tr>
+        <%= f.simple_fields_for :responsables do |respon| %>
+            <%= render 'responsables_fields', f: respon %>
+        <% end %>
     </tbody>
 </table>

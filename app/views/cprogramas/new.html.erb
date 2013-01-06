@@ -7,9 +7,5 @@
 
 <%= simple_form_for @cprograma, html: { class: 'form-horizontal' },
 	defaults: { input_html: { class: 'input-block-level' } } do |f| %>
-	<%= render 'cprogramas/fields', f: f %>
-	<div class="form-actions">
-			<%= f.submit 'Enviar programa', :class => 'btn btn-success'%>
-			<%= button_tag "Limpiar campos", type: "reset", class: "btn " %>
-		</div>
+	<%= render 'cprogramas/fields', f: f, type: 'nuevo' %>
 <% end %>

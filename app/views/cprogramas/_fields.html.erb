@@ -1,0 +1,51 @@
+<%
+	type ||= ''
+%>
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#datos_programa" data-toggle="tab">Datos</a></li>
+		<li><a href="#caract_programa" data-toggle="tab">Caracter&iacute;sticas</a></li>
+		<li><a href="#perfil_programa" data-toggle="tab">Perfil Acad&eacute;mico</a></li>
+		<li><a href="#respon_programa" data-toggle="tab">Responsable</a></li>
+		<li><a href="#obser_programa" data-toggle="tab">Observaciones</a></li>
+	</ul>
+</div>
+<div class="tab-content">
+	<div class="tab-pane active" id="datos_programa">
+		<%= f.input :nombre, :input_html => {:class => "input-large"} %>
+		<%= f.input :objGeneral, :input_html => { :rows => 5 }%>
+		<%= f.input :justificacion, :input_html => { :rows => 5 } %>
+		<%= f.input :desarrollo, :input_html => { :rows => 5 } %>
+		<%= f.input :recursos, :input_html => { :rows => 5 } %>
+		<%= f.input :evaluacion, :input_html => { :rows => 5 } %>
+		<%= f.input :resultados, :input_html => { :rows => 5 } %>
+		<div class="form-actions">
+			<h6>Pulsa en <%= link_to 'Características del programa', '#' , :id => 'nextC' %> para continuar</h6>
+		</div>
+	</div>
+	<div class="tab-pane" id="caract_programa">
+		<%= f.association :tipo_programa, label_method: :descripcion, :input_html => {:class => "input-xlarge use-select2"} %>
+		<%= f.input :lugar, :input_html => {:class => "input-large"} %>
+		<div class="form-actions">
+			<h6>Pulsa en <%= link_to 'Perfil Académico', '#' , :id => 'nextP' %> para continuar</h6>
+		</div>
+	</div>
+	<div class="tab-pane" id="perfil_programa">
+		<%= render 'cprogramas/actsprog', f: f %>
+		<div class="form-actions">
+			<h6>Pulsa en <%= link_to 'Responsable', '#' , :id => 'nextR' %> para continuar</h6>
+		</div>
+	</div>
+	<div class="tab-pane" id="respon_programa">
+		<%= render 'cprogramas/fieldenc', f: f %>
+		<div class="form-actions">
+			<h6>Pulsa en <%= link_to 'Observaciones', '#' , :id => 'nextO' %> para continuar</h6>
+		</div>
+	</div>
+	<div class="tab-pane" id="obser_programa">
+		<%= f.input :observaciones, :input_html => { :rows => 5 } %>
+		<div class="form-actions">
+			<%= render 'programa_btn', f: f, type: type %>
+		</div>
+	</div>
+</div>
