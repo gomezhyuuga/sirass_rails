@@ -11,6 +11,7 @@ class CprogramasController < ApplicationController
 	def new
 		@cprograma = Cprograma.new
 		@cprograma.licenciaturas.build
+		@cprograma.responsables.build
 	end
 
 	def create

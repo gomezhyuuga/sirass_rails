@@ -1,0 +1,28 @@
+<div class="span5" style="text-align: right;">
+    <a class="btn btn-primary" id="addRespon">Agregar Responsable</a>
+    <p style="text-align: left;" class = "help-block"><em> Si quieres agregar otro responsable presiona el bot&oacute;n</em></p>
+</div>
+<table class="table table-condensed " id="table-acts">
+    <thead>
+        <tr>
+            <th>Resposable</th>
+            <th>Cargo</th>
+            <th><span class="add-on"><i class="icon-envelope"></i></span>Email</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody id="rows-respo">
+        <tr id="rowr1">
+            <td>
+                <%= f.input_field :encargado, :class => "input-medium" %>
+            </td>
+            <td> 
+                <%= f.input_field :cargo, :class => "input-medium" %>
+            </td>
+            <td>
+                <%= f.input_field :email, :class => "input-medium" %>
+            </td>
+            <td><input class="btn btn-mini btn-danger" type="button" id="elim1" onclick="" value="Eliminar" /></td>
+        </tr>
+    </tbody>
+</table>

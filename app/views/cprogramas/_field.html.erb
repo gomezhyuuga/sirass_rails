@@ -29,13 +29,16 @@
 	</div>
 	<div class="tab-pane" id="tab3">
 		<%= f.simple_fields_for :licenciaturas do |builder| %>
-			<%= render 'cprogramas/licenciaturas', f: builder %>
+			<%= render 'cprogramas/actsprog', f: builder %>
 		<% end %>
 		<div class="form-actions">
 			<h6>Pulsa en <%= link_to 'Responsable', '#' , :id => 'nextR' %> para continuar</h6>
 		</div>
 	</div>
 	<div class="tab-pane" id="tab4">
+		<%= f.simple_fields_for :responsables do |respon| %>
+			<%= render 'cprogramas/fieldenc', f: respon %>
+		<% end %>
 		<div class="form-actions">
 			<h6>Pulsa en <%= link_to 'Observaciones', '#' , :id => 'nextO' %> para continuar</h6>
 		</div>

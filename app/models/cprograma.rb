@@ -31,7 +31,7 @@ class Cprograma < ActiveRecord::Base
   attr_accessible :categoria_id, :cveprograma, :desarrollo, :evaluacion, :ftiempo, 
   :horario_id, :institucion_id, :justificacion, :lugar, :nombre, :notas, :objGeneral, 
   :observaciones, :plazas, :recursos, :resultados, :status_id, :tiempo_id, :vacantes, :tipo_programa_id,
-  :licenciaturas_attributes
+  :licenciaturas_attributes, :responsables_attributes
 
   #Validaciones
   validates_presence_of :desarrollo, :evaluacion, :justificacion, :lugar, :nombre, :objGeneral, 
@@ -39,7 +39,10 @@ class Cprograma < ActiveRecord::Base
 
   #Relaciones
   has_many :licenciaturas
-    accepts_nested_attributes_for :licenciaturas
+  has_many :responsables
+  accepts_nested_attributes_for :licenciaturas
+  accepts_nested_attributes_for :responsables
+
 
   belongs_to :tipo_programa
   	

@@ -12,7 +12,7 @@
 #
 
 class Licenciatura < ActiveRecord::Base
-  attr_accessible :actividad, :carrera, :solicitados, :cprograma_attributes
+  attr_accessible :actividad, :carrera, :solicitados
 
   #Relaciones
   belongs_to :cprograma
