@@ -35,11 +35,11 @@ class Cprograma < ActiveRecord::Base
 
   #Validaciones
   validates_presence_of :desarrollo, :evaluacion, :justificacion, :lugar, :nombre, :objGeneral, 
-  :observaciones, :recursos, :resultados
+  :observaciones, :recursos, :resultados, :tipo_programa_id
 
   #Relaciones
   has_many :licenciaturas
-    accepts_nested_attributes_for :licenciaturas
+  accepts_nested_attributes_for :licenciaturas
 
   belongs_to :tipo_programa
   	

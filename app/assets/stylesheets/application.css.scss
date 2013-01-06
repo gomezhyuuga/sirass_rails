@@ -12,7 +12,8 @@
  * require_directory ./
  *= require bootstrap_and_overrides
  *= require bootstrap-datepicker
- *= require chosen
+ * require chosen
+ *= require select2
  */
 @import "utils.css.scss";
 

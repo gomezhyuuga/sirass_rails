@@ -15,7 +15,8 @@
 //= require twitter/bootstrap
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
-//= require chosen-jquery
+// require chosen-jquery
+//= require select2
 // require_tree .
 
 $(document).on("focus", "[data-behaviour~='datepicker']", function(e){
@@ -25,5 +26,10 @@ $(document).on("focus", "[data-behaviour~='datepicker']", function(e){
 // var chzn_changed;
 
 $(document).ready(function() {
-	$('.chzn-select').chosen({no_results_text: "Sin resultados"});
+	// $('.chzn-select').chosen({no_results_text: "Sin resultados"});
+	$('.use-select2').select2({
+		formatNoMatches: function(term) {
+			return "Sin resultados";
+		}
+	});
 });
