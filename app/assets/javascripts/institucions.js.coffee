@@ -1,10 +1,6 @@
 $ ->
-	p_select = $('#institucion_user_plantel_id')
-	if p_select.children(':selected').text()?
-		p_select.parent().parent().hide()
-	planteles = $('#institucion_user_plantel_id').html()
-	instituciones = $('#institucion_user_institucion_id')
-	instituciones.change ->
+	actualizar_plantel = ->
+		instituciones = $('#institucion_user_institucion_id')
 		_planteles = $('#institucion_user_plantel_id')
 		institucion = instituciones.children(':selected').text()
 		escaped_institucion = institucion.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
@@ -16,6 +12,20 @@ $ ->
 			_planteles.empty()
 			_planteles.parent().parent().slideUp()
 		_planteles.trigger("liszt:updated");
+
+	p_select = $('#institucion_user_plantel_id')
+	instituciones = $('#institucion_user_institucion_id')
+	planteles = $('#institucion_user_plantel_id').html()
+
+	console.log instituciones.prop("selectedIndex")
+	# Se está creando uno nuevo
+	if instituciones.prop('selectedIndex') == 0
+		p_select.parent().parent().hide()
+	else
+		actualizar_plantel()
+	
+	instituciones.chosen().change ->
+		actualizar_plantel()
 
 	$('.chzn-select').chosen().change (ok)->
 		console.log ok
