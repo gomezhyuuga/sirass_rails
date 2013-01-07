@@ -6,11 +6,11 @@
 #   git config --global core.excludesfile ~/.gitignore_global
 
 # Ignore bundler config
-/.bundle
+.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3*
+db/*.sqlite3
+db/*.sqlite3*
 
 =======
 *.rbc
@@ -18,19 +18,20 @@
 .sass-cache
 capybara-*.html
 .rspec
-/.bundle
-/vendor/bundle
-/log/*
-/tmp/*
-/public/system/*
-/coverage/
-/spec/tmp/*
+.bundle
+vendor/bundle
+log/*
+tmp/*
+public/system/*
+coverage/
+spec/tmp/*
 **.orig
 rerun.txt
 pickle-email-*.html
 
 # Mac
 *.DS_Store
+
 # Sublime
 *.sublime-project
 *.sublime-workspace
