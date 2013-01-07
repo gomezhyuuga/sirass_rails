@@ -42,9 +42,13 @@
 }
 
 .center {
-	text-align: center;
+	text-align: center !important;
 }
 
 .right {
-	text-align: right;
+	text-align: right !important;
+}
+
+.left {
+	text-align: left;
 }

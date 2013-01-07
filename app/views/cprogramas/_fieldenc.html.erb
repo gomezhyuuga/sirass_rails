@@ -1,17 +1,21 @@
-<div class="span5" style="text-align: right;">
-    <a class="btn btn-primary" id="addRespon">Agregar Responsable</a>
-    <p style="text-align: left;" class = "help-block"><em> Si quieres agregar otro responsable presiona el bot&oacute;n</em></p>
+<div class="well well-small">
+    <p>
+        <%= link_to_function "Agregar responsable", "nuevo_responsable()", class: "btn btn-primary center" %>
+    </p>
+    <em>Si quieres agregar otro responsable presiona el botón</em>
 </div>
-<table class="table table-condensed " id="table-acts">
+<table class="table table-condensed">
     <thead>
         <tr>
             <th>Resposable</th>
             <th>Cargo</th>
-            <th><span class="add-on"><i class="icon-envelope"></i></span>Email</th>
+            <th>
+                <i class="icon-envelope"></i> Email
+            </th>
             <th>Eliminar</th>
         </tr>
     </thead>
-    <tbody id="rows-respo">
+    <tbody>
         <%= f.simple_fields_for :responsables do |respon| %>
             <%= render 'responsables_fields', f: respon %>
         <% end %>
