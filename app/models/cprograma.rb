@@ -39,14 +39,9 @@ class Cprograma < ActiveRecord::Base
 
   #Relaciones
   has_many :licenciaturas
-<<<<<<< HEAD
   has_many :responsables
   accepts_nested_attributes_for :licenciaturas
   accepts_nested_attributes_for :responsables
-
-=======
-  accepts_nested_attributes_for :licenciaturas
->>>>>>> 5f35baffb11a696ecf4065ae75396dc7cfb9af2d
 
   belongs_to :tipo_programa
   	

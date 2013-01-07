@@ -11,12 +11,8 @@ class CprogramasController < ApplicationController
 
 	def new
 		@cprograma = Cprograma.new
-<<<<<<< HEAD
 		@cprograma.licenciaturas.build
 		@cprograma.responsables.build
-=======
-		3.times { @cprograma.licenciaturas.build }
->>>>>>> 5f35baffb11a696ecf4065ae75396dc7cfb9af2d
 	end
 
 	def create
