@@ -1,5 +1,7 @@
 <% provide(:title, 'Crear institucion') %>
-<%= content_for(:javascript, "institucions")%>
+<% content_for :javascript do %>
+	<%= javascript_include_tag "institucions" %>
+<% end %>
 <%= render 'shared/error_messages', object: @institucion %>
 
 <%= simple_form_for @institucion, html: { class: 'form-horizontal' },
