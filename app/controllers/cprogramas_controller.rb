@@ -2,7 +2,7 @@
 class CprogramasController < ApplicationController
 	layout 'institucion'
 	def index
-
+		@cprogramas = Cprograma.paginate(page: params[:page], per_page: 15)
 	end
 
 	def show

@@ -1,0 +1,35 @@
+<%= provide(:title, "Lista de programas") %>
+
+<h1>Programas de Servicio Social</h1>
+<% if @cprogramas.empty? %>
+<p class="lead">No se encontró ningún programa en la base de datos.</p>
+<% else %>
+
+<%= will_paginate %>
+<table class="table table-bordered table-striped" id="lista-programas">
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Clave</th>
+			<th>Acción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @cprogramas.each do |p| %>
+		<tr>
+			<td>
+				<%= link_to p.nombre, p %>
+			</td>
+			<td>
+				<%= p.cveprograma %>
+			</td>
+			<td>
+				<%= render 'admin_btn', obj: p %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= will_paginate %>
+
+<% end %>
