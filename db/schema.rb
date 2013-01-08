@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20130106004647) do
     t.boolean  "educativa",  :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.boolean  "uacm"
+    t.boolean  "uacm",       :default => false
   end
 
   create_table "licenciaturas", :force => true do |t|
