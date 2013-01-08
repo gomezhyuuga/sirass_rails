@@ -1,7 +1,11 @@
 # encoding: UTF-8
 namespace :db do
 	desc "Llenar base de datos con información de ejemplo"
-	task populate: :environment do
+	task :populate => [:prestadores, :admins, :institucion_users]
+
+	desc "Información de prueba. Usuarios prestadores"
+	task prestadores: :environment do
+		puts "Creando prestadores..."
 		Prestador.create!(nombre: "Fernando",
 			aPaterno: "Gómez",
 			aMaterno: "Herrera",
@@ -24,7 +28,7 @@ namespace :db do
 		)
 
 		# Crear prestadores
-		44.times do |n|
+		24.times do |n|
 			username = "prestador#{n+2}"
 			
 			password = "foobar"
@@ -55,7 +59,11 @@ namespace :db do
 				}
 			)
 		end
+	end
 
+	desc "Información de prueba. Usuarios admin."
+	task admins: :environment do
+		puts "Creando admins..."
 		# Crear administradores
 		Admin.create!(nombre: "Martha",
 			aPaterno: "Terca",
@@ -69,7 +77,7 @@ namespace :db do
 					password_confirmation: "foobar"
 			}
 		)
-		44.times do |n|
+		24.times do |n|
 			username = "admin#{n+2}"
 			password = "foobar"
 			email = "mail#{n+2}@icloud.com"
@@ -93,7 +101,11 @@ namespace :db do
 				}
 			)
 		end
+	end
 
+	desc "Información de prueba. Usuarios Institución"
+	task institucion_users: :environment do
+		puts "Creando usuarios de instituciones..."
 		# Crear instituciones
 		institucion = Institucion.create!(nombre: Faker::Company.name)
 		plantel = Plantel.new(nombre: Faker::Company.name, institucion: institucion)
@@ -114,7 +126,7 @@ namespace :db do
 		i.institucion = institucion
 		i.plantel = plantel
 		i.save!
-		44.times do |n|
+		24.times do |n|
 			username = "institucion#{n+2}"
 			password = "foobar"
 			email = "mail#{n+2}@icloud.com"
@@ -125,8 +137,8 @@ namespace :db do
 			cargo				=	Faker::Lorem.sentence(4)
 			tel					=	Faker::PhoneNumber.phone_number
 
-			InstitucionUser.create!(institucion_id: 2,
-		  	plantel_id: 2,
+			InstitucionUser.create!(institucion_id: Random.rand(1..63),
+		  	plantel_id: Random.rand(1..12),
 		  	domicilio: domicilio,
 		  	area: area,
 		  	responsable: responsable,
@@ -138,6 +150,28 @@ namespace :db do
 		  		password: 'foobar',
 		  		password_confirmation: 'foobar'
 	  		})
+		end
+	end
+
+	desc "Información de prueba. Programas de SS"
+	task programas: :environment do
+		puts "Creando programas de prueba..."
+		# Crear programas
+		24.times do |n|
+			lorem = Faker::Lorem.paragraph(3)
+			Cprograma.create!(
+				tipo_programa_id: Random.rand(1..8),
+				nombre: "Programa #{n}",
+				cveprograma: "UACM-SS-#{n}",
+				institucion_id: Random.rand(1..40),
+				lugar: "Oficina",
+				desarrollo: lorem,
+				evaluacion: lorem,
+				justificacion: lorem,
+				objGeneral: lorem,
+  			observaciones: lorem,
+  			recursos: lorem,
+  			resultados: lorem)
 		end
 	end
 end

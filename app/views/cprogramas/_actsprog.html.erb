@@ -1,8 +1,11 @@
-<div class="span5" style="text-align: right;">
-    <a class="btn btn-primary" id="addLicen">Agregar Licenciatura</a>
-    <p style="text-align: left;" class = "help-block"><em> Si quieres agregar otra licenciatura presiona el botón</em></p>
+<div class="well well-small">
+    <p>
+        <%= link_to_function "Agregar licenciatura", "nueva_licenciatura()", class: "btn btn-primary center" %>
+    </p>
+    <em>Si quieres agregar otra licenciatura presiona el botón</em>
 </div>
-<table class="table table-condensed " id="table-acts">
+
+<table class="table table-condensed">
     <thead>
         <tr>
             <th>Licenciatura</th>
@@ -11,9 +14,9 @@
             <th>Eliminar</th>
         </tr>
     </thead>
-    <tbody id="rows-acts">
+    <tbody>
         <%= f.simple_fields_for :licenciaturas do |builder| %>
-            <%= render 'licenciaturas_fields', f: builder %>
+        <%= render 'licenciaturas_fields', f: builder %>
         <% end %>
     </tbody>
 </table>
