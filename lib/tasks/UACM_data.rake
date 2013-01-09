@@ -27,6 +27,38 @@ namespace :db do
 			TipoPrograma.create!(row.to_hash.symbolize_keys)
 		end
 
+		#Catalogo alcances_programa
+		csv_text = File.read("db/csv/alcance_programa.csv")
+		csv = CSV.parse(csv_text, :headers => true)
+		csv.each do |row|
+		  	row = row.to_hash.with_indifferent_access
+			AlcancePrograma.create!(row.to_hash.symbolize_keys)
+		end
+
+		#Catalogo estado_programa
+		csv_text = File.read("db/csv/estado_programa.csv")
+		csv = CSV.parse(csv_text, :headers => true)
+		csv.each do |row|
+		  	row = row.to_hash.with_indifferent_access
+			EstadoPrograma.create!(row.to_hash.symbolize_keys)
+		end
+
+		#Catalogo horario_programa
+		csv_text = File.read("db/csv/horario_programa.csv")
+		csv = CSV.parse(csv_text, :headers => true)
+		csv.each do |row|
+		  	row = row.to_hash.with_indifferent_access
+			HorarioPrograma.create!(row.to_hash.symbolize_keys)
+		end
+
+		#Catalogo poblacion_programa
+		csv_text = File.read("db/csv/poblacion_programa.csv")
+		csv = CSV.parse(csv_text, :headers => true)
+		csv.each do |row|
+		  	row = row.to_hash.with_indifferent_access
+			PoblacionPrograma.create!(row.to_hash.symbolize_keys)
+		end
+
 		# Asignar la institución de la UACM
 		Institucion.find_by_nombre("UACM").update_attribute(:uacm, true)
 	end

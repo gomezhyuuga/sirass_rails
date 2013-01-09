@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: institucions
@@ -8,9 +7,10 @@
 #  educativa  :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  uacm       :boolean
+#  uacm       :boolean          default(FALSE)
 #
 
+# -*- encoding : utf-8 -*-
 require 'spec_helper'
 
 describe Institucion do

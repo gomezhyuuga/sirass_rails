@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106004647) do
+ActiveRecord::Schema.define(:version => 20130109004253) do
 
   create_table "admins", :force => true do |t|
     t.string   "nombre",     :null => false
@@ -23,11 +23,16 @@ ActiveRecord::Schema.define(:version => 20130106004647) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "alcance_programas", :force => true do |t|
+    t.string   "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "cprogramas", :force => true do |t|
     t.integer  "institucion_id"
     t.string   "cveprograma"
-    t.integer  "categoria_id"
-    t.integer  "status_id"
+    t.integer  "estado_programa_id"
     t.string   "nombre"
     t.text     "objGeneral"
     t.text     "justificacion"
@@ -36,19 +41,37 @@ ActiveRecord::Schema.define(:version => 20130106004647) do
     t.text     "evaluacion"
     t.text     "resultados"
     t.string   "lugar"
-    t.integer  "horario_id"
+    t.integer  "horario_programa_id"
     t.integer  "plazas"
     t.integer  "vacantes"
     t.text     "observaciones"
     t.text     "notas"
-    t.integer  "tiempo_id"
     t.date     "ftiempo"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "tipo_programa_id"
+    t.boolean  "categoria_interno",    :default => true
+    t.boolean  "tiempo_indeterminado", :default => true
   end
 
   add_index "cprogramas", ["cveprograma"], :name => "index_cprogramas_on_cveprograma"
+
+  create_table "cprogramas_poblacion_programas", :id => false, :force => true do |t|
+    t.integer "cprograma_id"
+    t.integer "poblacion_programa_id"
+  end
+
+  create_table "estado_programas", :force => true do |t|
+    t.string   "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "horario_programas", :force => true do |t|
+    t.string   "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "institucion_users", :force => true do |t|
     t.integer  "institucion_id", :null => false
@@ -85,6 +108,12 @@ ActiveRecord::Schema.define(:version => 20130106004647) do
     t.string   "nombre",         :null => false
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "poblacion_programas", :force => true do |t|
+    t.string   "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "prestadors", :force => true do |t|

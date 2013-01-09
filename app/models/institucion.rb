@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: institucions
@@ -8,9 +7,10 @@
 #  educativa  :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  uacm       :boolean
+#  uacm       :boolean          default(FALSE)
 #
 
+# -*- encoding : utf-8 -*-
 class Institucion < ActiveRecord::Base
   attr_accessible :educativa, :nombre, :plantels_attributes
   validates :nombre, presence: true, uniqueness: true
