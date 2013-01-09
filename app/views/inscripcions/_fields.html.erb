@@ -1,0 +1,32 @@
+<div class="well well-small center">
+	<input type="hidden" name="tipoSS" id="tipoSS" value="1" />
+	<div class="btn-group" data-toggle="buttons-radio">
+		<button type="button" id="ss" value="1"
+		class="btn btn-large btn-info active">Servicio Social</button>
+		<button type="button" id="pp" value="2"
+		class="btn btn-large btn-info">Pr&aacute;ctica Profesional</button>
+	</div>
+</div>
+<!-- TABS -->
+<ul class="nav nav-tabs" id="tabs_inscripcion">
+	<li class="active">
+		<a href="#tab_escolares" data-toggle="tab">Datos escolares</a>
+	</li>
+	<li>
+		<a href="#tab_programas" data-toggle="tab">Datos del programa</a>
+	</li>
+</ul>
+<!-- START TAB CONTENT -->
+<div class="tab-content">
+	<!-- TAB DATOS ESCOLARES -->
+	<div class="tab-pane active" id="tab_escolares">
+		<%= render 'fields_escolares', f: f %>
+		<div class="well well-small center">
+			<h6>Pulsa en <a href="#tab_programas">Datos del programa</a> para continuar</h6>
+		</div>
+	</div>
+	<div class="tab-pane" id="tab_programas">
+		<%= render 'fields_programa', f: f %>
+	</div>
+</div>
+<!-- END TAB CONTENT -->

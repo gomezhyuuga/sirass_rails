@@ -1,0 +1,29 @@
+<%= f.input :semestre, collection: 1..12, include_blank: false, input_html: { class: 'use-select2 input-mini' } %>
+<%= f.input :carrera %>
+<%= f.input :matricula %>
+<%= f.input :promedio do %>
+	<div class="input-append">
+		<%= f.number_field :promedio, min: 5.0, max: 10.0, step: 0.1, class: 'input-mini',
+		placeholder: "8.4" %><span class="add-on">#.#</span>
+	</div>
+<% end %>
+<%= f.input :avance_cursos do %>
+	<div class="input-append">
+		<%= f.number_field :avance_cursos, min: 50, max: 100, step: 1, class: 'input-mini',
+		placeholder: "70" %><span class="add-on">%</span>
+	</div>
+<% end %>
+<%= f.input :ano_ingreso, collection: Date.today.year.downto(1980).to_a,
+input_html: { class: 'use-select2 input-small' }, include_blank: false %>
+
+<!-- SÓLO PRÁCTICAS PROFESIONALES -->
+<div class="hide" id="practicas">
+	<%= f.input :creditos, input_html: { class: 'input-mini' } %>
+	<p><strong>Total de cursos</strong></p>
+	<%= f.input :nCursos_basicos do %>
+		<%= f.number_field :nCursos_basicos, class: 'input-mini' %>
+		Ciclo superior:
+		<%= f.number_field :nCursos_superio, class: 'input-mini' %>
+	<% end %>
+</div>
+<!-- END PRÁCTICAS PROFESIONALES -->
