@@ -7,6 +7,7 @@ Sirass::Application.routes.draw do
   resources :admins
   resources :sessions, only: [:new, :create, :destroy]
   resources :cprogramas
+  resources :inscripcions, path: "inscripciones"
 
   match '/t/visual',  to: 'test_pages#visual'
 

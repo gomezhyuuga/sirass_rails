@@ -1,7 +1,7 @@
 # encoding: UTF-8
 namespace :db do
 	desc "Llenar base de datos con información de ejemplo"
-	task :populate => [:prestadores, :admins, :institucion_users]
+	task :populate => [:prestadores, :admins, :institucion_users, :programas]
 
 	desc "Información de prueba. Usuarios prestadores"
 	task prestadores: :environment do

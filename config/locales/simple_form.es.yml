@@ -22,9 +22,20 @@ es:
         responsable: 'Persona valida las horas'
         tel: '########'
         telExt: '#####'
+      inscripcion:
+        carrera: "Carrera/licenciatura en..."
+        matricula: "Boleta"
+        promedio: "9.4"
     hints:
       defaults:
         nacimiento: 'Fecha en formato dd/mm/aaaa'
+    labels:
+        inscripcion:
+            carrera: "Especialidad"
+            ano_ingreso: "Año de ingreso"
+            creditos: "Total de créditos"
+            nCursos_basicos: "Ciclo básico"
+            nCursos_superio: "Ciclo superior"
     # options:
     #   prestador:
     #     sexo:
