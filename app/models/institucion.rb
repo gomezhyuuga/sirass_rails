@@ -7,7 +7,7 @@
 #  educativa  :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  uacm       :boolean          default(FALSE)
+#  uacm       :boolean
 #
 
 # -*- encoding : utf-8 -*-
@@ -17,6 +17,7 @@ class Institucion < ActiveRecord::Base
 
   has_many :plantels, dependent: :destroy
   has_many :institucion_users
+  has_many :inscripcions
   accepts_nested_attributes_for :plantels
 
   def find_uacm

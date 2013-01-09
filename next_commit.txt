@@ -1,3 +1,2 @@
-- Cambiado chosen por select2
-- Detalles en el registor de programas
-- Renombrados archivos siguiendo convenciones
+- Agregado catálogo de días
+- Terminado registro inicial de inscripción

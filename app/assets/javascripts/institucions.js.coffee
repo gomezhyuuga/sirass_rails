@@ -1,7 +1,7 @@
 jQuery ->
 	actualizar_plantel = ->
-		instituciones = $('#institucion_user_institucion_id')
-		_planteles = $('#institucion_user_plantel_id')
+		instituciones = $('select[id$=_institucion_id]')
+		_planteles = $('select[id$=_plantel_id]')
 		institucion = instituciones.children(':selected').text()
 		# console.log institucion
 		escaped_institucion = institucion.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
@@ -16,9 +16,9 @@ jQuery ->
 			_planteles.parent().parent().slideUp()
 		_planteles.trigger("change");
 
-	p_select = $('#institucion_user_plantel_id')
-	instituciones = $('#institucion_user_institucion_id')
-	planteles = $('#institucion_user_plantel_id').html()
+	p_select = $('select[id$=_plantel_id]')
+	instituciones = $('select[id$=_institucion_id]')
+	planteles = $('select[id$=_plantel_id]').html()
 
 	# Se está registrando una institución
 	if instituciones.prop('selectedIndex') == 0

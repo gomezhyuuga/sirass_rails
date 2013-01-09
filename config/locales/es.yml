@@ -70,3 +70,12 @@ es:
         objGeneral:    "Objetivo General"
         justificacion: "Justificación"
         evaluacion:    "Evaluación"
+      inscripcion:
+        c_dias: "Días de asistencia"
+        carrera: "Especialidad"
+        ano_ingreso: "Año de ingreso"
+        creditos: "Total de créditos"
+        nCursos_basicos: "Ciclo básico"
+        nCursos_superio: "Ciclo superior"
+        fecha_inicio: "Fecha de inicio"
+        fecha_fin: "Fecha de término"

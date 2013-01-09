@@ -35,6 +35,8 @@ GEM
     bcrypt-ruby (3.0.1)
     bootstrap-datepicker-rails (0.6.34)
       railties (>= 3.0)
+    bootstrap-timepicker-rails (0.1.2)
+      railties (>= 3.0)
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.0.4)
@@ -218,6 +220,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bootstrap-datepicker-rails
+  bootstrap-timepicker-rails
   bootstrap-will_paginate
   cancan
   capybara (= 1.1.2)

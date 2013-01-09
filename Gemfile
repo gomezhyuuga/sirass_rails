@@ -32,6 +32,7 @@ group :assets do
   gem 'bootstrap-datepicker-rails'
   # gem 'chosen-rails'
   gem 'select2-rails'
+  gem 'bootstrap-timepicker-rails'
 end
 
 gem 'jquery-rails'

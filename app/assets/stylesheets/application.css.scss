@@ -14,6 +14,7 @@
  *= require bootstrap-datepicker
  * require chosen
  *= require select2
+ *= require bootstrap-timepicker
  */
 @import "utils.css.scss";
 
@@ -81,5 +82,11 @@ header.navbar {
 
 // FORMS
 input[type="number"] {
+	text-align: right;
+}
+input[data-behaviour="datepicker"] {
+	text-align: right;
+}
+input.use-timepicker {
 	text-align: right;
 }

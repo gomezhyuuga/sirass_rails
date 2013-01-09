@@ -1,0 +1,8 @@
+id,descripcion
+1,"Esperando validación"
+2,"En servicio"
+3,"Suspensión temporal"
+4,"Dado de baja"
+5,"Finalizado"
+6,"Con errores"
+7,"Correcta"

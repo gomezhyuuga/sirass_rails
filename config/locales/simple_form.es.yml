@@ -9,33 +9,49 @@ es:
     error_notification:
     default_message: "Por favor revisa los siguientes problemas:"
     placeholders:
-      defaults:
-        username: '(6 a 16 caracteres)'
-        email: 'john@doe.com'
-        password: '(6 a 16 caracteres)'
-        password_confirmation: 'Repite tu contraseña'
-        nacimiento: '01/02/1987'
-      institucion_user:
-        domicilio: 'Calle, número'
-        area: 'Oficina de Servicio Social'
-        cargo: 'Responsable de Servicio Social'
-        responsable: 'Persona valida las horas'
-        tel: '########'
-        telExt: '#####'
-      inscripcion:
-        carrera: "Carrera/licenciatura en..."
-        matricula: "Boleta"
-        promedio: "9.4"
-    hints:
-      defaults:
-        nacimiento: 'Fecha en formato dd/mm/aaaa'
-    labels:
+        defaults:
+            username: '(6 a 16 caracteres)'
+            email: 'john@doe.com'
+            password: '(6 a 16 caracteres)'
+            password_confirmation: 'Repite tu contraseña'
+            nacimiento: '01/02/1987'
+        institucion_user:
+            domicilio: 'Calle, número'
+            area: 'Oficina de Servicio Social'
+            cargo: 'Responsable de Servicio Social'
+            responsable: 'Persona valida las horas'
+            tel: '########'
+            telExt: '#####'
         inscripcion:
-            carrera: "Especialidad"
-            ano_ingreso: "Año de ingreso"
-            creditos: "Total de créditos"
-            nCursos_basicos: "Ciclo básico"
-            nCursos_superio: "Ciclo superior"
+            carrera: "Carrera/licenciatura en..."
+            matricula: "Boleta"
+            promedio: "9.4"
+            area: "Oficina de Gerente de Ventas"
+            c_dias: "Selecciona los días que asistirás"
+    hints:
+        defaults:
+            nacimiento: 'Fecha en formato dd/mm/aaaa'
+        inscripcion:
+            area: "El lugar donde se realizará el servicio."
+            c_dias: "Elige los días que asistirás"
+            hora_entrada: "Hora en formato de 24hrs (HH:MM)"
+            hora_salida: "Hora en formato de 24hrs (HH:MM)"
+    labels:
+        # Usar mejor es.yml para human_attributes
+        # inscripcion:
+        #     carrera: "Especialidad"
+        #     ano_ingreso: "Año de ingreso"
+        #     creditos: "Total de créditos"
+        #     nCursos_basicos: "Ciclo básico"
+        #     nCursos_superio: "Ciclo superior"
+        #     c_dias: "Días de asistencia"
+        #     fecha_inicio: "Fecha de inicio"
+        #     fecha_fin: "Fecha de término"
+    options:
+        inscripcion:
+            difundir:
+                acepto: "Acepto que mis datos puedan ser difundidos"
+                no_acepto: "Deseo que mis datos se mantengan en privado"
     # options:
     #   prestador:
     #     sexo:

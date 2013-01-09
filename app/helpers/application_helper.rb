@@ -13,4 +13,8 @@ module ApplicationHelper
 		iconClass = (boolean == true ? 'ok' : 'remove')
 		content_tag :i, nil, class: "icon-#{iconClass}"
 	end
+
+	def current_date(format = '%d/%m/%Y')
+		Date.today.strftime(format)
+	end
 end

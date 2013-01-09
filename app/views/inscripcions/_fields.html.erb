@@ -20,11 +20,18 @@
 <div class="tab-content">
 	<!-- TAB DATOS ESCOLARES -->
 	<div class="tab-pane active" id="tab_escolares">
+		<%= f.association :institucion, label_method: :nombre, input_html: {class: 'use-select2 input-xlarge', 'data-placeholder' => 'Selecciona tu institución'} %>
+		<%= f.input :plantel_id do %>
+			<%= f.grouped_collection_select :plantel_id, Institucion.order("educativa DESC"), :plantels, :nombre, :id,
+		:nombre, {include_blank: true}, {class: 'use-select2 input-xlarge', 
+			'data-placeholder' => 'Selecciona una institución primero'} %>
+		<% end %>
 		<%= render 'fields_escolares', f: f %>
 		<div class="well well-small center">
 			<h6>Pulsa en <a href="#tab_programas">Datos del programa</a> para continuar</h6>
 		</div>
 	</div>
+	<!-- TAB DATOS DE PROGRAMA -->
 	<div class="tab-pane" id="tab_programas">
 		<%= render 'fields_programa', f: f %>
 	</div>

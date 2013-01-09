@@ -17,4 +17,5 @@ class Plantel < ActiveRecord::Base
 
   belongs_to :institucion
   has_one :institucion_user
+  has_many :inscripcions
 end

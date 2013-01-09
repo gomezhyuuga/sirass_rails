@@ -62,4 +62,16 @@ namespace :db do
 		# Asignar la institución de la UACM
 		Institucion.find_by_nombre("UACM").update_attribute(:uacm, true)
 	end
+
+	desc "Catálogo de días"
+	task dias: :environment do
+		puts "Importando catálogo de días"
+		#Catalogo alcances_programa
+		csv_text = File.read("db/csv/catalogo_dias.csv")
+		csv = CSV.parse(csv_text, :headers => true)
+		csv.each do |row|
+		  	row = row.to_hash.with_indifferent_access
+			CDia.create!(row.to_hash.symbolize_keys)
+		end
+	end
 end
