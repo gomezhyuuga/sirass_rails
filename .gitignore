@@ -35,3 +35,4 @@ pickle-email-*.html
 # Sublime
 *.sublime-project
 *.sublime-workspace
+db/schema.rb

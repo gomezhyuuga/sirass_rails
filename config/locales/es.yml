@@ -70,7 +70,7 @@ es:
         objGeneral:    "Objetivo General"
         justificacion: "Justificación"
         evaluacion:    "Evaluación"
-<<<<<<< HEAD
+        tiempo_indeterminado: "Duración"
       inscripcion:
         c_dias: "Días de asistencia"
         carrera: "Especialidad"
@@ -80,6 +80,3 @@ es:
         nCursos_superio: "Ciclo superior"
         fecha_inicio: "Fecha de inicio"
         fecha_fin: "Fecha de término"
-=======
-        tiempo_indeterminado: "Duración"
->>>>>>> relaciones

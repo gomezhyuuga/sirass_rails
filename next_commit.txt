@@ -1,3 +1,5 @@
-- CSS inicial para vista de impresión
-- Página inicial para mostrar programa de servicio social
-- Avances en lista de programas
+- Mejor estructura de fields para institución
+- Resueltos conflictos en archivos
+- Ignorado schema.rb
+- Mejor estructura para UACM_data.rake
+- Movidos CSV a db/csv/

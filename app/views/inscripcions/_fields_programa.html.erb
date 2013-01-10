@@ -2,7 +2,7 @@
 <fieldset>
   <legend>Datos del Programa de Servicio Social</legend>
   <%= f.input :area %>
-  <%= f.association :c_dias, label_method: :descripcion, include_blank: false, input_html: { class: 'use-select2 input-xlarge', 'data-placeholder' => 'Selecciona los días' } %>
+  <%= f.association :dias, label_method: :dia_semana, include_blank: false, input_html: { class: 'use-select2 input-xlarge', 'data-placeholder' => 'Selecciona los días' } %>
 	<%= f.input :hora_entrada do %>
 		<div class="input-append bootstrap-timepicker-component">
 			<%= f.text_field :hora_entrada, class: 'use-timepicker input-mini' %>
@@ -37,7 +37,9 @@
 			</span>
 		</div>
 	<% end %>
-	<%= f.input :difundir, as: :radio_buttons, collection: [:acepto, :no_acepto] %>
+	<%= f.input :difundir, as: :radio_buttons,
+		collection: [["Acepto que mis datos puedan ser difundidos", true],
+		["Deseo que mis datos se mantengan en privado", false]] %>
 </fieldset>
 <!-- FIN DATOS DE PROGRAMA -->
 

@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130109060024) do
-=======
 ActiveRecord::Schema.define(:version => 20130110003833) do
->>>>>>> relaciones
 
   create_table "admins", :force => true do |t|
     t.string   "nombre",     :null => false
@@ -28,12 +24,6 @@ ActiveRecord::Schema.define(:version => 20130110003833) do
   end
 
   create_table "alcance_programas", :force => true do |t|
-    t.string   "descripcion"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "c_dia", :force => true do |t|
     t.string   "descripcion"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -81,17 +71,16 @@ ActiveRecord::Schema.define(:version => 20130110003833) do
     t.integer "poblacion_programa_id"
   end
 
-<<<<<<< HEAD
+  create_table "dias", :force => true do |t|
+    t.string   "dia_semana"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "estado_inscripcions", :force => true do |t|
     t.string   "descripcion"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-=======
-  create_table "dia", :force => true do |t|
-    t.string   "dia_semana"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
->>>>>>> relaciones
   end
 
   create_table "estado_programas", :force => true do |t|
@@ -137,9 +126,9 @@ ActiveRecord::Schema.define(:version => 20130110003833) do
     t.datetime "updated_at",                 :null => false
   end
 
-  create_table "inscripcions_c_dias", :id => false, :force => true do |t|
+  create_table "inscripcions_dias", :id => false, :force => true do |t|
     t.integer "inscripcion_id"
-    t.integer "c_dia_id"
+    t.integer "dia_id"
   end
 
   create_table "institucion_users", :force => true do |t|
@@ -160,7 +149,7 @@ ActiveRecord::Schema.define(:version => 20130110003833) do
     t.boolean  "educativa",  :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.boolean  "uacm"
+    t.boolean  "uacm",       :default => false
   end
 
   create_table "licenciaturas", :force => true do |t|

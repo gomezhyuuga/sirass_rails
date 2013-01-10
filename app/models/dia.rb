@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: dia
+# Table name: dias
 #
 #  id         :integer          not null, primary key
 #  dia_semana :string(255)
@@ -12,5 +12,5 @@ class Dia < ActiveRecord::Base
   attr_accessible :dia_semana
 
   has_and_belongs_to_many :cprogramas
-
+  has_and_belongs_to_many :inscripcions
 end

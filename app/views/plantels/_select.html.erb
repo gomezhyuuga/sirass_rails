@@ -1,0 +1,5 @@
+<%= f.input :plantel_id do  %>
+	<%= f.grouped_collection_select :plantel_id, Institucion.order("educativa DESC"), :plantels, :nombre, :id,
+	:nombre, {include_blank: true}, {class: 'use-select2 input-block-level', 
+		'data-placeholder' => 'Selecciona una institución primero'} %>
+<% end %>

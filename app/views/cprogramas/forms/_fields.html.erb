@@ -19,31 +19,31 @@
 		<%= f.input :recursos,		 	:input_html => { :rows => 5 } %>
 		<%= f.input :evaluacion, 		:input_html => { :rows => 5 } %>
 		<%= f.input :resultados, 		:input_html => { :rows => 5 } %>
-		<div class="well well-small">
+		<div class="well well-small center">
 			<h6>Pulsa en <%= link_to 'Características del programa', '#' , :id => 'nextC' %> para continuar</h6>
 		</div>
 	</div>
 	<div class="tab-pane" id="caract_programa">
-		<%= f.association :tipo_programa, label_method: :descripcion, :input_html => {:class => "input-xlarge use-select2"} %>
-		<%= f.collection_radio_buttons :tiempo_indeterminado, [[true, "Indeterminado"],[false, "Determinado"]], :first, :last %>
-		<%# f.input :tiempo_indeterminado, collection: [:Indeterminado, :Determinado], as: :select, :input_html => {:class => "input-medium use-select2"} %>
-		<%= f.input :alcance_programas %>
-		<%= f.input :poblacion_programas %>
+		<%= f.association :tipo_programa, label_method: :descripcion, :input_html => {:class => "input-xlarge use-select2"},
+			include_blank: false %>
+		<%= f.input :tiempo_indeterminado, as: :radio_buttons, collection: [["Indeterminado", true], ["Determinado", false]] %>
+		<%= f.association :alcance_programas, label_method: :descripcion, input_html: { class: 'input-medium' } %>
+		<%= f.association :poblacion_programas, label_method: :descripcion, input_html: { class: 'input-medium' } %>
 		<%= f.input :lugar, :input_html => {:class => "input-large"} %>
-		<%= f.input :dias %>
-		<div class="well well-small">
+		<%= f.association :dias, label_method: :dia_semana, input_html: { class: 'input-medium' } %>
+		<div class="well well-small center">
 			<h6>Pulsa en <%= link_to 'Perfil Académico', '#' , :id => 'nextP' %> para continuar</h6>
 		</div>
 	</div>
 	<div class="tab-pane" id="perfil_programa">
 		<%= render 'cprogramas/forms/actsprog', f: f %>
-		<div class="well well-small">
+		<div class="well well-small center">
 			<h6>Pulsa en <%= link_to 'Responsable', '#' , :id => 'nextR' %> para continuar</h6>
 		</div>
 	</div>
 	<div class="tab-pane" id="respon_programa">
 		<%= render 'cprogramas/forms/fieldenc', f: f %>
-		<div class="well well-small">
+		<div class="well well-small center">
 			<h6>Pulsa en <%= link_to 'Observaciones', '#' , :id => 'nextO' %> para continuar</h6>
 		</div>
 	</div>
