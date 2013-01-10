@@ -1,2 +1,3 @@
-- Agregado catálogo de días
-- Terminado registro inicial de inscripción
+- CSS inicial para vista de impresión
+- Página inicial para mostrar programa de servicio social
+- Avances en lista de programas

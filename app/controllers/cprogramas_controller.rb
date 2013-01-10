@@ -3,10 +3,14 @@ class CprogramasController < ApplicationController
 	layout 'institucion'
 	def index
 		@cprogramas = Cprograma.paginate(page: params[:page], per_page: 15)
+		
+		# render layout: layout_for_current_user
+		render layout: 'application'
 	end
 
 	def show
-		
+		@programa = Cprograma.find(params[:id])
+		render layout: 'application'
 	end
 
 	def new

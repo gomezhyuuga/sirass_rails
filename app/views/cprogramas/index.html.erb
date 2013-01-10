@@ -11,6 +11,7 @@
 		<tr>
 			<th>Nombre</th>
 			<th>Clave</th>
+			<th>Institución</th>
 			<th>Acción</th>
 		</tr>
 	</thead>
@@ -24,7 +25,17 @@
 				<%= p.cveprograma %>
 			</td>
 			<td>
-				<%= render 'admin_btn', obj: p %>
+				<%= truncate(Institucion.find(p.institucion_id).nombre, length: 70) %>
+			</td>
+			<td>
+				<% if can? :manage, p %>
+					<%= render 'admin_btn', obj: p %>
+				<% else %>
+					<%= link_to p, class: "btn btn-block btn-success" do %>
+						<i class="icon-plus-sign"></i>
+						Detalles
+					<% end %>
+				<% end %>
 			</td>
 		</tr>
 		<% end %>
