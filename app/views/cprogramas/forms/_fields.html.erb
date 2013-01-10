@@ -25,19 +25,24 @@
 	</div>
 	<div class="tab-pane" id="caract_programa">
 		<%= f.association :tipo_programa, label_method: :descripcion, :input_html => {:class => "input-xlarge use-select2"} %>
+		<%= f.collection_radio_buttons :tiempo_indeterminado, [[true, "Indeterminado"],[false, "Determinado"]], :first, :last %>
+		<%# f.input :tiempo_indeterminado, collection: [:Indeterminado, :Determinado], as: :select, :input_html => {:class => "input-medium use-select2"} %>
+		<%= f.input :alcance_programas %>
+		<%= f.input :poblacion_programas %>
 		<%= f.input :lugar, :input_html => {:class => "input-large"} %>
+		<%= f.input :dias %>
 		<div class="well well-small">
 			<h6>Pulsa en <%= link_to 'Perfil Académico', '#' , :id => 'nextP' %> para continuar</h6>
 		</div>
 	</div>
 	<div class="tab-pane" id="perfil_programa">
-		<%= render 'cprogramas/actsprog', f: f %>
+		<%= render 'cprogramas/forms/actsprog', f: f %>
 		<div class="well well-small">
 			<h6>Pulsa en <%= link_to 'Responsable', '#' , :id => 'nextR' %> para continuar</h6>
 		</div>
 	</div>
 	<div class="tab-pane" id="respon_programa">
-		<%= render 'cprogramas/fieldenc', f: f %>
+		<%= render 'cprogramas/forms/fieldenc', f: f %>
 		<div class="well well-small">
 			<h6>Pulsa en <%= link_to 'Observaciones', '#' , :id => 'nextO' %> para continuar</h6>
 		</div>
@@ -45,7 +50,7 @@
 	<div class="tab-pane" id="obser_programa">
 		<%= f.input :observaciones, :input_html => { :rows => 5 } %>
 		<div class="form-actions">
-			<%= render 'programa_btn', f: f, type: type %>
+			<%= render 'cprogramas/forms/programa_btn', f: f, type: type %>
 		</div>
 	</div>
 </div>

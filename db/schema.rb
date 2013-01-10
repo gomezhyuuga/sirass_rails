@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20130109060024) do
+=======
+ActiveRecord::Schema.define(:version => 20130110003833) do
+>>>>>>> relaciones
 
   create_table "admins", :force => true do |t|
     t.string   "nombre",     :null => false
@@ -62,15 +66,32 @@ ActiveRecord::Schema.define(:version => 20130109060024) do
 
   add_index "cprogramas", ["cveprograma"], :name => "index_cprogramas_on_cveprograma"
 
+  create_table "cprogramas_alcance_programas", :id => false, :force => true do |t|
+    t.integer "cprograma_id"
+    t.integer "alcance_programa_id"
+  end
+
+  create_table "cprogramas_dias", :id => false, :force => true do |t|
+    t.integer "cprograma_id"
+    t.integer "dia_id"
+  end
+
   create_table "cprogramas_poblacion_programas", :id => false, :force => true do |t|
     t.integer "cprograma_id"
     t.integer "poblacion_programa_id"
   end
 
+<<<<<<< HEAD
   create_table "estado_inscripcions", :force => true do |t|
     t.string   "descripcion"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+=======
+  create_table "dia", :force => true do |t|
+    t.string   "dia_semana"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+>>>>>>> relaciones
   end
 
   create_table "estado_programas", :force => true do |t|

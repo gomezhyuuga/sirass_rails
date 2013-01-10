@@ -59,6 +59,14 @@ namespace :db do
 			PoblacionPrograma.create!(row.to_hash.symbolize_keys)
 		end
 
+		#Catalogo dias
+		csv_text = File.read("db/csv/dia.csv")
+		csv = CSV.parse(csv_text, :headers => true)
+		csv.each do |row|
+		  	row = row.to_hash.with_indifferent_access
+			Dia.create!(row.to_hash.symbolize_keys)
+		end
+
 		# Asignar la institución de la UACM
 		Institucion.find_by_nombre("UACM").update_attribute(:uacm, true)
 	end

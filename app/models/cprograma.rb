@@ -28,19 +28,20 @@
 #
 
 class Cprograma < ActiveRecord::Base
-  attr_accessible :cveprograma, :desarrollo, :evaluacion, :ftiempo, 
+  attr_accessible :cveprograma, :desarrollo, :evaluacion, :ftiempo, :tiempo_indeterminado, 
   :horario_programa_id, :institucion_id, :justificacion, :lugar, :nombre, :notas, :objGeneral, 
   :observaciones, :plazas, :recursos, :resultados, :estado_programa_id, :tiempo_id, :vacantes, :tipo_programa_id,
   :licenciaturas_attributes, :responsables_attributes
 
   #Validaciones
-  validates_presence_of :desarrollo, :evaluacion, :justificacion, :lugar, :nombre, :objGeneral, 
+  validates_presence_of :desarrollo, :evaluacion, :justificacion, :lugar, :nombre, :objGeneral, :tiempo_indeterminado,
   :observaciones, :recursos, :resultados, :tipo_programa_id
 
   #Relaciones
 
   has_and_belongs_to_many :poblacion_programas
-  has_and_belongs_to_many :alcance_programa
+  has_and_belongs_to_many :alcance_programas
+  has_and_belongs_to_many :dias
 
   has_many :licenciaturas, dependent: :destroy
   has_many :responsables, dependent: :destroy
