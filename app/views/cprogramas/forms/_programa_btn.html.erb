@@ -1,0 +1,9 @@
+<%
+	type ||= ''
+%>
+<% if type == 'nuevo' %>
+	<%= f.submit 'Enviar programa', :class => 'btn btn-success'%>
+	<%= button_tag "Limpiar campos", type: "reset", class: "btn " %>
+<% else %>
+	<%= f.submit 'Actualizar', :class => 'btn btn-success'%>
+<% end %>

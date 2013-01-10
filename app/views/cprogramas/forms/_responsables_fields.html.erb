@@ -1,0 +1,14 @@
+<tr>
+    <td>
+        <%= f.input_field :encargado, :class => "input-medium" %>
+    </td>
+    <td> 
+        <%= f.input_field :cargo, :class => "input-medium" %>
+    </td>
+    <td>
+        <%= f.input_field :email, :class => "input-medium" %>
+    </td>
+    <td>
+        <%= link_to_function "Eliminar", "eliminar_responsable()", class: 'btn btn-mini btn-danger' %>
+    </td>
+</tr>
