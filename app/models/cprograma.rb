@@ -34,8 +34,10 @@ class Cprograma < ActiveRecord::Base
   :licenciaturas_attributes, :responsables_attributes, :alcance_programa_ids, :poblacion_programa_ids, :dia_ids
 
   #Validaciones
-  validates_presence_of :desarrollo, :evaluacion, :justificacion, :lugar, :nombre, :objGeneral, :tiempo_indeterminado,
+  validates_presence_of :desarrollo, :evaluacion, :justificacion, :lugar, :nombre, :objGeneral,
   :observaciones, :recursos, :resultados, :tipo_programa_id
+
+  validates :tiempo_indeterminado, :inclusion => {:in => [true, false]}
 
   #Relaciones
 
