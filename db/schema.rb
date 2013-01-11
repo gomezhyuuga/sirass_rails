@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(:version => 20130110003833) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "alcance_programas_cprogramas", :id => false, :force => true do |t|
+    t.integer "cprograma_id"
+    t.integer "alcance_programa_id"
+  end
+
   create_table "cprogramas", :force => true do |t|
     t.integer  "institucion_id"
     t.string   "cveprograma"
@@ -55,11 +60,6 @@ ActiveRecord::Schema.define(:version => 20130110003833) do
   end
 
   add_index "cprogramas", ["cveprograma"], :name => "index_cprogramas_on_cveprograma"
-
-  create_table "cprogramas_alcance_programas", :id => false, :force => true do |t|
-    t.integer "cprograma_id"
-    t.integer "alcance_programa_id"
-  end
 
   create_table "cprogramas_dias", :id => false, :force => true do |t|
     t.integer "cprograma_id"
