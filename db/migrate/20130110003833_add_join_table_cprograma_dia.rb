@@ -1,6 +1,6 @@
 class AddJoinTableCprogramaDia < ActiveRecord::Migration
   def change
-  	create_table :cprogramas_alcance_programas, :id => false do |t|
+  	create_table :alcance_programas_cprogramas, :id => false do |t|
       t.integer :cprograma_id
       t.integer :alcance_programa_id
     end
