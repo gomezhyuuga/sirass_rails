@@ -19,4 +19,5 @@
 //= require select2
 //= require bootstrap-timepicker
 //= require bootbox
+//= require utils
 // require_tree .
