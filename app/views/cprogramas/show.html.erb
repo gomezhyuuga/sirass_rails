@@ -3,7 +3,22 @@
 		<small><%= @programa.cveprograma %> (<%= @programa.categoria %>)</small>
 	</h1>
 </div>
-
+<% if can? :manage, Cprograma %>
+<!-- ADMIN BUTTON -->
+<div class="span2 pull-right">
+  <%= render 'cprogramas/forms/admin_btn', obj: @programa %>
+</div>
+<% end %>
+<% if logged_as? :prestador %>
+<!-- INSCRIBIR BUTTON -->
+<div class="span2 pull-right">
+  <%= link_to inscripcion_servicio_path, programa_id: @programa.id,
+    class: 'btn btn-success btn-block' do %>
+    <i class="icon-plus-sign"></i>
+    Inscribirse
+  <% end %>
+</div>
+<% end %>
 <!-- TABS -->
 <ul class="nav nav-tabs">
   <li class="active">
@@ -170,16 +185,7 @@
 </div>
 <!-- END TAB CONTENT -->
 <hr />
+<% if can? :maange, Cprograma %>
 <!-- OBSERVACIONES -->
-<h2>Observaciones</h2>
-<% if @programa.observaciones.blank? %>
-<p class="lead">Sin observaciones</p>
-<% else %>
-  <p class="well well-small"><%= @programa.observaciones %></p>
-<% end %>
-<%= simple_form_for @programa, url: update_observaciones_path(@programa) do |f| %>
-  <%= f.input :observaciones, input_html: { class: 'input-block-level', rows: 7 } %>
-  <div class="form-actions">
-    <%= f.submit "Actualizar observaciones", class: 'btn btn-large btn-warning' %>
-  </div>
+<%= render 'forms/observaciones' %>
 <% end %>

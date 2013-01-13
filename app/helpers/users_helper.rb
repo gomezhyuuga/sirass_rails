@@ -8,7 +8,7 @@ module UsersHelper
 		end
 	end
 
-	def is_logged_as?(user_type)
+	def logged_as?(user_type)
 		return false if !current_user
 		if user_type == :admin
 			current_user.admin_id != nil

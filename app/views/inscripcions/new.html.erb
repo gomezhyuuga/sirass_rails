@@ -5,7 +5,8 @@
 <div class="page-header">
 	<h1>Inscripción al Servicio Social</h1>
 </div>
-<p>Para inscribirte en un programa de Servicio Social llena los siguientes datos.</p>
+<p class="lead">Inscribiéndose al programa con ID: <%= params[:programa_id] %></p>
+<p>Para continuar llena los siguientes datos.</p>
 
 <%= render 'shared/error_messages', object: @inscripcion %>
 <%= simple_form_for @inscripcion, html: { class: 'form-horizontal' },

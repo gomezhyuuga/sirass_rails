@@ -27,13 +27,15 @@ es:
             matricula: "Boleta"
             promedio: "9.4"
             area: "Oficina de Gerente de Ventas"
-            c_dias: "Selecciona los días que asistirás"
+            dias: "Selecciona los días que asistirás"
+            responsable: "Lic. Javier Aguilar"
     hints:
         defaults:
             nacimiento: 'Fecha en formato dd/mm/aaaa'
         inscripcion:
             area: "El lugar donde se realizará el servicio."
-            c_dias: "Elige los días que asistirás"
+            dias: "Elige los días que asistirás"
+            responsable: "La persona que validará tus horas de servicio social"
             hora_entrada: "Hora en formato de 24hrs (HH:MM)"
             hora_salida: "Hora en formato de 24hrs (HH:MM)"
         cprograma:

@@ -24,9 +24,7 @@
         <!-- Contenido
         ============================== -->
         <div class="span8 solid">
-          <% flash.each do |key, value| %>
-            <div class="alert alert-<%= key %>"><%= value %></div>
-          <% end %>
+          <%= render 'shared/flash', flash: flash %>
 
           <%= yield %>
         </div>
@@ -43,6 +41,7 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "utils" %>
+  <%= javascript_include_tag "prestadors" %>
   <%= yield(:javascript) %>
 </body>
 </html>

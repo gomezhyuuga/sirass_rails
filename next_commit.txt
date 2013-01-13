@@ -1,4 +1,3 @@
-- Actualización de observaciones
-- Agregados elementos de programa en el rake task
-- Actualizado show de programas
-- Agregado listado por internos o externos
+- Avances en inscripción
+- Rake task para deploy. TODO: usar capistrano
+- Avances en show de programas

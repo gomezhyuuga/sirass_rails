@@ -2,7 +2,7 @@
 Sirass::Application.routes.draw do
   get "test_pages/visual"
 
-  resources :prestadors
+  resources :prestadors, path: "prestadores"
   resources :institucion_users, path: "institucions"
   resources :admins
   resources :sessions, only: [:new, :create, :destroy]
@@ -30,7 +30,10 @@ Sirass::Application.routes.draw do
   match '/registro/institucion',  to: 'institucion_users#new'
 
   # Prestador
-  match '/prestador/home',    to: 'prestador_pages#index'
+  scope "/prestador" do
+    get 'home',    to: 'prestador_pages#index', as: :prestador_home
+    get 'inscripcion',    to: 'inscripcions#new', as: :inscripcion_servicio
+  end
   match '/institucion/home',  to: 'institucion_pages#index'
   get '/admin/home',          to: 'admin_pages#index'
   # Admin
