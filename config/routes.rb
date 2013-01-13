@@ -8,9 +8,12 @@ Sirass::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   # Programas
-  resources :cprogramas
-  
+  resources :cprogramas do
+    get 'internos', to: 'cprogramas#index', internos: true, on: :collection
+    get 'externos', to: 'cprogramas#index', internos: false, on: :collection
+  end
   match '/cprogramas/:id/update_status/:status', to: 'cprogramas#update_status'
+  match '/cprogramas/:id/update_observaciones', to: 'cprogramas#update_observaciones'
 
   resources :inscripcions, path: "inscripciones"
 

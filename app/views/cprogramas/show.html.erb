@@ -1,6 +1,6 @@
 <div class = "page-header">
-	<h1>Socialización y difusión de la ciencia
-		<small>UACM/SS/12-12/101</small>
+	<h1><%= @programa.nombre %>
+		<small><%= @programa.cveprograma %> (<%= @programa.categoria %>)</small>
 	</h1>
 </div>
 
@@ -24,64 +24,105 @@
 <div class="tab-content">
 	<!-- TAB DATOS DE UNIDAD -->
   <div class="tab-pane active" id="tab_unidad">
-  	<h3>Institución o Dependencia</h3>
-  	<p>Instituto de Ciencia y Tecnología del Distrito Federal</p>
-  	<h3>Área o Subdirección</h3>
-  	<p>Dirección de Educación, Ciencia y Sociedad; Subdirección de difusión de la ciencia.</p>
-  	<h3>Domicilio</h3>
-  	<p>República de Chile #6 Col. Centro Del. Cuauhtémoc, C.P. 06010 México D.F.</p>
-  	<h3>Responsable (s) del programa</h3>
-  	<p>Rodrigo Vidal Tamayo Ramírez</p>
-  	<h3>Cargo</h3> 
-  	<p>Director de Educación, Ciencia y Sociedad</p>
-  	<h3>Teléfono</h3>
-  	<p>55 12 10 12 <strong>Ext.</strong> 248</p>
-  	<h3>Correo electrónico</h3>
-  	<p>rvidal@icyt.df.gob.mx</p>
+    <div class="row">
+      <div class="span6">
+        <h4>Institución o Dependencia</h4>
+        <p>Instituto de Ciencia y Tecnología del Distrito Federal</p>
+      </div>
+      <div class="span6">
+        <h4>Plantel</h4>
+        <p><%= Faker::Lorem.sentence(6) %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4">
+        <h4>Domicilio</h4>
+        <p>República de Chile #6 Col. Centro Del. Cuauhtémoc, C.P. 06010 México D.F.</p>
+      </div>
+      <div class="span4">
+        <h4>Área o Subdirección</h4>
+        <p><%= @programa.lugar %></p>
+      </div>
+      <div class="span4">
+        <h4>Teléfono</h4>
+        <p>55 12 10 12 <strong>Ext.</strong> 248</p>
+      </div>
+    </div>
+    <!-- RESPONSABLES -->
+  	<h4>Responsable (s) del programa</h4>
+    <table class="table table-condensed table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Cargo</th>
+          <th>
+            <i class="icon-envelope"></i>
+            Correo electrónico
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rodrigo Vidal Tamayo Ramírez</td>
+          <td>Director de Educación, Ciencia y Sociedad</td>
+          <td>rvidal@icyt.df.gob.mx</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <!-- END TAB DATOS DE UNIDAD -->
   <!-- TAB DATOS DE PROGRAMA -->
   <div class="tab-pane" id="tab_programa">
-  	<h3>Objetivo General</h3>
-  	<p>Realizar acciones para acercar el conocimiento científico y tecnológico a la población, y propiciar que la toma de decisiones esté basada en la ciencia y la tecnología.</p>
-  	<h3>Justificación</h3>
-  	<p>La desigualdad educativa y económica impide un acceso equitativo a  la oferta cultural, la cual es reducida en el ámbito científico y tecnológico, lo que provoca que la sociedad perciba a la ciencia y a la tecnología como algo ajeno, propio de una élite., por  lo anterior  el ICyTDF  asume la misión de contribuir a incrementar  la cultura científica en la sociedad.
-
-  		A través de este programa, el estudiante adquirirá habilidades para comunicar conocimiento e información científica y tecnológica. Obtendrá herramientas que le permitan realizar labores de socialización de la ciencia.
-
-  		El Instituto de Ciencia y Tecnología aprovechará las habilidades que los estudiantes obtuvieron en su formación profesional en especial, las herramientas que poseen para transmitir el conocimiento, manejo y análisis de medios, y logística de eventos.
-  	</p>
-  	<h3>Desarrollo</h3>
-  	<p>Realización de ferias científico-tecnológicas en sitios públicos de la Ciudad de México; como parques, plazas, escuelas, museos, centros culturales, módulos de participación ciudadana, etc., donde se impartan talleres, exposiciones, charlas con científicos y científicas, proyección de videos y obras de teatro, que de manera amena, didáctica y bien fundamentada acerquen el conocimiento al público en general. Monitoreo de medios impresos y electrónicos sobre los temas y actividades científico tecnológicas.</p>
-  	<h3>Recursos</h3>
-  	<p>Equipo de cómputo, material de campo, material de capacitación.
-  		Existe posibilidad de beca, sujeta a disponibilidad de la misma de acuerdo al número de prestadores.
-  	</p>
-  	<h3>Evaluaci&oacute;n</h3>
-  	<p>Diseño de cronograma de actividades.
-  		Control de asistencia y horas cubiertas.
-  		Reporte final de actividades
-  	</p>
-  	<h3>Resultados</h3>
-  	<p>Desarrollo de actividades pedagógicas e informes de monitoreo de medios.
-  		Organización de eventos y desarrollo de actividades de socialización científica, análisis estadístico de encuestas.
-  	</p>
+  	<h4>Objetivo General</h4>
+    <p><%= @programa.objGeneral %></p>
+  	<h4>Justificación</h4>
+    <p><%= @programa.justificacion %></p>
+  	<h4>Desarrollo</h4>
+  	<p><%= @programa.desarrollo %></p>
+  	<h4>Recursos</h4>
+    <p><%= @programa.recursos %></p>
+  	<h4>Evaluaci&oacute;n</h4>
+  	<p><%= @programa.evaluacion %></p>
+  	<h4>Resultados</h4>
+  	<p><%= @programa.resultados %></p>
   </div>
   <div class="tab-pane" id="tab_caracteristicas">
-  	<h3>Tipo</h3>
-  		<p>Educativo</p>
-  	<h3>Duraci&oacute;n</h3>
-  		<p>Permanente</p>
-  	<h3>Alcance</h3>
-  		<p>Estatal</p>
-  	<h3>Poblaci&oacute;n a atender</h3>
-  		<p>Marginada, J&oacute;venes, Ni&ntilde;os, No Marginada, Adultos, Tercera Edad</p>
-  	<h3>Lugar de Realizaci&oacute;n</h3>
-  		<p>Instituto de Ciencia y Tecnología del D.F., y sitios públicos de la Ciudad de México.</p>
-  	<h3>Días de Realización</h3>
-  		<p>L, M, Mi, J, V, S</p>
-  	<h3>Horario</h3>
-  		<p>Mixto</p>
+  	<div class="row">
+      <div class="span4">
+        <h4>Días de Realización</h4>
+        <p>
+          <%= @programa.dias.map { |d| d.dia_semana }.join(', ') %>
+        </p>
+      </div>
+      <div class="span4">
+        <h4>Lugar de Realizaci&oacute;n</h4>
+        <p><%= @programa.lugar %></p>
+      </div>
+      <div class="span4">
+        <h4>Poblaci&oacute;n a atender</h4>
+        <p>
+          <%= @programa.poblacion_programas.map { |p| p.descripcion }.join(', ') %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span3">
+        <h4>Tipo</h4>
+        <p>Educativo</p>
+      </div>
+      <div class="span3">
+        <h4>Duraci&oacute;n</h4>
+      <p>Permanente</p>
+      </div>
+      <div class="span3">
+        <h4>Alcance</h4>
+      <p>Estatal</p>
+      </div>
+      <div class="span3">
+        <h4>Horario</h4>
+        <p>Mixto</p>
+      </div>
+    </div>
   </div>
   <div class="tab-pane" id="tab_perfil">
   	<table class="table table-striped table-bordered" style="width: 100%;">
@@ -128,3 +169,17 @@
   </div>
 </div>
 <!-- END TAB CONTENT -->
+<hr />
+<!-- OBSERVACIONES -->
+<h2>Observaciones</h2>
+<% if @programa.observaciones.blank? %>
+<p class="lead">Sin observaciones</p>
+<% else %>
+  <p class="well well-small"><%= @programa.observaciones %></p>
+<% end %>
+<%= simple_form_for @programa, url: update_observaciones_path(@programa) do |f| %>
+  <%= f.input :observaciones, input_html: { class: 'input-block-level', rows: 7 } %>
+  <div class="form-actions">
+    <%= f.submit "Actualizar observaciones", class: 'btn btn-large btn-warning' %>
+  </div>
+<% end %>

@@ -36,6 +36,8 @@ es:
             c_dias: "Elige los días que asistirás"
             hora_entrada: "Hora en formato de 24hrs (HH:MM)"
             hora_salida: "Hora en formato de 24hrs (HH:MM)"
+        cprograma:
+            observaciones: "Si el programa contiene errores, anótalos en el campo de arriba."
     labels:
         # Usar mejor es.yml para human_attributes
         # inscripcion:
@@ -47,6 +49,8 @@ es:
         #     c_dias: "Días de asistencia"
         #     fecha_inicio: "Fecha de inicio"
         #     fecha_fin: "Fecha de término"
+        cprograma:
+            observaciones: "Actualizar observaciones"
     options:
         inscripcion:
             difundir:

@@ -39,4 +39,7 @@ module CprogramasHelper
 	def update_status_path(programa, status)
 		cprograma_path(programa) + "/update_status/#{status}"
 	end
+	def update_observaciones_path(programa)
+		cprograma_path(programa) + "/update_observaciones"
+	end
 end

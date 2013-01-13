@@ -1,3 +1,4 @@
-- Agregada biblioteca: bootboxjs
-- Admin de programas cambio de estado terminado
-- Comentada clase EstadoPrograma con los estados existentes
+- Actualización de observaciones
+- Agregados elementos de programa en el rake task
+- Actualizado show de programas
+- Agregado listado por internos o externos

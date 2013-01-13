@@ -18,4 +18,5 @@
 // require chosen-jquery
 //= require select2
 //= require bootstrap-timepicker
+//= require bootbox
 // require_tree .

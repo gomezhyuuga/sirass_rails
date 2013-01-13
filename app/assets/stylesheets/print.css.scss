@@ -1,0 +1,16 @@
+@media print {
+	.navbar, ul.nav.nav-tabs, .container#debugText, #footer, #dev_links { display: none; }
+  .page-break  { display: block; page-break-before: always; }
+
+  .tab-pane {
+  	display: block !important; // page-break-before: always;
+  }
+
+  #cprogramas-show {
+    form { display: none; }
+  }
+
+  table, th, tr {
+  	background-color: #fff
+  }
+}

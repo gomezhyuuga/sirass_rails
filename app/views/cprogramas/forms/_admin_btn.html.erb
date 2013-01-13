@@ -6,6 +6,12 @@
 	</a>
 	<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
 		<li>
+			<%= link_to obj do %>
+				<i class="icon-eye-open"></i>
+				Ver detalles
+			<% end %>
+		</li>
+		<li>
 			<%= link_to edit_cprograma_path(obj) do %>
 			<i class="icon-pencil"></i>
 			Editar
@@ -17,8 +23,12 @@
 			Borrar
 			<% end %>
 		</li>
+		<!-- CAMBIO DE ESTADO -->
 		<li class="dropdown-submenu pull-left">
-			<a href="#" tabindex="-1">Cambiar estado</a>
+			<a href="#" tabindex="-1">
+				<i class="icon-wrench"></i>
+				Cambiar estado
+			</a>
 			<ul class="dropdown-menu">
 				<% EstadoPrograma.all.each do |e| %>
 				<li>

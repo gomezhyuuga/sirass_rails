@@ -5,7 +5,6 @@
 #  id                   :integer          not null, primary key
 #  institucion_id       :integer
 #  cveprograma          :string(255)
-#  categoria_id         :integer
 #  estado_programa_id   :integer
 #  nombre               :string(255)
 #  objGeneral           :text
@@ -36,7 +35,7 @@ class Cprograma < ActiveRecord::Base
 
   #Validaciones
   validates_presence_of :desarrollo, :evaluacion, :justificacion, :lugar, :nombre, :objGeneral,
-  :observaciones, :recursos, :resultados, :tipo_programa_id
+    :recursos, :resultados, :tipo_programa_id
 
   validates :tiempo_indeterminado, :inclusion => {:in => [true, false]}
 
@@ -53,5 +52,9 @@ class Cprograma < ActiveRecord::Base
 
   belongs_to :tipo_programa
   belongs_to :estado_programa
-  	
+  
+  # Devuelve interno o externo como string dependiendo de la categoría
+  def categoria
+    categoria = self.categoria_interno == true ? "Interno" : "Externo"
+  end
 end

@@ -1,6 +1,7 @@
 # encoding: UTF-8
-
-$(document).on "focus", "[data-behaviour~='datepicker']", (e) ->
+jQuery ->
+  # Activar el datepicker
+  $(document).on "focus", "[data-behaviour~='datepicker']", (e) ->
     $(this).datepicker {
       format: "dd/mm/yyyy",
       weekStart: 1,
@@ -8,14 +9,22 @@ $(document).on "focus", "[data-behaviour~='datepicker']", (e) ->
       language: 'es'
     }
 
-$(document).ready ->
+  # Activar select2
   $('.use-select2').select2 {
     formatNoMatches: (term) ->
       return "Sin resultados"
   }
+
+  # Activar timepicker
   $('.use-timepicker').timepicker { showMeridian: false }
 
-# MODAL Dialogs
+  # Mostrar flash en modals
+  flash_messages = $('#flash')
+  if flash_messages.html().trim() isnt ""
+    bootbox.alert flash_messages.html(), "Cerrar", ->
+      flash_messages.slideUp()
+
+# MODAL Dialogs para sobreescribir el comportamiento por defecto de data-confirm
 $.rails.allowAction = (link) ->
   return true unless link.attr('data-confirm')
   $.rails.showConfirmDialog(link) # look bellow for implementations
