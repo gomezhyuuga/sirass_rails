@@ -4,7 +4,7 @@
 		Administrar
 		<span class="caret"></span>
 	</a>
-	<ul class="dropdown-menu pull-right">
+	<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
 		<li>
 			<%= link_to edit_cprograma_path(obj) do %>
 			<i class="icon-pencil"></i>
@@ -16,6 +16,20 @@
 			<i class="icon-trash"></i>
 			Borrar
 			<% end %>
+		</li>
+		<li class="dropdown-submenu pull-left">
+			<a href="#" tabindex="-1">Cambiar estado</a>
+			<ul class="dropdown-menu">
+				<% EstadoPrograma.all.each do |e| %>
+				<li>
+					<%= link_to update_status_path(obj, e.id), confirm: "Actualizando estado de programa",
+					method: :put do %>
+						<i class="<%= icon_for_estado_programa(e.id) %>"></i>
+						<%= e.descripcion %>
+					<% end %>
+				</li>
+				<% end %>
+			</ul>
 		</li>
 	</ul>
 </div>

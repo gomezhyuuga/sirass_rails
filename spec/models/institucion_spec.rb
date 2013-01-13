@@ -7,7 +7,7 @@
 #  educativa  :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  uacm       :boolean
+#  uacm       :boolean          default(FALSE)
 #
 
 # -*- encoding : utf-8 -*-

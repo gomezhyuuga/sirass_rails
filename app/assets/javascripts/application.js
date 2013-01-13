@@ -19,25 +19,3 @@
 //= require select2
 //= require bootstrap-timepicker
 // require_tree .
-
-$(document).on("focus", "[data-behaviour~='datepicker']", function(e){
-    $(this).datepicker({
-    	format: "dd/mm/yyyy",
-    	weekStart: 1,
-    	autoclose: true,
-    	language: 'es'
-    });
-});
-
-// var chzn_changed;
-
-$(document).ready(function() {
-	$('.use-select2').select2({
-		formatNoMatches: function(term) {
-			return "Sin resultados";
-		}
-	});
-	$('.use-timepicker').timepicker({
-		showMeridian: false
-	});
-});

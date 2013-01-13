@@ -5,6 +5,7 @@
 #  id                   :integer          not null, primary key
 #  institucion_id       :integer
 #  cveprograma          :string(255)
+#  categoria_id         :integer
 #  estado_programa_id   :integer
 #  nombre               :string(255)
 #  objGeneral           :text

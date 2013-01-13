@@ -154,13 +154,14 @@ namespace :db do
 	end
 
 	desc "Información de prueba. Programas de SS"
-	task programas: :environment do
+	task programas: [:environment] do
 		puts "Creando programas de prueba..."
 		# Crear programas
 		24.times do |n|
 			lorem = Faker::Lorem.paragraph(3)
 			Cprograma.create!(
 				tipo_programa_id: Random.rand(1..8),
+				estado_programa_id: Random.rand(1..5),
 				nombre: "Programa #{n}",
 				cveprograma: "UACM-SS-#{n}",
 				institucion_id: Random.rand(1..40),

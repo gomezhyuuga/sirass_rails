@@ -7,6 +7,13 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
+# == ESTADOS ==
+# 1,"Activo"
+# 2,"Inactivo"
+# 3,"Suspendido"
+# 4,"Esperando"
+# 5,"Actualizado"
+# 6,"Observación"
 
 class EstadoPrograma < ActiveRecord::Base
   attr_accessible :descripcion

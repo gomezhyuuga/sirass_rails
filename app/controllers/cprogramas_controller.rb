@@ -50,4 +50,13 @@ class CprogramasController < ApplicationController
 		end
 	end
 
+	# Actualizar solo el estado de un programa
+	def update_status
+		if Cprograma.update(params[:id], estado_programa_id: params[:status])
+			flash[:success] = "Estado actualizado correctamente!"
+		else
+			flash[:error] = "Ocurrió un error actualizando el estado"
+		end
+		redirect_to cprogramas_path
+	end
 end

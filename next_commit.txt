@@ -1,5 +1,3 @@
-- Mejor estructura de fields para institución
-- Resueltos conflictos en archivos
-- Ignorado schema.rb
-- Mejor estructura para UACM_data.rake
-- Movidos CSV a db/csv/
+- Agregada biblioteca: bootboxjs
+- Admin de programas cambio de estado terminado
+- Comentada clase EstadoPrograma con los estados existentes

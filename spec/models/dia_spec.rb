@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: dia
+# Table name: dias
 #
 #  id         :integer          not null, primary key
 #  dia_semana :string(255)
