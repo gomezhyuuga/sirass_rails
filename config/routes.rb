@@ -12,8 +12,10 @@ Sirass::Application.routes.draw do
     get 'internos', to: 'cprogramas#index', internos: true, on: :collection
     get 'externos', to: 'cprogramas#index', internos: false, on: :collection
   end
-  match '/cprogramas/:id/update_status/:status', to: 'cprogramas#update_status'
-  match '/cprogramas/:id/update_observaciones', to: 'cprogramas#update_observaciones'
+  match '/cprogramas/:id/update_status/:status',  to: 'cprogramas#update_status'
+  match '/cprogramas/:id/update_observaciones',   to: 'cprogramas#update_observaciones'
+  match '/cprogramas/:id/update_clave',           to: 'cprogramas#update_clave'
+  match '/cprogramas/:id/generar_nueva_clave',    to: 'cprogramas#generar_nueva_clave'
 
   resources :inscripcions, path: "inscripciones"
 
@@ -31,8 +33,8 @@ Sirass::Application.routes.draw do
 
   # Prestador
   scope "/prestador" do
-    get 'home',    to: 'prestador_pages#index', as: :prestador_home
-    get 'inscripcion',    to: 'inscripcions#new', as: :inscripcion_servicio
+    get 'home',         to: 'prestador_pages#index', as: :prestador_home
+    get 'inscripcion',  to: 'inscripcions#new', as: :inscripcion_servicio
   end
   match '/institucion/home',  to: 'institucion_pages#index'
   get '/admin/home',          to: 'admin_pages#index'

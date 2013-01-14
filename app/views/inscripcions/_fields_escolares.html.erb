@@ -17,13 +17,13 @@
 input_html: { class: 'use-select2 input-small' }, include_blank: false %>
 
 <!-- SÓLO PRÁCTICAS PROFESIONALES -->
-<div class="hide" id="practicas">
-	<%= f.input :creditos, input_html: { class: 'input-mini' } %>
+<div class="hide" id="practica_profesional">
+	<%= f.input :creditos, input_html: { class: 'input-mini', step: 10 } %>
 	<p><strong>Total de cursos</strong></p>
 	<%= f.input :nCursos_basicos do %>
-		<%= f.number_field :nCursos_basicos, class: 'input-mini' %>
+		<%= f.number_field :nCursos_basicos, class: 'input-mini', step: 10 %>
 		Ciclo superior:
-		<%= f.number_field :nCursos_superio, class: 'input-mini' %>
+		<%= f.number_field :nCursos_superio, class: 'input-mini', step: 10 %>
 	<% end %>
 </div>
 <!-- END PRÁCTICAS PROFESIONALES -->

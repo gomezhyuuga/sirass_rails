@@ -12,7 +12,7 @@
 <% if logged_as? :prestador %>
 <!-- INSCRIBIR BUTTON -->
 <div class="span2 pull-right">
-  <%= link_to inscripcion_servicio_path, programa_id: @programa.id,
+  <%= link_to inscripcion_servicio_path(programa: @programa.id),
     class: 'btn btn-success btn-block' do %>
     <i class="icon-plus-sign"></i>
     Inscribirse
@@ -187,5 +187,5 @@
 <hr />
 <% if can? :maange, Cprograma %>
 <!-- OBSERVACIONES -->
-<%= render 'forms/observaciones' %>
+<%= render 'cprogramas/forms/observaciones' %>
 <% end %>

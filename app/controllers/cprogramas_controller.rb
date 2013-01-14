@@ -74,4 +74,26 @@ class CprogramasController < ApplicationController
 		end
 		redirect_to cprograma_path(params[:id])
 	end
+	# Actualizar solo la clave de un programa
+	def update_clave
+		nueva_clave = params[:cprograma][:cveprograma]
+		if Cprograma.update(params[:id], cveprograma: nueva_clave)
+			flash[:success] = "Clave del programa actualizada correctamente!"
+		else
+			flash[:error] = "Ocurrió un error actualizando la clave del programa!"
+		end
+		redirect_to cprograma_path(params[:id])
+	end
+
+	# Generar clave de programa
+	def generar_nueva_clave
+		@id 							= params[:id]
+		consecutivo 			= 1 + Cprograma.where('estado_programa_id != 4 AND estado_programa_id != 6').count
+		current_year 			= Date.today.year.to_s[2..3]
+		last_update_year 	= Cprograma.find(@id).updated_at.year.to_s[2..3]
+		@clave = "UACM/SS/#{current_year}-#{last_update_year}/#{consecutivo}"
+		respond_to do |format|
+			format.js
+		end
+	end
 end

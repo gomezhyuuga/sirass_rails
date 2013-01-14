@@ -1,7 +1,9 @@
 <!-- INICIO DATOS DE PROGRAMA -->
 <fieldset>
   <legend>Datos del Programa de Servicio Social</legend>
+  <%= f.hidden_field :cprograma_id, value: params[:programa] %>
   <%= f.input :responsable, input_html: { class: 'input-xlarge' } %>
+  <%= f.input :cargoResponsable, input_html: { class: 'input-xlarge' } %>
   <%= f.input :area, input_html: { class: 'input-xlarge' } %>
   <%= f.association :dias, label_method: :dia_semana, input_html: { class: 'use-select2 input-xlarge', 'data-placeholder' => 'Selecciona los días' } %>
 	<%= f.input :hora_entrada do %>

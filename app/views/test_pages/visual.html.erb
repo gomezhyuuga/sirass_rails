@@ -11,6 +11,14 @@ button { margin-top: 10px; }
 
 
 <h1>Forms</h1>
+<p>
+	<%= link_to "Petición remota", { controller: :cprogramas, action: :generar_nueva_clave, remote: true }, {class: 'btn btn-warning'} %>
+</p>
+<pre>
+	&lt;%= link_to "Petici&oacute;n remota", { controller: :cprogramas, action: :generar_nueva_clave, remote: true }, {class: 'btn btn-warning'} %&gt;
+	&lt;a href="/programas/generar_nueva_clave" class="btn btn-warning" data-remote="true"&gt;Petici&oacute;n remota&lt;/a&gt;
+</pre>
+<hr>
 <%= simple_form_for @prestador, html: {class: 'form-horizontal'} do |f| %>
 <div class="row">
 	<div class="span4">

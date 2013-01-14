@@ -1,4 +1,8 @@
 <%= provide(:title, "Lista de programas") %>
+<%= content_for :javascript do %>
+	<%= javascript_include_tag 'cprogramas' %>
+<% end %>
+
 <h1>Programas de Servicio Social</h1>
 <% if @cprogramas.empty? %>
 <p class="lead">No se encontró ningún programa en la base de datos.</p>

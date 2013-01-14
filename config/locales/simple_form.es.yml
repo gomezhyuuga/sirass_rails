@@ -29,6 +29,7 @@ es:
             area: "Oficina de Gerente de Ventas"
             dias: "Selecciona los días que asistirás"
             responsable: "Lic. Javier Aguilar"
+            cargoResponsable: "Supervisor de área de informática"
     hints:
         defaults:
             nacimiento: 'Fecha en formato dd/mm/aaaa'

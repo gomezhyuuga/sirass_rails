@@ -44,5 +44,5 @@ class Inscripcion < ActiveRecord::Base
   belongs_to :institucion
   belongs_to :plantel
 
-  has_and_belongs_to_many :dias
+  has_and_belongs_to_many :dias, join_table: :inscripcions_dias
 end
