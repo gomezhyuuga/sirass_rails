@@ -24,6 +24,7 @@ class PrestadorsController < ApplicationController
 			auto_login(@prestador.user)
 			redirect_back_or_to @prestador.user.user_page
 		else
+			flas.now[:error] = "Ha ocurrido un error registrando al prestador"
 			render 'new', layout: 'application'
 		end
 	end

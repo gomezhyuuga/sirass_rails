@@ -20,7 +20,7 @@ jQuery ->
 
   # Mostrar flash en modals
   flash_messages = $('#flash')
-  if flash_messages.html().trim() isnt ""
+  if flash_messages.html() and flash_messages.html().trim() isnt ""
     bootbox.alert flash_messages.html(), "Cerrar", ->
       flash_messages.slideUp()
 
