@@ -62,7 +62,7 @@ class CprogramasController < ApplicationController
 		else
 			flash[:error] = "Ocurrió un error actualizando el estado"
 		end
-		redirect_to cprogramas_path
+		redirect_to cprograma_path(params[:id])
 	end
 	# Actualizar solo las observaciones de un programa
 	def update_observaciones
@@ -75,12 +75,16 @@ class CprogramasController < ApplicationController
 		redirect_to cprograma_path(params[:id])
 	end
 	# Actualizar solo la clave de un programa
+	def cambiar_clave
+		@programa = Cprograma.find(params[:id])
+		render layout: 'admin'
+	end
 	def update_clave
 		nueva_clave = params[:cprograma][:cveprograma]
 		if Cprograma.update(params[:id], cveprograma: nueva_clave)
 			flash[:success] = "Clave del programa actualizada correctamente!"
 		else
-			flash[:error] = "Ocurrió un error actualizando la clave del programa!"
+			flash.now[:error] = "Ocurrió un error actualizando la clave del programa!"
 		end
 		redirect_to cprograma_path(params[:id])
 	end

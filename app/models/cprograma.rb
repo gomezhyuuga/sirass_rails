@@ -31,7 +31,7 @@ class Cprograma < ActiveRecord::Base
   attr_accessible :cveprograma, :desarrollo, :evaluacion, :ftiempo, :tiempo_indeterminado, 
   :horario_programa_id, :institucion_id, :justificacion, :lugar, :nombre, :notas, :objGeneral, 
   :observaciones, :plazas, :recursos, :resultados, :estado_programa_id, :tiempo_id, :vacantes, :tipo_programa_id,
-  :licenciaturas_attributes, :responsables_attributes, :alcance_programa_ids, :poblacion_programa_ids, :dia_ids
+  :licenciaturas_attributes, :responsables_attributes, :alcance_programa_ids, :poblacion_programa_ids, :dia_ids, :categoria_interno
 
   #Validaciones
   validates_presence_of :desarrollo, :evaluacion, :justificacion, :lugar, :nombre, :objGeneral,

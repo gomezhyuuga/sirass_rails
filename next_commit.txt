@@ -1,3 +1,4 @@
-- Avances en inscripción
-- Rake task para deploy. TODO: usar capistrano
-- Avances en show de programas
+- Auto focus en login
+- Generación de modals más personalizada
+- Cambio de clave de programa en página aparte
+- Mejorada estructura de rutas para programas

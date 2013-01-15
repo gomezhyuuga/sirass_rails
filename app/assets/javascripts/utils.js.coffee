@@ -58,7 +58,10 @@ $.rails.showConfirmDialog = (link) ->
   $(html).modal()
   $('#confirmationDialog .confirm').on 'click', -> $.rails.confirmed(link)
 
-@generate_modal = (title, content) ->
+@generate_modal = (title, content, buttons, type = "button") ->
+  if !buttons
+    buttons = """<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                 <button class="btn btn-success" type="#{type}">Continuar</button>"""
   modal = """
          <div class="modal" id="confirmationDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
            <div class="modal-header">
@@ -69,8 +72,7 @@ $.rails.showConfirmDialog = (link) ->
              #{content}
            </div>
            <div class="modal-footer">
-              <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-              <button class="btn btn-success confirm">Continuar</button>
+              #{buttons}
            </div>
          </div>
          """

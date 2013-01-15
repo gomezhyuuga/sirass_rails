@@ -9,13 +9,16 @@ Sirass::Application.routes.draw do
 
   # Programas
   resources :cprogramas do
-    get 'internos', to: 'cprogramas#index', internos: true, on: :collection
-    get 'externos', to: 'cprogramas#index', internos: false, on: :collection
+    get 'internos',       to: 'cprogramas#index', internos: true, on: :collection
+    get 'externos',       to: 'cprogramas#index', internos: false, on: :collection
+    get 'cambiar_clave',  to: 'cprogramas#cambiar_clave', on: :member
+    member do
+      get   'generar_nueva_clave',    to: 'cprogramas#generar_nueva_clave'
+      match 'update_clave',           to: 'cprogramas#update_clave', via: :put
+      match 'update_status/:status',  to: 'cprogramas#update_status'
+      match 'update_observaciones',   to: 'cprogramas#update_observaciones'
+    end
   end
-  match '/cprogramas/:id/update_status/:status',  to: 'cprogramas#update_status'
-  match '/cprogramas/:id/update_observaciones',   to: 'cprogramas#update_observaciones'
-  match '/cprogramas/:id/update_clave',           to: 'cprogramas#update_clave'
-  match '/cprogramas/:id/generar_nueva_clave',    to: 'cprogramas#generar_nueva_clave'
 
   resources :inscripcions, path: "inscripciones"
 

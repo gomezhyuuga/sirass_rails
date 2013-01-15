@@ -3,7 +3,7 @@
 
 <%= simple_form_for :session, url: sessions_path, defaults: { input_html: { class: 'input-block-level' } } do |f| %>
 
-  <%= f.input :username, label: "Nombre de usuario" %>
+  <%= f.input :username, label: "Nombre de usuario", input_html: { autofocus: :autofocus } %>
   <%= f.input :password, label: "Contraseña" %>
 
 	<%= f.label :remember_me, class: 'checkbox' do %>

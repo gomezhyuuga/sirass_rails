@@ -166,6 +166,7 @@ namespace :db do
 			Cprograma.create!(
 				tipo_programa_id: Random.rand(1..8),
 				estado_programa_id: Random.rand(1..5),
+				categoria_interno: [true, false].sample,
 				nombre: "Programa #{n}",
 				cveprograma: "UACM-SS-#{n}",
 				institucion_id: Random.rand(1..40),
