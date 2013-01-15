@@ -20,7 +20,7 @@ class CprogramasController < ApplicationController
 
 	def new
 		@cprograma = Cprograma.new
-		3.times {@cprograma.licenciaturas.build}
+		@cprograma.licenciaturas.build
 		@cprograma.responsables.build
 	end
 

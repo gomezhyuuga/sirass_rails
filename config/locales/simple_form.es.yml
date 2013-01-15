@@ -39,7 +39,7 @@ es:
             responsable: "La persona que validará tus horas de servicio social"
             hora_entrada: "Hora en formato de 24hrs (HH:MM)"
             hora_salida: "Hora en formato de 24hrs (HH:MM)"
-        cprograma:
+        cprograma:  
             observaciones: "Si el programa contiene errores, anótalos en el campo de arriba."
     labels:
         # Usar mejor es.yml para human_attributes

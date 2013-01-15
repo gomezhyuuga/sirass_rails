@@ -71,6 +71,10 @@ es:
         justificacion: "Justificación"
         evaluacion:    "Evaluación"
         tiempo_indeterminado: "Duración"
+        alcance_programas: "Alcance"
+        poblacion_programas: "Población a atender"
+        lugar:         "Lugar de Realización"
+        notas:         "Observaciones del programa"
       inscripcion:
         c_dias: "Días de asistencia"
         carrera: "Especialidad"
