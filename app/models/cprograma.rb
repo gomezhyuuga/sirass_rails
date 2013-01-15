@@ -52,6 +52,7 @@ class Cprograma < ActiveRecord::Base
 
   belongs_to :tipo_programa
   belongs_to :estado_programa
+  belongs_to :horario_programa
   
   # Devuelve interno o externo como string dependiendo de la categoría
   def categoria
