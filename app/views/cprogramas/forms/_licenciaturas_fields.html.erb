@@ -1,4 +1,4 @@
-<tr>
+<tr id="lic0">
 	<td>
 		<%= f.input_field :carrera %>
 	</td>
@@ -9,6 +9,6 @@
 		<%= f.text_area :actividad, :rows => 5 %>
 	</td>
 	<td>
-		<%= link_to_function "Eliminar", "eliminar_licenciatura(this)", class: 'btn btn-mini btn-danger' %>
+		<%= link_to_function "Eliminar", "eliminar_licenciatura(0)", class: 'btn btn-mini btn-danger', id: 'elim0' %>
 	</td>
 </tr>
