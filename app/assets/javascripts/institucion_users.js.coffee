@@ -1,11 +1,5 @@
 @nueva_licenciatura = ->
 	console.log 'nueva licenciatura'
-<<<<<<< HEAD
-	cur_time = new Date().getTime()
-	new_name = "cprograma[licenciaturas_attributes][#{cur_time}]"
-	new_id	 = "cprograma_licenciaturas_attributes_#{cur_time}"
-=======
->>>>>>> final
 	# TR layout
 	@tr_licenciaturas = $('#acts').children('tr').first().clone()
 	@num = $("#acts").contents('tr:last').attr('id').substr 3
@@ -13,12 +7,8 @@
 	new_name = "cprograma[licenciaturas_attributes][#{num}]"
 	new_id	 = "cprograma_licenciaturas_attributes_#{num}"
 	# Obtener inputs para cambiar id y name
-<<<<<<< HEAD
-	tr_licenciaturas.find('input[id*="_attributes"], select[id*="_attributes"], textarea[id*="_attributes"]').each (index, element) ->
-=======
 	@tr_licenciaturas.attr('id',"lic#{num}")
 	@tr_licenciaturas.find('input[id*="_attributes"], select[id*="_attributes"], textarea[id*="_attributes"]').each (index, element) ->
->>>>>>> final
 		@el 	= $(element)
 		name 	= @el.attr('name').substr 38
 		id 		= @el.attr('id').substr 36
