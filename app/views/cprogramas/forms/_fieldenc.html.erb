@@ -15,7 +15,7 @@
             <th>Eliminar</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="respo">
         <%= f.simple_fields_for :responsables do |respon| %>
             <%= render 'cprogramas/forms/responsables_fields', f: respon %>
         <% end %>
