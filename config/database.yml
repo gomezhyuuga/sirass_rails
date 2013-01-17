@@ -21,7 +21,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: sirass_production
+  database: sirrass_production
   pool: 5
   username: sirass_cocoa
-  password: sirass_2615
+  password: sirras_2615
+  host: localhost
