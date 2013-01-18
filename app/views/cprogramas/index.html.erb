@@ -31,8 +31,8 @@
 				<%= p.cveprograma %>
 			</td>
 			<td>
-				<abbr title="<%= Institucion.find(p.institucion_id).nombre %>" >
-					<%= truncate(Institucion.find(p.institucion_id).nombre, length: 70) %>
+				<abbr title="<%= Institucion.find(p.institucion_user_id).nombre %>" >
+					<%= truncate(Institucion.find(p.institucion_user_id).nombre, length: 70) %>
 				</abbr>
 			</td>
 			<% if can? :manage, p %>

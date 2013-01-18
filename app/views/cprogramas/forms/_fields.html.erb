@@ -52,6 +52,7 @@
 		<%= f.input :notas, :input_html => { :rows => 5 } %>
 		<div class="form-actions">
 			<%= render 'cprogramas/forms/programa_btn', f: f, type: type %>
+			<%= current_user.id %>
 		</div>
 	</div>
 </div>
