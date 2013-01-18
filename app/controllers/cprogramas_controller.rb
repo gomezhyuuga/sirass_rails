@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class CprogramasController < ApplicationController
+	before_filter :require_login
 	layout 'institucion'
 	def index
 		# Detectar si se listan los programas por categoria internos o externos
@@ -19,6 +20,7 @@ class CprogramasController < ApplicationController
 	end
 
 	def new
+		require_role(:institucion)
 		@cprograma = Cprograma.new
 		@cprograma.licenciaturas.build
 		@cprograma.responsables.build
@@ -40,6 +42,7 @@ class CprogramasController < ApplicationController
 	end
 
 	def edit
+		#require_role(:institucion)
 		@cprograma = Cprograma.find_by_id(params[:id])
 		
 		render 'edit'
