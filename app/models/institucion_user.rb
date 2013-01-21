@@ -28,4 +28,5 @@ class InstitucionUser < ActiveRecord::Base
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :institucion
   accepts_nested_attributes_for :plantel
+  has_many :cprogramas
 end

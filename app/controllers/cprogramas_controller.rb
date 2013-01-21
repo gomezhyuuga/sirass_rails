@@ -3,15 +3,20 @@ class CprogramasController < ApplicationController
 	before_filter :require_login
 	layout 'institucion'
 	def index
-		# Detectar si se listan los programas por categoria internos o externos
-		if params[:internos] != nil
-			categoria = params[:internos]
-			@cprogramas = Cprograma.where(categoria_interno: categoria).paginate(page: params[:page], per_page: 15)
+		if current_user != nil
+			@cprogramas = Cprograma.where(institucion_user_id: current_user.id).paginate(page: params[:page])
+			#render layout: 'application'
 		else
-			# Se listan todos los programas
-			@cprogramas = Cprograma.paginate(page: params[:page], per_page: 15)
+			# Detectar si se listan los programas por categoria internos o externos
+			if params[:internos] != nil
+				categoria = params[:internos]
+				@cprogramas = Cprograma.where(categoria_interno: categoria).paginate(page: params[:page], per_page: 15)
+			else
+				# Se listan todos los programas
+				@cprogramas = Cprograma.paginate(page: params[:page], per_page: 15)
+			end
+			render layout: 'application'
 		end
-		render layout: 'application'
 	end
 
 	def show
@@ -28,6 +33,8 @@ class CprogramasController < ApplicationController
 
 	def create
 		@cprograma = Cprograma.new(params[:cprograma])
+		@cprograma.institucion_user_id = current_user.id
+		@cprograma.estado_programa_id = 4
 		if @cprograma.save
 			flash[:success] = "Programa creado correctamente"
 			redirect_to current_user.user_page
