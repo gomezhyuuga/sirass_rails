@@ -3,20 +3,21 @@ class CprogramasController < ApplicationController
 	before_filter :require_login
 	layout 'institucion'
 	def index
-		if current_user != nil
-			@cprogramas = Cprograma.where(institucion_user_id: current_user.id).paginate(page: params[:page])
-			#render layout: 'application'
-		else
+		# if current_user != nil
+		# 	@cprogramas = Cprograma.where(institucion_user_id: current_user.id).paginate(page: params[:page])
+		# 	#render layout: 'application'
+		# else
 			# Detectar si se listan los programas por categoria internos o externos
 			if params[:internos] != nil
 				categoria = params[:internos]
-				@cprogramas = Cprograma.where(categoria_interno: categoria).paginate(page: params[:page], per_page: 15)
+				# Solo programas activos
+				@cprogramas = Cprograma.where(categoria_interno: categoria, estado_programa_id: EstadoPrograma::ACTIVO).paginate(page: params[:page], per_page: 15)
 			else
 				# Se listan todos los programas
 				@cprogramas = Cprograma.paginate(page: params[:page], per_page: 15)
 			end
 			render layout: 'application'
-		end
+		# end
 	end
 
 	def show
@@ -33,8 +34,10 @@ class CprogramasController < ApplicationController
 
 	def create
 		@cprograma = Cprograma.new(params[:cprograma])
-		@cprograma.institucion_user_id = current_user.id
-		@cprograma.estado_programa_id = 4
+		# Asignar ID del usuario logueado
+		@cprograma.institucion_user_id = current_user.institucion_user.id
+		# Asignar categoría 
+		@cprograma.estado_programa_id = EstadoPrograma::ESPERANDO
 		if @cprograma.save
 			flash[:success] = "Programa creado correctamente"
 			redirect_to current_user.user_page
@@ -50,6 +53,7 @@ class CprogramasController < ApplicationController
 
 	def edit
 		#require_role(:institucion)
+		authorize! :manage, Cprograma
 		@cprograma = Cprograma.find_by_id(params[:id])
 		
 		render 'edit'

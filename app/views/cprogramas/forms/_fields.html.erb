@@ -1,6 +1,4 @@
-<%
-	type ||= ''
-%>
+<% type ||= '' %>
 <div class="tabbable">
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#datos_programa" data-toggle="tab">Datos</a></li>
@@ -10,7 +8,9 @@
 		<li><a href="#obser_programa" 	data-toggle="tab">Observaciones</a></li>
 	</ul>
 </div>
+<!-- START TABS -->
 <div class="tab-content">
+	<!-- DATOOS DEL PROGRAMA -->
 	<div class="tab-pane active" id="datos_programa">
 		<%= f.input :nombre, 				:input_html => {:class => "input-large" } %>
 		<%= f.input :objGeneral, 		:input_html => { :rows => 5 } %>
@@ -23,6 +23,7 @@
 			<h6>Pulsa en <%= link_to 'Características del programa', '#' , :id => 'nextC' %> para continuar</h6>
 		</div>
 	</div>
+	<!-- CARACTERÍSTICAS -->
 	<div class="tab-pane" id="caract_programa">
 		<%= f.association :tipo_programa, label_method: :descripcion, :input_html => {:class => "input-xlarge use-select2"},
 			include_blank: false %>
@@ -36,23 +37,26 @@
 			<h6>Pulsa en <%= link_to 'Perfil Académico', '#' , :id => 'nextP' %> para continuar</h6>
 		</div>
 	</div>
+	<!-- LICENCIATURAS -->
 	<div class="tab-pane" id="perfil_programa">
-		<%= render 'cprogramas/forms/actsprog', f: f %>
+		<%= render 'cprogramas/forms/licenciaturas_table', f: f %>
 		<div class="well well-small center">
 			<h6>Pulsa en <%= link_to 'Responsable', '#' , :id => 'nextR' %> para continuar</h6>
 		</div>
 	</div>
+	<!-- RESPONSABLES -->
 	<div class="tab-pane" id="respon_programa">
-		<%= render 'cprogramas/forms/fieldenc', f: f %>
+		<%= render 'cprogramas/forms/responsables_table', f: f %>
 		<div class="well well-small center">
 			<h6>Pulsa en <%= link_to 'Observaciones', '#' , :id => 'nextO' %> para continuar</h6>
 		</div>
 	</div>
+	<!-- OBSERVACIONES DE PROGRAMA -->
 	<div class="tab-pane" id="obser_programa">
 		<%= f.input :notas, :input_html => { :rows => 5 } %>
 		<div class="form-actions">
 			<%= render 'cprogramas/forms/programa_btn', f: f, type: type %>
-			<%= current_user.id %>
 		</div>
 	</div>
 </div>
+<!-- END TABS -->

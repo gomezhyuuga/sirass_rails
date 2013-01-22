@@ -55,7 +55,7 @@ class Cprograma < ActiveRecord::Base
   belongs_to :estado_programa
   belongs_to :horario_programa
 
-  has_one :institucion_user
+  belongs_to :institucion_user
   
   # Devuelve interno o externo como string dependiendo de la categoría
   def categoria

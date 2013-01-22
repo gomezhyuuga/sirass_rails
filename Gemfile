@@ -14,10 +14,8 @@ gem 'simple_form'
 gem 'cancan'
 gem 'magic_encoding'
 gem 'rack', '1.4.4'
-#gem 'libv8', '~> 3.11.8'
+gem 'libv8', '~> 3.11.8'
 gem 'capistrano'
-#gem 'execjs'
-#gem 'therubyracer'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -26,7 +24,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', require: 'v8'
+  gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
 
   # Bootstrap
