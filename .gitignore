@@ -11,8 +11,8 @@
 # Ignore the default SQLite database.
 db/*.sqlite3
 db/*.sqlite3*
+db/schema.rb
 
-=======
 *.rbc
 *.sassc
 .sass-cache
@@ -31,9 +31,11 @@ rerun.txt
 pickle-email-*.html
 
 # Mac
-*.DS_Store
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
 
 # Sublime
 *.sublime-project
 *.sublime-workspace
-db/schema.rb

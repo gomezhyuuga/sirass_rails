@@ -9,6 +9,8 @@
         <%= f.input_field :email, :class => "input-medium" %>
     </td>
     <td>
-        <%= link_to_function "Eliminar", "eliminar_responsable(0)", class: 'btn btn-mini btn-danger', id: 'elim0' %>
+        <% ya_registrado = !f.object.new_record? %>
+        <%= link_to_function "Eliminar", "eliminar_responsable(this, #{ya_registrado})", class: 'btn btn-mini btn-danger btn-eliminar' %>
+        <%= f.hidden_field :_destroy %>
     </td>
 </tr>

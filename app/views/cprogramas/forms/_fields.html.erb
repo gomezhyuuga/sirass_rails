@@ -55,7 +55,9 @@
 	<div class="tab-pane" id="obser_programa">
 		<%= f.input :notas, :input_html => { :rows => 5 } %>
 		<div class="form-actions">
-			<%= render 'cprogramas/forms/programa_btn', f: f, type: type %>
+			<% button_title = action_name == 'new' ? "Enviar programa" : "Actualizar programa" %>
+			<%= f.submit button_title, :class => 'btn btn-success'%>
+			<%= button_tag "Limpiar campos", type: "reset", class: "btn " %>
 		</div>
 	</div>
 </div>

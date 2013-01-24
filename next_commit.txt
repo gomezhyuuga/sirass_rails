@@ -1,4 +1,6 @@
-- Auto focus en login
-- Generación de modals más personalizada
-- Cambio de clave de programa en página aparte
-- Mejorada estructura de rutas para programas
+- Mostrar links rápidos de controladores solo cuando el entorno está en modo desarrollo.
+- Mejor asignación de categoría de programa cuando se registra.
+- Permitir edición de programa si el usuario es dueño del programa.
+- Mejor estructura de eliminar licenciaturas/responsables
+- Corrección: /cprogramas/ solo muestra programas activos y a admin muestra todos
+- Destroy de Cprograma hecho.

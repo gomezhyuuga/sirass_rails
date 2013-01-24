@@ -12,12 +12,13 @@ gem 'bootstrap-will_paginate'
 gem 'sorcery'
 gem 'simple_form'
 gem 'cancan'
-gem 'magic_encoding'
+# gem 'magic_encoding'
 gem 'rack', '1.4.4'
 gem 'libv8', '~> 3.11.8'
-gem 'capistrano'
+# gem 'capistrano'
 # Gems used only for assets and not required
 # in production environments by default.
+gem 'quiet_assets', :group => :development
 group :assets do
   gem 'execjs'
   gem 'sass-rails',   '~> 3.2.3'
@@ -31,7 +32,6 @@ group :assets do
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
   gem 'bootstrap-datepicker-rails'
-  # gem 'chosen-rails'
   gem 'select2-rails'
   gem 'bootstrap-timepicker-rails'
   gem 'bootbox-rails'
@@ -58,5 +58,5 @@ group :development do
 end
 
 group :production do
- #gem 'pg', '0.12.2'
+ gem 'pg', '0.12.2'
 end
