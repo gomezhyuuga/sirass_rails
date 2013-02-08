@@ -1,7 +1,9 @@
+@copytr_licen = $('#acts').children('tr').first().clone()
+@copytr_respo = $('#respo').children('tr').first().clone()
 @nueva_licenciatura = ->
 	console.log 'nueva licenciatura'
 	cur_time = new Date().getTime()
-	new_name = "cprograma[licenciaturas_attributes][#{cur_time}]"
+	new_name = "cprograma[licenciaturas_attributes][#{cur_time}"
 	new_id	 = "cprograma_licenciaturas_attributes_#{cur_time}"
 	# TR layout
 	@tr_licenciaturas = $('#acts').children('tr').first().clone()
@@ -9,7 +11,7 @@
 	@tr_licenciaturas.find('input[id*="_attributes"], select[id*="_attributes"], textarea[id*="_attributes"]').each (index, element) ->
 		@el 	= $(element)
 		# Crear nuevo ID y NAME
-		name 	= @el.attr('name').substr 38
+		name 	= @el.attr('name').substr 37
 		id 		= @el.attr('id').substr 36
 		@el.attr 'name', "#{new_name}#{name}"
 		@el.attr 'id', "#{new_id}#{id}"
@@ -28,21 +30,22 @@
 		tr.hide()
 		tr.find('input[id*="_destroy"]').val('true')
 	else
-		tr.remove()
+		if $('#acts').children('tr').size() > 1
+			tr.remove()
 		console.log "eliminando"
 
 @nuevo_responsable = ->
 	console.log 'nuevo responsable'
 	cur_time = new Date().getTime()
-	new_name = "cprograma[responsables_attributes][#{cur_time}]"
+	new_name = "cprograma[responsables_attributes][#{cur_time}"
 	new_id	 = "cprograma_responsables_attributes_#{cur_time}"
 	#Obtener el TR y clonarlo
 	@tr_responsable = $('#respo').children('tr').first().clone()
 	@tr_responsable.find('input[id*="_attributes"]').each (index, element) ->
 		@el 	= $(element)
 		# Crear nuevo ID y NAME
-		name 	= @el.attr('name').substr 38
-		id 		= @el.attr('id').substr 36
+		name 	= @el.attr('name').substr 36
+		id 		= @el.attr('id').substr 35
 		@el.attr 'name', "#{new_name}#{name}"
 		@el.attr 'id', "#{new_id}#{id}"
 		# Eliminar valores previos
@@ -60,5 +63,6 @@
 		tr.hide()
 		tr.find('input[id*="_destroy"]').val('true')
 	else
-		tr.remove()
+		if $('#respo').children('tr').size() > 1
+			tr.remove()
 		console.log "eliminando"

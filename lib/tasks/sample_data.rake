@@ -66,7 +66,7 @@ namespace :db do
 		puts "Creando admins..."
 		# Crear administradores
 		Admin.create!(nombre: "Martha",
-			aPaterno: "Terca",
+			aPaterno: "Tera",
 			aMaterno: "Ponce",
 			nacimiento: "24/04/1988",
 			cargo: "Responsable de Servicio Social",
@@ -169,7 +169,7 @@ namespace :db do
 				categoria_interno: [true, false].sample,
 				nombre: "Programa #{n}",
 				cveprograma: "UACM-SS-#{n}",
-				institucion_id: Random.rand(1..40),
+				institucion_user_id: Random.rand(1..40),
 				dia_ids: dias_ids,
 				poblacion_programa_ids: p_ids,
 				alcance_programa_ids: a_ids,
