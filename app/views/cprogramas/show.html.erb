@@ -8,6 +8,12 @@
 <div class="span2 pull-right">
   <%= render 'cprogramas/forms/admin_btn', obj: @programa %>
 </div>
+<!-- ESTADO DEL PROGRAMA -->
+<div class="span1 pull-right">
+  <span class="label <%= label_for_estado_programa(@programa.estado_programa.id) %>">
+    <%= @programa.estado_programa.descripcion %>
+  </span>
+</div>
 <% end %>
 <% if logged_as? :prestador %>
 <!-- INSCRIBIR BUTTON -->
@@ -42,21 +48,21 @@
     <div class="row">
       <div class="span6">
         <h4>Institución o Dependencia</h4>
-        <p>Instituto de Ciencia y Tecnología del Distrito Federal</p>
+        <p><%= @programa.institucion_user.institucion.nombre %></p>
       </div>
       <div class="span6">
         <h4>Plantel</h4>
-        <p><%= Faker::Lorem.sentence(6) %></p>
+        <p><%= @programa.institucion_user.plantel.nombre %></p>
       </div>
     </div>
     <div class="row">
       <div class="span4">
         <h4>Domicilio</h4>
-        <p>República de Chile #6 Col. Centro Del. Cuauhtémoc, C.P. 06010 México D.F.</p>
+        <p><%= @programa.institucion_user.domicilio %></p>
       </div>
       <div class="span4">
         <h4>Área o Subdirección</h4>
-        <p><%= @programa.lugar %></p>
+        <p><%= @programa.institucion_user.area %></p>
       </div>
       <div class="span4">
         <h4>Teléfono</h4>

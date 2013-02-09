@@ -4,7 +4,7 @@ namespace :db do
 	namespace :uacm do
 		desc "User de admin"
 		task user: :environment do
-			Admin.create!(nombre: "Martha",aPaterno: "Terca",aMaterno: "Ponce",nacimiento: "24/04/1988",cargo: "Responsable de Servicio Social",user_attributes: {username: "marthag",email: "marthag@hotmail.com",password: "martha_2615",password_confirmation: "martha_2615"})
+			Admin.create!(nombre: "Martha",aPaterno: "Tera",aMaterno: "Ponce",nacimiento: "24/04/1988",cargo: "Responsable de Servicio Social",user_attributes: {username: "marthag",email: "marthag@hotmail.com",password: "foobar",password_confirmation: "foobar"})
 		end
 		desc "Llenar base de datos con información de la UACM"
 		task all: [:environment, :user, :instituciones, :planteles, :tipo_programa, :alcance_programa, :estado_programa, :horario_programa, :poblacion_programa, :dias]

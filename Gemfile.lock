@@ -161,14 +161,12 @@ DEPENDENCIES
   bootstrap-will_paginate
   cancan
   coffee-rails (~> 3.2.1)
-  execjs
   faker
   jquery-rails
   less-rails
   libv8 (~> 3.11.8)
   pg (= 0.12.2)
   quiet_assets
-  rack (= 1.4.4)
   rails (= 3.2.9)
   sass-rails (~> 3.2.3)
   select2-rails

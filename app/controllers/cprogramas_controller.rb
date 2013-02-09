@@ -7,8 +7,13 @@ class CprogramasController < ApplicationController
 		# Detectar si se listan los programas por categoria internos o externos
 		if params[:internos] != nil
 			categoria = params[:internos]
-			# Solo programas activos
-			@cprogramas = Cprograma.where(categoria_interno: categoria, estado_programa_id: EstadoPrograma::ACTIVO).paginate(page: params[:page], per_page: 15)
+			if can? :manage, Cprograma
+				# Se listan todos los programas ignorando si están activos o no
+				@cprogramas = Cprograma.where(categoria_interno: categoria).paginate(page: params[:page], per_page: 15)
+			else
+				# Solo programas activos para usuarios normales
+				@cprogramas = Cprograma.where(categoria_interno: categoria, estado_programa_id: EstadoPrograma::ACTIVO).paginate(page: params[:page], per_page: 15)
+			end
 		else
 			# Se está accediendo a lista de todos los programas /cprogramas/
 			if can? :manage, Cprograma

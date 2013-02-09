@@ -31,12 +31,12 @@
 				<%= p.cveprograma %>
 			</td>
 			<td>
-				<abbr title="<%= Institucion.find(p.institucion_user_id).nombre %>" >
-					<%= truncate(Institucion.find(p.institucion_user_id).nombre, length: 70) %>
+				<abbr title="<%= p.institucion_user.institucion.nombre %>" >
+					<%= truncate(p.institucion_user.institucion.nombre, length: 70) %>
 			</td>
 			<% if can? :manage, p %>
 			<td>
-				<span class=" label <%= label_for_estado_programa(p.estado_programa.id) %>">
+				<span class="label <%= label_for_estado_programa(p.estado_programa.id) %>">
 					<%= p.estado_programa.descripcion %>
 				</span>
 			</td>

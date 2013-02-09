@@ -13,14 +13,13 @@ gem 'sorcery'
 gem 'simple_form'
 gem 'cancan'
 # gem 'magic_encoding'
-gem 'rack', '1.4.4'
 gem 'libv8', '~> 3.11.8'
+gem 'jquery-rails'
 # gem 'capistrano'
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'quiet_assets', :group => :development
 group :assets do
-  gem 'execjs'
+  # gem 'execjs'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
@@ -37,8 +36,6 @@ group :assets do
   gem 'bootbox-rails'
 end
 
-gem 'jquery-rails'
-
 group :development, :test do
   gem 'sqlite3'
   #gem 'rspec-rails'
@@ -54,9 +51,11 @@ group :test do
 end
 
 group :development do
+  gem 'quiet_assets'
   gem 'annotate'
 end
 
 group :production do
- gem 'pg', '0.12.2'
+  # gem 'rack', '1.4.4'
+  gem 'pg', '0.12.2'
 end

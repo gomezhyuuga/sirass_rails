@@ -169,7 +169,7 @@ namespace :db do
 				categoria_interno: [true, false].sample,
 				nombre: "Programa #{n}",
 				cveprograma: "UACM-SS-#{n}",
-				institucion_user_id: Random.rand(1..40),
+				institucion_user_id: Random.rand(1..20),
 				dia_ids: dias_ids,
 				poblacion_programa_ids: p_ids,
 				alcance_programa_ids: a_ids,
