@@ -33,6 +33,10 @@ class CprogramasController < ApplicationController
 
 	def show
 		@programa = Cprograma.find(params[:id])
+		@impreso = false
+		if params[:active] != nil and params[:active] == true
+			@impreso = true
+		end
 		if can? :manage, Cprograma or logged_as? :institucion
 			render layout: 'application'
 		elsif @programa.estado_programa_id == EstadoPrograma::ACTIVO

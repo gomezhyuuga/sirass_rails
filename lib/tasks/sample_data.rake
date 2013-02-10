@@ -173,6 +173,8 @@ namespace :db do
 				dia_ids: dias_ids,
 				poblacion_programa_ids: p_ids,
 				alcance_programa_ids: a_ids,
+				horario_programa_id: Random.rand(1..3),
+				ftiempo: "12/12/2013",
 				lugar: "Oficina",
 				desarrollo: lorem,
 				evaluacion: lorem,

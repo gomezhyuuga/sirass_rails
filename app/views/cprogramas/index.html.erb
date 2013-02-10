@@ -5,7 +5,7 @@
 
 <h1>Programas de Servicio Social</h1>
 <% if @cprogramas.empty? %>
-<p class="lead">No se encontró ningún programa en la base de datos.</p>
+<p class="lead">No se encontró ningún programa <% if logged_as? :institucion %>tuyo<% end %> en la base de datos.</p>
 <% else %>
 
 <%= will_paginate %>
