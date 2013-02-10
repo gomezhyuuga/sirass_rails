@@ -1,7 +1,7 @@
 <nav class="span3" id="sidebar">
 	<ul class="nav nav-list well well-small">
 		<li id="home">
-      <%= link_to cprogramas_path do %>
+      <%= link_to institucion_home_path do %>
       	<i class="icon-home"></i>
         Inicio
       <% end %>
@@ -22,16 +22,10 @@
       <% end %>
     </li>
     <li id="actualPropues">
-    	<a href="#"> 
+    	 <%= link_to updlist_cprogramas_path do %>
           <i class = "icon-refresh"></i> 
           Actualizar programa
-        </a>
-    </li>
-    <li id="bajaPropues">
-    	<a href="#"> 
-          <i class = "icon-remove"></i> 
-          Solicitar baja
-        </a>
+        <% end %>
     </li>
     <!-- Avisos -->
     <li class = "divider"></li>
