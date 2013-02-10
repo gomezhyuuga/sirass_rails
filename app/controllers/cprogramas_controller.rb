@@ -9,6 +9,9 @@ class CprogramasController < ApplicationController
 			categoria = params[:internos]
 			# Solo programas activos
 			@cprogramas = Cprograma.where(categoria_interno: categoria, estado_programa_id: EstadoPrograma::ACTIVO).paginate(page: params[:page], per_page: 15)
+		end
+		if params[:list] == true 
+			@cprogramas = Cprograma.where(institucion_user_id: current_user.institucion_user_id).where('estado_programa_id <> ?', EstadoPrograma::INACTIVO).paginate(page: params[:page], per_page: 15)
 		else
 			# Se está accediendo a lista de todos los programas /cprogramas/
 			if can? :manage, Cprograma
@@ -24,7 +27,7 @@ class CprogramasController < ApplicationController
 
 	def show
 		@programa = Cprograma.find(params[:id])
-		if can? :manage, Cprograma
+		if can? :manage, Cprograma or logged_as? :institucion
 			render layout: 'application'
 		elsif @programa.estado_programa_id == EstadoPrograma::ACTIVO
 			render layout: 'application'
@@ -83,6 +86,7 @@ class CprogramasController < ApplicationController
 
 	def update
 		@cprograma = Cprograma.find(params[:id])
+		@cprograma.estado_programa_id = EstadoPrograma::ACTUALIZADO
 		if @cprograma.update_attributes(params[:cprograma]) &&
 			eliminar_licenciaturas(params[:cprograma][:licenciaturas_attributes]) &&
 			eliminar_responsables(params[:cprograma][:responsables_attributes])
@@ -101,7 +105,11 @@ class CprogramasController < ApplicationController
 		else
 			flash[:error] = "Ocurrió un error actualizando el estado"
 		end
-		redirect_to cprograma_path(params[:id])
+		if logged_as? :institucion
+			redirect_to updlist_cprogramas_path
+		else
+			redirect_to cprograma_path(params[:id])
+		end
 	end
 	# Actualizar solo las observaciones de un programa
 	def update_observaciones
