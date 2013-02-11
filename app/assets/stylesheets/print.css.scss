@@ -13,4 +13,12 @@
   table, th, tr {
   	background-color: #fff
   }
+
+  body#cprogramas-print {
+      .container.solid {
+        background-image: image-url('UACM_logo.jpeg') !important;
+        background-position: 99.5% 0.5% !important;
+        background-repeat: no-repeat !important;
+      }
+  }
 }

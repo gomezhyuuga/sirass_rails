@@ -17,52 +17,42 @@
 			Editar
 			<% end %>
 		</li>
-		<% if logged_as? :institucion %>
-			<li>
-			<%= link_to update_status_path(obj,2) do %>
-			<i class="icon-pencil"></i>
-			Solicitar Baja
+		<li>
+			<%= link_to print_cprograma_path(obj) do %>
+			<i class="icon-print"></i>
+			Imprimir
 			<% end %>
 		</li>
-		<% end %>
-		<% if logged_as? :admin %>
-			<li>
-				<%= link_to cprograma_path(obj), method: :delete, confirm: 'Estás seguro?' do %>
-				<i class="icon-trash"></i>
-				Borrar
-				<% end %>
-			</li>
-			<li>
-				<%= link_to vista_impreso_cprograma_path(obj) do %>
-				<i class="icon-eye-open"></i>
-				Vista Impresión
-				<% end %>
-			</li>
-			<li class="divider"></li>
-			<li>
-				<%= link_to cambiar_clave_cprograma_path(obj) do %>
-					<i class="icon-edit"></i>
-					Cambiar clave
-				<% end %>
-			</li>
-			<!-- CAMBIO DE ESTADO -->
-			<li class="dropdown-submenu pull-left">
-				<a href="#" tabindex="-1">
-					<i class="icon-wrench"></i>
-					Cambiar estado
-				</a>
-				<ul class="dropdown-menu">
-					<% EstadoPrograma.all.each do |e| %>
-					<li>
-						<%= link_to update_status_path(obj, e.id), confirm: "Actualizando estado de programa",
-						method: :put do %>
-							<i class="<%= icon_for_estado_programa(e.id) %>"></i>
-							<%= e.descripcion %>
-						<% end %>
-					</li>
+		<li>
+			<%= link_to cprograma_path(obj), method: :delete, confirm: 'Estás seguro?' do %>
+			<i class="icon-trash"></i>
+			Borrar
+			<% end %>
+		</li>
+		<li class="divider"></li>
+		<li>
+			<%= link_to cambiar_clave_cprograma_path(obj) do %>
+				<i class="icon-edit"></i>
+				Cambiar clave
+			<% end %>
+		</li>
+		<!-- CAMBIO DE ESTADO -->
+		<li class="dropdown-submenu pull-left">
+			<a href="#" tabindex="-1">
+				<i class="icon-wrench"></i>
+				Cambiar estado
+			</a>
+			<ul class="dropdown-menu">
+				<% EstadoPrograma.all.each do |e| %>
+				<li>
+					<%= link_to update_status_path(obj, e.id), confirm: "Actualizando estado de programa",
+					method: :put do %>
+						<i class="<%= icon_for_estado_programa(e.id) %>"></i>
+						<%= e.descripcion %>
 					<% end %>
-				</ul>
-			</li>
-		<% end %>
+				</li>
+				<% end %>
+			</ul>
+		</li>
 	</ul>
 </div>

@@ -1,0 +1,34 @@
+<% provide(:title, "Actualiza tus programas de Servicio Social") %>
+<h1>Actualizar Programas</h1>
+<% if !@programas.empty? %>
+<table class="table table-bordered table-striped" id="lista-programas">
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Clave</th>
+			<th>Estado</th>
+			<th>Acción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @programas.each do |p| %>
+		<tr>
+			<td>
+				<%= link_to p.nombre, p %>
+			</td>
+			<td>
+				<%= p.cveprograma %>
+			</td>
+			<td>
+				<span class="label <%= label_for_estado_programa(p.estado_programa.id) %>">
+					<%= p.estado_programa.descripcion %>
+				</span>
+			</td>
+			<td>
+				<%= render 'admin_btn', obj: p %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<% end %>

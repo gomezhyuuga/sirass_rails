@@ -173,8 +173,39 @@ namespace :db do
 				dia_ids: dias_ids,
 				poblacion_programa_ids: p_ids,
 				alcance_programa_ids: a_ids,
-				horario_programa_id: Random.rand(1..3),
+				horario_programa_id: Random.rand(1..4),
 				ftiempo: "12/12/2013",
+				lugar: "Oficina",
+				desarrollo: lorem,
+				evaluacion: lorem,
+				justificacion: lorem,
+				objGeneral: lorem,
+  			observaciones: lorem,
+  			recursos: lorem,
+  			resultados: lorem)
+		end
+	end
+
+	desc "Task para hacer pruebas rápidas"
+	task quickTest: [:environment] do
+		puts "Probando..."
+		# Crear programas
+		4.times do |n|
+			lorem = Faker::Lorem.paragraph(3)
+			dias_ids = 5.times.map { Random.rand(1..7) }
+			p_ids = 5.times.map { Random.rand(1..9) }
+			a_ids = 5.times.map { Random.rand(1..9) }
+
+			Cprograma.create!(
+				tipo_programa_id: Random.rand(1..8),
+				estado_programa_id: Random.rand(1..5),
+				categoria_interno: [true, false].sample,
+				nombre: "Programa #{n}",
+				cveprograma: "UACM-SS-#{n}",
+				institucion_user_id: 1,
+				dia_ids: dias_ids,
+				poblacion_programa_ids: p_ids,
+				alcance_programa_ids: a_ids,
 				lugar: "Oficina",
 				desarrollo: lorem,
 				evaluacion: lorem,

@@ -9,16 +9,15 @@ Sirass::Application.routes.draw do
 
   # Programas
   resources :cprogramas do
-    get 'updlist', to: 'cprogramas#index', list: true, on: :collection
     get 'internos',       to: 'cprogramas#index', internos: true, on: :collection
     get 'externos',       to: 'cprogramas#index', internos: false, on: :collection
     get 'cambiar_clave',  to: 'cprogramas#cambiar_clave', on: :member
-    get 'vista_impreso', to: 'cprogramas#show', active: true, on: :member
     member do
       get   'generar_nueva_clave',    to: 'cprogramas#generar_nueva_clave'
       match 'update_clave',           to: 'cprogramas#update_clave', via: :put
       match 'update_status/:status',  to: 'cprogramas#update_status'
       match 'update_observaciones',   to: 'cprogramas#update_observaciones'
+      match 'print',                  to: 'cprogramas#print'
     end
   end
 
@@ -41,7 +40,11 @@ Sirass::Application.routes.draw do
     get 'home',         to: 'prestador_pages#index', as: :prestador_home
     get 'inscripcion',  to: 'inscripcions#new', as: :inscripcion_servicio
   end
-  match '/institucion/home',  to: 'institucion_pages#index'
+  # Institucion
+  scope "/institucion" do
+    get 'home',         to: 'institucion_pages#index',      as: :institucion_home
+    get 'actualizar_programas',   to: 'institucion_pages#actualizar', as: :actualizar_programa_institucion
+  end
   get '/admin/home',          to: 'admin_pages#index'
   # Admin
   # resources :institucions, :path => "/admin/institucions"

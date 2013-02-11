@@ -15,7 +15,7 @@
 			<th>Nombre</th>
 			<th>Clave</th>
 			<th>Institución</th>
-			<% if can? :manage, p or can? :read, p%>
+			<% if can? :manage, Cprograma %>
 			<th>Estado</th>
 			<% end %>
 			<th>Acción</th>
@@ -35,7 +35,7 @@
 					<%= truncate(p.institucion_user.institucion.nombre, length: 70) %>
 				</abbr>
 			</td>
-			<% if can? :manage, p or can? :read, p%>
+			<% if can? :manage, Cprograma %>
 			<td>
 				<span class="label <%= label_for_estado_programa(p.estado_programa.id) %>">
 					<%= p.estado_programa.descripcion %>
@@ -43,7 +43,7 @@
 			</td>
 			<% end %>
 			<td>
-				<% if can? :manage, p or can? :read, p%>
+				<% if can? :manage, Cprograma %>
 					<%= render 'cprogramas/forms/admin_btn', obj: p %>
 				<% else %>
 					<%= link_to p, class: "btn btn-block btn-success" do %>
