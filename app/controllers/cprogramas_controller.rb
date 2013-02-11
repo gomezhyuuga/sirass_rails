@@ -56,6 +56,18 @@ class CprogramasController < ApplicationController
 
 	def create
 		@cprograma = Cprograma.new(params[:cprograma])
+		#Asignar fecha en caso de ser indeterminado
+		d = Time.new()
+		anio = d.strftime("%Y").to_i + 1
+		if @cprograma.tiempo_indeterminado == true
+			@cprograma.ftiempo = d.strftime("%d")+"/"+d.strftime("%m")+"/"+anio.to_s
+		end
+		#Agregar el nuevo TipoPrograma en caso de existir
+		if params[:otroTipo] == 'false' 
+			ot = TipoPrograma.new(:descripcion => params[:nombreOtroTipo])
+			ot.save
+			@cprograma.tipo_programa_id = ot.id
+		end
 		# Asignar ID del usuario logueado
 		@cprograma.institucion_user_id = current_user.institucion_user.id
 		# Asignar categoría
