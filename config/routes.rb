@@ -39,7 +39,11 @@ Sirass::Application.routes.draw do
     get 'home',         to: 'prestador_pages#index', as: :prestador_home
     get 'inscripcion',  to: 'inscripcions#new', as: :inscripcion_servicio
   end
-  match '/institucion/home',  to: 'institucion_pages#index'
+  # Institucion
+  scope "/institucion" do
+    get 'home',         to: 'institucion_pages#index',      as: :institucion_home
+    get 'actualizar',   to: 'institucion_pages#actualizar', as: :actualizar_programa_institucion
+  end
   get '/admin/home',          to: 'admin_pages#index'
   # Admin
   # resources :institucions, :path => "/admin/institucions"

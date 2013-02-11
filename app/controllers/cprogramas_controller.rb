@@ -30,8 +30,13 @@ class CprogramasController < ApplicationController
 	def show
 		@programa = Cprograma.find(params[:id])
 		if can? :manage, Cprograma
+			# Si es admin lo deja ver el programa aunque éste no se encuentre en estado activo
+			render layout: 'application'
+		elsif current_user && current_user.institucion_user && @programa.institucion_user == current_user.institucion_user
+			# Si es el usuario de institución quien está viendo su programa
 			render layout: 'application'
 		elsif @programa.estado_programa_id == EstadoPrograma::ACTIVO
+			# Solo mostrar programas que estén en estado activo para usuarios normales
 			render layout: 'application'
 		else
 			flash[:error] = "No puedes ver este programa"
@@ -147,11 +152,19 @@ class CprogramasController < ApplicationController
 
 	# Eliminar licenciaturas
 	def eliminar_licenciaturas(params)
-		params.each { |l| Licenciatura.delete(l[1][:id]) if l[1]['_destroy'] == 'true' }
+		if params && !params.empty?
+			params.each { |l| Licenciatura.delete(l[1][:id]) if l[1]['_destroy'] == 'true' }
+		else
+			return true
+		end
 	end
 
 	# Eliminar responsables
 	def eliminar_responsables(params)
-		params.each { |r| Responsable.delete(r[1][:id]) if r[1]['_destroy'] == 'true' }
+		if params && !params.empty?
+			params.each { |r| Responsable.delete(r[1][:id]) if r[1]['_destroy'] == 'true' }
+		else
+			return true
+		end
 	end
 end

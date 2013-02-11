@@ -8,13 +8,13 @@
 <div class="span2 pull-right">
   <%= render 'cprogramas/forms/admin_btn', obj: @programa %>
 </div>
+<% end %>
 <!-- ESTADO DEL PROGRAMA -->
 <div class="span1 pull-right">
   <span class="label <%= label_for_estado_programa(@programa.estado_programa.id) %>">
     <%= @programa.estado_programa.descripcion %>
   </span>
 </div>
-<% end %>
 <% if logged_as? :prestador %>
 <!-- INSCRIBIR BUTTON -->
 <div class="span2 pull-right">
