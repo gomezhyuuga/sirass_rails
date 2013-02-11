@@ -17,6 +17,7 @@ Sirass::Application.routes.draw do
       match 'update_clave',           to: 'cprogramas#update_clave', via: :put
       match 'update_status/:status',  to: 'cprogramas#update_status'
       match 'update_observaciones',   to: 'cprogramas#update_observaciones'
+      match 'print',                  to: 'cprogramas#print'
     end
   end
 
@@ -42,7 +43,7 @@ Sirass::Application.routes.draw do
   # Institucion
   scope "/institucion" do
     get 'home',         to: 'institucion_pages#index',      as: :institucion_home
-    get 'actualizar',   to: 'institucion_pages#actualizar', as: :actualizar_programa_institucion
+    get 'actualizar_programas',   to: 'institucion_pages#actualizar', as: :actualizar_programa_institucion
   end
   get '/admin/home',          to: 'admin_pages#index'
   # Admin

@@ -44,6 +44,11 @@ class CprogramasController < ApplicationController
 		end
 	end
 
+	def print
+		@programa = Cprograma.find(params[:id])
+		render layout: 'application'
+	end
+
 	def new
 		require_role(:institucion)
 		@cprograma = Cprograma.new
@@ -93,6 +98,7 @@ class CprogramasController < ApplicationController
 
 	def update
 		@cprograma = Cprograma.find(params[:id])
+		@cprograma.estado_programa_id = EstadoPrograma::ACTUALIZADO
 		if @cprograma.update_attributes(params[:cprograma]) &&
 			eliminar_licenciaturas(params[:cprograma][:licenciaturas_attributes]) &&
 			eliminar_responsables(params[:cprograma][:responsables_attributes])
@@ -111,7 +117,11 @@ class CprogramasController < ApplicationController
 		else
 			flash[:error] = "Ocurrió un error actualizando el estado"
 		end
-		redirect_to cprograma_path(params[:id])
+		if logged_as? :institucion
+			redirect_to updlist_cprogramas_path
+		else
+			redirect_to cprograma_path(params[:id])
+		end
 	end
 	# Actualizar solo las observaciones de un programa
 	def update_observaciones
@@ -140,7 +150,7 @@ class CprogramasController < ApplicationController
 
 	# Generar clave de programa
 	def generar_nueva_clave
-		@id 							= params[:id]
+		@id 					= params[:id]
 		consecutivo 			= 1 + Cprograma.where('estado_programa_id != 4 AND estado_programa_id != 6').count
 		current_year 			= Date.today.year.to_s[2..3]
 		last_update_year 	= Cprograma.find(@id).updated_at.year.to_s[2..3]

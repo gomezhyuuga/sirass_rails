@@ -92,3 +92,21 @@ input[data-behaviour="datepicker"] {
 input.use-timepicker {
 	text-align: right;
 }
+
+table#firmas {
+	.placeholder {
+		height: 5em;
+		display: block;
+	}
+
+	td { text-align: center; }
+}
+
+body#cprogramas-print {
+	h3 { text-align: center; }
+	/*.container.solid {
+		background-image: image-url('UACM_logo.jpeg');
+		background-position: 99.5% 0.5%;
+		background-repeat: no-repeat;
+	}*/
+}

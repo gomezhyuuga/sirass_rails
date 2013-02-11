@@ -1,0 +1,195 @@
+<div class = "page-header">
+	<h1><%= @programa.nombre %>
+		<small><%= @programa.cveprograma %> (<%= @programa.categoria %>)</small>
+	</h1>
+</div>
+<!--  DATOS DE UNIDAD -->
+<h3>I. DATOS DE LA UNIDAD PRESTATARIA</h3>
+<div class="row">
+  <div class="span6">
+    <h4>Institución o Dependencia</h4>
+    <p><%= @programa.institucion_user.institucion.nombre %></p>
+  </div>
+  <div class="span6">
+    <h4>Plantel</h4>
+    <p><%= @programa.institucion_user.plantel.nombre %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <h4>Domicilio</h4>
+    <p><%= @programa.institucion_user.domicilio %></p>
+  </div>
+  <div class="span4">
+    <h4>Área o Subdirección</h4>
+    <p><%= @programa.institucion_user.area %></p>
+  </div>
+  <div class="span4">
+    <h4>Teléfono</h4>
+    <p><%= @programa.institucion_user.tel %> <strong>Ext.</strong> <%= @programa.institucion_user.telExt %></p>
+  </div>
+</div>
+<!-- RESPONSABLES -->
+<h4>Responsable (s) del programa</h4>
+<table class="table table-condensed table-bordered">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Cargo</th>
+      <th>
+        <i class="icon-envelope"></i>
+        Correo electrónico
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @programa.responsables.each do |r| %>
+    <tr>
+      <td><%= r.encargado %></td>
+      <td><%= r.cargo %></td>
+      <td><%= r.email %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<!-- END  DATOS DE UNIDAD -->
+<!--  DATOS DE PROGRAMA -->
+<h3>II. DATOS DEL PROGRAMA</h3>
+<h4>Objetivo General</h4>
+<p><%= @programa.objGeneral %></p>
+<h4>Justificación</h4>
+<p><%= @programa.justificacion %></p>
+<h4>Desarrollo</h4>
+<p><%= @programa.desarrollo %></p>
+<h4>Recursos</h4>
+<p><%= @programa.recursos %></p>
+<h4>Evaluaci&oacute;n</h4>
+<p><%= @programa.evaluacion %></p>
+<h4>Resultados</h4>
+<p><%= @programa.resultados %></p>
+<!-- END DATOS DE PROGRAMA -->
+<!--  CARACTERISTICAS DE PROGRAMA -->
+<h3>III. CARACTERÍSTICAS DEL PROGRAMA</h3>
+  <div class="row">
+    <div class="span4">
+      <h4>Días de Realización</h4>
+      <p>
+        <%= @programa.dias.map { |d| d.dia_semana }.join(', ') %>
+      </p>
+    </div>
+    <div class="span4">
+      <h4>Lugar de Realizaci&oacute;n</h4>
+      <p><%= @programa.lugar %></p>
+    </div>
+    <div class="span4">
+      <h4>Poblaci&oacute;n a atender</h4>
+      <p>
+        <%= @programa.poblacion_programas.map { |p| p.descripcion }.join(', ') %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span3">
+      <h4>Tipo</h4>
+      <p><%= @programa.tipo_programa.descripcion %></p>
+    </div>
+    <div class="span3">
+      <h4>Duraci&oacute;n</h4>
+      <p><%= @programa.ftiempo %></p>
+    </div>
+    <div class="span3">
+      <h4>Alcance</h4>
+      <p><%= @programa.alcance_programas.map {|a| a.descripcion}.join(', ') %></p>
+    </div>
+    <div class="span3">
+      <h4>Horario</h4>
+      <p><%= @programa.horario_programa.descripcion %></p>
+    </div>
+  </div>
+<!-- END CARACTERISTICAS DE PROGRAMA -->
+<!--  PERFIL -->
+<h3>IV. PERFIL ACADÉMICO</h3>
+<table class="table table-striped table-bordered" style="width: 100%;">
+  <thead>
+    <tr>
+      <th>Actividades</th>
+      <th>Licenciatura</th>
+      <th>Solicitados</th>
+      <th>Vacantes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @programa.licenciaturas.each do |l| %>
+    <tr>
+      <td>
+        <textarea rows="10" readonly="true" style="resize:none; margin: 0 auto; display: block;" class="input-xxlarge"><%= l.actividad %></textarea>
+      </td>
+      <td><%= l.carrera %></td>
+      <td><%= l.solicitados %></td>
+      <td>x</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<!-- END  PERFIL -->
+
+<!--  OBSERVACIONES -->
+<h3>OBSERVACIONES</h3>
+<textarea readonly="true" style="resize:none; margin: 0 auto; display: block;" class="input-block-level"><%= @programa.notas %></textarea>
+<!-- END OBSERVACIONES -->
+
+<% if can? :manage, Cprograma %>
+<!-- FIRMAS -->
+<h3>V. AUTORIZACIÓN</h3>
+<table class="table table-striped table-hover table-bordered" id="firmas">
+  <tr>
+     <td><h5>Presidente <small>Dra. Minerva Camacho nuez</small></h5></td>
+     <td><h5>Secretaria Técnica <small>Lic. Martha G. Tera Ponce</small></h5></td>
+  </tr>
+  <tr>
+    <td>
+      <span class="placeholder"></span>
+    </td>
+    <td>
+      <span class="placeholder"></span>
+    </td>
+  </tr>
+  <tr>
+     <td><h5>Vocal <small>Mtro. Guillermo Antonio Flores Carbajal</small></h5></td>
+     <td><h5>Vocal <small>Dr. Jesús Eduardo Fandiño Armas</small></h5></td>
+  </tr>
+  <tr>
+    <td>
+      <span class="placeholder"></span>
+    </td>
+    <td>
+      <span class="placeholder"></span>
+    </td>
+  </tr>
+  <tr>
+     <td><h5>Vocal <small>Dra. Tania Hogla Rodríguez Mora</small></h5></td>
+     <td><h5>Vocal</h5></td>
+  </tr>
+  <tr>
+    <td>
+      <span class="placeholder"></span>
+    </td>
+    <td>
+      <span class="placeholder"></span>
+    </td>
+  </tr>
+  <tr>
+     <td><h5>Responsable de programa <small><%= @programa.institucion_user.responsable %></small></h5></td>
+     <td><h5>Sello</h5></td>
+  </tr>
+  <tr>
+    <td>
+      <span class="placeholder"></span>
+    </td>
+    <td>
+      <span class="placeholder"></span>
+    </td>
+  </tr>
+</table>
+<!-- END  FIRMAS -->
+<% end %>

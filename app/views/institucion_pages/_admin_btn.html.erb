@@ -17,6 +17,12 @@
 			<% end %>
 		</li>
 		<li>
+			<%= link_to print_cprograma_path(obj) do %>
+			<i class="icon-print"></i>
+			Imprimir
+			<% end %>
+		</li>
+		<li>
 			<%= link_to cprograma_path(obj), method: :delete, confirm: 'Estás seguro?' do %>
 			<i class="icon-trash"></i>
 			Solicitar baja
