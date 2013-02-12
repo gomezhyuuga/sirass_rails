@@ -22,3 +22,21 @@
 # 						#{modal}"""
 # 	modal +=	"""</form>"""
 # 	$(modal).modal()
+@fDuracion = (el) ->
+	campoOculto = $('#fDuraOculta')
+	date = new Date()
+	if el.value == 'true'
+		campoOculto.fadeOut()
+	else
+		campoOculto.fadeIn()
+@otroTipoPrograma = (el) ->
+	campoOculto = $('#otroTipoP')
+	selectTipo = $('#s2id_cprograma_tipo_programa_id')
+	if el.value == 'true'
+		campoOculto.fadeIn()
+		selectTipo.fadeOut()
+		el.value = 'false'
+	else
+		selectTipo.fadeIn()
+		campoOculto.fadeOut()
+		el.value = 'true'

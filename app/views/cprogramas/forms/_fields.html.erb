@@ -27,7 +27,20 @@
 	<div class="tab-pane" id="caract_programa">
 		<%= f.association :tipo_programa, label_method: :descripcion, :input_html => {:class => "input-xlarge use-select2"},
 			include_blank: false %>
-		<%= f.input :tiempo_indeterminado, as: :radio_buttons, collection: [["Indeterminado", true], ["Determinado", false]] %>
+		<div class="control-group " id="nuevoTipo">
+			<div class="control-label">
+				<input type="checkbox" onclick = otroTipoPrograma(this) id="otroTipo" name="otroTipo" value= "true" />Otro tipo
+			</div>
+			<div class="control-group hide" id="otroTipoP">
+				<input type="text" id="nombreOtroTipo" name="nombreOtroTipo" />
+			</div>
+		</div>
+		<br>
+		<%= f.input :tiempo_indeterminado, as: :radio_buttons, collection: [["Indeterminado", true], ["Determinado", false]], :input_html => {:onclick => "fDuracion(this)"} %>
+		<div class="control-group hide" id="fDuraOculta">
+			<%= f.input :ftiempo , as: :string,
+			input_html: { 'data-behaviour' => 'datepicker', class: 'input-small'} %>
+		</div>
 		<%= f.association :alcance_programas, label_method: :descripcion, input_html: { class: 'input-medium' } %>
 		<%= f.association :poblacion_programas, label_method: :descripcion, input_html: { class: 'input-medium' } %>
 		<%= f.input :lugar, :input_html => {:class => "input-large"} %>

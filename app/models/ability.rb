@@ -32,6 +32,7 @@ class Ability
         elsif user.prestador
             #can :read, Prestador
         elsif user.institucion_user
+            can :read, :all
         end
     else
         # Usuario invitado
