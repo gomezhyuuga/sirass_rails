@@ -28,7 +28,7 @@ class EstadoInscripcion < ActiveRecord::Base
   attr_accessible :descripcion
 
   # Relaciones
-  has_one :inscripcion
+  has_and_belongs_to_many :cprogramas
 
   # Abstracción de estados
   def validando?

@@ -1,6 +1,3 @@
-- Mostrar links rápidos de controladores solo cuando el entorno está en modo desarrollo.
-- Mejor asignación de categoría de programa cuando se registra.
-- Permitir edición de programa si el usuario es dueño del programa.
-- Mejor estructura de eliminar licenciaturas/responsables
-- Corrección: /cprogramas/ solo muestra programas activos y a admin muestra todos
-- Destroy de Cprograma hecho.
+- Completa la inscripción de un prestador al servicio social
+- Páginas de avisos iniciales (le indican al prestador si no está inscrito, si ya está, si está validándose
+su solicitud, etc.)

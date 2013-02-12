@@ -2,9 +2,20 @@
 
 class InscripcionsController < ApplicationController
 	layout 'prestador'
+	before_filter :require_login
 
 	def new
-		@inscripcion = Inscripcion.new()
+		require_role(:prestador)
+		if !current_user.prestador && current_user.prestador.inscripcion_actual
+			@inscripcion = Inscripcion.new
+			@inscripcion.estado_inscripcion_id = EstadoInscripcion::VALIDANDO
+			@programa = Cprograma.find_by_id(params[:programa])
+			if @programa
+				@inscripcion.cprograma_id = @programa.id 
+			end
+		else
+			render 'prestador_pages/messages/ya_inscrito'
+		end
 	end
 
 	def create

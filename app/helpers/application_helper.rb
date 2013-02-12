@@ -17,4 +17,12 @@ module ApplicationHelper
 	def current_date(format = '%d/%m/%Y')
 		Date.today.strftime(format)
 	end
+
+	def programas_for_current_user
+		condiciones = []
+		if !current_user.prestador.estudiante_uacm?
+			condiciones = ['categoria_interno = ?', true]
+		end
+		programas = Cprograma.find(:all, conditions: condiciones)
+	end
 end

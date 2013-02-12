@@ -35,7 +35,7 @@ es:
             nacimiento: 'Fecha en formato dd/mm/aaaa'
         inscripcion:
             area: "El lugar donde se realizará el servicio."
-            dias: "Elige los días que asistirás"
+            dias: "Haz clic en el campo de texto para desplegar la lista de días"
             responsable: "La persona que validará tus horas de servicio social"
             hora_entrada: "Hora en formato de 24hrs (HH:MM)"
             hora_salida: "Hora en formato de 24hrs (HH:MM)"

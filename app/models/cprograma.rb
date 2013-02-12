@@ -48,6 +48,7 @@ class Cprograma < ActiveRecord::Base
 
   has_many :licenciaturas, dependent: :destroy
   has_many :responsables, dependent: :destroy
+  has_many :inscripcions, dependent: :destroy
   accepts_nested_attributes_for :licenciaturas
   accepts_nested_attributes_for :responsables
 

@@ -38,6 +38,7 @@ es:
       #   user: "Dude"
       user:   "Usuario"
       institucion_user: "Institución"
+      cprograma: "Programa de Servicio Social"
       # will translate User model name to "Dude"
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
@@ -78,6 +79,7 @@ es:
       inscripcion:
         c_dias: "Días de asistencia"
         carrera: "Especialidad"
+        cprograma: "Nombre del programa:"
         ano_ingreso: "Año de ingreso"
         creditos: "Total de créditos"
         nCursos_basicos: "Ciclo básico"
