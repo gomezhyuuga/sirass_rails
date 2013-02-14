@@ -1,0 +1,9 @@
+<% if inscripcion %>
+	<% case inscripcion.estado_inscripcion_id when false %>
+		<%= render 'prestador_pages/messages/no_inscrito', inscripcion: inscripcion %>
+	<% when EstadoInscripcion::VALIDANDO %>
+		<%= render 'prestador_pages/messages/validando', inscripcion: inscripcion %>
+	<% when EstadoInscripcion::EN_SERVICIO %>
+		<%= render '/prestador_pages/messages/ya_inscrito', inscripcion: inscripcion %>
+	<% end %>
+<% end %>

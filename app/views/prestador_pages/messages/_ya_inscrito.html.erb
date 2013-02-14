@@ -1,6 +1,13 @@
-<%= render 'shared/saludo' %>
 <p>Actualmente est&aacute;s inscrito en el siguiente programa de Servicio Social:</p>
-<p class="lead"><strong>Apoyo al &aacute;rea acad&eacute;mico-administrativa en la UACM</strong></p>
+<blockquote class="lead">
+	<%= inscripcion.cprograma.nombre %>
+</blockquote>
+<h6 class="muted right">Clave del programa: <%= inscripcion.cprograma.cveprograma %></h6>
+
+<p>
+	<strong>Tipo de inscripción:</strong> <%= inscripcion.tipo_inscripcion %>
+</p>
+
 <h3>Horas acumuladas</h3>
 <div class="progress progress-success" style="height: 30px; border: 1px solid #8c8c8c;">
 	<div class="bar" style="width: 70%; height: 30px;"></div>
