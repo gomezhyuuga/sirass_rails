@@ -1,3 +1,4 @@
+# encoding: utf-8
 # == Schema Information
 #
 # Table name: inscripcions
@@ -47,4 +48,11 @@ class Inscripcion < ActiveRecord::Base
   belongs_to :estado_inscripcion
 
   has_and_belongs_to_many :dias, join_table: :inscripcions_dias
+  def tipo_inscripcion
+    if self.practicas?
+      "Práctica Profesional"
+    else
+      "Servicio Social"
+    end
+  end
 end

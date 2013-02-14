@@ -23,7 +23,8 @@
 
 class Prestador < ActiveRecord::Base
   attr_accessible :aMaterno, :aPaterno, :nacimiento, :nombre, :user_attributes,
-  	:sexo, :dCalle, :dNumExt, :dNumInt, :dCP, :dDelegacion, :dColonia, :telCasa, :telCel
+  	:sexo, :dCalle, :dNumExt, :dNumInt, :dCP, :dDelegacion, :dColonia, :telCasa, :telCel,
+  	:inscripcion_actual
   	
   validates_presence_of :nombre, :aMaterno, :aPaterno, :nacimiento, :user,
   	:sexo, :dCalle, :dNumExt, :dCP, :dDelegacion, :dColonia
