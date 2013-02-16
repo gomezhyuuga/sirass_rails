@@ -3,10 +3,12 @@
 	<%= stylesheet_link_tag "institucion_pages" %>
 <% end %>
 
-<h2>Registra tu programa de Servicio Social</h2>
+<h2>Edita información de tu programa de Servicio Social</h2>
 
 <%= simple_form_for @cprograma, html: { class: 'form-horizontal' },
 	defaults: { input_html: { class: 'input-block-level' } } do |f| %>
+	<h6 align = center>OBSERVACIONES HECHAS POR EL RESPONSABLE DEL PROGRAMA</h6>
+	<textarea rows="7" readonly="true" style="resize:none; margin: 0 auto; display: block;" class="input-xxlarge"><%= @cprograma.observaciones %></textarea>
 	<%= render 'cprogramas/forms/fields', f: f, type: 'nuevo' %>
 	<%= javascript_include_tag "cprogramas" %>
 <% end %>

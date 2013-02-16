@@ -77,6 +77,11 @@ class CprogramasController < ApplicationController
 		# Estado
 		@cprograma.estado_programa_id = EstadoPrograma::ESPERANDO
 		if @cprograma.save
+			#Obtener la suma de licenciaturas solicitadas
+			sumLicen = Licenciatura.sum(:solicitados, :group => :cprograma)
+			@cprograma.plazas = sumLicen[@cprograma]
+			@cprograma.vacantes = sumLicen[@cprograma]
+			@cprograma.save
 			flash[:success] = "Programa creado correctamente"
 			redirect_to current_user.user_page
 		else

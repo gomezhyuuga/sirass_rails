@@ -1,0 +1,103 @@
+<% provide(:title, 'Avisos') %>
+<% content_for :stylesheet do %>
+	<%= stylesheet_link_tag "institucion_pages" %>
+<% end %>
+
+<h2 align=center>Avisos</h2>
+<% if @suspendidos.empty? and @observados.empty? %>
+	<p class="lead">No hay novedades acerca de los programas.</p>
+<% else %>
+	<p class="lead">Aquí hay información acerca de tus programas</p>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Estado</th>
+				<th>Cantidad</th>
+				<th>Acción</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% if !@suspendidos.empty? %>
+				<tr>
+					<td>
+						<span class="label <%= label_for_estado_programa(EstadoPrograma::SUSPENDIDO) %>">
+							Suspendido
+						</span>
+					</td>
+					<td><%= @suspendidos.count %></td>
+					<td><a class="btn btn-info btn-mini" onclick=detallesPorStat('Susp')>Ver más</a></td>
+				</tr>
+			<% end %>
+			<% if !@observados.empty? %>
+				<tr>
+					<td><span class="label <%= label_for_estado_programa(EstadoPrograma::INACTIVO) %>">
+							Con observaciones
+						</span>
+					</td>
+					<td><%= @observados.count %></td>
+					<td><button class="btn btn-info btn-mini" onclick=detallesPorStat('Obs')>Ver más</button></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<!-- Suspendidos -->
+		<% if !@suspendidos.empty? %>
+			<div class="control-group hide" id="Suspend">
+				<h5>Estos son programas que presentaron anomalías y fueron suspendidos por el responsable de programas</h5>
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Programa</th>
+							<th>Clave</th>
+							<th>Estado</th>
+							<th>Acción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @suspendidos.each do |e| %>
+							<tr>
+								<td><%= link_to e.nombre, e %></td>
+								<td><%= e.cveprograma %></td>
+								<td><span class="label <%= label_for_estado_programa(EstadoPrograma::SUSPENDIDO) %>">
+									Suspendidos
+									</span>
+								</td>
+								<td><%= render 'admin_btn', obj: e %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		<% end %>
+		<!-- Observados -->
+		<% if !@observados.empty? %>
+			<div class="control-group hide" id="Obser">
+				<h5>Estos son programas que presentaron errores y le hizo observaciones el responsable de programas</h5>
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Programa</th>
+							<th>Clave</th>
+							<th>Estado</th>
+							<th>Acción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @observados.each do |e| %>
+							<tr>
+								<td><%= link_to e.nombre, e %></td>
+								<td><%= e.cveprograma %></td>
+								<td><span class="label <%= label_for_estado_programa(EstadoPrograma::INACTIVO) %>">
+									Con observaciones
+									</span>
+								</td>
+								<td><%= render 'admin_btn', obj: e %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		<% end %>
+		<%= javascript_include_tag "institucion_pages" %>
+<% end %>
+	

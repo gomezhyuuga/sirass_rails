@@ -44,6 +44,7 @@ Sirass::Application.routes.draw do
   scope "/institucion" do
     get 'home',         to: 'institucion_pages#index',      as: :institucion_home
     get 'actualizar_programas',   to: 'institucion_pages#actualizar', as: :actualizar_programa_institucion
+    get 'avisos',     to: 'institucion_pages#avisos'
   end
   get '/admin/home',          to: 'admin_pages#index'
   # Admin
