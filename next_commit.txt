@@ -1,3 +1,2 @@
-- Completa la inscripción de un prestador al servicio social
-- Páginas de avisos iniciales (le indican al prestador si no está inscrito, si ya está, si está validándose
-su solicitud, etc.)
+- Mejorada generación de clave de programas
+- Mejorada tabla de programas

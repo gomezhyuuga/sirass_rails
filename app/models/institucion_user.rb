@@ -19,7 +19,7 @@
 class InstitucionUser < ActiveRecord::Base
   attr_accessible :area, :cargo, :domicilio, :responsable, :tel, :telExt, :user_attributes, :plantel_attributes, :institucion_attributes, :institucion_id, :plantel_id
   
-  validates_presence_of :area, :cargo, :domicilio, :responsable, :tel, :telExt, :institucion_id, :user
+  validates_presence_of :area, :cargo, :domicilio, :responsable, :tel, :institucion_id, :user
 
 	# Relaciones
   has_one :user

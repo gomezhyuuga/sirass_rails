@@ -5,7 +5,7 @@ Estás a punto de cambiar la clave del programa llamado:
 <h4>Nueva clave:</h4>
 <%= form_for @programa, url: update_clave_cprograma_path, method: :put do |f| %>
 <div class="input-append">
-	<%= f.text_field :cveprograma, class: 'input-medium' %>
+	<%= f.text_field :cveprograma, class: 'input-large' %>
 	<%= link_to 'Generar', generar_nueva_clave_cprograma_path, remote: true, class: 'btn btn-warning' %>
 </div>
 <h6>Si la clave generada no coincide, introducir manualmente.</h6>

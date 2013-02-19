@@ -169,13 +169,16 @@ class CprogramasController < ApplicationController
 
 	# Generar clave de programa
 	def generar_nueva_clave
-		@id 					= params[:id]
-		consecutivo 			= 1 + Cprograma.where('estado_programa_id != 4 AND estado_programa_id != 6').count
-		programa = Cprograma.find(@id)
-		current_year 			= Date.today.year.to_s[2..3]
+		@id 							= params[:id]
+		programa 					= Cprograma.find(@id)
+		# Obtiene los programas que ya tienen alguna clave asignada. Esta cantidad nos provee el número consecutivo
+		consecutivo 			= 1 + Cprograma.where('cveprograma IS NOT NULL and cveprograma != ""').count
+		# year 							= Date.today.year.to_s[2..3]
+		# Solo usar últimos dos dígitos del año (2013 -> 13)
+		year 							= programa.created_at.year.to_s[2..3]
 		last_update_year 	= programa.updated_at.year.to_s[2..3]
 		sufijo = programa.categoria_interno == true ? "INT" : "EXT"
-		@clave = "UACM/SS/#{current_year}-#{last_update_year}/#{consecutivo}/#{sufjo}"
+		@clave = "UACM/SS/#{year}-#{last_update_year}/#{consecutivo}/#{sufijo}"
 		respond_to do |format|
 			format.js
 		end

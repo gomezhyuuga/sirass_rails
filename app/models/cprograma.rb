@@ -62,4 +62,56 @@ class Cprograma < ActiveRecord::Base
   def categoria
     categoria = self.categoria_interno == true ? "Interno" : "Externo"
   end
+
+  # Obtener totales de programas por categoría y estado INTERNO
+  def self.total_internos
+    Cprograma.where(categoria_interno: true).count
+  end
+  def self.total_internos_activos
+    self.find_int_ext_by_estado(true, EstadoPrograma::ACTIVO)
+  end
+  def self.total_internos_inactivos
+    self.find_int_ext_by_estado(true, EstadoPrograma::INACTIVO)
+  end
+  def self.total_internos_esperando
+    self.find_int_ext_by_estado(true, EstadoPrograma::ESPERANDO)
+  end
+  def self.total_internos_suspendidos
+    self.find_int_ext_by_estado(true, EstadoPrograma::SUSPENDIDO)
+  end
+  def self.total_internos_observaciones
+    self.find_int_ext_by_estado(true, EstadoPrograma::OBSERVACION)
+  end
+  def self.total_internos_actualizados
+    self.find_int_ext_by_estado(true, EstadoPrograma::ACTUALIZADO)
+  end
+
+  # Obtener totales de programas por categoría y estado EXTERNO
+  def self.total_externos
+    Cprograma.where(categoria_interno: false).count
+  end
+  def self.total_externos_activos
+    self.find_int_ext_by_estado(false, EstadoPrograma::ACTIVO)
+  end
+  def self.total_externos_inactivos
+    self.find_int_ext_by_estado(false, EstadoPrograma::INACTIVO)
+  end
+  def self.total_externos_esperando
+    self.find_int_ext_by_estado(false, EstadoPrograma::ESPERANDO)
+  end
+  def self.total_externos_suspendidos
+    self.find_int_ext_by_estado(false, EstadoPrograma::SUSPENDIDO)
+  end
+  def self.total_externos_observaciones
+    self.find_int_ext_by_estado(false, EstadoPrograma::OBSERVACION)
+  end
+  def self.total_externos_actualizados
+    self.find_int_ext_by_estado(false, EstadoPrograma::ACTUALIZADO)
+  end
+
+
+  private
+    def self.find_int_ext_by_estado(is_interno, estado)
+      Cprograma.all(conditions: ["categoria_interno = ? AND estado_programa_id = ?", is_interno, estado]).count
+    end
 end
