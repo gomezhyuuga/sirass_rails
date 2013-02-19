@@ -9,7 +9,7 @@ class InstitucionPagesController < ApplicationController
 
 	def actualizar
 		require_role(:institucion)
-		@programas = Cprograma.where(institucion_user_id: current_user.institucion_user.id).where('estado_programa_id <> ?', EstadoPrograma::INACTIVO)
+		@programas = Cprograma.where(institucion_user_id: current_user.institucion_user.id).where('estado_programa_id <> ?', EstadoPrograma::ACTIVO)
 	end
 
 	def avisos

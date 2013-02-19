@@ -8,6 +8,28 @@
 <p class="lead">No se encontró ningún programa <% if logged_as? :institucion %>tuyo<% end %> en la base de datos.</p>
 <% else %>
 
+<% if can? :manage, Cprograma %>
+	<h5>Cantidad de programas</h5>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Categoría</th>
+				<th>Cantidad</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Interno</td>
+				<td><%= Cprograma.where(:categoria_interno => true).count %></td>
+			</tr>
+			<tr>
+				<td>Externo</td>
+				<td><%= Cprograma.where(:categoria_interno => false).count %></td>
+			</tr>
+		</tbody>
+	</table>
+<% end %>
+
 <%= will_paginate %>
 <table class="table table-bordered table-striped" id="lista-programas">
 	<thead>

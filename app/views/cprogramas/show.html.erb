@@ -52,7 +52,15 @@
       </div>
       <div class="span6">
         <h4>Plantel</h4>
-        <p><%= @programa.institucion_user.plantel.nombre %></p>
+        <% if @programa.institucion_user.plantel %>
+        <p>
+          <%= @programa.institucion_user.plantel.nombre %>
+        </p>
+        <% else %>
+          <p>
+            Sin plantel.
+          </p>
+        <% end %>
       </div>
     </div>
     <div class="row">

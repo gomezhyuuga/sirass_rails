@@ -32,4 +32,8 @@ class InscripcionsController < ApplicationController
 			render 'new'
 		end
 	end
+
+	def show
+		
+	end
 end

@@ -35,9 +35,9 @@
 #
 
 class Inscripcion < ActiveRecord::Base
-  attr_accessible :ano_ingreso, :area, :avance_cursos, :cargoResponsable, :carrera, :cprograma_id, :creditos, :cve_programa_institucional, :difundir, :estado_inscripcion_id, :fecha_fin, :fecha_inicio, :hora_entrada, :hora_salida, :institucion_id, :matricula, :nCursos_basicos, :nCursos_superio, :observaciones, :plantel_id, :practicas, :prestador_id, :programa_institucional, :promedio, :responsable, :semestre, :dia_ids
+  attr_accessible :ano_ingreso, :area, :avance_cursos, :cargoResponsable, :carrera, :cprograma_id, :creditos, :cve_programa_institucional, :difundir, :estado_inscripcion_id, :fecha_fin, :fecha_inicio, :hora_entrada, :hora_salida, :institucion_id, :matricula, :nCursos_basicos, :nCursos_superio, :observaciones, :plantel_id, :practicas, :prestador_id, :programa_institucional, :promedio, :responsable, :semestre, :dia_ids, :institucion_attributes
 
-  validates_presence_of :prestador_id, :institucion_id, :plantel_id, :carrera, :matricula, :semestre, :avance_cursos, :promedio, :programa_institucional, :cve_programa_institucional, :cprograma_id, :fecha_inicio, :fecha_fin, :responsable, :difundir, :dia_ids, :cprograma_id
+  validates_presence_of :prestador_id, :institucion, :plantel_id, :carrera, :matricula, :semestre, :avance_cursos, :promedio, :programa_institucional, :cve_programa_institucional, :cprograma_id, :fecha_inicio, :fecha_fin, :responsable, :difundir, :dia_ids, :cprograma_id
 
   # Relaciones
   belongs_to :prestador
@@ -46,6 +46,8 @@ class Inscripcion < ActiveRecord::Base
   belongs_to :plantel
   belongs_to :cprograma
   belongs_to :estado_inscripcion
+
+  accepts_nested_attributes_for :institucion
 
   has_and_belongs_to_many :dias, join_table: :inscripcions_dias
   def tipo_inscripcion

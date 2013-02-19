@@ -106,7 +106,9 @@ class CprogramasController < ApplicationController
 	def edit
 		#require_role(:institucion)
 		@cprograma = Cprograma.find_by_id(params[:id])
-		if current_user.institucion_user && current_user.institucion_user.cprogramas.include?(@cprograma)
+		if current_user.institucion_user &&
+			current_user.institucion_user.cprogramas.include?(@cprograma) &&
+			@cprograma.estado_programa_id != EstadoPrograma::ACTIVO
 			render 'edit'
 		else 
 			authorize! :manage, Cprograma
@@ -143,7 +145,7 @@ class CprogramasController < ApplicationController
 	# Actualizar solo las observaciones de un programa
 	def update_observaciones
 		observaciones = params[:cprograma][:observaciones]
-		if Cprograma.update(params[:id], observaciones: observaciones)
+		if Cprograma.update(params[:id], observaciones: observaciones, estado_programa_id: EstadoPrograma::OBSERVACION)
 			flash[:success] = "Observaciones actualizadas correctamente!"
 		else
 			flash[:error] = "Ocurrió un error actualizando las observaciones"
@@ -157,7 +159,7 @@ class CprogramasController < ApplicationController
 	end
 	def update_clave
 		nueva_clave = params[:cprograma][:cveprograma]
-		if Cprograma.update(params[:id], cveprograma: nueva_clave)
+		if Cprograma.update(params[:id], {cveprograma: nueva_clave, estado_programa_id: EstadoPrograma::ACTIVO})
 			flash[:success] = "Clave del programa actualizada correctamente!"
 		else
 			flash.now[:error] = "Ocurrió un error actualizando la clave del programa!"
@@ -169,9 +171,11 @@ class CprogramasController < ApplicationController
 	def generar_nueva_clave
 		@id 					= params[:id]
 		consecutivo 			= 1 + Cprograma.where('estado_programa_id != 4 AND estado_programa_id != 6').count
+		programa = Cprograma.find(@id)
 		current_year 			= Date.today.year.to_s[2..3]
-		last_update_year 	= Cprograma.find(@id).updated_at.year.to_s[2..3]
-		@clave = "UACM/SS/#{current_year}-#{last_update_year}/#{consecutivo}"
+		last_update_year 	= programa.updated_at.year.to_s[2..3]
+		sufijo = programa.categoria_interno == true ? "INT" : "EXT"
+		@clave = "UACM/SS/#{current_year}-#{last_update_year}/#{consecutivo}/#{sufjo}"
 		respond_to do |format|
 			format.js
 		end

@@ -105,5 +105,16 @@ namespace :db do
 				Dia.create!(row.to_hash.symbolize_keys)
 			end
 		end
+		desc "Catálogo de EstadoInscripcion"
+		task estado_inscripcion: :environment do
+			puts "Importando catálogo de estado_inscripcion"
+			#Catalogo días
+			csv_text = File.read("db/csv/estado_inscripcion.csv")
+			csv = CSV.parse(csv_text, :headers => true)
+			csv.each do |row|
+				row = row.to_hash.with_indifferent_access
+				EstadoInscripcion.create!(row.to_hash.symbolize_keys)
+			end
+		end
 	end
 end

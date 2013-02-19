@@ -10,19 +10,21 @@ jQuery ->
     }
 
   # Activar select2
-  $('.use-select2').select2 {
-    formatNoMatches: (term) ->
-      return "Sin resultados"
-  }
+  elements_for_select2 = $('.use-select2')
+  if elements_for_select2.size() > 0
+    elements_for_select2.select2 {
+      formatNoMatches: (term) ->
+        return "Sin resultados"
+    }
 
   # Activar timepicker
   $('.use-timepicker').timepicker { showMeridian: false }
 
   # Mostrar flash en modals
-  flash_messages = $('#flash')
-  if flash_messages.html() and flash_messages.html().trim() isnt ""
-    bootbox.alert flash_messages.html(), "Cerrar", ->
-      flash_messages.slideUp()
+  # flash_messages = $('#flash')
+  # if flash_messages.html() and flash_messages.html().trim() isnt ""
+  #   bootbox.alert flash_messages.html(), "Cerrar", ->
+  #     flash_messages.slideUp()
 
 # MODAL Dialogs para sobreescribir el comportamiento por defecto de data-confirm
 $.rails.allowAction = (link) ->
