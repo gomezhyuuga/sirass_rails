@@ -57,4 +57,9 @@ class Inscripcion < ActiveRecord::Base
       "Servicio Social"
     end
   end
+
+  def tipo_servicio
+    self.practicas ? "Práctica Profesional" : "Servicio Social"
+  end
+
 end

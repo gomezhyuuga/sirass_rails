@@ -1,15 +1,15 @@
 <% provide(:title, "Detalles de inscripción") %>
 <div class="page-header">
-	<h1>Detalles de inscripci&oacute;n <small>1</small></h1>
+	<h1>Detalles de inscripci&oacute;n</h1>
 </div>
 <div class="row">
 	<div class="span3"
-		<p><strong>Tipo</strong>: Servicio Social</p>
-		<p><strong>Estado</strong>: Activo</p>
+		<p><strong>Tipo</strong>: <%= @inscripcion.tipo_servicio %></p>
+		<p><strong>Estado</strong>: <%= @inscripcion.estado_inscripcion.descripcion %></p>
 	</div>
 	<div class="span3 pull-right">
 		<p><strong>Horas realizadas:</strong> 250</p>
-		<p><strong>Usuario:</strong> <a href="#">prestador1</a></p>
+		<p><strong>Usuario:</strong> <%= link_to @inscripcion.prestador.user.username, @inscripcion.prestador %></p>
 	</div>
 </div>
 <ul class="nav nav-tabs">
@@ -27,68 +27,66 @@
 		<div class="row">
 			<div class="span5">
 				<h2>Instituci&oacute;n</h2>
-				<p>Instituto Politécnico Nacional</p>
+				<p><%= @inscripcion.institucion.nombre %></p>
 				<h2>Plantel</h2>
-				<p>CECyT 9</p>
+				<p><%= nombre_plantel(@inscripcion) %></p>
 				<h2>Avance de cursos</h2>
-				<p>75%%</p>
+				<p><%= @inscripcion.avance_cursos %></p>
 				<h2>Semestre</h2>
-				<p>6</p>
+				<p><%= @inscripcion.semestre %></p>
 			</div>
 			<div class="span3 pull-right">
 				<h2>Carrera</h2>
 				<p>Técnico en Programación</p>
 				<h2>Matr&iacute;cula</h2>
-				<p>2010090251</p>
+				<p><%= @inscripcion.matricula %></p>
 				<h2>Ingreso</h2>
-				<p>2009</p>
+				<p><%= @inscripcion.ano_ingreso %></p>
 				<h2>Promedio</h2>
-				<p>8.9</p>
+				<p><%= @inscripcion.promedio %></p>
 			</div>
 		</div> <!-- end row -->
 		<!-- DATOS DE PRACTICAS PROFESIONALES -->
 		<div class="row hide">
 			<div class="span2">
 				<h3>Cursos b&aacute;sicos</h3>
-				<p>nCursosBasico</p>
+				<p><%= @inscripcion.nCursos_basicos %></p>
 			</div>
 			<div class="span3">
 				<h3>Cursos superior</h3>
-				<p>nCursosSuperior</p>
+				<p><%= @inscripcion.nCursos_superio %></p>
 			</div>
 			<div class="span2">
 				<h3>Creditos</h3>
-				<p>creditos</p>
+				<p><%= @inscripcion.creditos %></p>
 			</div>
 		</div> <!-- end row -->
-		<h2>Confidencialidad de informaci&oacute;n</h2>
-		<p>Sí</p>
 	</div> <!-- end tab-pane -->
 	<div class="tab-pane" id="datosPrograma">
 		<div class="row">
 			<div class="span4">
 				<h2>Programa</h2>
-				<p>Apoyo Académico-Administrativa</p>
+				<p><%= @inscripcion.cprograma.nombre %></p>
 				<h2>Clave</h2>
-				<p>UACM//</p>
+				<p><%= @inscripcion.cprograma.cveprograma %></p>
 				<h2>&Aacute;rea</h2>
-				<p>Oficina de Servicio Social</p>
+				<p><%= @inscripcion.area %></p>
 				<h2>Fecha de inicio</h2>
-				<p>17 de septiembre 2010</p>
+				<p><%= @inscripcion.fecha_inicio.strftime("%d/%m/%Y") %></p>
 				<h2>Fecha de t&eacute;rmino</h2>
-				<p>10 de mayo de 2011</p>
+				<p><%= @inscripcion.fecha_fin.strftime("%d/%m/%Y") %></p>
 			</div>
 			<div class="span4">
 				<h2>Programa inst.</h2>
-				<p>Apoyo Académico Administrativo en la UACM</p>
+				<p><%= @inscripcion.programa_institucional %></p>
 				<h2>Clave</h2>
-				<p>2fea3432d</p>
+				<p><%= @inscripcion.cve_programa_institucional %></p>
 				<h2>D&iacute;as de asistencia</h2>
-				<p>Lunes, Martes, Miércoles, Jueves y Viernes</p>
+				<p><%= print_dias(@inscripcion) %></p>
 				<h2>Hora de entrada</h2>
-				<p>10:00</p>
+				<p><%= @inscripcion.hora_entrada.strftime("%H:%M:%S") %></p>
 				<h2>Hora de salida</h2>
-				<p>16:00</p>
+				<p><%= @inscripcion.hora_salida.strftime("%H:%M:%S") %></p>
 			</div>
 		</div> <!-- end row -->
 		<h2>Responsable</h2>
@@ -96,6 +94,7 @@
 	</div> <!-- end tab pane -->
 </div> <!-- end tab-content -->
 <hr />
+<% if logged_as? :admin %>
 <h2>Observaciones</h2>
 <p><i class="icon-question-sign"></i>
 	Escribir en el siguiente campo si hay alg&uacute;n error en la inscripci&oacute;n (<em>especificar dato</em>) o si es necesario hacerle notificar algo a la persona que envi&oacute; la solicitud de inscripci&oacute;n.</p>
@@ -110,7 +109,8 @@ Si lo que se desea es actualizar &uacute;nicamente el campo de observaciones, pu
 	</button>
 </div>
 <div class="right">
-	<h6>Creaci&oacute;n: <small>creacion</small></h6>
-	<h6>Ultima modif.: <small>ultimaModif</small></h6>
-	<h6>Modificada por: <small>modificadoPor</small></h6>
+	<h6>Creaci&oacute;n: <small><%= @inscripcion.created_at %></small></h6>
+	<h6>Ultima modif.: <small><%= @inscripcion.updated_at %></small></h6>
+	<h6>ID: <small><%= @inscripcion.id %></small></h6>
 </div>
+<% end %>

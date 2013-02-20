@@ -8,10 +8,6 @@ class InscripcionsController < ApplicationController
 		require_role(:prestador)
 		if current_user.prestador && !current_user.prestador.inscripcion_actual
 			@inscripcion = Inscripcion.new
-			@programa = Cprograma.find_by_id(params[:programa])
-			if @programa
-				@inscripcion.cprograma_id = @programa.id 
-			end
 		else
 			redirect_to prestador_home_path
 		end
@@ -34,6 +30,14 @@ class InscripcionsController < ApplicationController
 	end
 
 	def show
-		
+		@inscripcion = Inscripcion.find_by_id(params[:id])
+		if can? :manage, Inscripcion
+			render layout: 'application'
+		elsif current_user.prestador.inscripcions.include? @inscripcion
+			render layout: 'application'
+		else
+			flash[:error] = "No tienes permisos para ver esta página!"
+			redirect_to root_path
+		end
 	end
 end

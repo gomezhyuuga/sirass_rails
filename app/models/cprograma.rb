@@ -6,7 +6,7 @@
 #  institucion_user_id  :integer
 #  cveprograma          :string(255)
 #  categoria_id         :integer
-#  estado_programa_id   :integer
+#  status_id            :integer
 #  nombre               :string(255)
 #  objGeneral           :text
 #  justificacion        :text
@@ -24,6 +24,7 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  tipo_programa_id     :integer
+#  estado_programa_id   :integer
 #  categoria_interno    :boolean          default(TRUE)
 #  tiempo_indeterminado :boolean          default(TRUE)
 #

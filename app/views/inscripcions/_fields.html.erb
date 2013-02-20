@@ -26,12 +26,12 @@
 		:nombre, {include_blank: true}, {class: 'use-select2 input-xlarge', 
 			'data-placeholder' => 'Selecciona una institución primero'} %>
 		<% end %>
-		<p class="well well-small">
+		<!-- <p class="well well-small">
 			<strong>¿No aparece en la lista tu institución? Regístrala!</strong>
-			<%= f.simple_fields_for :institucion do |builder| %>
-				<%= render 'institucions/fields', f: builder %>
-			<% end %>
-		</p>
+			<%#= f.simple_fields_for :institucion do |builder| %>
+				<%#= render 'institucions/fields', f: builder %>
+			<%# end %>
+		</p> -->
 		<%= render 'fields_escolares', f: f %>
 		<div class="well well-small center">
 			<h6>Pulsa en <a href="#tab_programas">Datos del programa</a> para continuar</h6>

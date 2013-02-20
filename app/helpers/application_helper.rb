@@ -25,4 +25,16 @@ module ApplicationHelper
 		end
 		programas = Cprograma.find(:all, conditions: condiciones)
 	end
+
+	def puede_inscribirse?(programa)
+		# Si es estudiante de la UACM puede inscribirse a cualquier programa
+		if current_user.prestador && programa.categoria_interno? && !current_user.prestador.estudiante_uacm?
+			return true
+		elsif current_user.prestador && current_user.prestador.estudiante_uacm?
+			return true
+		else
+			return false
+		end
+		# Si es estudiante externo solo puede inscribirse a un programa interno
+	end
 end

@@ -15,10 +15,10 @@
     <%= @programa.estado_programa.descripcion %>
   </span>
 </div>
-<% if logged_as? :prestador %>
+<% if (logged_as? :prestador) && puede_inscribirse?(@programa) %>
 <!-- INSCRIBIR BUTTON -->
 <div class="span2 pull-right">
-  <%= link_to inscripcion_servicio_path(programa: @programa.id),
+  <%= link_to inscripcion_servicio_path(programa_id: @programa.id),
     class: 'btn btn-success btn-block' do %>
     <i class="icon-plus-sign"></i>
     Inscribirse
