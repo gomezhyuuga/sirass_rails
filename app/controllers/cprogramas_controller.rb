@@ -112,6 +112,7 @@ class CprogramasController < ApplicationController
 			render 'edit'
 		else 
 			authorize! :manage, Cprograma
+			render 'edit', layout: 'admin'
 		end
 	end
 

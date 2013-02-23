@@ -46,39 +46,39 @@
 		============================== -->
 		<div class="container content solid">
 			<ul class="thumbnails">
-				<li class="span4">
+				<li class="span12">
 					<h2>Programas</h2>
-					<%= link_to programas_path, {class: "thumbnail", id: "programas"} do %>
-						<%= image_tag '300x108.gif' %>
-					<% end %>
-					<p>Conoce todos los programas de Servicio Social que ofrece para ti la UACM.</p>
-					<%= link_to programas_path, class: 'btn btn-warning btn-block' do %>
+					<%#= link_to programas_path, {class: "thumbnail", id: "programas"} do %>
+						<%#= image_tag '300x108.gif' %>
+					<%# end %>
+					<p class="center">Conoce todos los programas de Servicio Social que ofrece para ti la UACM.</p>
+					<%= link_to programas_path, class: 'btn btn-warning btn-large span5 offset3' do %>
 						<i class="icon-white icon-book"></i>
 						Revisa la lista de Programas 
 					<% end %>
-				</li>
+				<!-- </li> -->
+				<!-- <li class="span4">
+					<h2>Proceso</h2> -->
+					<%#= link_to proceso_path, {class: "thumbnail", id: "proceso"} do %>
+						<%#= image_tag '300x108.gif' %>
+					<%# end %>
+					<!-- <p>Echa un vistazo a los procesos que se deben llevar a cabo para realizar tu Servicio Social.</p> -->
+					<%#= link_to proceso_path, class: 'btn btn-warning btn-block' do %>
+						<!-- <i class="icon-white icon-road"></i>
+						Conoce el Proceso -->
+					<%# end %>
+				<!-- </li>
 				<li class="span4">
-					<h2>Proceso</h2>
-					<%= link_to proceso_path, {class: "thumbnail", id: "proceso"} do %>
-						<%= image_tag '300x108.gif' %>
-					<% end %>
-					<p>Echa un vistazo a los procesos que se deben llevar a cabo para realizar tu Servicio Social.</p>
-					<%= link_to proceso_path, class: 'btn btn-warning btn-block' do %>
-						<i class="icon-white icon-road"></i>
-						Conoce el Proceso
-					<% end %>
-				</li>
-				<li class="span4">
-					<h2>Ayuda</h2>
-					<%= link_to ayuda_path, {class: "thumbnail", id: "ayuda"} do %>
-						<%= image_tag '300x108.gif' %>
-					<% end %>
-					<p>Aclara tus dudas respecto a qu&eacute; necesitas para realizar tu Servicio Social.</p>
-					<%= link_to ayuda_path, class: 'btn btn-warning btn-block' do %>
-						<i class="icon-white icon-question-sign"></i>
-						Resuelve tus dudas
-					<% end %>
-				</li>
+					<h2>Ayuda</h2> -->
+					<%#= link_to ayuda_path, {class: "thumbnail", id: "ayuda"} do %>
+						<%#= image_tag '300x108.gif' %>
+					<%# end %>
+					<!-- <p>Aclara tus dudas respecto a qu&eacute; necesitas para realizar tu Servicio Social.</p> -->
+					<%#= link_to ayuda_path, class: 'btn btn-warning btn-block' do %>
+						<!-- <i class="icon-white icon-question-sign"></i>
+						Resuelve tus dudas -->
+					<%# end %>
+				<!-- </li> -->
 			</ul>
 		</div>
 		<%= render 'shared/debug' %>

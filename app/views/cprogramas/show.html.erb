@@ -1,3 +1,8 @@
+<p class="pull-right right">
+  <strong>Plazas: </strong><%= @programa.plazas %>
+  <br>
+  <strong>Vacantes: </strong><%= @programa.vacantes %>
+</p>
 <div class = "page-header">
 	<h1><%= @programa.nombre %>
 		<small><%= @programa.cveprograma %> (<%= @programa.categoria %>)</small>
@@ -162,18 +167,16 @@
           <th>Actividades</th>
           <th>Licenciatura</th>
           <th>Solicitados</th>
-          <th>Vacantes</th>
         </tr>
       </thead>
       <tbody>
         <% @programa.licenciaturas.each do |l| %>
         <tr>
           <td>
-            <textarea rows="10" readonly="true" style="resize:none; margin: 0 auto; display: block;" class="input-xxlarge"><%= l.actividad %></textarea>
+            <textarea rows="10" readonly="true" class="input-xxlarge textarea-disabled"><%= l.actividad %></textarea>
           </td>
           <td><%= l.carrera %></td>
           <td><%= l.solicitados %></td>
-          <td>x</td>
         </tr>
         <% end %>
       </tbody>

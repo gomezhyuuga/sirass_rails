@@ -21,6 +21,9 @@ class InscripcionsController < ApplicationController
 		@inscripcion.programa_institucional = "Apoyo académico-administrativo en la UACM"
 		@inscripcion.cve_programa_institucional = "02036d0576"
 		if @inscripcion.save && Prestador.update(@inscripcion.prestador.id, inscripcion_actual: @inscripcion.id)
+			programa = @inscripcion.cprograma
+			programa.vacantes -= 1
+			programa.save!
 			flash[:success] = "Solicitud de inscripción enviada correctamente!"
 			redirect_to current_user.user_page
 		else

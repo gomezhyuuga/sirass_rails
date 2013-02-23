@@ -52,3 +52,19 @@
 .left {
 	text-align: left;
 }
+.textarea-disabled {
+	resize: none;
+	margin: 0 auto;
+	display: block;
+	background-color: transparent !important;
+	border: none;
+	cursor: default !important;
+
+	:focus, :hover, :active {
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		outline: 0px !important;
+    -webkit-appearance: none;
+	}
+}
