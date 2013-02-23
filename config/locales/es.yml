@@ -93,6 +93,7 @@ es:
         poblacion_programas: "Población a atender"
         lugar:         "Lugar de Realización"
         notas:         "Observaciones del programa"
+        ftiempo:       "Fecha de duración"
       inscripcion:
         c_dias: "Días de asistencia"
         carrera: "Especialidad"

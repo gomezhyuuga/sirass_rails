@@ -6,7 +6,7 @@
 <h2>Edita información de tu programa de Servicio Social</h2>
 <h6 class="center text-error">OBSERVACIONES HECHAS POR EL RESPONSABLE DEL PROGRAMA</h6>
 <blockquote class="text-warning">
-		<textarea class="input-block-level"><%= @cprograma.observaciones %>
+		<textarea class="input-block-level textarea-disabled" <%= "readonly='false'" if !logged_as? :admin %>><%= @cprograma.observaciones %>
 		</textarea>
 </blockquote>
 <%= simple_form_for @cprograma, html: { class: 'form-horizontal' },
