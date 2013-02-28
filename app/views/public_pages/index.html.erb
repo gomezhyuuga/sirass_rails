@@ -6,7 +6,7 @@
 
   <%= render 'shared/shim' %>
   <%= render 'shared/seo' %>
-  <%= render 'shared/livereload' %>
+  <%= render 'shared/livereload' if Rails.env.development? %>
 
   <%= stylesheet_link_tag "application", :media => "all" %>
 </head>

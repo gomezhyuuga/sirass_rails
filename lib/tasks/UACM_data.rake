@@ -2,12 +2,13 @@
 require "csv"
 namespace :db do
 	namespace :uacm do
-		desc "User de admin"
-		task user: :environment do
-			Admin.create!(nombre: "Martha",aPaterno: "Tera",aMaterno: "Ponce",nacimiento: "24/04/1988",cargo: "Responsable de Servicio Social",user_attributes: {username: "marthag",email: "marthag@hotmail.com",password: "MarthaGTP2013",password_confirmation: "MarthaGTP2013"})
-		end
 		desc "Llenar base de datos con información de la UACM"
-		task all: [:environment, :user, :instituciones, :planteles, :tipo_programa, :alcance_programa, :estado_programa, :horario_programa, :poblacion_programa, :dias]
+		task all: [:environment, :dev_users, :cuentas_admin, :instituciones, :planteles, :tipo_programa, :alcance_programa, :estado_programa, :horario_programa, :poblacion_programa, :dias]
+
+		desc "Users de admin"
+		task dev_users: :environment do
+			Admin.create!(nombre: "Fernando",aPaterno: "Gómez",aMaterno: "Herrera",nacimiento: "04/02/1994",cargo: "Desarrollador de Sistema",user_attributes: {username: "a_gomezhyuuga",email: "gomezhyuuga@gmail.com",password: "a_ghyuuga852456",password_confirmation: "a_ghyuuga852456"})
+		end
 
 		desc "Catálogo de Instituciones"
 		task :instituciones => :environment do
@@ -114,6 +115,23 @@ namespace :db do
 			csv.each do |row|
 				row = row.to_hash.with_indifferent_access
 				EstadoInscripcion.create!(row.to_hash.symbolize_keys)
+			end
+		end
+
+		desc "Usuarios admin"
+		task cuentas_admin: :environment do
+			puts "Importando cuentas para administradores"
+			csv_text = File.read("db/csv/cuentas_admins.csv")
+			csv = CSV.parse(csv_text, :headers => true)
+			csv.each do |row|
+				row = row.to_hash.with_indifferent_access
+				row = row.to_hash.symbolize_keys
+				# Admin.create!(row.to_hash.symbolize_keys)
+				a = Admin.new(nombre: row[:nombre], aPaterno: row[:aPaterno], aMaterno: row[:aMaterno],
+					nacimiento: row[:nacimiento], cargo: row[:cargo],
+					user_attributes: { username: row[:username], email: row[:email], password: row[:password],
+						password_confirmation: row[:password_confirmation] })
+				a.save!
 			end
 		end
 	end

@@ -6,7 +6,6 @@ if RUBY_VERSION =~ /1.9/
 end
 
 gem 'rails', '3.2.9'
-gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'sorcery'
@@ -24,7 +23,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer'
+  gem 'therubyracer', '>= 0.11.3'
   gem 'uglifier', '>= 1.0.3'
 
   # Bootstrap
@@ -37,6 +36,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'faker'
   gem 'sqlite3'
   #gem 'rspec-rails'
   #gem 'guard-rspec'
@@ -57,5 +57,6 @@ end
 
 group :production do
   # gem 'rack', '1.4.4'
-  gem 'pg', '0.12.2'
+  # gem 'pg', '0.12.2'
+  gem 'activerecord-postgresql-adapter'
 end
