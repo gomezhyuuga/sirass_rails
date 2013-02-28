@@ -1,6 +1,8 @@
 <%= provide(:title, 'Catálogo de instituciones') %>
 <h1>Catálogo de instituciones</h1>
 
+<%= link_to "Registrar nueva", new_institucion_path, class: 'btn btn-large btn-warning' %>
+
 <% if @institucions.any? %>
 	<%= will_paginate %>
 	<table class="table table-striped table-bordered">

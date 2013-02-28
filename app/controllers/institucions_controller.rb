@@ -38,4 +38,19 @@ class InstitucionsController < ApplicationController
 			render 'edit'
 		end
 	end
+
+	def new
+		@institucion = Institucion.new
+	end
+
+	def create
+		@institucion = Institucion.new(params[:institucion])
+		if @institucion.save
+			flash[:success] = "Institución registrada correctamente"
+			redirect_to institucions_path
+		else
+			flash.now[:error] = "Hubo un problema registrando a la institución"
+			render 'new'
+		end
+	end
 end
