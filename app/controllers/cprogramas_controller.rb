@@ -76,12 +76,13 @@ class CprogramasController < ApplicationController
 		@cprograma.categoria_interno = current_user.institucion_user.institucion.uacm? ? true : false
 		# Estado
 		@cprograma.estado_programa_id = EstadoPrograma::ESPERANDO
+
+		# Calcular vacantes y plazas
+		solicitados = 0
+		@cprograma.licenciaturas.each { |l| solicitados += l.solicitados }
+		@cprograma.vacantes = solicitados
+		@cprograma.plazas = solicitados
 		if @cprograma.save
-			#Obtener la suma de licenciaturas solicitadas
-			sumLicen = Licenciatura.sum(:solicitados, :group => :cprograma)
-			@cprograma.plazas = sumLicen[@cprograma]
-			@cprograma.vacantes = sumLicen[@cprograma]
-			@cprograma.save
 			flash[:success] = "Programa creado correctamente"
 			redirect_to current_user.user_page
 		else
