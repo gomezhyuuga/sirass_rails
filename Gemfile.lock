@@ -34,6 +34,9 @@ GEM
       rake
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    better_errors (0.7.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
     bootbox-rails (0.0.1)
       railties (>= 3.1.0)
     bootstrap-datepicker-rails (1.0.0)
@@ -44,6 +47,7 @@ GEM
       will_paginate
     builder (3.0.4)
     cancan (1.6.9)
+    coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -164,6 +168,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgresql-adapter
   annotate
+  better_errors
   bootbox-rails
   bootstrap-datepicker-rails
   bootstrap-timepicker-rails

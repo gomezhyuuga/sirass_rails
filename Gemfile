@@ -53,6 +53,7 @@ end
 group :development do
   gem 'quiet_assets'
   gem 'annotate'
+  gem 'better_errors'
 end
 
 group :production do

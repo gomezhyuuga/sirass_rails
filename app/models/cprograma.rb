@@ -14,7 +14,7 @@
 #  recursos             :text
 #  evaluacion           :text
 #  resultados           :text
-#  lugar                :string(255)
+#  lugar                :text(255)
 #  horario_programa_id  :integer
 #  plazas               :integer
 #  vacantes             :integer

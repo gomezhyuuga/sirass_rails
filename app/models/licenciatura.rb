@@ -5,7 +5,7 @@
 #  id           :integer          not null, primary key
 #  cprograma_id :integer
 #  carrera      :string(255)
-#  actividad    :string(255)
+#  actividad    :text(255)
 #  solicitados  :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

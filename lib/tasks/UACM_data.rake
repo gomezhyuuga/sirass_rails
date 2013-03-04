@@ -3,7 +3,7 @@ require "csv"
 namespace :db do
 	namespace :uacm do
 		desc "Llenar base de datos con información de la UACM"
-		task all: [:environment, :dev_users, :cuentas_admin, :instituciones, :planteles, :tipo_programa, :alcance_programa, :estado_programa, :horario_programa, :poblacion_programa, :dias]
+		task all: [:environment, :dev_users, :cuentas_admin, :instituciones, :planteles, :tipo_programa, :alcance_programa, :estado_programa, :estado_reporte, :horario_programa, :poblacion_programa, :dias]
 
 		desc "Users de admin"
 		task dev_users: :environment do
@@ -109,12 +109,22 @@ namespace :db do
 		desc "Catálogo de EstadoInscripcion"
 		task estado_inscripcion: :environment do
 			puts "Importando catálogo de estado_inscripcion"
-			#Catalogo días
 			csv_text = File.read("db/csv/estado_inscripcion.csv")
 			csv = CSV.parse(csv_text, :headers => true)
 			csv.each do |row|
 				row = row.to_hash.with_indifferent_access
 				EstadoInscripcion.create!(row.to_hash.symbolize_keys)
+			end
+		end
+
+		desc "Catálogo de EstadoReporte"
+		task estado_reporte: :environment do
+			puts "Importando catálogo de estado_reporte"
+			csv_text = File.read("db/csv/estado_reporte.csv")
+			csv = CSV.parse(csv_text, :headers => true)
+			csv.each do |row|
+				row = row.to_hash.with_indifferent_access
+				EstadoReporte.create!(row.to_hash.symbolize_keys)
 			end
 		end
 

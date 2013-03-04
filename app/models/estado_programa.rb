@@ -21,7 +21,7 @@ class EstadoPrograma < ActiveRecord::Base
   has_and_belongs_to_many :cprogramas
 
   # CONST
-  ACTIVO 		= 1
+  ACTIVO 			= 1
   INACTIVO 		= 2
   SUSPENDIDO 	= 3
   ESPERANDO 	= 4
