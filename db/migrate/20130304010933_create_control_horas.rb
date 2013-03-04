@@ -1,8 +1,8 @@
 class CreateControlHoras < ActiveRecord::Migration
   def change
     create_table :control_horas do |t|
-      t.integer :id_inscripcion
-      t.integer :id_estado_reporte
+      t.integer :iinscripcion_id
+      t.integer :estado_reporte_id
       t.integer :numReporte
       t.date :fechaInicio
       t.date :fechaFin

@@ -4,8 +4,8 @@
 # Table name: control_horas
 #
 #  id                :integer          not null, primary key
-#  id_inscripcion    :integer
-#  id_estado_reporte :integer
+#  iinscripcion_id   :integer
+#  estado_reporte_id :integer
 #  numReporte        :integer
 #  fechaInicio       :date
 #  fechaFin          :date
@@ -21,8 +21,9 @@
 #  updated_at        :datetime         not null
 #
 
+
 class ControlHora < ActiveRecord::Base
-  attr_accessible :fechaFin, :fechaInicio, :horasAcumuladas, :horasAnteriores, :horasMes, :id_estado_reporte, :id_inscripcion, :minutosAcumulados, :minutosAnteriores, :minutosMes, :numReporte, :observaciones, :supervisor
+  attr_accessible :fechaFin, :fechaInicio, :horasAcumuladas, :horasAnteriores, :horasMes, :estado_reporte_id, :inscripcion_id, :minutosAcumulados, :minutosAnteriores, :minutosMes, :numReporte, :observaciones, :supervisor
 
   belongs_to :inscripcion
 end
