@@ -1,1 +1,4 @@
-- Avances en inscripción: show completo (faltan observaciones)
+- Página de editar perfil de admin
+- Corrección en ruta de inscripción al SS
+- Corrección controlador de prestador
+- Corrección vista de impresión cuando no hay plantel

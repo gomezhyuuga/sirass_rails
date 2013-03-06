@@ -1,0 +1,16 @@
+<% provide(:title, "Editar perfil") %>
+
+<h1>Editar perfil</h1>
+<%= render 'shared/error_messages', object: @admin %>
+<%= simple_form_for @admin, html: { class: 'form-horizontal' },
+	defaults: { input_html: { class: 'input-block-level' } } do |field| %>
+	<%= render 'admins/fields', f: field %>
+	<!-- user fields -->
+	<legend>Datos de usuario</legend>
+	<%= field.simple_fields_for :user do |builder| %>
+		<%= render 'users/fields', f: builder %>
+	<% end %>
+	<div class="form-actions">
+		<%= field.submit "Actualizar datos", class: 'btn btn-large btn-success' %>
+	</div>
+<% end %>

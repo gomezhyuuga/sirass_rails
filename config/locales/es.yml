@@ -83,6 +83,11 @@ es:
         responsable:  "Nombre del responsable"
         tel:          "Teléfono"
         telExt:       "Extensión"
+      admin:
+        aMaterno:     "Apellido Materno"
+        aPaterno:     "Apellido Paterno"
+        nacimiento:   "Fecha de nacimiento"
+        cargo: "Cargo"
       cprograma:
         nombre:        "Nombre del Programa"
         objGeneral:    "Objetivo General"

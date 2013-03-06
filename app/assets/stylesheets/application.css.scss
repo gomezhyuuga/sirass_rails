@@ -77,8 +77,12 @@ header.navbar {
 #error_explanation {
 	color: #f00;
 	ul {
-	  list-style: none;
+	  // list-style: none;
 	  margin: 0 0 18px 0;
+
+	  li {
+	  	margin-left: 20px;
+	  }
 	}
 }
 

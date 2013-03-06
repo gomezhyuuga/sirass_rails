@@ -21,7 +21,7 @@ Sirass::Application.routes.draw do
     end
   end
 
-  resources :inscripcions, path: "inscripciones"
+  # resources :inscripcions, path: "inscripciones"
 
   match '/t/visual',  to: 'test_pages#visual'
 
@@ -53,6 +53,7 @@ Sirass::Application.routes.draw do
   scope "/admin" do
     resources :institucions
     resources :plantels
+    resources :inscripcions, path: "inscripciones"
   end
 
   root to: 'public_pages#index'

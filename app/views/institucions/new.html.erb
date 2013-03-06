@@ -1,7 +1,7 @@
 <% provide(:title, "Agregar nueva Institución") %>
 <h1>Agregar nueva institución al catálogo</h1>
 
-<%= simple_form_for "institucion" do |f| %>
+<%= simple_form_for @institucion do |f| %>
 	<%= render 'institucions/fields', f: f %>
 	<div class="form-actions">
 		<%= f.submit "Registrar", class: 'btn btn-large btn-success' %>

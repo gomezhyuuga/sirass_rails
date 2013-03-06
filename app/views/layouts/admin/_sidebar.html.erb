@@ -7,12 +7,12 @@
 			</a>
 		</li>
 		<li class="nav-header">Gestionar perfil</li>
-		<!-- <li>
-			<a href="#perfilAdmin">
+		<li>
+			<%= link_to edit_admin_path(current_user.admin) do %>
 				<i class="icon-pencil"></i>
 				Editar datos
-			</a>
-		</li> -->
+			<% end %>
+		</li>
 <!-- <li class="nav-header">Generar reportes</li>
     <li><a href="#gemPresentacion">Carta de Presentaci&oacute;n</a></li>
 		<li><a href="#genAceptacion">Carta de Aceptaci&oacute;n</a></li>
@@ -57,6 +57,12 @@
 			<%= link_to cprogramas_path do %>
 				<i class="icon-book"></i>
 				Gestionar programas
+			<% end %>
+		</li>
+		<li>
+			<%= link_to institucions_path do %>
+				<i class="icon-folder-close"></i>
+				Gestionar instituciones
 			<% end %>
 		</li>
 		<li class="nav-header">Catálogos</li>
