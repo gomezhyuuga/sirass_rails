@@ -6,19 +6,13 @@
 
 <%= simple_form_for @institucion, html: { class: 'form-horizontal' },
 	defaults: { input_html: { class: 'input-block-level' } } do |f| %>
-	<div class="row">
-		<div class="span6">
-			<!-- institucion fields -->
-			<%= render 'institucion_users/fields', f: f %>
-		</div>
-		<div class="span6">
-			<!-- user fields -->
-			<legend>Datos de usuario</legend>
-			<%= f.simple_fields_for :user do |builder| %>
-				<%= render 'users/fields', f: builder %>
-			<% end %>
-		</div>
-	</div>
+	<!-- institucion fields -->
+	<%= render 'institucion_users/fields', f: f %>
+	<!-- user fields -->
+	<legend>Datos de usuario</legend>
+	<%= f.simple_fields_for :user do |builder| %>
+		<%= render 'users/fields', f: builder %>
+	<% end %>
 	<div class="form-actions">
 		<%= submit_tag 'Actualizar datos', class: 'btn btn-large btn-success' %>
 	</div>

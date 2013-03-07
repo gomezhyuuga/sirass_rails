@@ -119,6 +119,13 @@ class CprogramasController < ApplicationController
 
 	def update
 		@cprograma = Cprograma.find(params[:id])
+		# Volver a calcular plazas y vacantes
+		plazas_ocupadas = @cprograma.plazas_ocupadas
+		solicitados = 0
+		@cprograma.licenciaturas.each { |l| solicitados += l.solicitados }
+		@cprograma.plazas = solicitados
+		@cprograma.vacantes = solicitados - plazas_ocupadas
+		
 		@cprograma.estado_programa_id = EstadoPrograma::ACTUALIZADO
 		if @cprograma.update_attributes(params[:cprograma]) &&
 			eliminar_licenciaturas(params[:cprograma][:licenciaturas_attributes]) &&

@@ -1,1 +1,60 @@
 <% provide(:title, 'Institucion') %>
+
+<h1>Detalles del usuario</h1>
+
+<p>
+	<strong>Usuario:</strong> <%= @institucion.user.username %>
+</p>
+
+<div class="row">
+	<div class="span4">
+		<h3>Institución</h3>
+		<p>
+			<%= @institucion.institucion.nombre %>
+		</p>
+	</div>
+	<div class="span4">
+		<h3>Plantel</h3>
+		<p>
+			<% if @institucion.plantel %>
+				<%= @institucion.plantel.nombre %>
+			<% else %>
+				Sin plantel
+			<% end %>
+		</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span4">
+		<h3>Domicilio</h3>
+		<p>
+			<%= @institucion.domicilio %>
+		</p>
+	</div>
+	<div class="span4">
+		<h3>Area</h3>
+		<p>
+			<%= @institucion.area %>
+		</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span4">
+		<h3>Responsable</h3>
+		<p>
+			<%= @institucion.responsable %>
+		</p>
+	</div>
+	<div class="span4">
+		<h3>Cargo</h3>
+		<p>
+			<%= @institucion.cargo %>
+		</p>
+	</div>
+</div>
+<h3>Teléfono</h3>
+<p>
+	<%= @institucion.tel %> <%= "| ext. #{@institucion.telExt}" if @institucion.telExt %>
+</p>

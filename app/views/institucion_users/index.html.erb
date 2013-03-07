@@ -5,10 +5,10 @@
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
+					<th>Usuario</th>
 					<th>Institución</th>
 					<th>Plantel</th>
 					<th>Responsable</th>
-					<th>Usuario</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
@@ -23,6 +23,9 @@
 				<% @institucion_users.each do |i| %>
 					<tr>
 						<td>
+							<%= i.user.username %>
+						</td>
+						<td>
 							<%= link_to truncate(i.institucion.nombre, length: 50), institucion_path(i.institucion) %>
 						</td>
 						<td>
@@ -32,10 +35,7 @@
 							<%= i.responsable %>
 						</td>
 						<td>
-							<%= i.user.username %>
-						</td>
-						<td>
-							
+							<%= render 'institucion_users/admin_btn', obj: i %>
 						</td>
 					</tr>
 				<% end %>

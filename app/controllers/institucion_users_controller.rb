@@ -24,7 +24,8 @@ class InstitucionUsersController < ApplicationController
 	end
 
 	def show
-		
+		@institucion = InstitucionUser.find(params[:id])
+		render layout: 'admin' if current_user.admin
 	end
 
 	def new(obj = nil)
@@ -38,6 +39,7 @@ class InstitucionUsersController < ApplicationController
 		if @institucion != current_user.institucion_user
 			authorize! :update, InstitucionUser
 		end
+		render layout: 'admin' if current_user.admin
 	end
 
 	def update

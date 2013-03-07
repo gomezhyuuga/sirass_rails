@@ -110,6 +110,10 @@ class Cprograma < ActiveRecord::Base
     self.find_int_ext_by_estado(false, EstadoPrograma::ACTUALIZADO)
   end
 
+  def plazas_ocupadas
+    self.plazas - self.vacantes
+  end
+
 
   private
     def self.find_int_ext_by_estado(is_interno, estado)

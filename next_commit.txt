@@ -1,4 +1,6 @@
 - Página de editar perfil de admin
+- Admin puede editar datos de usuario de institución
+- Show para institucion_user
 - Corrección en ruta de inscripción al SS
 - Corrección controlador de prestador
 - Corrección vista de impresión cuando no hay plantel
