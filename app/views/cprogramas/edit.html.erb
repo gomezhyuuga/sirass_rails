@@ -6,11 +6,15 @@
 <h2>Edita información de tu programa de Servicio Social</h2>
 <h6 class="center text-error">OBSERVACIONES HECHAS POR EL RESPONSABLE DEL PROGRAMA</h6>
 <blockquote class="text-warning">
-		<textarea class="input-block-level textarea-disabled" <%= "readonly='false'" if !logged_as? :admin %>><%= @cprograma.observaciones %>
-		</textarea>
+	<%= simple_format(@cprograma.observaciones || "Sin observaciones") %>
 </blockquote>
 <%= simple_form_for @cprograma, html: { class: 'form-horizontal' },
 	defaults: { input_html: { class: 'input-block-level' } } do |f| %>
 	<%= render 'cprogramas/forms/fields', f: f, type: 'nuevo' %>
 	<%= javascript_include_tag "cprogramas" %>
+<% end %>
+<hr />
+<% if can? :manage, Cprograma %>
+<!-- OBSERVACIONES -->
+<%= render 'cprogramas/forms/observaciones', programa: @cprograma %>
 <% end %>

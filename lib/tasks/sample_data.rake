@@ -158,7 +158,7 @@ namespace :db do
 		puts "Creando programas de prueba..."
 		# Crear programas
 		24.times do |n|
-			lorem = Faker::Lorem.paragraph(3)
+			lorem = Faker::Lorem.paragraph(5)
 			dias_ids = 5.times.map { Random.rand(1..7) }
 			p_ids = 5.times.map { Random.rand(1..9) }
 			a_ids = 5.times.map { Random.rand(1..9) }
@@ -169,6 +169,8 @@ namespace :db do
 				categoria_interno: [true, false].sample,
 				nombre: "Programa #{n}",
 				cveprograma: "UACM-SS-#{n}",
+				plazas: Random.rand(10..30),
+				vacantes: Random.rand(1..20),
 				institucion_user_id: Random.rand(1..20),
 				dia_ids: dias_ids,
 				poblacion_programa_ids: p_ids,

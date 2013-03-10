@@ -12,7 +12,7 @@
   </div>
   <div class="span6">
     <h4>Plantel</h4>
-    <p><%= @programa.institucion_user.plantel.nombre %></p>
+    <p><%= @programa.institucion_user.nombre_plantel %></p>
   </div>
 </div>
 <div class="row">
@@ -56,17 +56,17 @@
 <!--  DATOS DE PROGRAMA -->
 <h3>II. DATOS DEL PROGRAMA</h3>
 <h4>Objetivo General</h4>
-<p><%= @programa.objGeneral %></p>
+<%= simple_format @programa.objGeneral %>
 <h4>Justificación</h4>
-<p><%= @programa.justificacion %></p>
+<%= simple_format @programa.justificacion %>
 <h4>Desarrollo</h4>
-<p><%= @programa.desarrollo %></p>
+<%= simple_format @programa.desarrollo %>
 <h4>Recursos</h4>
-<p><%= @programa.recursos %></p>
+<%= simple_format @programa.recursos %>
 <h4>Evaluaci&oacute;n</h4>
-<p><%= @programa.evaluacion %></p>
+<%= simple_format @programa.evaluacion %>
 <h4>Resultados</h4>
-<p><%= @programa.resultados %></p>
+<%= simple_format @programa.resultados %>
 <!-- END DATOS DE PROGRAMA -->
 <!--  CARACTERISTICAS DE PROGRAMA -->
 <h3>III. CARACTERÍSTICAS DEL PROGRAMA</h3>
@@ -135,7 +135,7 @@
 
 <!--  OBSERVACIONES -->
 <h3>OBSERVACIONES</h3>
-<textarea readonly="true" style="resize:none; margin: 0 auto; display: block;" class="input-block-level"><%= @programa.notas %></textarea>
+<%= simple_format @programa.notas %>
 <!-- END OBSERVACIONES -->
 
 <% if can? :manage, Cprograma %>
@@ -143,8 +143,8 @@
 <h3>V. AUTORIZACIÓN</h3>
 <table class="table table-striped table-hover table-bordered" id="firmas">
   <tr>
-     <td><h5>Presidente <small>Dra. Minerva Camacho nuez</small></h5></td>
-     <td><h5>Secretaria Técnica <small>Lic. Martha G. Tera Ponce</small></h5></td>
+     <td><h5>Presidente</h5></td>
+     <td><h5>Secretaria Técnica</h5></td>
   </tr>
   <tr>
     <td>
@@ -155,19 +155,7 @@
     </td>
   </tr>
   <tr>
-     <td><h5>Vocal <small>Mtro. Guillermo Antonio Flores Carbajal</small></h5></td>
-     <td><h5>Vocal <small>Dr. Jesús Eduardo Fandiño Armas</small></h5></td>
-  </tr>
-  <tr>
-    <td>
-      <span class="placeholder"></span>
-    </td>
-    <td>
-      <span class="placeholder"></span>
-    </td>
-  </tr>
-  <tr>
-     <td><h5>Vocal <small>Dra. Tania Hogla Rodríguez Mora</small></h5></td>
+     <td><h5>Vocal</h5></td>
      <td><h5>Vocal</h5></td>
   </tr>
   <tr>
@@ -179,7 +167,19 @@
     </td>
   </tr>
   <tr>
-     <td><h5>Responsable de programa <small><%= @programa.institucion_user.responsable %></small></h5></td>
+     <td><h5>Vocal</h5></td>
+     <td><h5>Vocal</h5></td>
+  </tr>
+  <tr>
+    <td>
+      <span class="placeholder"></span>
+    </td>
+    <td>
+      <span class="placeholder"></span>
+    </td>
+  </tr>
+  <tr>
+     <td><h5>Responsable de programa</h5></td>
      <td><h5>Sello</h5></td>
   </tr>
   <tr>

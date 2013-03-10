@@ -57,15 +57,9 @@
       </div>
       <div class="span6">
         <h4>Plantel</h4>
-        <% if @programa.institucion_user.plantel %>
         <p>
-          <%= @programa.institucion_user.plantel.nombre %>
+          <%= @programa.institucion_user.nombre_plantel %>
         </p>
-        <% else %>
-          <p>
-            Sin plantel.
-          </p>
-        <% end %>
       </div>
     </div>
     <div class="row">
@@ -110,17 +104,17 @@
   <!-- TAB DATOS DE PROGRAMA -->
   <div class="tab-pane" id="tab_programa">
   	<h4>Objetivo General</h4>
-    <p><%= @programa.objGeneral %></p>
+    <%= simple_format @programa.objGeneral %>
   	<h4>Justificación</h4>
-    <p><%= @programa.justificacion %></p>
+    <%= simple_format @programa.justificacion %>
   	<h4>Desarrollo</h4>
-  	<p><%= @programa.desarrollo %></p>
+  	<%= simple_format @programa.desarrollo %>
   	<h4>Recursos</h4>
-    <p><%= @programa.recursos %></p>
+    <%= simple_format @programa.recursos %>
   	<h4>Evaluaci&oacute;n</h4>
-  	<p><%= @programa.evaluacion %></p>
+  	<%= simple_format @programa.evaluacion %>
   	<h4>Resultados</h4>
-  	<p><%= @programa.resultados %></p>
+  	<p><%= @programa.resultados %>
   </div>
   <div class="tab-pane" id="tab_caracteristicas">
   	<div class="row">
@@ -187,5 +181,5 @@
 <hr />
 <% if can? :manage, Cprograma %>
 <!-- OBSERVACIONES -->
-<%= render 'cprogramas/forms/observaciones' %>
+<%= render 'cprogramas/forms/observaciones', programa: @programa %>
 <% end %>

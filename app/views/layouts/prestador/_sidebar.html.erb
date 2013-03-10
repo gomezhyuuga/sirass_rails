@@ -6,9 +6,15 @@
 			</a>
 		</li>
 		<li id="inscripcion">
-			<a href="<%= inscripcion_servicio_path %>">
-				Inscripci&oacute;n
-			</a>
+			<% 
+				ruta_inscripcion = ""
+				if current_user.prestador and current_user.prestador.inscripcion_actual
+					ruta_inscripcion = mi_inscripcion_path
+				else
+					ruta_inscripcion = inscripcion_servicio_path
+				end
+			%>
+			<%= link_to "Inscripción", ruta_inscripcion %>
 		</li>
 		<li class="nav-header">Gestionar perfil</li>
 		<li id="perfil">

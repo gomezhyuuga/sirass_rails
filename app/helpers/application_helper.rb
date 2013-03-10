@@ -19,11 +19,13 @@ module ApplicationHelper
 	end
 
 	def programas_for_current_user
-		condiciones = []
-		if !current_user.prestador.estudiante_uacm?
-			condiciones = ['categoria_interno = ?', true]
+		if current_user.prestador.estudiante_uacm?
+			# Si es estudiante interno de la UACM, se puede inscribir en cualquier programa
+			return Cprograma.where(estado_programa_id: EstadoPrograma::ACTIVO)
+		else
+			# Solo programas internos si es estudiante externo a la UACM
+			return Cprograma.where(categoria_interno: true, estado_programa_id: EstadoPrograma::ACTIVO)
 		end
-		programas = Cprograma.find(:all, conditions: condiciones)
 	end
 
 	def puede_inscribirse?(programa)
@@ -36,5 +38,26 @@ module ApplicationHelper
 			return false
 		end
 		# Si es estudiante externo solo puede inscribirse a un programa interno
+	end
+
+	def label_color_for_inscripcion(inscripcion)
+		# == ESTADOS ==
+	# 	VALIDANDO		= 1
+	# EN_SERVICIO	= 2
+	# SUSPENDIDO	= 3
+	# BAJA				= 4
+	# FINALIZADO	= 5
+	# ERRORES			= 6
+	# CORRECTA		= 7
+		case inscripcion.estado_inscripcion_id
+		when EstadoInscripcion::VALIDANDO 		then "label-info"
+		when EstadoInscripcion::EN_SERVICIO 	then "label-success"
+		when EstadoInscripcion::SUSPENDIDO 		then "label-warning"
+		when EstadoInscripcion::BAJA 					then "label-important"
+		when EstadoInscripcion::FINALIZADO 		then "label-success"
+		when EstadoInscripcion::ERRORES 			then "label-important"
+		when EstadoInscripcion::CORRECTA 			then "label-success"
+		when EstadoInscripcion::ACTUALIZADA 	then "label-inverse"
+		end
 	end
 end

@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
   	flash[:error] = "Registro no encontrado!"
-  	redirect_to current_user.user_page
+    if current_user
+      redirect_to current_user.user_page
+    else
+      redirect_to root_path
+    end
+  	
   end
 end

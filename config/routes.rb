@@ -37,8 +37,9 @@ Sirass::Application.routes.draw do
 
   # Prestador
   scope "/prestador" do
-    get 'home',         to: 'prestador_pages#index', as: :prestador_home
-    get 'inscripcion',  to: 'inscripcions#new', as: :inscripcion_servicio
+    get 'home',           to: 'prestador_pages#index', as: :prestador_home
+    get 'inscripcion',    to: 'inscripcions#new', as: :inscripcion_servicio
+    get 'mi_inscripcion', to: 'prestador_pages#inscripcion'
   end
   # Institucion
   scope "/institucion" do

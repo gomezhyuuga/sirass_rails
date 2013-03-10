@@ -15,6 +15,7 @@
 # 5,"Finalizado"
 # 6,"Con errores"
 # 7,"Correcta"
+# 8,"Actualizada"
 
 class EstadoInscripcion < ActiveRecord::Base
 	VALIDANDO		= 1
@@ -23,7 +24,8 @@ class EstadoInscripcion < ActiveRecord::Base
 	BAJA				= 4
 	FINALIZADO	= 5
 	ERRORES			= 6
-	CORRECTA		= 7
+  CORRECTA    = 7
+	ACTUALIZADA	= 8
 
   attr_accessible :descripcion
 

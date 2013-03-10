@@ -15,7 +15,7 @@ es:
         other: "casi %{count} años"
   date:
     formats:
-      default: ! '%%d/%m/%Y'
+      default: ! '%d/%m/%Y'
   # Attributes names common to most models
   attributes:
     created_at: "Creado el"
@@ -50,7 +50,7 @@ es:
               blank: "Debes seleccionar uno"
 
     # Translate model names. Used in Model.human_name().
-    #models:
+    models:
       # For example,
       #   user: "Dude"
       user:   "Usuario"
@@ -100,9 +100,9 @@ es:
         notas:         "Observaciones del programa"
         ftiempo:       "Fecha de duración"
       inscripcion:
-        c_dias: "Días de asistencia"
+        dia_ids: "Días de asistencia"
         carrera: "Especialidad"
-        cprograma: "Nombre del programa:"
+        cprograma: "Nombre del programa"
         ano_ingreso: "Año de ingreso"
         creditos: "Total de créditos"
         nCursos_basicos: "Ciclo básico"

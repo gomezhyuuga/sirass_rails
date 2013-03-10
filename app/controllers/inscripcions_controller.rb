@@ -15,6 +15,11 @@ class InscripcionsController < ApplicationController
 
 	def create
 		@inscripcion = Inscripcion.new(params[:inscripcion])
+		if @inscripcion.cprograma and @inscripcion.cprograma.vacantes <= 0
+			flash[:error] = "Lo sentimos pero el programa al que deseas inscribirte ya no tiene vacantes!"
+			redirect_to prestador_home_path
+			return false
+		end
 		@inscripcion.prestador_id = current_user.prestador.id
 		@inscripcion.estado_inscripcion_id = EstadoInscripcion::VALIDANDO
 		# Valores por defecto
@@ -33,14 +38,8 @@ class InscripcionsController < ApplicationController
 	end
 
 	def show
+		authorize! :manage, Cprograma
 		@inscripcion = Inscripcion.find_by_id(params[:id])
-		if can? :manage, Inscripcion
-			render layout: 'application'
-		elsif current_user.prestador.inscripcions.include? @inscripcion
-			render layout: 'application'
-		else
-			flash[:error] = "No tienes permisos para ver esta página!"
-			redirect_to root_path
-		end
+		render layout: 'admin'
 	end
 end

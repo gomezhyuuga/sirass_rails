@@ -3,7 +3,7 @@ require "csv"
 namespace :db do
 	namespace :uacm do
 		desc "Llenar base de datos con información de la UACM"
-		task all: [:environment, :dev_users, :cuentas_admin, :instituciones, :planteles, :tipo_programa, :alcance_programa, :estado_programa, :estado_reporte, :horario_programa, :poblacion_programa, :dias]
+		task all: [:environment, :dev_users, :cuentas_admin, :instituciones, :planteles, :tipo_programa, :alcance_programa, :estado_programa, :estado_inscripcion, :estado_reporte, :horario_programa, :poblacion_programa, :dias]
 
 		desc "Users de admin"
 		task dev_users: :environment do

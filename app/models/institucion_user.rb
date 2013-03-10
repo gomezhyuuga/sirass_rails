@@ -29,4 +29,10 @@ class InstitucionUser < ActiveRecord::Base
   accepts_nested_attributes_for :institucion
   accepts_nested_attributes_for :plantel
   has_many :cprogramas
+
+  # Devuelve el nombre del plantel de modo seguro. Si no tiene ningún plantel asociado, devuelve
+  # "Sin plantel"
+  def nombre_plantel
+    if self.plantel then self.plantel.nombre else "Sin plantel" end
+  end
 end

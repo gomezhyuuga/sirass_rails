@@ -1,6 +1,7 @@
-- Página de editar perfil de admin
-- Admin puede editar datos de usuario de institución
-- Show para institucion_user
-- Corrección en ruta de inscripción al SS
-- Corrección controlador de prestador
-- Corrección vista de impresión cuando no hay plantel
+- Vista de inscripción actual de un prestador
+- Importar catálogo de EstadoInscripción
+- Mejoras en vista de inscripción
+- Ajustes en observaciones y páginas de programas
+- Correcciones en inscripción a programa de SS
+- Nuevo método nombre_plantel para InstitucionUser. Obtiene de forma segura el nombre del plantel
+- Eliminados archivos innecesarios

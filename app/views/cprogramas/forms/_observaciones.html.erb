@@ -1,10 +1,10 @@
 <h2>Observaciones</h2>
-<% if @programa.observaciones.blank? %>
+<% if !programa.observaciones or programa.observaciones.blank? %>
 <p class="lead">Sin observaciones</p>
 <% else %>
-  <p class="well well-small"><%= @programa.observaciones %></p>
+  <%= simple_format programa.observaciones, class: 'well well-small' %>
 <% end %>
-<%= simple_form_for @programa, url: update_observaciones_path(@programa) do |f| %>
+<%= simple_form_for programa, url: update_observaciones_path(programa) do |f| %>
   <%= f.input :observaciones, input_html: { class: 'input-block-level', rows: 7 } %>
   <div class="form-actions">
     <%= f.submit "Actualizar observaciones", class: 'btn btn-large btn-warning' %>
