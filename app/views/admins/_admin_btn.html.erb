@@ -1,0 +1,26 @@
+<div class="btn-group btn-block">
+	<a href="#" class="btn btn-primary btn-block dropdown-toggle" data-toggle="dropdown">
+		Administrar
+		<span class="caret"></span>
+	</a>
+	<ul class="dropdown-menu left" role="menu" aria-labelledby="dLabel">
+		<li>
+			<%= link_to obj do %>
+				<i class="icon-eye-open"></i>
+				Ver detalles
+			<% end %>
+		</li>
+		<li>
+			<%= link_to edit_admin_path(obj) do %>
+			<i class="icon-pencil"></i>
+			Editar
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admin_path(obj), method: :delete, confirm: 'Estás seguro?' do %>
+			<i class="icon-trash"></i>
+			Eliminar
+			<% end %>
+		</li>
+	</ul>
+</div>

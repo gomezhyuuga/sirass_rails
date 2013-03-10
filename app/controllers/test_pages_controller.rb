@@ -4,4 +4,8 @@ class TestPagesController < ApplicationController
   	@prestador = Prestador.new
   	@instituciones = Institucion.all
   end
+
+  def info
+  	@admin = Admin.first
+  end
 end

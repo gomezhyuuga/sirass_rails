@@ -11,12 +11,24 @@ class AdminsController < ApplicationController
 		
 	end
 
+	def destroy
+		@admin = Admin.find(params[:id])
+		if @admin.destroy
+			flash[:success] = "Usuario eliminado correctamente!"
+			redirect_to admin_home_path
+		else
+			flash[:error] = "Ocurrió un problema al eliminar el usuario!"
+			redirect_to admins_path
+		end
+	end
+
 	def show
-		
+		@admin = Admin.find(params[:id])
 	end
 
 	def index
-		require_role(:admin)
+		authorize! :manage, Admin
+		@admins = Admin.all
 	end
 
 	def edit

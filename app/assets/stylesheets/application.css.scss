@@ -118,3 +118,28 @@ body#cprogramas-print {
 table.table-center * {
 	tr, td, th { text-align: center; vertical-align: middle !important; }
 }
+
+#record_info {
+	text-align: right;
+	p { margin-bottom: 0 }
+	h6 { display: inline }
+	span { color: #949494 !important }
+}
+
+.well-show p {
+	*zoom: 1;
+	&:before, &:after{
+		display: table;
+		content: "";
+	}
+	&:after {
+			clear: both;
+	}
+	&>strong {
+		float: left;
+		width: 90px;
+		margin-right: 10px;
+		text-align: right;
+		color: #515151;
+	}
+}

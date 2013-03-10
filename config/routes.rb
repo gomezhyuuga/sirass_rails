@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 Sirass::Application.routes.draw do
-  get "test_pages/visual"
+  get "t/visual", to: "test_pages#visual"
+  get "t/info", to: "test_pages#info"
 
   resources :prestadors, path: "prestadores"
   resources :institucion_users, path: "institucions"
@@ -20,10 +21,6 @@ Sirass::Application.routes.draw do
       match 'print',                  to: 'cprogramas#print'
     end
   end
-
-  # resources :inscripcions, path: "inscripciones"
-
-  match '/t/visual',  to: 'test_pages#visual'
 
   match '/ayuda',     to: 'public_pages#ayuda'
   match '/programas', to: 'public_pages#programas'

@@ -20,7 +20,11 @@
 							<%= prestador.user.username %>
 						</td>
 						<td>
-							<%= link_to '2', '#' %>
+							<% if prestador.inscripcion_actual %>
+								<%= link_to prestador.inscripcion_actual, inscripcion_path(prestador.inscripcion_actual) %>
+							<% else %>
+								<i class="icon-remove"></i>
+							<% end %>
 						</td>
 						<td>
 							<%= render 'admin_btn', obj: prestador, size: 'btn-mini' %>

@@ -182,4 +182,6 @@
 <% if can? :manage, Cprograma %>
 <!-- OBSERVACIONES -->
 <%= render 'cprogramas/forms/observaciones', programa: @programa %>
+<!-- RECORD_INFO -->
+<%= render 'shared/record_info', record: @programa %>
 <% end %>

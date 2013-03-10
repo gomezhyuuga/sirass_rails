@@ -1,1 +1,28 @@
+<% provide :title, "Información del usuario" %>
 <h1>Perfil de administrador</h1>
+<div class="row">
+	<div class="span4 well-show">
+		<p>
+			<strong>Nombre:</strong>
+			<%= @admin.nombre %>
+		</p>
+		<p>
+			<strong><abbr title="Apellido Paterno">A. Paterno:</abbr></strong>
+			<%= @admin.aPaterno %>
+		</p>
+		<p>
+			<strong><abbr title="Apellido Materno">A. Materno:</abbr></strong>
+			<%= @admin.aMaterno %>
+		</p>
+		<p>
+			<strong>Cargo:</strong>
+			<%= @admin.cargo %>
+		</p>
+	</div>
+	<!-- FIN SPAN4 -->
+	<div class="span2 pull-right">
+		<%= render 'admin_btn', obj: @admin %>
+	</div>
+</div>
+
+<%= render 'shared/record_info', record: @admin %>

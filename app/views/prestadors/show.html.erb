@@ -50,3 +50,14 @@
 		</p>
 	</div>
 </div>
+
+<% if @prestador.inscripcion_actual %>
+<h2>Inscripción</h2>
+<p>
+	Este usuario actualmente está inscrito al programa:
+	<blockquote>
+		<%= Inscripcion.find(@prestador.inscripcion_actual).cprograma.nombre %>
+	</blockquote>
+</p>
+<%= link_to "Ver detalles", inscripcion_path(@prestador.inscripcion_actual), class: 'btn btn-primary' %>
+<% end %>

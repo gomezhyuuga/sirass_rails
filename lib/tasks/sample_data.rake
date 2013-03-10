@@ -192,6 +192,31 @@ namespace :db do
 	task quickTest: [:environment] do
 		puts "Probando..."
 		# Crear programas
-		add_column :prestadors, :inscripcion_actual, :id
+		id = 1
+		i = Inscripcion.new(practicas: false,
+			estado_inscripcion_id: EstadoInscripcion::VALIDANDO,
+			prestador_id: id,
+			institucion_id: 1,
+			plantel_id: 1,
+			carrera: "Técnico en Programación",
+			matricula: "2010090251",
+			ano_ingreso: 2009,
+			semestre: 6,
+			avance_cursos: 75.0,
+			promedio: 9.51,
+			creditos: 200,
+			programa_institucional: "Algún programa inst.",
+			cve_programa_institucional: "21212ede",
+			cprograma_id: 1,
+			area: "Oficina de Servicio Social",
+			fecha_inicio: "01/01/2013",
+			fecha_fin: "01/06/2013",
+			hora_entrada: "10:00",
+			hora_salida: "14:00",
+			difundir: true,
+			responsable: "Martha G. Tera Ponce",
+			cargoResponsable: "Responsable de Servicio Social",
+			dia_ids: [1, 2, 3, 4, 5])
+		i.save!
 	end
 end

@@ -21,7 +21,7 @@
 		<li><a href="#genBaja">Formato de baja</a></li>
 		<li class="divider"></li>-->
 		<!-- pendientes -->
-		<li class="nav-header">Pendientes</li>
+		<!-- <li class="nav-header">Pendientes</li> -->
 <!--  <li>
 			<a href="#control">
 				<i class="icon-pencil"></i>
@@ -46,7 +46,7 @@
 				Buscar
 			</a>
 		</li> -->
-		<li class="nav-header">Gestionar</li>
+		<li class="nav-header">Gestionar Usuarios</li>
     <li>
 			<%= link_to prestadors_path do %>
 				<i class="icon-user"></i>
@@ -54,15 +54,22 @@
 			<% end %>
 		</li>
 		<li>
-			<%= link_to cprogramas_path do %>
-				<i class="icon-book"></i>
-				Gestionar programas
-			<% end %>
-		</li>
-		<li>
 			<%= link_to institucion_users_path do %>
 				<i class="icon-folder-close"></i>
 				Gestionar instituciones
+			<% end %>
+		</li>
+		<li>
+			<%= link_to admins_path do %>
+				<i class="icon-user"></i>
+				Gestionar <abbr title="Administradores">admins.</abbr>
+			<% end %>
+		</li>
+		<li class="divider"></li>
+		<li>
+			<%= link_to cprogramas_path do %>
+				<i class="icon-book"></i>
+				Gestionar programas
 			<% end %>
 		</li>
 		<li class="nav-header">Catálogos</li>

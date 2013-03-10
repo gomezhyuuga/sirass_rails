@@ -30,21 +30,4 @@
 		}
 	}
 }
-
-.well-show p {
-		*zoom: 1;
-		&:before, &:after{
-			display: table;
-			content: "";
-		}
-		&:after {
-				clear: both;
-		}
-		&>strong {
-			float: left;
-			width: 78px;
-			margin-right: 10px;
-			text-align: right;
-		}
-	}
 	
