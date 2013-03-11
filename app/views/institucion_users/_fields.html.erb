@@ -1,6 +1,36 @@
 <legend>Datos de la institución</legend>
 <%= render 'institucions/select', f: f %>
+<div class="well well-small">
+	<p>
+		<strong>
+			Tu institución no se encuentra en la lista?
+			<%= link_to_function "Regístrala", "show_add_institucion()" %>
+		</strong>
+	</p>
+	<div class="hide" id="add_institucion_form">
+		<%= simple_fields_for "nueva_institucion" do |ibuilder| %>
+			<%= render 'institucions/fields', f: ibuilder %>
+		<% end %>
+		<p>
+			<%= link_to_function "Cancelar", "hide_add_institucion()", class: 'btn btn-danger' %>
+		</p>
+	</div>
+</div>
 <%= render 'plantels/select', f: f %>
+<div class="well well-small">
+	<p>
+		<strong>
+			Tu plantel no se encuentra en la lista?
+			<%= link_to_function "Regístralo", "show_add_plantel()" %>
+		</strong>
+	</p>
+	<div class="hide" id="add_plantel_form">
+		<%= simple_fields_for "nuevo_plantel" do |pbuilder| %>
+			<%= render 'plantels/fields', f: pbuilder %>
+		<% end %>
+		<%= link_to_function "Cancelar", "hide_add_plantel()", class: 'btn btn-danger' %>
+	</div>
+</div>
 <%= f.input :domicilio %>
 <%= f.input :area %>
 <%= f.input :responsable %>

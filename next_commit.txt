@@ -1,5 +1,7 @@
+- Posibilidad de registrar nuevos planteles e instituciones desde el registro y desde admin
 - Partial para mostrar información de registros. Útil para admins.
 - Mejorado index y show de prestador
 - Index de admins
 - Posibilidad de eliminar administrador
 - Rake task para hacer un "rake db:reset && rake db:migrate && rake db:uacm:all"
+- Corrección al generar clave con Postgresql y la condición != ""
