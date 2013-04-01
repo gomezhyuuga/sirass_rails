@@ -21,7 +21,7 @@
 						</td>
 						<td>
 							<% if prestador.inscripcion_actual %>
-								<%= link_to prestador.inscripcion_actual, inscripcion_path(prestador.inscripcion_actual) %>
+								<%= link_to "INSCRITO", inscripcion_path(prestador.inscripcion_actual), class: 'btn btn-mini btn-warning' %>
 							<% else %>
 								<i class="icon-remove"></i>
 							<% end %>

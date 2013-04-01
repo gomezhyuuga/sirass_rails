@@ -181,7 +181,7 @@ class CprogramasController < ApplicationController
 		@id 							= params[:id]
 		programa 					= Cprograma.find(@id)
 		# Obtiene los programas que ya tienen alguna clave asignada. Esta cantidad nos provee el número consecutivo
-		consecutivo 			= 1 + Cprograma.where('cveprograma IS NOT NULL and cveprograma != ""').count
+		consecutivo 			= 1 + Cprograma.where("cveprograma IS NOT NULL AND cveprograma != ''").count
 		# year 							= Date.today.year.to_s[2..3]
 		# Solo usar últimos dos dígitos del año (2013 -> 13)
 		year 							= programa.created_at.year.to_s[2..3]

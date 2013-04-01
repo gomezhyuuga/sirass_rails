@@ -1,4 +1,0 @@
-- Observaciones para inscripción terminado
-- Edit, destroy para inscripción
-- Prestador puede editar su inscripción
-- Corregir agregar licenciaturas, responsables

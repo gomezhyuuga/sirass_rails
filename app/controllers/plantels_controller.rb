@@ -2,11 +2,27 @@
 class PlantelsController < ApplicationController
 	layout 'admin'
 
+	def new
+		authorize! :manage, Plantel
+		@plantel = Plantel.new
+	end
+
+	def create
+		@plantel = Plantel.new(params[:plantel])
+		if @plantel.save
+			flash[:success] = "Plantel registrado correctamente!"
+			redirect_to plantels_path
+		else
+			flash.now[:error] = "Ocurrió un error registrando el plantel"
+			render 'new'
+		end
+	end
+
 	def destroy
 		@plantel = Plantel.find_by_id(params[:id])
 		@plantel.destroy
 		flash[:success] = "Plantel eliminado correctamente."
-		redirect_to current_user.user_page
+		redirect_to plantels_path
 	end
 
 	def edit

@@ -31,6 +31,8 @@ es:
             responsable: "Lic. Javier Aguilar"
             cargoResponsable: "Supervisor de área de informática"
             observaciones: "Escribe alguna observación"
+        plantel:
+            nombre: "Nombre del plantel"
     hints:
         defaults:
             nacimiento: 'Fecha en formato dd/mm/aaaa'
