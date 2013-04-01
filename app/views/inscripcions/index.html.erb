@@ -1,0 +1,41 @@
+<% provide :title, "Lista de inscripciones" %>
+
+<h1>Lista de inscripciones</h1>
+<%= will_paginate @inscripcions %>
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Prestador</th>
+			<th>Clave</th>
+			<th>Programa</th>
+			<th>Estado</th>
+			<th>Acción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @inscripcions.each do |i| %>
+			<tr>
+				<td>
+					<%= link_to i.id, i %>
+				</td>
+				<td>
+					<%= link_to "#{i.prestador.nombre} #{i.prestador.aPaterno} #{i.prestador.aMaterno}", i.prestador %>
+				</td>
+				<td>
+					<%= i.nControl %>
+				</td>
+				<td>
+					<%= i.cprograma.nombre %>
+				</td>
+				<td>
+					<%= i.estado_inscripcion.descripcion %>
+				</td>
+				<td>
+					<%= render 'admin_btn', obj: i %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= will_paginate %>

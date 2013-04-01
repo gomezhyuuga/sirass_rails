@@ -1,5 +1,5 @@
 <% if object.errors.any? %>
-  <div id="error_explanation" class="well well-small bgred">
+  <div id="error_explanation" class="well well-small bgred text-error">
     <h4>El formulario contiene errores!</h4>
     <ul>
     <% object.errors.full_messages.each do |msg| %>

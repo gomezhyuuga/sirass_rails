@@ -2,4 +2,11 @@
 
 <h1>Datos de tu inscripción actual</h1>
 
+<% if @inscripcion_actual.observaciones and !@inscripcion_actual.observaciones.blank? %>
+	<h2 class="text-error center">Observaciones</h2>
+	<blockquote class="text-warning">
+		<%= simple_format @inscripcion_actual.observaciones %>
+	</blockquote>
+<% end %>
+
 <%= render 'inscripcions/show_fields', inscripcion: @inscripcion_actual %>

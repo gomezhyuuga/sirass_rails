@@ -4,6 +4,27 @@ class InscripcionsController < ApplicationController
 	layout 'prestador'
 	before_filter :require_login
 
+	def index
+		authorize! :manage, Inscripcion
+		@inscripcions = Inscripcion.paginate(page: params[:page], per_page: 30)
+		render layout: 'admin'
+	end
+
+	def update
+		
+	end
+
+	def destroy
+		authorize! :manage, Inscripcion
+		@inscripcion = Inscripcion.find(params[:id])
+		if @inscripcion.destroy
+			flash[:success] = "Inscripción eliminada con éxito"
+		else
+			flash[:success] = "Ocurrión un error eliminando la inscripción"
+		end
+		redirect_to inscripcions_path
+	end
+
 	def new
 		require_role(:prestador)
 		if current_user.prestador && !current_user.prestador.inscripcion_actual
@@ -38,8 +59,19 @@ class InscripcionsController < ApplicationController
 	end
 
 	def show
-		authorize! :manage, Cprograma
+		authorize! :manage, Inscripcion
 		@inscripcion = Inscripcion.find_by_id(params[:id])
 		render layout: 'admin'
+	end
+
+	def update_observaciones
+		observaciones = params[:inscripcion][:observaciones]
+		if Inscripcion.update(params[:inscripcion_id], observaciones: observaciones, estado_inscripcion_id: EstadoInscripcion::ERRORES)
+			flash[:success] = "Observaciones actualizadas con éxito"
+			redirect_to inscripcion_path(params[:inscripcion_id])
+		else
+			flash[:error] = "Ocurrió un error actualizando las observaciones"
+			redirect_to inscripcion_path(params[:inscripcion_id])
+		end
 	end
 end

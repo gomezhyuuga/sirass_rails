@@ -3,3 +3,7 @@
 	<h1>Detalles de inscripci&oacute;n</h1>
 </div>
 <%= render 'show_fields', inscripcion: @inscripcion %>
+<% if can? :manage, Inscripcion %>
+	<%= render 'inscripcions/observaciones', inscripcion: @inscripcion %>
+	<%= render 'shared/record_info', record: @inscripcion %>
+<% end %>

@@ -37,6 +37,7 @@ Sirass::Application.routes.draw do
     get 'home',           to: 'prestador_pages#index', as: :prestador_home
     get 'inscripcion',    to: 'inscripcions#new', as: :inscripcion_servicio
     get 'mi_inscripcion', to: 'prestador_pages#inscripcion'
+    get 'mi_inscripcion/edit', to: 'prestador_pages#edit_inscripcion'
   end
   # Institucion
   scope "/institucion" do
@@ -51,7 +52,9 @@ Sirass::Application.routes.draw do
   scope "/admin" do
     resources :institucions
     resources :plantels
-    resources :inscripcions, path: "inscripciones"
+    resources :inscripcions,        path: "inscripciones" do
+      match 'update_observaciones',   to: 'inscripcions#update_observaciones', via: :put
+    end
   end
 
   root to: 'public_pages#index'

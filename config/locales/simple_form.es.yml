@@ -30,6 +30,7 @@ es:
             dias: "Selecciona los días que asistirás"
             responsable: "Lic. Javier Aguilar"
             cargoResponsable: "Supervisor de área de informática"
+            observaciones: "Escribe alguna observación"
     hints:
         defaults:
             nacimiento: 'Fecha en formato dd/mm/aaaa'

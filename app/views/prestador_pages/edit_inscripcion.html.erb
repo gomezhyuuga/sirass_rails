@@ -1,0 +1,25 @@
+<%= provide(:title, "Editar datos de inscripción") %>
+<% content_for(:javascript) do %>
+	<%= javascript_include_tag 'institucions' %>
+	<%= javascript_include_tag 'inscripcions' %>
+<% end %>
+<div class="page-header">
+	<h1>Editar datos de inscripción</h1>
+</div>
+
+<%= render 'shared/error_messages', object: @inscripcion %>
+<% if params[:programa_id] && !params[:programa_id].blank? %>
+	<!-- Usar hidden field para auto seleccionar el programa a inscribirse -->
+	<%= hidden_field :programa, :id, value: params[:programa_id] %>
+<% end %>
+<%= simple_form_for @inscripcion, html: { class: 'form-horizontal' },
+	defaults: { input_html: { class: 'input-large' } } do |f| %>
+	<p class="lead">Selecciona el programa al cual deseas inscribirte:</p>
+	<%= f.association :cprograma, collection: programas_for_current_user,
+	label_method: :nombre, value_method: :id,
+	input_html: { class: 'use-select2 input-block-level', 'data-placeholder' => 'Selecciona el programa' } %>
+
+	<p>Para continuar llena los siguientes datos.</p>
+
+	<%= render 'inscripcions/fields', f: f %>
+<% end %>

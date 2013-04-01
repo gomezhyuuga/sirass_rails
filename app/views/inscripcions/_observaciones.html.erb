@@ -1,0 +1,20 @@
+<hr/>
+<h2>Observaciones</h2>
+<p>
+	<i class="icon-question-sign"></i>
+	Escribir en el siguiente campo si hay alg&uacute;n error en la inscripci&oacute;n (<em>especificar dato</em>) o si es necesario hacerle notificar algo a la persona que envi&oacute; la solicitud de inscripci&oacute;n.
+</p>
+<p>
+	<i class="icon-question-sign"></i>
+	En caso de que sea una solicitud de inscripci&oacute;n y tenga errores, pulsar el bot&oacute;n <em><strong>Con errores</strong></em>.
+	Si lo que se desea es actualizar &uacute;nicamente el campo de observaciones, pulsar en <em><strong>Actualizar observaciones</strong></em>.
+</p>
+<%= simple_form_for inscripcion, url: inscripcion_update_observaciones_path(inscripcion) do |f| %>
+	<%= f.input :observaciones, input_html: { rows: 4, class: 'input-block-level' } %>
+	<div class="form-actions">
+		<button class="btn btn-warning" name="commit" type="submit">
+			<i class="icon-warning-sign icon-white"></i>
+			Actualizar observaciones
+		</button>
+	</div>
+<% end %>

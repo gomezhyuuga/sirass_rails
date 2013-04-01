@@ -1,5 +1,4 @@
-- Partial para mostrar información de registros. Útil para admins.
-- Mejorado index y show de prestador
-- Index de admins
-- Posibilidad de eliminar administrador
-- Rake task para hacer un "rake db:reset && rake db:migrate && rake db:uacm:all"
+- Observaciones para inscripción terminado
+- Edit, destroy para inscripción
+- Prestador puede editar su inscripción
+- Corregir agregar licenciaturas, responsables

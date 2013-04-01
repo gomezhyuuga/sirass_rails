@@ -9,4 +9,8 @@ class PrestadorPagesController < ApplicationController
 	def inscripcion
 		@inscripcion_actual = Inscripcion.find(current_user.prestador.inscripcion_actual)
 	end
+
+	def edit_inscripcion
+		@inscripcion = Inscripcion.find(current_user.prestador.inscripcion_actual)
+	end
 end

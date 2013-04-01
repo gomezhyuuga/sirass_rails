@@ -29,9 +29,10 @@
 #  difundir                   :boolean
 #  responsable                :string(255)
 #  cargoResponsable           :string(255)
-#  observaciones              :string(255)
+#  observaciones              :text(255)
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
+#  nControl                   :string(255)
 #
 
 class Inscripcion < ActiveRecord::Base
