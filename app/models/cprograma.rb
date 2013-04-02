@@ -7,14 +7,14 @@
 #  cveprograma          :string(255)
 #  categoria_id         :integer
 #  status_id            :integer
-#  nombre               :string(255)
+#  nombre               :string(600)
 #  objGeneral           :text
 #  justificacion        :text
 #  desarrollo           :text
 #  recursos             :text
 #  evaluacion           :text
 #  resultados           :text
-#  lugar                :text(255)
+#  lugar                :string(1000)
 #  horario_programa_id  :integer
 #  plazas               :integer
 #  vacantes             :integer
