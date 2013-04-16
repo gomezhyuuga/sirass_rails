@@ -16,7 +16,7 @@
 		============================== -->
 		<header class="gradient">
 			<div class="container row">
-				<div class="span9">
+				<div class="span7">
 					<h1>SiRASS, <em>Servicio Social</em></h1>
 					<p>Servicio Social simplificado. Olv&iacute;date de llenar
 					tus formatos a mano y de las tediosas revisiones.</p>
@@ -34,10 +34,11 @@
 						<%= link_to 'Regístrate', registro_path, class: "btn btn-inverse btn-large" %>
 					<% end %>
 				</div>
-				<div class="span2 pull-right">
+				<div class="pull-right">
 					<%= image_tag 'UACM_SS_logo.png' %>
+					<%= image_tag 'UACM_logo.jpg' %>
 				</div>
-	    	</div>
+	    </div>
 		</header>
 		<% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>

@@ -3,13 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "utils";
 #public_pages-index {
-	$header-start: #FC913A;
-	$header-end: #FC4D3A;
-	$header-text: #972e23;
+	$header-start: #7cac4e;
+	$header-end: #63893e;
+	$header-text: #30431e;
 	header {
 		color: $header-text;
 		height: 180px;
 		padding-top: 10px;
+		padding-bottom: 20px;
 		margin-bottom: 60px;
 		/* header_container: */
 		@include gradient($header-start, $header-end);
@@ -22,9 +23,7 @@
 			margin-top: 28px;
 			text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
 		}
-		img {
-			margin-top: 20px;
-		}
+		img { margin-top: -10px; }
 
 		p {
 			text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.5);
