@@ -7,7 +7,7 @@
 			</a>
 		</li>
 		<li class="nav-header">Gestionar perfil</li>
-		<li>
+		<li id="sidebar_editar">
 			<%= link_to edit_admin_path(current_user.admin) do %>
 				<i class="icon-pencil"></i>
 				Editar datos
@@ -47,45 +47,45 @@
 			</a>
 		</li> -->
 		<li class="nav-header">Gestionar Usuarios</li>
-    <li>
+    <li id="sidebar_prestadores">
 			<%= link_to prestadors_path do %>
 				<i class="icon-user"></i>
 				Gestionar prestadores
 			<% end %>
 		</li>
-		<li>
+		<li id="sidebar_instituciones_users">
 			<%= link_to institucion_users_path do %>
 				<i class="icon-folder-close"></i>
 				Gestionar instituciones
 			<% end %>
 		</li>
-		<li>
+		<li id="sidebar_admins">
 			<%= link_to admins_path do %>
 				<i class="icon-user"></i>
 				Gestionar <abbr title="Administradores">admins.</abbr>
 			<% end %>
 		</li>
 		<li class="divider"></li>
-		<li>
+		<li id="sidebar_programas">
 			<%= link_to cprogramas_path do %>
 				<i class="icon-book"></i>
 				Gestionar programas
 			<% end %>
 		</li>
-		<li>
+		<li id="sidebar_inscripciones">
 			<%= link_to inscripcions_path do %>
 				<i class="icon-list-alt"></i>
 				Gestionar inscripciones
 			<% end %>
 		</li>
 		<li class="nav-header">Catálogos</li>
-		<li>
+		<li id="sidebar_instituciones">
 			<%= link_to institucions_path do %>
 				<i class="icon-list"></i>
 				Lista de instituciones
 			<% end %>
 		</li>
-		<li>
+		<li id="sidebar_planteles">
 			<%= link_to plantels_path do %>
 				<i class="icon-list"></i>
 				Lista de planteles

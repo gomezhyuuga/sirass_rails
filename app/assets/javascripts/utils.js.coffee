@@ -26,6 +26,15 @@ jQuery ->
   #   bootbox.alert flash_messages.html(), "Cerrar", ->
   #     flash_messages.slideUp()
 
+  # Aplicar clases active a navbar y sidebar
+  navbar_activo = $('#nav_active')
+  sidebar_activo = $('#sidebar_active')
+  if navbar_activo
+    $("#nav_#{navbar_activo.val()}").addClass('active')
+  if sidebar_activo
+    $("#sidebar_#{sidebar_activo.val()}").addClass('active')
+  
+
 # MODAL Dialogs para sobreescribir el comportamiento por defecto de data-confirm
 $.rails.allowAction = (link) ->
   return true unless link.attr('data-confirm')

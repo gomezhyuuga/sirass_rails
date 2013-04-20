@@ -1,4 +1,5 @@
 <% provide(:title, 'Lista de institucion_users Afiliadas') %>
+<% provide(:sidebar_active, :instituciones_users) %>
 <% if @institucion_users.any? %>
 	<h1>Instituciones registradas</h1>
 	<%= will_paginate @institucion_users %>

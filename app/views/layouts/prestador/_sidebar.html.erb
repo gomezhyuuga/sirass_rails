@@ -1,11 +1,11 @@
 <nav class="span3" id="sidebar">
 	<ul class="nav nav-list well well-small">
-		<li id="home" class="active">
+		<li id="sidebar_home">
 			<a href="<%= prestador_home_path %>"><i class="icon-home"></i>
 				Inicio
 			</a>
 		</li>
-		<li id="inscripcion">
+		<li id="sidebar_inscripcion">
 			<% 
 				ruta_inscripcion = ""
 				if current_user.prestador and current_user.prestador.inscripcion_actual
@@ -17,37 +17,37 @@
 			<%= link_to "Inscripción", ruta_inscripcion %>
 		</li>
 		<li class="nav-header">Gestionar perfil</li>
-		<li id="perfil">
+		<li id="sidebar_editar">
 			<%= link_to edit_prestador_path(current_user.prestador) do %>
 				<i class="icon-edit"></i>
 				Editar datos
 			<% end %>
 		</li>
 		<li class="nav-header">Generar reportes</li>
-		<li id="controlHoras"><a href="#">Control Mensual de Horas</a></li>
-		<li id="informeBim"><a href="#">Informe Bimensual</a></li>
-		<li id="informeFin"><a href="#">Informe Final</a></li>
+		<li id="sidebar_cHoras"><a href="#">Control Mensual de Horas</a></li>
+		<li id="sidebar_informeBim"><a href="#">Informe Bimensual</a></li>
+		<li id="sidebar_informeFin"><a href="#">Informe Final</a></li>
 		<li class="divider"></li>
 		<!-- pendientes -->
 		<li class="nav-header">Revisiones</li>
-		<li id="revControl">
+		<li id="sidebar_revControl">
 			<a href="#">
 				<i class="icon-calendar"></i>
 				Control de Horas
 			</a>
 		</li>
-		<li id="revBim"><a href="#"><i class="icon-tasks"></i>
+		<li id="sidebar_revBim"><a href="#"><i class="icon-tasks"></i>
 			Informe Bimensual
 		</a>
 		</li>
-		<li id="revFin"><a href="#">
+		<li id="sidebar_revFin"><a href="#">
 			<i class="icon-eye-open"></i>
 			Informe Final
 		</a>
 		</li>
 		<!-- avisos -->
 		<li class="divider"></li>
-		<li id="avisos">
+		<li id="sidebar_avisos">
 			<a href="#">
 				<i class="icon-exclamation-sign"></i>
 				Avisos
