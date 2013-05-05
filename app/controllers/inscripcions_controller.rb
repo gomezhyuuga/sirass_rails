@@ -105,17 +105,17 @@ class InscripcionsController < ApplicationController
 		end
 	end
 
-	def generar_nuevo_nControl
+	def generar_nuevo_ncontrol
 		@id = params[:inscripcion_id]
 		inscripcion = Inscripcion.find(@id)
-		consecutivo = 1 + Inscripcion.where("nControl IS NOT NULL AND nControl != ''").count
+		consecutivo = 1 + Inscripcion.where("ncontrol IS NOT NULL AND ncontrol != ''").count
 		categoria = ""
 		if inscripcion.prestador.estudiante_uacm?
 			categoria = "I"
 		else
 			categoria = "E"
 		end
-		@nControl = "SS-#{categoria}-#{consecutivo}"
+		@ncontrol = "SS-#{categoria}-#{consecutivo}"
 		respond_to do |format|
 			format.js
 		end
