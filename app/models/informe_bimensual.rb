@@ -21,4 +21,8 @@
 
 class InformeBimensual < ActiveRecord::Base
   attr_accessible :actividades, :horasAcumuladas, :horasBimestre, :inicioPeriodo, :minutosAcumulados, :minutosBimestre, :numReporte, :terminoPeriodo
+
+  #Relaciones
+  belongs_to :inscripcion
+  belongs_to :estado_reporte
 end

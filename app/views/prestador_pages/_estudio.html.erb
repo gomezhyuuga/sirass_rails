@@ -1,0 +1,9 @@
+<p class="lead"><strong>¿Estudias en la UACM?</strong></p>
+<p class="lead"><strong>NOTA:Debes responder responsablemente, ya que esto se utiliza en tu inscripción a servicio social</strong></p>
+<input type="hidden" id="estancia" value="true" />
+<%= simple_form_for @p, :url => url_for(:action => 'estudianteDe'),
+	html: {class: 'form-horizontal'},
+	defaults: { input_html: { class: 'input-large' } } do |f| %>
+	<%= f.input :estudiante_uacm, as: :radio_buttons %>
+	<%= f.submit 'Aceptar', confirm: "Confirmar estancia" %>
+<% end %>
