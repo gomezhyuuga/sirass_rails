@@ -5,6 +5,8 @@
 		<%= render 'prestador_pages/messages/validando', inscripcion: inscripcion %>
 	<% when EstadoInscripcion::EN_SERVICIO %>
 		<%= render '/prestador_pages/messages/ya_inscrito', inscripcion: inscripcion %>
+	<% when EstadoInscripcion::ERRORES %>
+		<%= render '/prestador_pages/messages/con_errores', inscripcion: inscripcion %>
 	<% end %>
 <% else %>
 	<%= render 'prestador_pages/messages/no_inscrito' %>

@@ -8,7 +8,9 @@ jQuery ->
       autoclose: true,
       language: 'es'
     }
-  notaEstan = document.getElementById('estancia').value
+  notaEstan = document.getElementById('estancia')
+  if notaEstan
+    notaEstan = notaEstan.value
   # Activar select2
   elements_for_select2 = $('.use-select2')
   if elements_for_select2.size() > 0

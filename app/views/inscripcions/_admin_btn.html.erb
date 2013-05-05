@@ -22,5 +22,23 @@
 			Eliminar
 			<% end %>
 		</li>
+		<!-- CAMBIO DE ESTADO -->
+		<li class="dropdown-submenu pull-left">
+			<a href="#" tabindex="-1">
+				<i class="icon-wrench"></i>
+				Cambiar estado
+			</a>
+			<ul class="dropdown-menu">
+				<% EstadoInscripcion.all.each do |e| %>
+				<li>
+					<%= link_to inscripcion_update_status_path(obj, e.id), confirm: "Actualizando estado de inscripción",
+					method: :put do %>
+						<i class="<%= icon_for_estado_inscripcion(e.id) %>"></i>
+						<%= e.descripcion %>
+					<% end %>
+				</li>
+				<% end %>
+			</ul>
+		</li>
 	</ul>
 </div>

@@ -7,9 +7,13 @@
 				<%= inscripcion.estado_inscripcion.descripcion %>
 			</span>
 		</p>
+		<p>
+			<strong>N. Control:</strong>
+			<%= inscripcion.nControl || "No asignado" %>
+		</p>
 	</div>
 	<div class="span3 pull-right">
-		<p><strong>Horas realizadas:</strong> 250</p>
+		<p><strong>Horas realizadas:</strong> 0</p>
 		<p><strong>Usuario:</strong> <%= link_to inscripcion.prestador.user.username, inscripcion.prestador %></p>
 	</div>
 </div>
@@ -38,7 +42,7 @@
 			</div>
 			<div class="span3 pull-right">
 				<h2>Carrera</h2>
-				<p>Técnico en Programación</p>
+				<p><%= inscripcion.carrera %></p>
 				<h2>Matr&iacute;cula</h2>
 				<p><%= inscripcion.matricula %></p>
 				<h2>Ingreso</h2>

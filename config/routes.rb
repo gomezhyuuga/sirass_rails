@@ -55,6 +55,8 @@ Sirass::Application.routes.draw do
     resources :plantels
     resources :inscripcions,        path: "inscripciones" do
       match 'update_observaciones',   to: 'inscripcions#update_observaciones', via: :put
+      match 'update_status/:status',  to: 'inscripcions#update_status', as: 'update_status'
+      get   'generar_nuevo_nControl', to: 'inscripcions#generar_nuevo_nControl', as: 'generar_nControl'
     end
   end
 

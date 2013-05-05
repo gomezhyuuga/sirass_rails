@@ -2,6 +2,5 @@
 <%= render 'shared/saludo' %>
 <% if @p.estudiante_uacm == nil %>
 	<%= render 'estudio' %>
-<% else %>
-	<%= render 'status', inscripcion: current_inscripcion %>
 <% end %>
+<%= render 'status', inscripcion: current_inscripcion %>

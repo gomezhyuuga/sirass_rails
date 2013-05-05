@@ -9,6 +9,7 @@
 		<%= f.input :nacimiento, label: 'Fecha de nacimiento', as: :string,
 			input_html: { 'data-behaviour' => 'datepicker', class: 'input-small'} %>
 		<%= f.input :sexo, collection: [:Masculino, :Femenino], as: :radio_buttons, item_wrapper_class: 'inline' %>
+		<%= f.input :estudiante_uacm, as: :radio_buttons, item_wrapper_class: 'inline' %>
 	</div> <!-- fin datos personales -->
 	<div class="span6">
 		<!-- Domicilio

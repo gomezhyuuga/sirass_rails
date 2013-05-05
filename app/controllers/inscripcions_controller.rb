@@ -11,7 +11,37 @@ class InscripcionsController < ApplicationController
 	end
 
 	def update
-		
+		@inscripcion = Inscripcion.find(params[:id])
+		if @inscripcion.update_attributes( params[:inscripcion] )
+			flash[:success] = "Inscripción actualizada correctamente"
+			if logged_as? :admin
+				redirect_to inscripcions_path
+			else
+				redirect_to prestador_home_path
+			end
+		else
+			flash[:error].now = "Ocurrió un error actualizando la inscripción"
+			if logged_as? :admin
+				render 'edit', layout: 'admin'
+			else
+				redirect_to mi_inscripcion_edit_path
+			end
+		end
+	end
+
+	# Actualizar solo el estado de un programa
+	def update_status
+		if Inscripcion.update(params[:inscripcion_id], estado_inscripcion_id: params[:status])
+			flash[:success] = "Estado actualizado correctamente!"
+		else
+			flash[:error] = "Ocurrió un error actualizando el estado"
+		end
+		redirect_to inscripcions_path
+	end
+
+	def edit
+		@inscripcion = Inscripcion.find(params[:id])
+		render layout: 'admin'
 	end
 
 	def destroy
@@ -44,8 +74,8 @@ class InscripcionsController < ApplicationController
 		@inscripcion.prestador_id = current_user.prestador.id
 		@inscripcion.estado_inscripcion_id = EstadoInscripcion::VALIDANDO
 		# Valores por defecto
-		@inscripcion.programa_institucional = "Apoyo académico-administrativo en la UACM"
-		@inscripcion.cve_programa_institucional = "02036d0576"
+		@inscripcion.programa_institucional = "PENDIENTE"
+		@inscripcion.cve_programa_institucional = "###############"
 		if @inscripcion.save && Prestador.update(@inscripcion.prestador.id, inscripcion_actual: @inscripcion.id)
 			programa = @inscripcion.cprograma
 			programa.vacantes -= 1
@@ -72,6 +102,22 @@ class InscripcionsController < ApplicationController
 		else
 			flash[:error] = "Ocurrió un error actualizando las observaciones"
 			redirect_to inscripcion_path(params[:inscripcion_id])
+		end
+	end
+
+	def generar_nuevo_nControl
+		@id = params[:inscripcion_id]
+		inscripcion = Inscripcion.find(@id)
+		consecutivo = 1 + Inscripcion.where("nControl IS NOT NULL AND nControl != ''").count
+		categoria = ""
+		if inscripcion.prestador.estudiante_uacm?
+			categoria = "I"
+		else
+			categoria = "E"
+		end
+		@nControl = "SS-#{categoria}-#{consecutivo}"
+		respond_to do |format|
+			format.js
 		end
 	end
 end

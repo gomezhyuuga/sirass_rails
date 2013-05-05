@@ -14,7 +14,10 @@
 					ruta_inscripcion = inscripcion_servicio_path
 				end
 			%>
-			<%= link_to "Inscripción", ruta_inscripcion %>
+			<%= link_to ruta_inscripcion do %>
+				<i class="icon-pencil"></i>
+				Inscripción
+			<% end %>
 		</li>
 		<li class="nav-header">Gestionar perfil</li>
 		<li id="sidebar_editar">

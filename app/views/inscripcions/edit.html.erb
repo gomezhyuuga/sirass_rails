@@ -1,0 +1,17 @@
+<% provide(:title, "Editar inscripción") %>
+
+<h1>Editando inscripción de prestador</h1>
+
+<%= simple_form_for @inscripcion, defaults: { input_html: { class: 'input-block-level' } } do |f| %>
+	<%= f.input :programa_institucional %>
+	<%= f.input :cve_programa_institucional %>
+	<h4>Número de Control</h4>
+	<div class="input-append">
+		<%= f.text_field :nControl, class: 'input-large' %>
+		<%= link_to 'Generar', inscripcion_generar_nuevo_nControl_path(@inscripcion), remote: true, class: 'btn btn-warning' %>
+	</div>
+	
+	<div class="actions">
+		<%= f.submit "Actualizar", class: 'btn btn-large btn-success' %>
+	</div>
+<% end %>

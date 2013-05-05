@@ -21,10 +21,10 @@ module ApplicationHelper
 	def programas_for_current_user
 		if current_user.prestador.estudiante_uacm?
 			# Si es estudiante interno de la UACM, se puede inscribir en cualquier programa
-			return Cprograma.where(estado_programa_id: EstadoPrograma::ACTIVO)
+			return Cprograma.where("estado_programa_id = ? AND vacantes > 0", EstadoPrograma::ACTIVO)
 		else
 			# Solo programas internos si es estudiante externo a la UACM
-			return Cprograma.where(categoria_interno: true, estado_programa_id: EstadoPrograma::ACTIVO)
+			return Cprograma.where("estado_programa_id = ? AND vacantes > 0 AND categoria_interno = ?", EstadoPrograma::ACTIVO, true)
 		end
 	end
 
@@ -53,11 +53,24 @@ module ApplicationHelper
 		when EstadoInscripcion::VALIDANDO 		then "label-info"
 		when EstadoInscripcion::EN_SERVICIO 	then "label-success"
 		when EstadoInscripcion::SUSPENDIDO 		then "label-warning"
-		when EstadoInscripcion::BAJA 					then "label-important"
+		when EstadoInscripcion::BAJA 			then "label-important"
 		when EstadoInscripcion::FINALIZADO 		then "label-success"
-		when EstadoInscripcion::ERRORES 			then "label-important"
-		when EstadoInscripcion::CORRECTA 			then "label-success"
+		when EstadoInscripcion::ERRORES 		then "label-important"
+		when EstadoInscripcion::CORRECTA 		then "label-success"
 		when EstadoInscripcion::ACTUALIZADA 	then "label-inverse"
+		end
+	end
+
+	def icon_for_estado_inscripcion(id)
+		case id
+		when EstadoInscripcion::VALIDANDO 		then "icon-time"
+		when EstadoInscripcion::EN_SERVICIO 	then "icon-user"
+		when EstadoInscripcion::SUSPENDIDO 		then "icon-pause"
+		when EstadoInscripcion::BAJA 			then "icon-remove"
+		when EstadoInscripcion::FINALIZADO 		then "icon-ok"
+		when EstadoInscripcion::ERRORES 		then "icon-thumbs-down"
+		when EstadoInscripcion::CORRECTA 		then "icon-thumbs-up"
+		when EstadoInscripcion::ACTUALIZADA 	then "icon-inbox"
 		end
 	end
 end

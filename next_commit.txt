@@ -1,1 +1,2 @@
-- Limite para nombre del programa a 600 caracteres
+- Gestión de inscripciones
+- Generar números de control

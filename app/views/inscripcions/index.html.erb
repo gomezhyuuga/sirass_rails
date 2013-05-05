@@ -6,9 +6,9 @@
 <table class="table table-bordered table-striped table-hover">
 	<thead>
 		<tr>
-			<th>ID</th>
+			<!-- <th>ID</th> -->
 			<th>Prestador</th>
-			<th>Clave</th>
+			<th>N. Control</th>
 			<th>Programa</th>
 			<th>Estado</th>
 			<th>Acción</th>
@@ -17,9 +17,9 @@
 	<tbody>
 		<% @inscripcions.each do |i| %>
 			<tr>
-				<td>
-					<%= link_to i.id, i %>
-				</td>
+				<!-- <td> -->
+					<%#= link_to i.id, i %>
+				<!-- </td> -->
 				<td>
 					<%= link_to "#{i.prestador.nombre} #{i.prestador.aPaterno} #{i.prestador.aMaterno}", i.prestador %>
 				</td>
@@ -30,7 +30,9 @@
 					<%= i.cprograma.nombre %>
 				</td>
 				<td>
-					<%= i.estado_inscripcion.descripcion %>
+					<span class="label <%= label_color_for_inscripcion(i) %>">
+						<%= i.estado_inscripcion.descripcion %>
+					</span>
 				</td>
 				<td>
 					<%= render 'admin_btn', obj: i %>

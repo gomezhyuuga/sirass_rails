@@ -22,10 +22,11 @@ class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_USERNAME_REGEX = /^[a-z0-9\-_]+$/i
 
   validates_confirmation_of :password
 
-  validates :username, uniqueness: true, presence: true#, length: { minimum: 6, maximum: 16 }
+  validates :username, uniqueness: true, presence: true, length: { minimum: 6, maximum: 16 }, format: { with: VALID_USERNAME_REGEX }
   validates :email, format: { with: VALID_EMAIL_REGEX }, presence: true
   # Validar que el password esté presente cuando se crea un usuario
   validates :password, length: { minimum: 6, maximum: 16 }, presence: true, on: :create

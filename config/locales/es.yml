@@ -16,6 +16,9 @@ es:
       over_x_years:
         one: "más de 1 año"
         other: "más de %{count} años"
+      x_days:
+        one: "1 día"
+        other: "%{count} días"
   date:
     formats:
       default: ! '%d/%m/%Y'
@@ -82,6 +85,7 @@ es:
         dColonia:     "Colonia"
         dNumExt:      "Número exterior"
         dNumInt:      "Número interior"
+        estudiante_uacm:  "¿Estudias en la UACM?"
       institucion_user:
         responsable:  "Nombre del responsable"
         tel:          "Teléfono"

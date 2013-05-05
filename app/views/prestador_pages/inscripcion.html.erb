@@ -10,4 +10,10 @@
 	</blockquote>
 <% end %>
 
+
+<%= link_to mi_inscripcion_edit_path, class: 'btn pull-right btn-warning' do %>
+	<i class="icon-pencil"></i>
+	Editar
+<% end %>
+
 <%= render 'inscripcions/show_fields', inscripcion: @inscripcion_actual %>
