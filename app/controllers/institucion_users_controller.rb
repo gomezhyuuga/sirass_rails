@@ -92,21 +92,35 @@ class InstitucionUsersController < ApplicationController
 		if @institucion.save and @institucion.update_attributes(params[:institucion_user])
 			# Detectar si se está registrando un nuevo plantel
 			if !params[:nuevo_plantel][:nombre].blank?
+				@institucion.plantel = nil
 				@institucion.plantel_id = nil
 				plantel = @institucion.build_plantel
 				plantel.nombre = params[:nuevo_plantel][:nombre]
 				plantel.institucion_id = @institucion.institucion_id
-			end
-			if @institucion.save
+				plantel.save
+				@institucion.plantel = plantel
+				if @institucion.save
+					flash[:success] = "Datos actualizados correctamente!"
+					redirect_to current_user.user_page
+				else
+					flash.now[:error] = "Ocurrió un error actualizando los datos."
+					if current_user.admin
+						redirect_to current_user.user_page
+					else
+						render 'edit'
+					end
+				end
+			else
 				flash[:success] = "Datos actualizados correctamente!"
 				redirect_to current_user.user_page
-			else
-				flash.now[:error] = "Ocurrió un error actualizando los datos."
-				render 'edit'
-			end
+			end				
 		else
 			flash.now[:error] = "Ocurrió un error actualizando los datos."
-			render 'edit'
+			if current_user.admin
+				redirect_to current_user.user_page
+			else
+				render 'edit'
+			end
 		end
 	end
 end

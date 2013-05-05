@@ -1,3 +1,7 @@
 <% provide(:sidebar_active, :home) %>
 <%= render 'shared/saludo' %>
-<%= render 'status', inscripcion: current_inscripcion %>
+<% if @p.estudiante_uacm == nil %>
+	<%= render 'estudio' %>
+<% else %>
+	<%= render 'status', inscripcion: current_inscripcion %>
+<% end %>

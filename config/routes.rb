@@ -38,6 +38,7 @@ Sirass::Application.routes.draw do
     get 'inscripcion',    to: 'inscripcions#new', as: :inscripcion_servicio
     get 'mi_inscripcion', to: 'prestador_pages#inscripcion'
     get 'mi_inscripcion/edit', to: 'prestador_pages#edit_inscripcion'
+    put 'estudianteUACM',   to: 'prestador_pages#estudianteDe'
   end
   # Institucion
   scope "/institucion" do
