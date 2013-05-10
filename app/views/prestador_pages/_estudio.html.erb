@@ -5,5 +5,5 @@
 	html: {class: 'form-horizontal'},
 	defaults: { input_html: { class: 'input-large' } } do |f| %>
 	<%= f.input :estudiante_uacm, as: :radio_buttons %>
-	<%= f.submit 'Aceptar', confirm: "Confirmar estancia" %>
+	<%= f.submit 'Aceptar', class: 'btn btn-primary', confirm: "Confirmar estancia" %>
 <% end %>

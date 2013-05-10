@@ -13,11 +13,12 @@ class EstadoReporte < ActiveRecord::Base
   attr_accessible :descripcion
 
   # Relaciones
-  has_and_belongs_to_many :control_horas
+  has_and_belongs_to_many :control_horas # Está mal la relación!
+  has_many :monthly_reports
 
   # CONSTANTES
   SIN_REVISION 	= 1
   CON_ERRORES 	= 2
-  CORRECTO 			= 3
+  CORRECTO 		= 3
   ACTUALIZADO 	= 4
 end

@@ -1,2 +1,3 @@
-- Gestión de inscripciones
-- Generar números de control
+- Envío de Control Mensual de Horas
+- Detalles de Control Mensual de Horas
+- Lista de Control Mensual de Horas del prestador

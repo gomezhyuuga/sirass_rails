@@ -31,6 +31,9 @@ es:
   errors:
     messages:
       taken: "ya lo utiliza otro usuario"
+      not_a_number: "debe ser un número"
+      less_than: "debe ser menor a %{count}"
+      greater_than: "debe ser mayor a %{count}"
 
   # Active Record models configuration
   activerecord:
@@ -54,6 +57,10 @@ es:
           attributes:
             sexo:
               blank: "Debes seleccionar uno"
+        # monthly_report:
+        #   attributes:
+        #     numero:
+        #       not_a_number: ""
 
     # Translate model names. Used in Model.human_name().
     models:
@@ -117,3 +124,8 @@ es:
         fecha_inicio: "Fecha de inicio"
         fecha_fin: "Fecha de término"
         cargoResponsable: "Cargo del responsable"
+      monthly_report:
+        numero: "Número de reporte"
+        fecha_inicio: 'De la fecha'
+        fecha_fin: 'A la fecha'
+        horas_acum: 'Horas acumuladas'

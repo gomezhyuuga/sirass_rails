@@ -1,0 +1,96 @@
+<!-- RESUMEN DE HORAS -->
+<div class="row">
+	<div class="span2">
+		<%= f.input :horas do %>
+			<div class="input-append">
+				<%= f.text_field :horas, class: 'input-mini right', placeholder: "HH:MM" %>
+				<span class="add-on">
+		  			<i class="icon-time"></i>
+		  		</span>
+			</div>
+		<% end %>
+	</div>
+	<div class="span2 offset1">
+		<%= f.input :horas_anteriores do %>
+			<div class="input-append">
+				<%= f.text_field :horas_anteriores, class: 'input-mini right', placeholder: "HHH:MM" %>
+				<span class="add-on">
+		  			<i class="icon-time"></i>
+		  		</span>
+			</div>
+		<% end %>
+	</div>
+	<div class="span2 offset1">
+		<%= f.input :horas_acum do %>
+			<div class="input-append">
+				<%= f.text_field :horas_acum, class: 'input-mini right', placeholder: "HHH:MM" %>
+				<span class="add-on">
+		  			<i class="icon-time"></i>
+		  		</span>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<!-- ACCIONES -->
+<div class="well well-small center">
+	<button class="btn btn-primary" type="button" onclick="add_hour()">
+		<i class="icon-plus"></i>
+		Agregar hora
+	</button>
+</div>
+
+<!-- REGISTROS DE HORAS -->
+<table class="table table-bordered table-condensed" id="table_horas">
+	<thead>
+		<tr>
+			<th>Fecha</th>
+			<th>Hora de entrada</th>
+			<th>Hora de salida</th>
+			<th>Eliminar</th>
+		</tr>
+	</thead>
+	<tbody>
+	<%= f.simple_fields_for :monthly_report_hours do |builder| %>
+		<tr>
+			<td>
+				<%= builder.hidden_field :_destroy, as: :hidden, value: false %>
+				<%= builder.input :fecha, label: false do %>
+					<div class="input-append bootstrap-timepicker-component">
+						<%= builder.text_field :fecha, 'data-behaviour' => 'datepicker', class: 'input-small', placeholder: "dd/mm/aaaa" %>
+						<span class="add-on">
+				  			<i class="icon-calendar"></i>
+				  		</span>
+					</div>
+				<% end %>
+			</td>
+			<td>
+				<%= builder.input :entrada, label: false do %>
+					<div class="input-append bootstrap-timepicker-component">
+						<%= builder.text_field :entrada, class: 'use-timepicker dateselect-time input-small' %>
+						<span class="add-on">
+				  			<i class="icon-time"></i>
+				  		</span>
+					</div>
+				<% end %>
+			</td>
+			<td>
+				<%= builder.input :salida, label: false do %>
+					<div class="input-append bootstrap-timepicker-component">
+						<%= builder.text_field :salida, class: 'use-timepicker dateselect-time input-small' %>
+						<span class="add-on">
+				  			<i class="icon-time"></i>
+				  		</span>
+					</div>
+				<% end %>
+			</td>
+			<td class="valign">
+				<button type="button" onclick='remove_hour(this, <%= f.object.new_record? %>)' class="btn btn-danger btn-mini btn-block">
+					<i class="icon-remove"></i>
+					Eliminar
+				</button>
+			</td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

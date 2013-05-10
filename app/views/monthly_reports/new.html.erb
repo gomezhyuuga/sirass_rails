@@ -1,0 +1,43 @@
+<% provide(:title, "Envio de Control de Horas") %>
+<% content_for :javascript do  %>
+	<%= javascript_include_tag 'monthly_reports' %>
+<% end %>
+
+<h1>Enviar Control Mensual de Horas</h1>
+<p>
+	Por favor llena la siguiente información para generar tu <em>Control Mensual de Horas.</em>
+</p>
+
+<%= render 'shared/error_messages', object: @control_horas %>
+<%= simple_form_for @control_horas, defaults: { input_html: { class: 'input-block-level' } }, url: control_horas_path do |f| %>
+	<!-- TABS -->
+	<ul class="nav nav-tabs" id="tabs">
+		<li class="active">
+			<a href="#tab_general" data-toggle="tab">Datos generales</a>
+		</li>
+		<li>
+			<a href="#tab_horas" data-toggle="tab">Registro de horas</a>
+		</li>
+	</ul>
+	<!-- TABS CONTENTS -->
+	<div class="tab-content">
+		<!-- DATOS GENERALES DEL REPORTE -->
+		<div class="tab-pane active" id="tab_general">
+			<%= render 'fields', f: f %>
+			<div class="well well-small center">
+				Para continuar pulsa la pestaña
+				<strong>
+					<%= link_to_function 'Registro de Horas', "$('#tabs a:last').tab('show')" %>
+				</strong>
+			</div>
+		</div>
+
+		<!-- REGISTRO DE HORAS DEL REPORTE -->
+		<div class="tab-pane" id="tab_horas">
+			<%= render 'fields_horas', f: f %>
+			<div class="form-actions">
+				<%= f.submit "Enviar reporte", class: 'btn btn-success' %>
+			</div>
+		</div>
+	</div>
+<% end %>

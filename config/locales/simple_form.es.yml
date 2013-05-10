@@ -31,6 +31,14 @@ es:
             responsable: "Lic. Javier Aguilar"
             cargoResponsable: "Supervisor de área de informática"
             observaciones: "Escribe alguna observación"
+        monthly_report:
+            supervisor: "Nombre de la persona que supervisó tu servicio"
+            numero: "#"
+            fecha_inicio: "dd/mm/aaaa"
+            fecha_fin: "dd/mm/aaaa"
+            horas: "80:00"
+            horas_anteriores: "160:00"
+            horas_acum: "140:00"
         plantel:
             nombre: "Nombre del plantel"
     hints:

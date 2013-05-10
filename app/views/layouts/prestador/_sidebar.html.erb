@@ -27,17 +27,19 @@
 			<% end %>
 		</li>
 		<li class="nav-header">Generar reportes</li>
-		<li id="sidebar_cHoras"><a href="#">Control Mensual de Horas</a></li>
+		<li id="sidebar_control_horas">
+			<%= link_to "Control Mensual de Horas", new_control_hora_path %>
+		</li>
 		<li id="sidebar_informeBim"><a href="#">Informe Bimensual</a></li>
 		<li id="sidebar_informeFin"><a href="#">Informe Final</a></li>
 		<li class="divider"></li>
 		<!-- pendientes -->
 		<li class="nav-header">Revisiones</li>
 		<li id="sidebar_revControl">
-			<a href="#">
+			<%= link_to control_horas_path do %>
 				<i class="icon-calendar"></i>
 				Control de Horas
-			</a>
+			<% end %>
 		</li>
 		<li id="sidebar_revBim"><a href="#"><i class="icon-tasks"></i>
 			Informe Bimensual

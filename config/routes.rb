@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 Sirass::Application.routes.draw do
+
   get "t/visual", to: "test_pages#visual"
   get "t/info", to: "test_pages#info"
 
@@ -39,6 +40,7 @@ Sirass::Application.routes.draw do
     get 'mi_inscripcion', to: 'prestador_pages#inscripcion'
     get 'mi_inscripcion/edit', to: 'prestador_pages#edit_inscripcion'
     put 'estudianteUACM',   to: 'prestador_pages#estudianteDe'
+    resources :monthly_reports, path: 'control_horas', as: 'control_horas'
   end
   # Institucion
   scope "/institucion" do

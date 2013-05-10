@@ -20,7 +20,10 @@ jQuery ->
     }
 
   # Activar timepicker
-  $('.use-timepicker').timepicker { showMeridian: false }
+  $('.use-timepicker').timepicker { 
+    showMeridian: false,
+    defaultTime: false
+  }
 
   # Mostrar flash en modals
   # flash_messages = $('#flash')
