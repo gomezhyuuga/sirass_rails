@@ -14,6 +14,7 @@ Sirass::Application.routes.draw do
     get 'internos',       to: 'cprogramas#index', internos: true, on: :collection
     get 'externos',       to: 'cprogramas#index', internos: false, on: :collection
     get 'cambiar_clave',  to: 'cprogramas#cambiar_clave', on: :member
+    get 'search',         to: 'cprogramas#search', on: :collection
     member do
       get   'generar_nueva_clave',    to: 'cprogramas#generar_nueva_clave'
       match 'update_clave',           to: 'cprogramas#update_clave', via: :put
@@ -35,12 +36,15 @@ Sirass::Application.routes.draw do
 
   # Prestador
   scope "/prestador" do
-    get 'home',           to: 'prestador_pages#index', as: :prestador_home
-    get 'inscripcion',    to: 'inscripcions#new', as: :inscripcion_servicio
-    get 'mi_inscripcion', to: 'prestador_pages#inscripcion'
-    get 'mi_inscripcion/edit', to: 'prestador_pages#edit_inscripcion'
-    put 'estudianteUACM',   to: 'prestador_pages#estudianteDe'
-    resources :monthly_reports, path: 'control_horas', as: 'control_horas'
+    get 'home',                 to: 'prestador_pages#index', as: :prestador_home
+    get 'search',               to: 'prestadors#search', as: :prestador_search
+    get 'inscripcion',          to: 'inscripcions#new', as: :inscripcion_servicio
+    get 'mi_inscripcion',       to: 'prestador_pages#inscripcion'
+    get 'mi_inscripcion/edit',  to: 'prestador_pages#edit_inscripcion'
+    put 'estudianteUACM',       to: 'prestador_pages#estudianteDe'
+    get 'reporte_horas',        to: 'prestador_pages#reporte_horas'
+    resources :monthly_reports, path: 'control_horas', as: 'control_horas'#, except: :update
+    # put 'horas/:id', to: 'monthly_reports#update', as: :update_horas
   end
   # Institucion
   scope "/institucion" do
@@ -59,6 +63,7 @@ Sirass::Application.routes.draw do
       match 'update_observaciones',   to: 'inscripcions#update_observaciones', via: :put
       match 'update_status/:status',  to: 'inscripcions#update_status', as: 'update_status'
       get   'generar_nuevo_ncontrol', to: 'inscripcions#generar_nuevo_ncontrol', as: 'generar_ncontrol'
+      get   'reportes_mensuales',     to: 'inscripcions#reportes_mensuales', on: :member
     end
   end
 
@@ -119,5 +124,5 @@ Sirass::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  match ':controller(/:action(/:id))(.:format)'
 end

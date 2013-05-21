@@ -4,3 +4,4 @@ $ ->
 		id = id_programa.val()
 		console.log "Inscribiéndose al programa con id: #{id}"
 		$('#inscripcion_cprograma_id').select2 "val", id
+	$('.use-timepicker').timepicker({ showMeridian: false })

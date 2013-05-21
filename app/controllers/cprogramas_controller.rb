@@ -27,6 +27,18 @@ class CprogramasController < ApplicationController
 		render layout: 'application'
 	end
 
+	def search
+		like = "LIKE"
+		if ActiveRecord::Base.connection.adapter_name.downcase == "postgresql"
+			like = "ILIKE"
+		end
+		if can? :manage, Cprograma
+			@cprogramas = Cprograma.where("nombre #{like} ?", "%#{params[:programa]}%").paginate(page: params[:page])
+			flash.now[:error] = "Búsqueda sin resultados" unless @cprogramas
+			render :index, layout: 'application'
+		end
+	end
+
 	def show
 		@programa = Cprograma.find(params[:id])
 		if can? :manage, Cprograma

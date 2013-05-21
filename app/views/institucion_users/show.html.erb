@@ -58,3 +58,9 @@
 <p>
 	<%= @institucion.tel %> <%= "| ext. #{@institucion.telExt}" if @institucion.telExt %>
 </p>
+
+<% if can? :manage, Inscripcion %>
+<p>
+	<%= render 'shared/back_button', link: institucion_users_path %>
+</p>
+<% end %>

@@ -20,7 +20,7 @@ class InscripcionsController < ApplicationController
 				redirect_to prestador_home_path
 			end
 		else
-			flash[:error].now = "Ocurrió un error actualizando la inscripción"
+			flash.now[:error] = "Ocurrió un error actualizando la inscripción"
 			if logged_as? :admin
 				render 'edit', layout: 'admin'
 			else
@@ -119,5 +119,13 @@ class InscripcionsController < ApplicationController
 		respond_to do |format|
 			format.js
 		end
+	end
+
+	def reportes_mensuales
+		@inscripcion = Inscripcion.find(params[:id])
+		@reportes = @inscripcion.monthly_reports
+		@usuario = @inscripcion.prestador.user
+		@prestador = @inscripcion.prestador
+		render layout: 'admin'
 	end
 end

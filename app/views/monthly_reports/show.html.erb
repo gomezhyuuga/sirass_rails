@@ -2,7 +2,7 @@
 
 <h1>Detalles del reporte</h1>
 <p class="lead">
-	A continuación se presentan los detalles de tu <em>Control Mensual de Horas</em>
+	A continuación se presentan los detalles del <em>Control Mensual de Horas</em>
 </p>
 <div class="row">
 	<div class="span2">
@@ -11,20 +11,28 @@
 			<%= @reporte.horas %>
 		</p>
 	</div>
-	<div class="span3 offset1">
+	<div class="span2 offset1">
 		<strong>Horas anteriores:</strong>
 		<p class="well well-small center">
-			<%= @reporte.horas_acum %>
+			<%= @reporte.horas_anteriores %>
 		</p>
 	</div>
 	<div class="span2 pull-right">
 		<strong>Horas acumuladas:</strong>
 		<p class="well well-small center">
-			<%= @reporte.horas_anteriores %>
+			<%= @reporte.horas_acum %>
 		</p>
 	</div>
 </div>
-
+<p>
+	<strong>Estado:</strong>
+	<span class="label <%= lbl_estado_reporte(@reporte) %>">
+		<%= @reporte.estado_reporte.descripcion %>
+	</span>
+</p>
+<div class="pull-right span2">
+	<%= render 'admin_btn', obj: @reporte %>
+</div>
 <h2>Registro de Horas</h2>
 
 <table class="table table-bordered table-striped table-condensed">

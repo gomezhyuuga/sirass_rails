@@ -6,6 +6,22 @@
         <li id="nav_programas"><%= link_to "Programas", programas_path  %></li>
         <li><%#= link_to "Proceso", proceso_path  %></li>
         <li><%#= link_to "Ayuda", ayuda_path  %></li>
+        <% if can? :manage, Cprograma %>
+        <li class="divider-vertical"></li>
+        <li>
+          <%= form_tag prestador_search_path, method: :get, class: 'navbar-search' do |f| %>
+            <% text_field_tag :nombre, nil, placeholder: 'Buscar prestador', class: 'search-query' %>
+          <% end %>
+        </li>
+        <li>
+          <span class="sep"></span>
+        </li>
+        <li>
+          <%= form_tag search_cprogramas_path, method: :get, class: 'navbar-search' do |f| %>
+            <% text_field_tag :programa, nil, placeholder: 'Buscar programa', class: 'search-query' %>
+          <% end %>
+        </li>
+        <% end %>
       </ul>
 
       <% if logged_in? %>

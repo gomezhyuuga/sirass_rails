@@ -1,4 +1,5 @@
 # encoding: utf-8
+include MonthlyReportsHelper
 class MonthlyReportsController < ApplicationController
   before_filter :require_login
   layout 'prestador'
@@ -16,23 +17,62 @@ class MonthlyReportsController < ApplicationController
       @control_horas = MonthlyReport.new
       # Comenzar en el primer día del mes pasado o del mes que se envíe por parámetro
       today = Date.today
-      mes_inicio = today.prev_month.month
-      anio_inicio = today.prev_month.year
-      if params[:mes] && params[:mes].to_i > 0
-        mes_inicio = params[:mes].to_i
-      end
-      if params[:anio] && params[:anio].to_i > 0
-        anio_inicio = params[:anio].to_i
+      anterior = today.prev_month
+      anterior = Date.new(anterior.year, anterior.month, 1)
+      mes_inicio = anterior.month
+      anio_inicio = anterior.year
+      inteligente = false
+      if params[:date] && params[:date][:mes].to_i > 0 &&
+        params[:date][:anio].to_i > 0
+          mes_inicio = params[:date][:mes].to_i
+          anio_inicio = params[:date][:anio].to_i
+          anterior = Date.new(anio_inicio, mes_inicio, 1)
+          inteligente = true
       end
       
-      # Llenado inteligente del mes anterior y sólo días de la semana
-      dias = dias_para_mes(mes_inicio, anio_inicio)
-      dias.each do |d|
+      # Llenado inteligente del mes seleccionado y sólo días de la semana
+      if inteligente
+        dias = dias_para_mes(mes_inicio, anio_inicio) 
+        @control_horas.horas = "80:00"
+        dias_enum = dias.to_enum
+        horas = 0
+        while horas < 80
+          d = dias_enum.next
+          registro = @control_horas.monthly_report_hours.build
+          registro.fecha = d
+          registro.entrada = "08:00"
+          registro.salida = "12:00"
+          horas += 4
+        end
+      else
         registro = @control_horas.monthly_report_hours.build
-        registro.fecha = d
         registro.entrada = "08:00"
-        registro.salida = "10:00"
+        registro.salida = "12:00"
+        @control_horas.horas = "04:00"
       end
+
+      inscripcion = current_user.prestador.inscripcion_actual
+      numero = 1 + MonthlyReport.where(inscripcion_id: inscripcion).count
+      reporte_anterior = MonthlyReport.where(inscripcion_id: inscripcion).order(:updated_at).last
+      hanteriores = "00:00"
+      hanteriores = reporte_anterior.horas if reporte_anterior
+      @control_horas.numero = numero
+      @control_horas.fecha_inicio = anterior
+      @control_horas.fecha_fin = anterior.next_month
+      @control_horas.horas_anteriores = hanteriores
+    end
+  end
+
+  def edit
+    @control_horas = MonthlyReport.find(params[:id])
+    if current_user.prestador
+      inscripcion = Inscripcion.find(current_user.prestador.inscripcion_actual)
+      if not inscripcion.monthly_reports.include? @control_horas
+        redirect_to control_horas_path
+      end
+    else
+      authorize! :manage, MonthlyReport
+      render layout: 'admin'
     end
   end
 
@@ -42,7 +82,7 @@ class MonthlyReportsController < ApplicationController
     @control_horas.estado_reporte_id = EstadoReporte::SIN_REVISION
     if @control_horas.save
       flash[:success] = "Control de Horas guardado correctamente"
-      redirect_to :control_horas_path
+      redirect_to control_horas_path
     else
       flash.now[:error] = "Ocurrió un error guardando el registro..."
       render 'new'
@@ -50,13 +90,43 @@ class MonthlyReportsController < ApplicationController
   end
 
   def update
+    @control_horas = MonthlyReport.find(params[:id])
+    if @control_horas.update_attributes(params[:monthly_report])
+      flash[:success] = "Reporte actualizado correctamente"
+      redirect_to current_user.user_page
+    else
+      flash[:error] = "Ocurrió un error actualizando tu reporte."
+      render :edit
+    end
   end
 
-  def delete
+  def destroy
+    @control_horas = MonthlyReport.find(params[:id])
+    puede_eliminar = false
+    if current_user.prestador
+      inscripcion = Inscripcion.find(current_user.prestador.inscripcion_actual)
+      puede_eliminar = true if inscripcion.monthly_reports.include? @control_horas
+    else
+      authorize! :manage, MonthlyReport
+      puede_eliminar = true
+    end
+    
+    if puede_eliminar
+      @control_horas = MonthlyReport.find(params[:id])
+      if @control_horas.destroy
+        flash[:success] = "Reporte eliminado correctamente"
+      else
+        flash[:error] = "No se pudo eliminar el reporte, ocurrió un error."
+      end
+    end
+    redirect_to current_user.user_page
   end
 
   def show
     @reporte = MonthlyReport.find(params[:id])
+    if current_user.admin
+      render layout: 'admin'
+    end
   end
 
   private

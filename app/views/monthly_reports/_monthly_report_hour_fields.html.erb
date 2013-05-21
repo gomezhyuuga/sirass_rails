@@ -1,0 +1,27 @@
+<tr>
+	<td>
+		<%= f.hidden_field :_destroy, as: :hidden, value: false %>
+		<%= f.input :fecha, label: false do %>
+			<div class="input-append bootstrap-timepicker-component">
+				<%= f.text_field :fecha, 'data-behaviour' => 'datepicker', class: 'input-small', placeholder: "dd/mm/aaaa", value: f.object.fecha.to_s %>
+				<span class="add-on">
+		  			<i class="icon-calendar"></i>
+		  		</span>
+			</div>
+		<% end %>
+	</td>
+	<td class="center valign">
+		
+		<%= f.input :entrada, label: false, input_html: { class: 'input-mini', onChange: 'calcularTiempo()' } %>
+	</td>
+	<td class="center valign">
+		
+		<%= f.input :salida, label: false, input_html: { class: 'input-mini', onChange: 'calcularTiempo()' } %>
+	</td>
+	<td class="center valign">
+		<button type="button" onclick='remove_hour(this, <%= f.object.new_record? %>)' class="btn btn-danger btn-mini btn-block">
+			<i class="icon-remove"></i>
+			Eliminar
+		</button>
+	</td>
+</tr>

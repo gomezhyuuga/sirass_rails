@@ -1,0 +1,34 @@
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>De</th>
+			<th>A</th>
+			<th>Horas</th>
+			<th>Estado</th>
+			<th>Acción</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% reportes.each do |r| %>
+		<tr>
+			<td class="valign">
+				<%= r.fecha_inicio %>
+			</td>
+			<td class="valign">
+				<%= r.fecha_fin %>
+			</td>
+			<td class="valign">
+				<%= r.horas %>
+			</td>
+			<td class="center valign">
+				<span class="label <%= lbl_estado_reporte(r) %>">
+					<%= r.estado_reporte.descripcion %>
+				</span>
+			</td>
+			<td class="valign">
+				<%= render 'monthly_reports/admin_btn', obj: r %>
+			</td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

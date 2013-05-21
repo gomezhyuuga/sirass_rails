@@ -1,3 +1,6 @@
-- Envío de Control Mensual de Horas
-- Detalles de Control Mensual de Horas
-- Lista de Control Mensual de Horas del prestador
+- Búsqueda de prestadores y programas
+- Mejoras en envio de control de horas
+- Mejoras de usabilidad (agregados botones útiles)
+- Lista de Control de Horas del admin
+- Más detalles en el show de inscripcion
+- Admin puede cambiar la categoria del programa (interno/externo)

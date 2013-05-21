@@ -1,0 +1,29 @@
+<% provide(:title, "Enviar Control Mensual de Horas") %>
+<% provide(:sidebar_active, :control_horas) %>
+<h1>Control Mensual de Horas</h1>
+
+<p>
+	Hay dos formas en las que puedes llenar tu <em>Control Mensual de Horas</em>: 
+</p>
+
+<p>
+	La primera es seleccionando qué mes quieres reportar y así <strong>automáticamente</strong> se llenará con los datos necesarios para reportar un total de <strong>80 horas</strong> sin contar fines de semana. Si deseas usar esta forma, selecciona el mes y el año que estás reportando y luego pulsa en el botón de generar.
+</p>
+<p>
+	<%= form_for "llenar", html: { class: "form-inline" }, url: new_control_hora_path, method: :get do |f| %>
+		<%= f.label "Mes:" %>
+		<%= select_month(Date.today << 1, field_name: "mes") %>
+		<%= f.label "Año:" %>
+		<%= select_year(Date.today, field_name: "anio") %>
+		<%= f.submit "Generar", class: 'btn btn-warning' %>
+	<% end %>
+</p>
+
+
+<p>La segunda forma es que registres manualmente cada día y horario en que realizaste tu servicio. Para ello pulsa el siguiente botón.</p>
+<p>
+	<%= link_to new_control_hora_path, class: "btn btn-warning" do %>
+	<i class="icon-edit"></i>
+	Crear reporte
+	<% end %>
+</p>

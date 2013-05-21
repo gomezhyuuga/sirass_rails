@@ -44,3 +44,8 @@
 <% end %>
 <h6 class="muted right">Creada: <%= @institucion.created_at %></h6>
 <h6 class="muted right">Última actualización: <%= @institucion.updated_at %></h6>
+<% if can? :manage, Inscripcion %>
+<p>
+	<%= render 'shared/back_button', link: institucions_path %>
+</p>
+<% end %>

@@ -4,6 +4,19 @@ class PrestadorsController < ApplicationController
 	
 	layout 'admin'
 
+	def search
+		authorize! :read, Prestador
+		like = "LIKE"
+		if ActiveRecord::Base.connection.adapter_name.downcase == "postgresql"
+			like = "ILIKE"
+		end
+		query = "nombre #{like} ? OR aPaterno LIKE ? OR aMaterno LIKE ?"
+		nombre = "%#{params[:nombre]}%"
+		@prestadors = Prestador.where(query, nombre, nombre, nombre).paginate(page: params[:page])
+		flash.now[:error] = "Búsqueda sin resultados" unless @prestadors
+		render :index
+	end
+
 	def index
 		authorize! :read, Prestador
 		@prestadors = Prestador.paginate(page: params[:page])
@@ -53,7 +66,7 @@ class PrestadorsController < ApplicationController
 		# Actualización de datos
 		if @prestador.update_attributes(params[:prestador])
 			flash[:success] = "Datos actualizados correctamente"
-			redirect_to @prestador
+			redirect_to current_user.user_page
 		else
 			render 'edit'
 		end
@@ -62,6 +75,7 @@ class PrestadorsController < ApplicationController
 	def show
 		@prestador = Prestador.find_by_id(params[:id])
 		if @prestador
+			@inscripcion = Inscripcion.find(@prestador.inscripcion_actual) if @prestador.inscripcion_actual
 			# Autorizar acceso
 			if current_user.prestador != @prestador
 				authorize! :read, Prestador, message: 'No tienes permisos suficientes para ver esta página'

@@ -1,0 +1,28 @@
+<% provide(:title, "Controles Mensuales de Horas enviados por el prestador") %>
+
+<h1>
+	Reportes:
+	<small>Control Mensual de Horas</small>
+</h1>
+<p>
+	A continuación se presenta la lista de <strong>todos</strong> los <em>Controles Mensuales de Horas</em> que ha enviado el usuario.
+</p>
+
+<p>
+	<strong>Usuario:</strong> <%= link_to @usuario.username, @prestador %>
+</p>
+<p>
+	<strong>Nombre:</strong> <%= link_to @prestador.nombre_completo, @prestador %>
+</p>
+<p>
+	<strong>Num. Control:</strong> <%= @inscripcion.ncontrol || "Sin definir" %>
+</p>
+
+<% if @reportes.any? %>
+<%= render 'monthly_reports/table', reportes: @reportes %>
+<% else %>
+<p class="lead">
+	Este usuario aún no ha enviado <strong>ningún</strong> <em>Control Mensual de Horas</em>
+</p>
+<% end %>
+<%= render 'shared/back_button', link: @inscripcion %>

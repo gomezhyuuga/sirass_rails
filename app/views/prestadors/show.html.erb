@@ -51,16 +51,31 @@
 	</div>
 </div>
 
-<% if @prestador.inscripcion_actual %>
+<% if @inscripcion %>
 	<h2>Inscripción</h2>
 	<p>
-		Este usuario actualmente está inscrito al programa:
+		Este usuario tiene una solicitud de inscripcion al programa:
 		<blockquote>
-			<%= Inscripcion.find(@prestador.inscripcion_actual).cprograma.nombre %>
+			<%= @inscripcion.cprograma.nombre %>
 		</blockquote>
+		<strong>Estado:</strong> <span class="label <%= label_color_for_inscripcion(@inscripcion) %>"><%= @inscripcion.estado_inscripcion.descripcion %></span>
 	</p>
-	<%= link_to inscripcion_path(@prestador.inscripcion_actual), class: 'btn btn-warning' do %>
-		<i class="icon-info-sign"></i>
-		Ver detalles
+	<% if can? :manage, Inscripcion %>
+		<p>
+			<%= link_to inscripcion_path(@prestador.inscripcion_actual), class: 'btn btn-warning' do %>
+				<i class="icon-info-sign"></i>
+				Ver detalles
+			<% end %>
+		</p>
+		<p>
+			<%= render 'shared/back_button', link: prestadors_path %>
+		</p>
+	<% else %>
+		<%= link_to mi_inscripcion_path, class: 'btn btn-warning' do %>
+			<i class="icon-info-sign"></i>
+			Ver detalles
+		<% end %>
 	<% end %>
+<% else %>
+<p class="lead">Este usuario aún no ha enviado ninguna solicitud de inscripción a un programa de servicio social.</p>
 <% end %>

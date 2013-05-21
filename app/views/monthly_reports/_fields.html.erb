@@ -5,7 +5,7 @@
 	<div class="span2 offset1">
 		<%= f.input :fecha_inicio do %>
 			<div class="input-append bootstrap-timepicker-component">
-				<%= f.text_field :fecha_inicio, 'data-behaviour' => 'datepicker', class: 'input-small', placeholder: "dd/mm/aaaa" %>
+				<%= f.text_field :fecha_inicio, 'data-behaviour' => 'datepicker', class: 'input-small', placeholder: "dd/mm/aaaa", value: f.object.fecha_inicio.to_s %>
 				<span class="add-on">
 		  			<i class="icon-calendar"></i>
 		  		</span>
@@ -15,7 +15,7 @@
 	<div class="span2 offset1">
 		<%= f.input :fecha_fin do %>
 			<div class="input-append bootstrap-timepicker-component">
-				<%= f.text_field :fecha_fin, 'data-behaviour' => 'datepicker', class: 'input-small', placeholder: "dd/mm/aaaa" %>
+				<%= f.text_field :fecha_fin, 'data-behaviour' => 'datepicker', class: 'input-small', placeholder: "dd/mm/aaaa", value: f.object.fecha_inicio.to_s %>
 				<span class="add-on">
 		  			<i class="icon-calendar"></i>
 		  		</span>

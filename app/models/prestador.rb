@@ -36,4 +36,9 @@ class Prestador < ActiveRecord::Base
 	accepts_nested_attributes_for :user
 
 	has_many :inscripcions
+
+  
+  def nombre_completo
+    "#{self.nombre} #{self.aPaterno} #{self.aMaterno}"
+  end
 end

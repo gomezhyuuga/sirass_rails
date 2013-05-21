@@ -28,4 +28,8 @@ class PrestadorPagesController < ApplicationController
 			end
 		end
 	end
+
+	def reporte_horas
+		require_inscripcion
+	end
 end
