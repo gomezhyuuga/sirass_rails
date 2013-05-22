@@ -37,8 +37,8 @@ class User < ActiveRecord::Base
 
   # Relaciones
   belongs_to :prestador, dependent: :destroy
-  belongs_to :admin
-  belongs_to :institucion_user
+  belongs_to :admin, dependent: :destroy
+  belongs_to :institucion_user, dependent: :destroy
 
 
   def user_page

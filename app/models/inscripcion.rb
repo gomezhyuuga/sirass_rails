@@ -51,8 +51,8 @@ class Inscripcion < ActiveRecord::Base
   accepts_nested_attributes_for :institucion
 
   has_and_belongs_to_many :dias, join_table: :inscripcions_dias
-  has_many :control_horas
-  has_many :monthly_reports
+  has_many :control_horas, dependent: :destroy
+  has_many :monthly_reports, dependent: :destroy
   def tipo_inscripcion
     if self.practicas?
       "Práctica Profesional"

@@ -22,13 +22,13 @@ class InstitucionUser < ActiveRecord::Base
   validates_presence_of :area, :cargo, :domicilio, :responsable, :tel, :institucion_id, :user
 
 	# Relaciones
-  has_one :user
+  has_one :user, dependent: :destroy
   belongs_to :plantel
   belongs_to :institucion
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :institucion
   accepts_nested_attributes_for :plantel
-  has_many :cprogramas
+  has_many :cprogramas, dependent: :destroy
 
   # Devuelve el nombre del plantel de modo seguro. Si no tiene ningún plantel asociado, devuelve
   # "Sin plantel"
