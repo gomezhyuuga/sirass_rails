@@ -40,5 +40,33 @@
 				<% end %>
 			</ul>
 		</li>
+		<!-- REPORTES -->
+		<li class="dropdown-submenu pull-left">
+			<a href="#" tabindex="-1">
+				<i class="icon-file"></i>
+				Reportes
+			</a>
+			<ul class="dropdown-menu">
+				<li>
+					<%= link_to reportes_mensuales_inscripcion_path(obj) do %>
+						<i class="icon-time"></i>
+						Control Mensual de Horas
+					<% end %>
+				</li>
+				<li>
+					<%= link_to '#' do %>
+						<i class="icon-calendar"></i>
+						Informe Bimensual
+					<% end %>
+				</li>
+				<li>
+					<%= link_to '#' do %>
+						<i class="icon-calendar"></i>
+						Informe Final
+					<% end %>
+				</li>
+			</ul>
+		</li>
+		
 	</ul>
 </div>

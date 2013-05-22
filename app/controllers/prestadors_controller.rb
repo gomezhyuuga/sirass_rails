@@ -12,7 +12,7 @@ class PrestadorsController < ApplicationController
 		end
 		query = "nombre #{like} ? OR apaterno LIKE ? OR amaterno LIKE ?"
 		nombre = "%#{params[:nombre]}%"
-		@prestadors = Prestador.where(query, nombre, nombre, nombre).paginate(page: params[:page])
+		@prestadors = Prestador.where(query, nombre, nombre, nombre)
 		flash.now[:error] = "Búsqueda sin resultados" unless @prestadors
 		render :index
 	end

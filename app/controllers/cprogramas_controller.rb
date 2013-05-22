@@ -33,7 +33,7 @@ class CprogramasController < ApplicationController
 			like = "ILIKE"
 		end
 		if can? :manage, Cprograma
-			@cprogramas = Cprograma.where("nombre #{like} ?", "%#{params[:programa]}%").paginate(page: params[:page])
+			@cprogramas = Cprograma.where("nombre #{like} ?", "%#{params[:programa]}%")
 			flash.now[:error] = "Búsqueda sin resultados" unless @cprogramas
 			render :index, layout: 'application'
 		end

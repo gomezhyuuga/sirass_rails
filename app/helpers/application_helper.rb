@@ -82,12 +82,25 @@ module ApplicationHelper
 		end
 	end
 
+	def lbl_estado_reporte_id(id)
+		estados = ["label-info", "label-important", "label-success", "label-warning"]
+		estados[ id - 1 ]
+	end
+
 	def lbl_estado_reporte(reporte)
 		# SIN_REVISION 	= 1
 	 #  	CON_ERRORES 	= 2
 	 #  	CORRECTO 		= 3
 	 #  	ACTUALIZADO 	= 4
-		estados = ["label-info", "label-important", "label-success", "label-warning"]
-		estados[ reporte.estado_reporte.id - 1 ]
+	 	lbl_estado_reporte_id( reporte.estado_reporte.id )
+	end
+
+	def icon_for_estado_reporte(id)
+		case id
+		when EstadoReporte::SIN_REVISION 	then "icon-time"
+		when EstadoReporte::CON_ERRORES 	then "icon-remove"
+		when EstadoReporte::CORRECTO 		then "icon-ok"
+		when EstadoReporte::ACTUALIZADO 	then "icon-inbox"
+		end
 	end
 end

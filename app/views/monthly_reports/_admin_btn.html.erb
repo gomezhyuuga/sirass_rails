@@ -1,4 +1,4 @@
-<div class="btn-group btn-block">
+<div class="btn-group btn-block admin-btn">
 	<a href="#" class="btn btn-primary btn-block dropdown-toggle" data-toggle="dropdown">
 		<i class="icon-cog"></i>
 		Administrar
@@ -23,5 +23,25 @@
 			Eliminar
 			<% end %>
 		</li>
+		<% if can? :manage, MonthlyReport %>
+		<!-- CAMBIO DE ESTADO -->
+		<li class="dropdown-submenu pull-left">
+			<a href="#" tabindex="-1">
+				<i class="icon-wrench"></i>
+				Cambiar estado
+			</a>
+			<ul class="dropdown-menu">
+				<% EstadoReporte.all.each do |e| %>
+				<li>
+					<%= link_to cambiar_estado_reporte_path(obj, e.id), confirm: "Actualizando estado del reporte",
+					method: :put do %>
+						<i class="<%= icon_for_estado_reporte(e.id) %>"></i>
+						<%= e.descripcion %>
+					<% end %>
+				</li>
+				<% end %>
+			</ul>
+		</li>
+		<% end %>
 	</ul>
 </div>

@@ -129,6 +129,17 @@ class MonthlyReportsController < ApplicationController
     end
   end
 
+  def cambiar_estado
+    authorize! :manage, MonthlyReport
+    reporte = MonthlyReport.find( params[:id] )
+    if reporte.update_attributes( estado_reporte_id: params[:estado_id] )
+      flash[:success] = "Estado del reporte cambiado correctamente."
+    else
+      flash[:error] = "Ocurrió un error cambiando el estado del reporte"
+    end
+    redirect_to admin_reportes_mensuales_path
+  end
+
   private
     # Obtener una lista de todos los días de un mes sin incluir los fines de semana
     def dias_para_mes(mes, anio)

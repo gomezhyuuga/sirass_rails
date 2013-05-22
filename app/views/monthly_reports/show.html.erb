@@ -1,9 +1,26 @@
 <% provide(:title, "Detalles de Control de Horas") %>
-
 <h1>Detalles del reporte</h1>
 <p class="lead">
 	A continuación se presentan los detalles del <em>Control Mensual de Horas</em>
 </p>
+
+<div class="row">
+	<div class="span3">
+		<strong>Periodo del:</strong>
+		<%= @reporte.fecha_inicio %>
+	</div>
+	<div class="span3">
+		<strong>Al:</strong>
+		<%= @reporte.fecha_fin %>
+	</div>
+	<div class="span2">
+		<strong>Estado:</strong>
+		<span class="label <%= lbl_estado_reporte(@reporte) %>">
+			<%= @reporte.estado_reporte.descripcion %>
+		</span>
+	</div>
+</div>
+<br>
 <div class="row">
 	<div class="span2">
 		<strong>Horas:</strong>
@@ -17,7 +34,7 @@
 			<%= @reporte.horas_anteriores %>
 		</p>
 	</div>
-	<div class="span2 pull-right">
+	<div class="span2 offset1">
 		<strong>Horas acumuladas:</strong>
 		<p class="well well-small center">
 			<%= @reporte.horas_acum %>
@@ -25,10 +42,8 @@
 	</div>
 </div>
 <p>
-	<strong>Estado:</strong>
-	<span class="label <%= lbl_estado_reporte(@reporte) %>">
-		<%= @reporte.estado_reporte.descripcion %>
-	</span>
+	<strong>Supervisor:</strong>
+	<%= @reporte.supervisor %>
 </p>
 <div class="pull-right span2">
 	<%= render 'admin_btn', obj: @reporte %>
@@ -53,3 +68,7 @@
 	<% end %>
 	</tbody>
 </table>
+
+<% if can? :manage, MonthlyReport %>
+	<%= render 'shared/back_button', link: admin_reportes_mensuales_path %>
+<% end %>

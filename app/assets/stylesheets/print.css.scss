@@ -21,4 +21,23 @@
         background-repeat: no-repeat !important;
       }
   }
+
+  #sidebar {
+    display: none;
+  }
+  img { display: block; visibility: visible; }
+
+  body .solid {
+    width: 90%;
+  }
+
+  .admin-btn { display: none; }
+
+  .head-print {
+    height: 100px;
+    display: block;
+    visibility: visible;
+  }
+
+  .no-print { display: none !important; }
 }

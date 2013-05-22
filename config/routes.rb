@@ -52,7 +52,10 @@ Sirass::Application.routes.draw do
     get 'actualizar_programas',   to: 'institucion_pages#actualizar', as: :actualizar_programa_institucion
     get 'avisos',     to: 'institucion_pages#avisos'
   end
-  get '/admin/home',          to: 'admin_pages#index'
+  # Admin pages
+  get '/admin/home',                to: 'admin_pages#index'
+  get '/admin/reportes_mensuales',  to: 'admin_pages#reportes_mensuales'
+  match '/admin/reportes_mensuales/:id/cambiar_estado/:estado_id',  to: 'monthly_reports#cambiar_estado', as: :cambiar_estado_reporte, via: :put
   # Admin
   # resources :institucions, :path => "/admin/institucions"
   # resources :plantels, :path => "/admin/plantels"

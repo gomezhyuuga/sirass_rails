@@ -19,6 +19,13 @@ class EstadoReporte < ActiveRecord::Base
   # CONSTANTES
   SIN_REVISION 	= 1
   CON_ERRORES 	= 2
-  CORRECTO 		= 3
+  CORRECTO 		  = 3
   ACTUALIZADO 	= 4
+
+  def self.estados
+    estados = ["Sin revisión", "Con errores", "Correcto", "Actualizado"]
+  end
+  def self.estado_for_id(id)
+  	self.estados[id-1]
+  end
 end
