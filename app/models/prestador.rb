@@ -4,8 +4,8 @@
 #
 #  id                 :integer          not null, primary key
 #  nombre             :string(255)      not null
-#  aPaterno           :string(255)      not null
-#  aMaterno           :string(255)      not null
+#  apaterno           :string(255)      not null
+#  amaterno           :string(255)      not null
 #  nacimiento         :date             not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
@@ -24,11 +24,11 @@
 
 # -*- encoding : utf-8 -*-
 class Prestador < ActiveRecord::Base
-  attr_accessible :aMaterno, :aPaterno, :nacimiento, :nombre, :user_attributes,
+  attr_accessible :amaterno, :apaterno, :nacimiento, :nombre, :user_attributes,
   	:sexo, :dCalle, :dNumExt, :dNumInt, :dCP, :dDelegacion, :dColonia, :telCasa, :telCel,
   	:inscripcion_actual, :estudiante_uacm
   	
-  validates_presence_of :nombre, :aMaterno, :aPaterno, :nacimiento, :user,
+  validates_presence_of :nombre, :amaterno, :apaterno, :nacimiento, :user,
   	:sexo, :dCalle, :dNumExt, :dCP, :dDelegacion, :dColonia
   
   # Relaciones
@@ -39,6 +39,6 @@ class Prestador < ActiveRecord::Base
 
   
   def nombre_completo
-    "#{self.nombre} #{self.aPaterno} #{self.aMaterno}"
+    "#{self.nombre} #{self.apaterno} #{self.amaterno}"
   end
 end

@@ -7,7 +7,7 @@ namespace :db do
 
 		desc "Users de admin"
 		task dev_users: :environment do
-			Admin.create!(nombre: "Fernando",aPaterno: "Gómez",aMaterno: "Herrera",nacimiento: "04/02/1994",cargo: "Desarrollador de Sistema",user_attributes: {username: "a_gomezhyuuga",email: "gomezhyuuga@gmail.com",password: "a_ghyuuga852456",password_confirmation: "a_ghyuuga852456"})
+			Admin.create!(nombre: "Fernando",apaterno: "Gómez",amaterno: "Herrera",nacimiento: "04/02/1994",cargo: "Desarrollador de Sistema",user_attributes: {username: "a_gomezhyuuga",email: "gomezhyuuga@gmail.com",password: "a_ghyuuga852456",password_confirmation: "a_ghyuuga852456"})
 		end
 
 		desc "Catálogo de Instituciones"
@@ -137,7 +137,7 @@ namespace :db do
 				row = row.to_hash.with_indifferent_access
 				row = row.to_hash.symbolize_keys
 				# Admin.create!(row.to_hash.symbolize_keys)
-				a = Admin.new(nombre: row[:nombre], aPaterno: row[:aPaterno], aMaterno: row[:aMaterno],
+				a = Admin.new(nombre: row[:nombre], apaterno: row[:apaterno], amaterno: row[:amaterno],
 					nacimiento: row[:nacimiento], cargo: row[:cargo],
 					user_attributes: { username: row[:username], email: row[:email], password: row[:password],
 						password_confirmation: row[:password_confirmation] })

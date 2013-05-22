@@ -10,7 +10,7 @@ class PrestadorsController < ApplicationController
 		if ActiveRecord::Base.connection.adapter_name.downcase == "postgresql"
 			like = "ILIKE"
 		end
-		query = "nombre #{like} ? OR aPaterno LIKE ? OR aMaterno LIKE ?"
+		query = "nombre #{like} ? OR apaterno LIKE ? OR amaterno LIKE ?"
 		nombre = "%#{params[:nombre]}%"
 		@prestadors = Prestador.where(query, nombre, nombre, nombre).paginate(page: params[:page])
 		flash.now[:error] = "Búsqueda sin resultados" unless @prestadors

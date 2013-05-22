@@ -7,8 +7,8 @@ namespace :db do
 	task prestadores: :environment do
 		puts "Creando prestadores..."
 		Prestador.create!(nombre: "Fernando",
-			aPaterno: "Gómez",
-			aMaterno: "Herrera",
+			apaterno: "Gómez",
+			amaterno: "Herrera",
 			nacimiento: "04/02/1994",
 			sexo: "Masculino",
 			dCalle: 		"Victor Hernández",
@@ -35,12 +35,12 @@ namespace :db do
 			email = "mail#{n+2}@icloud.com"
 
 			name = Faker::Name.first_name
-			aPaterno = Faker::Name.last_name
-			aMaterno = Faker::Name.last_name
+			apaterno = Faker::Name.last_name
+			amaterno = Faker::Name.last_name
 
 			Prestador.create!(nombre: name,
-				aPaterno: aPaterno,
-				aMaterno: aMaterno,
+				apaterno: apaterno,
+				amaterno: amaterno,
 				nacimiento: "04/04/1994",
 				sexo: 			"Masculino",
 				dCalle: 		Faker::Address.street_name,
@@ -66,8 +66,8 @@ namespace :db do
 		puts "Creando admins..."
 		# Crear administradores
 		Admin.create!(nombre: "Martha",
-			aPaterno: "Tera",
-			aMaterno: "Ponce",
+			apaterno: "Tera",
+			amaterno: "Ponce",
 			nacimiento: "24/04/1988",
 			cargo: "Responsable de Servicio Social",
 			user_attributes: {
@@ -83,14 +83,14 @@ namespace :db do
 			email = "mail#{n+2}@icloud.com"
 
 			name = Faker::Name.first_name
-			aPaterno = Faker::Name.last_name
-			aMaterno = Faker::Name.last_name
+			apaterno = Faker::Name.last_name
+			amaterno = Faker::Name.last_name
 			cargo = Faker::Lorem.sentence(4)
 			nacimiento = "04/04/1960"
 
 			Admin.create!(nombre: name,
-				aPaterno: aPaterno,
-				aMaterno: aMaterno,
+				apaterno: apaterno,
+				amaterno: amaterno,
 				nacimiento: nacimiento,
 				cargo: cargo,
 				user_attributes: {

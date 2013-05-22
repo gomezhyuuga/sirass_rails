@@ -5,7 +5,7 @@
 			<strong>Usuario</strong> <%= @prestador.user.username %>
 		</p>
 		<p>
-			<strong>Nombre</strong> <%= "#{@prestador.nombre} #{@prestador.aPaterno} #{@prestador.aMaterno}" %>
+			<strong>Nombre</strong> <%= "#{@prestador.nombre} #{@prestador.apaterno} #{@prestador.amaterno}" %>
 		</p>
 		<p>
 			<strong>Edad</strong> <%= distance_of_time_in_words_to_now(@prestador.nacimiento) %>

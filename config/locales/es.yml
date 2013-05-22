@@ -104,8 +104,8 @@ es:
         password_confirmation:   "Confirmar contraseña"
         email:      "Email"
       prestador:
-        aMaterno:     "Apellido Materno"
-        aPaterno:     "Apellido Paterno"
+        amaterno:     "Apellido Materno"
+        apaterno:     "Apellido Paterno"
         nacimiento:   "Fecha de nacimiento"
         dCalle:       "Calle"
         dCP:          "Código postal"
@@ -119,8 +119,8 @@ es:
         tel:          "Teléfono"
         telExt:       "Extensión"
       admin:
-        aMaterno:     "Apellido Materno"
-        aPaterno:     "Apellido Paterno"
+        amaterno:     "Apellido Materno"
+        apaterno:     "Apellido Paterno"
         nacimiento:   "Fecha de nacimiento"
         cargo: "Cargo"
       cprograma:

@@ -15,7 +15,7 @@
 				<% @prestadors.each do |prestador| %>
 					<tr>
 						<td>
-							<%= link_to "#{prestador.nombre} #{prestador.aPaterno} #{prestador.aMaterno}", prestador %>
+							<%= link_to "#{prestador.nombre} #{prestador.apaterno} #{prestador.amaterno}", prestador %>
 						</td>
 						<td>
 							<%= prestador.user.username %>
