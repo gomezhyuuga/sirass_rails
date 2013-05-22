@@ -30,17 +30,6 @@ class PrestadorPagesController < ApplicationController
 	end
 
 	def reporte_horas
-		u = current_user
-		if u and u.prestador and !u.prestador.inscripcion_actual
-				flash[:error] = "Necesitas estar inscrito en un programa de servicio social"
-				redirect_to u.user_page
-				return false
-		else
-			if Inscripcion.find(u.prestador.inscripcion_actual).estado_inscripcion == EstadoInscripcion::EN_SERVICIO
-				return true
-			else
-				return false
-			end
-		end
+		require_inscripcion
 	end
 end

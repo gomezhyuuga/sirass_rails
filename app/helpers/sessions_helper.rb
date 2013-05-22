@@ -21,13 +21,20 @@ module SessionsHelper
 	end
 
 	def require_inscripcion
-		if current_user and current_user.prestador and
-			!current_user.prestador.inscripcion_actual
+		u = current_user
+		if u and u.prestador and
+			!u.prestador.inscripcion_actual
 				flash[:error] = "Necesitas estar inscrito en un programa de servicio social"
-				redirect_to current_user.user_page
+				redirect_to u.user_page
 				return false
 		else
-			return true
+			if Inscripcion.find(u.prestador.inscripcion_actual).estado_inscripcion_id == EstadoInscripcion::EN_SERVICIO
+				return true
+			else
+				flash[:error] = "Necesitar estar inscrito y activo en un programa de servicio social"
+				redirect_to u.user_page
+			end
+			
 		end
 	end
 end
