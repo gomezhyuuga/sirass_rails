@@ -5,14 +5,16 @@
 <% end %>
 
 <h1>Programas de Servicio Social</h1>
+<% if can? :manage, Cprograma %>
+	<%= render 'cprogramas/summary' %>
+	<p>
+		Mostrar programas por categoría:
+		<%= link_to_estados_programa( controller: controller_name, action: action_name ) %>
+	</p>
+<% end %>
 <% if @cprogramas.empty? %>
 <p class="lead">No se encontró ningún programa <% if logged_as? :institucion %>tuyo<% end %> en la base de datos.</p>
 <% else %>
-
-<% if can? :manage, Cprograma %>
-	<%= render 'cprogramas/summary' %>
-<% end %>
-
 <%= will_paginate %>
 <table class="table table-bordered table-striped" id="lista-programas">
 	<thead>
@@ -61,5 +63,4 @@
 		<% end %>
 	</tbody>
 </table>
-<%= will_paginate %>
 <% end %>

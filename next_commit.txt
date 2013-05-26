@@ -1,2 +1,2 @@
-- Agregar datos al show de CMH
-- Admin. de CMH
+- Simplificación de lógica en cprogramas#index
+- Mostrar programas por su estado
