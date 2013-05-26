@@ -1,7 +1,8 @@
 <header class="navbar navbar-static-top">
   <nav class="navbar-inner">
     <div class="container">
-      <a class="brand" href=<%= root_path %>>SiRASS</a>
+      <% link = current_user ? current_user.user_page : root_path %>
+      <%= link_to "SiRASS", link, class: 'brand' %>
       <ul class="nav">
         <li id="nav_programas"><%= link_to "Programas", programas_path  %></li>
         <li><%#= link_to "Proceso", proceso_path  %></li>
