@@ -8,19 +8,8 @@
 
 <p>
 	Listar por categoría:
-	<%= link_to "Todos", { controller: :admin_pages, action: :reportes_mensuales},  { class: 'btn btn-mini btn-warning' } %>
-	<% EstadoReporte.all.each do |e| %>
-		<%= link_to e.descripcion, { controller: :admin_pages, action: :reportes_mensuales, estado: e.id },  { class: 'btn btn-mini btn-inverse' } %>
-	<% end %>
+	<%= links_to_estado EstadoReporte, controller: controller_name, action: action_name  %>
 </p>
-<% if params[:estado] %>
-	<p>
-		<strong>Reportes por categoría:</strong>
-		<span class="label <%= lbl_estado_reporte_id(params[:estado].to_i) %>">
-			<%= EstadoReporte.estado_for_id(params[:estado].to_i) %>
-		</span>
-	</p>
-<% end %>
 
 <% if @reportes.any? %>
 
