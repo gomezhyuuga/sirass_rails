@@ -9,7 +9,7 @@
 	<%= render 'cprogramas/summary' %>
 	<p>
 		Mostrar programas por categoría:
-		<%= link_to_estados_programa( controller: controller_name, action: action_name ) %>
+		<%= links_to_estados_programa %>
 	</p>
 <% end %>
 <% if @cprogramas.empty? %>

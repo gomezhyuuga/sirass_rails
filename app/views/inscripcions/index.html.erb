@@ -2,6 +2,11 @@
 <% provide(:sidebar_active, :inscripciones) %>
 
 <h1>Lista de inscripciones</h1>
+<p>Mostrar inscripciones por estado:</p>
+<p>
+	<%= links_to_estado_inscripcion %>
+</p>
+<% if @inscripcions.any? %>
 <%= will_paginate @inscripcions %>
 <table class="table table-bordered table-striped table-hover">
 	<thead>
@@ -24,10 +29,10 @@
 					<%= link_to "#{i.prestador.nombre} #{i.prestador.apaterno} #{i.prestador.amaterno}", i.prestador %>
 				</td>
 				<td>
-					<%= i.ncontrol %>
+					<%= i.ncontrol || "Sin definir" %>
 				</td>
 				<td>
-					<%= i.cprograma.nombre %>
+					<%= link_to i.cprograma.nombre, i.cprograma %>
 				</td>
 				<td>
 					<span class="label <%= label_color_for_inscripcion(i) %>">
@@ -41,4 +46,6 @@
 		<% end %>
 	</tbody>
 </table>
-<%= will_paginate %>
+<% else %>
+<p class="lead">No hay ningún registro en la base de datos.</p>
+<% end %>

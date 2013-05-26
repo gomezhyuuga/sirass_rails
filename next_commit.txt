@@ -1,2 +1,1 @@
-- Simplificación de lógica en cprogramas#index
-- Mostrar programas por su estado
+- Separar inscripciones por estado

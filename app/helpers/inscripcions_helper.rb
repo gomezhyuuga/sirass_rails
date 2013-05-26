@@ -11,4 +11,8 @@ module InscripcionsHelper
 			"Sin plantel"
 		end
 	end
+
+	def links_to_estado_inscripcion
+		links_to_estado(EstadoInscripcion, controller: controller_name, action: action_name)
+	end
 end

@@ -6,7 +6,9 @@ class InscripcionsController < ApplicationController
 
 	def index
 		authorize! :manage, Inscripcion
-		@inscripcions = Inscripcion.paginate(page: params[:page], per_page: 30)
+		conditions = {}
+		conditions[:estado_inscripcion_id] = params[:estado] unless params[:estado].blank?
+		@inscripcions = Inscripcion.page(params[:page]).where(conditions)
 		render layout: 'admin'
 	end
 

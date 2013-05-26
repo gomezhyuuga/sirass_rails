@@ -1,17 +1,7 @@
 module CprogramasHelper
 
-	def link_to_estados_programa(url)
-		html = ''
-		clase = params[:estado].blank? ? "btn-warning" : "btn-inverse"
-		html << link_to("Todos", url, class: "btn btn-mini #{clase}")
-		html << ' '
-		EstadoPrograma.all.each do |p|
-			url[:estado] = p.id
-			clase = params[:estado].to_i == p.id ? "btn-warning" : "btn-inverse"
-			html << link_to( p.descripcion, url, class: "btn btn-mini #{clase}" )
-			html << ' '
-		end
-		html.html_safe
+	def links_to_estados_programa
+		links_to_estado(EstadoPrograma, controller: controller_name, action: action_name)
 	end
 	# == ESTADOS DE PROGRAMA ==
 	# 1,"Activo"

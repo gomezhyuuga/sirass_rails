@@ -1,5 +1,20 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
+
+	def links_to_estado(catalogo, url)
+		html = ''
+		clase = params[:estado].blank? ? "btn-warning" : "btn-inverse"
+		html << link_to("Todos", url, class: "btn btn-mini #{clase}")
+		html << ' '
+		catalogo.all.each do |p|
+			url[:estado] = p.id
+			clase = params[:estado].to_i == p.id ? "btn-warning" : "btn-inverse"
+			html << link_to( p.descripcion, url, class: "btn btn-mini #{clase}" )
+			html << ' '
+		end
+		html.html_safe
+	end
+
 	def link_to_add_fields(name, f, association)
 	  new_object = f.object.send(association).klass.new
 	  id = new_object.object_id
