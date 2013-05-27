@@ -43,8 +43,8 @@ Sirass::Application.routes.draw do
     get 'mi_inscripcion/edit',  to: 'prestador_pages#edit_inscripcion'
     put 'estudianteUACM',       to: 'prestador_pages#estudianteDe'
     get 'reporte_horas',        to: 'prestador_pages#reporte_horas'
-    resources :monthly_reports, path: 'control_horas', as: 'control_horas'#, except: :update
-    # put 'horas/:id', to: 'monthly_reports#update', as: :update_horas
+    resources :monthly_reports,     path: 'control_horas', as: 'control_horas'
+    resources :bi_monthly_reports,  path: 'informe_bimensual', as: 'informe_bimensual'
   end
   # Institucion
   scope "/institucion" do
@@ -53,9 +53,11 @@ Sirass::Application.routes.draw do
     get 'avisos',     to: 'institucion_pages#avisos'
   end
   # Admin pages
-  get '/admin/home',                to: 'admin_pages#index'
-  get '/admin/reportes_mensuales',  to: 'admin_pages#reportes_mensuales'
+  get '/admin/home',                  to: 'admin_pages#index'
+  get '/admin/reportes_mensuales',    to: 'admin_pages#reportes_mensuales'
+  get '/admin/reportes_bimensuales',  to: 'admin_pages#reportes_bimensuales'
   match '/admin/reportes_mensuales/:id/cambiar_estado/:estado_id',  to: 'monthly_reports#cambiar_estado', as: :cambiar_estado_reporte, via: :put
+  match '/admin/reportes_bimensuales/:id/cambiar_estado/:estado_id',  to: 'bi_monthly_reports#cambiar_estado', as: :cambiar_estado_reporte_bim, via: :put
   # Admin
   # resources :institucions, :path => "/admin/institucions"
   # resources :plantels, :path => "/admin/plantels"

@@ -20,21 +20,34 @@ module SessionsHelper
 		end
 	end
 
+	def require_inscripcion_activa
+		u = current_user
+		p = u.prestador
+		unless u && p && p.inscripcion_actual && inscripcion_activa?(p.inscripcion_actual)
+			flash[:error] = "¡Error! Necesitas estar inscrito en un programa de servicio social."
+			redirect_to u.user_page
+		end
+	end
+
 	def require_inscripcion
 		u = current_user
-		if u and u.prestador and
-			!u.prestador.inscripcion_actual
-				flash[:error] = "Necesitas estar inscrito en un programa de servicio social"
-				redirect_to u.user_page
-				return false
-		else
-			if Inscripcion.find(u.prestador.inscripcion_actual).estado_inscripcion_id == EstadoInscripcion::EN_SERVICIO
-				return true
-			else
-				flash[:error] = "Necesitar estar inscrito y activo en un programa de servicio social"
-				redirect_to u.user_page
-			end
-			
+		p = u.prestador
+		unless u && p && p.inscripcion_actual
+			flash[:error] = "¡Error! Necesitas haber enviado tu solicitud de inscripción a un programa de servicio social."
+			redirect_to u.user_page
 		end
+	end
+
+	def require_owner(collection, item)
+		unless collection.include? item
+			flash[:error] = "¡Error! No puedes editar este reporte."
+			redirect_to current_user.user_page
+		end
+	end
+
+	private
+
+	def inscripcion_activa?(id)
+		Inscripcion.find_by_id(id).estado_inscripcion_id == EstadoInscripcion::EN_SERVICIO
 	end
 end

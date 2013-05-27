@@ -1,0 +1,53 @@
+<% provide :title, "Informe Bimensual de Actividades" %>
+
+<h1>Informe Bimensual de Actividades</h1>
+<p>
+	A continuación se presentan los detalles del reporte.
+</p>
+<p>
+	<strong>Número:</strong> <%= @reporte.numero %>
+</p>
+<div class="row">
+	<div class="span3">
+		<strong>Periodo del:</strong>
+		<%= @reporte.periodo_inicio %>
+	</div>
+	<div class="span3">
+		<strong>Al:</strong>
+		<%= @reporte.periodo_fin %>
+	</div>
+	<div class="span2">
+		<strong>Estado:</strong>
+		<span class="label <%= lbl_estado_reporte(@reporte) %>">
+			<%= @reporte.estado_reporte.descripcion %>
+		</span>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="span2">
+		<strong>Horas:</strong>
+		<p class="well well-small center">
+			<%= @reporte.horas %>
+		</p>
+	</div>
+	<div class="span2 offset1">
+		<strong>Horas anteriores:</strong>
+		<p class="well well-small center">
+			<%= @reporte.horas_anteriores %>
+		</p>
+	</div>
+	<div class="span2 offset1">
+		<strong>Horas acumuladas:</strong>
+		<p class="well well-small center">
+			<%= @reporte.horas_acumuladas %>
+		</p>
+	</div>
+</div>
+<div class="pull-right span2">
+	<%= render 'admin_btn', obj: @reporte %>
+</div>
+<h3>Actividades</h3>
+<div class="well well-small">
+	<%= simple_format h(@reporte.actividades) %>
+</div>

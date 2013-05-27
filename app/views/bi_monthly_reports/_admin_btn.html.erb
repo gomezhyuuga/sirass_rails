@@ -1,0 +1,47 @@
+<div class="btn-group btn-block admin-btn">
+	<a href="#" class="btn btn-primary btn-block dropdown-toggle" data-toggle="dropdown">
+		<i class="icon-cog"></i>
+		Administrar
+		<span class="caret"></span>
+	</a>
+	<ul class="dropdown-menu left" role="menu" aria-labelledby="dLabel">
+		<li>
+			<%= link_to informe_bimensual_path(obj) do %>
+				<i class="icon-eye-open"></i>
+				Ver detalles
+			<% end %>
+		</li>
+		<li>
+			<%= link_to edit_informe_bimensual_path(obj) do %>
+			<i class="icon-pencil"></i>
+			Editar
+			<% end %>
+		</li>
+		<li>
+			<%= link_to informe_bimensual_path(obj), method: :delete, confirm: 'Estás seguro?' do %>
+			<i class="icon-trash"></i>
+			Eliminar
+			<% end %>
+		</li>
+		<% if can? :manage, BiMonthlyReport %>
+		<!-- CAMBIO DE ESTADO -->
+		<li class="dropdown-submenu pull-left">
+			<a href="#" tabindex="-1">
+				<i class="icon-wrench"></i>
+				Cambiar estado
+			</a>
+			<ul class="dropdown-menu">
+				<% EstadoReporte.all.each do |e| %>
+				<li>
+					<%= link_to cambiar_estado_reporte_bim_path(obj, e.id), confirm: "Actualizando estado del reporte",
+					method: :put do %>
+						<i class="<%= icon_for_estado_reporte(e.id) %>"></i>
+						<%= e.descripcion %>
+					<% end %>
+				</li>
+				<% end %>
+			</ul>
+		</li>
+		<% end %>
+	</ul>
+</div>

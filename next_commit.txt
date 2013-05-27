@@ -1,1 +1,5 @@
-- Separar inscripciones por estado
+- Informe Bimensual: #new, #index, #edit, #show
+- Mejorada la lógica de require_inscripcion. Usar como before_filter
+- Nuevo before_filer :require_inscripcion_activa que evalúa si la inscripción existe y su
+estado es EN_SERVICIO
+- MonthlyReportsController modificado para usar before_filter :require_inscripcion

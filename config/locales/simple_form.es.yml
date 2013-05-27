@@ -39,6 +39,11 @@ es:
             horas: "80:00"
             horas_anteriores: "160:00"
             horas_acum: "140:00"
+        bi_monthly_report:
+            numero: "#"
+            horas: "80:00"
+            horas_anteriores: "160:00"
+            horas_acumuladas: "140:00"
         plantel:
             nombre: "Nombre del plantel"
     hints:

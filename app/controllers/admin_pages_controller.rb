@@ -18,4 +18,12 @@ class AdminPagesController < ApplicationController
 		end
 		@reportes = MonthlyReport.paginate(page: params[:page]).where(conditions)
 	end
+
+	def reportes_bimensuales
+		conditions = {}
+		if params[:estado]
+			conditions[:estado_reporte_id] = params[:estado].to_i
+		end
+		@reportes = BiMonthlyReport.paginate(page: params[:page]).where(conditions)
+	end
 end
