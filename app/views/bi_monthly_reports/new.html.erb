@@ -1,0 +1,18 @@
+<% provide :title, "Envío de Informe Bimensual" %>
+<% provide :sidebar_active, :informeBim %>
+
+<h1>Informe Bimensual de Actividades</h1>
+<p class="justify">
+	Introduce los datos que se te solicitan a continuación para poder enviar tu informe de actividades.Posteriormente lo validará un responsable de servicio social y aprobará tus horas.
+	Es muy importante que las horas que reportas <strong>coincidan con el último <em>Control Mensual de Horas</em> que enviaste</strong>.
+</p>
+
+<%= render 'shared/error_messages', object: @reporte %>
+
+<%= simple_form_for @reporte, url: informe_bimensual_index_path do |f| %>
+	<%= render 'fields', f: f %>
+	
+	<p>
+		<%= f.submit "Enviar Informe", class: 'btn btn-success btn-block' %>
+	</p>	
+<% end %>

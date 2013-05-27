@@ -4,8 +4,8 @@
 #
 #  id                 :integer          not null, primary key
 #  nombre             :string(255)      not null
-#  aPaterno           :string(255)      not null
-#  aMaterno           :string(255)      not null
+#  apaterno           :string(255)      not null
+#  amaterno           :string(255)      not null
 #  nacimiento         :date             not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null

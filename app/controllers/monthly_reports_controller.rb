@@ -2,65 +2,66 @@
 include MonthlyReportsHelper
 class MonthlyReportsController < ApplicationController
   before_filter :require_login
+  before_filter :require_inscripcion_activa, only: [:new, :create, :index]
   layout 'prestador'
 
   def index
     require_role :prestador
-    if require_inscripcion
-      @reportes = MonthlyReport.where(inscripcion_id: current_user.prestador.inscripcion_actual)
-    end
+    p = current_user.prestador
+    @reportes = MonthlyReport.where(inscripcion_id: p.inscripcion_actual)
   end
 
   def new
     require_role :prestador
-    if require_inscripcion
-      @control_horas = MonthlyReport.new
-      # Comenzar en el primer día del mes pasado o del mes que se envíe por parámetro
-      today = Date.today
-      anterior = today.prev_month
-      anterior = Date.new(anterior.year, anterior.month, 1)
-      mes_inicio = anterior.month
-      anio_inicio = anterior.year
-      inteligente = false
-      if params[:date] && params[:date][:mes].to_i > 0 &&
-        params[:date][:anio].to_i > 0
-          mes_inicio = params[:date][:mes].to_i
-          anio_inicio = params[:date][:anio].to_i
-          anterior = Date.new(anio_inicio, mes_inicio, 1)
-          inteligente = true
-      end
-      
-      # Llenado inteligente del mes seleccionado y sólo días de la semana
-      if inteligente
-        dias = dias_para_mes(mes_inicio, anio_inicio) 
-        @control_horas.horas = "80:00"
-        dias_enum = dias.to_enum
-        horas = 0
-        while horas < 80
-          d = dias_enum.next
-          registro = @control_horas.monthly_report_hours.build
-          registro.fecha = d
-          registro.entrada = "08:00"
-          registro.salida = "12:00"
-          horas += 4
-        end
-      else
+    @control_horas = MonthlyReport.new
+    # Comenzar en el primer día del mes pasado o del mes que se envíe por parámetro
+    today = Date.today
+    anterior = today.prev_month
+    anterior = Date.new(anterior.year, anterior.month, 1)
+    mes_inicio = anterior.month
+    anio_inicio = anterior.year
+    inteligente = false
+    if params[:date] && params[:date][:mes].to_i > 0 &&
+      params[:date][:anio].to_i > 0
+        mes_inicio = params[:date][:mes].to_i
+        anio_inicio = params[:date][:anio].to_i
+        anterior = Date.new(anio_inicio, mes_inicio, 1)
+        inteligente = true
+    end
+    
+    # Llenado inteligente del mes seleccionado y sólo días de la semana
+    if inteligente
+      dias = dias_para_mes(mes_inicio, anio_inicio) 
+      @control_horas.horas = "80:00"
+      dias_enum = dias.to_enum
+      horas = 0
+      while horas < 80
+        d = dias_enum.next
         registro = @control_horas.monthly_report_hours.build
+        registro.fecha = d
         registro.entrada = "08:00"
         registro.salida = "12:00"
-        @control_horas.horas = "04:00"
+        horas += 4
       end
-
-      inscripcion = current_user.prestador.inscripcion_actual
-      numero = 1 + MonthlyReport.where(inscripcion_id: inscripcion).count
-      reporte_anterior = MonthlyReport.where(inscripcion_id: inscripcion).order(:updated_at).last
-      hanteriores = "00:00"
-      hanteriores = reporte_anterior.horas if reporte_anterior
-      @control_horas.numero = numero
-      @control_horas.fecha_inicio = anterior
-      @control_horas.fecha_fin = anterior.next_month
-      @control_horas.horas_anteriores = hanteriores
+    else
+      registro = @control_horas.monthly_report_hours.build
+      registro.entrada = "08:00"
+      registro.salida = "12:00"
+      @control_horas.horas = "04:00"
     end
+
+    inscripcion = current_user.prestador.inscripcion_actual
+
+    reportes = MonthlyReport.where(inscripcion_id: inscripcion).order("created_at ASC")
+
+    numero = 1 + reportes.size
+    reporte_anterior = reportes.first
+    hanteriores = "00:00"
+    hanteriores = reporte_anterior.horas if reporte_anterior
+    @control_horas.numero = numero
+    @control_horas.fecha_inicio = anterior
+    @control_horas.fecha_fin = anterior.next_month
+    @control_horas.horas_anteriores = hanteriores
   end
 
   def edit
@@ -91,6 +92,7 @@ class MonthlyReportsController < ApplicationController
 
   def update
     @control_horas = MonthlyReport.find(params[:id])
+    params[:monthly_report][:estado_reporte_id] = EstadoReporte::ACTUALIZADO
     if @control_horas.update_attributes(params[:monthly_report])
       flash[:success] = "Reporte actualizado correctamente"
       redirect_to current_user.user_page

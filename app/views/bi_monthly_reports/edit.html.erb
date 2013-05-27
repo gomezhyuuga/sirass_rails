@@ -1,0 +1,19 @@
+<% provide :title, "Actualización de Informe Bimensual" %>
+
+<h1>
+	Informe Bimensual de Actividades
+	<small>Editar</small>
+</h1>
+<p>
+	Modifica los datos que creas necesarios para actualizar tu reporte.
+</p>
+
+<%= render 'shared/error_messages', object: @reporte %>
+
+<%= simple_form_for @reporte, url: informe_bimensual_path do |f| %>
+	<%= render 'fields', f: f %>
+	
+	<p>
+		<%= f.submit "Actualizar Informe", class: 'btn btn-success btn-block' %>
+	</p>	
+<% end %>

@@ -37,25 +37,12 @@
   box-sizing: border-box;
 }
 
-.block {
-	display: block;
-}
-
-.center {
-	text-align: center !important;
-}
-
-.right {
-	text-align: right !important;
-}
-
-.left {
-	text-align: left;
-}
-
-.valign {
-	vertical-align: middle !important;
-}
+.block { display: block; }
+.center { text-align: center !important; }
+.right { text-align: right !important; }
+.left { text-align: left !important; }
+.justify { text-align: justify !important; }
+.valign { vertical-align: middle !important; }
 
 .textarea-disabled {
 	resize: none;
@@ -73,6 +60,8 @@
     -webkit-appearance: none;
 	}
 }
+
+.no-resize { resize: none; }
 
 .bgred {
 	background-color: #f2dede;

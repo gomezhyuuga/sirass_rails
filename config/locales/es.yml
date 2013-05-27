@@ -34,9 +34,9 @@ es:
   date:
     month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
     order:
-      - :day
-      - :month
-      - :year
+      - day
+      - month
+      - year
     formats:
       default: '%d/%m/%Y'
       long: '%A, %d de %B de %Y'
@@ -83,14 +83,12 @@ es:
 
     # Translate model names. Used in Model.human_name().
     models:
-      # For example,
-      #   user: "Dude"
       user:   "Usuario"
       institucion_user: "Institución"
       cprograma: "Programa de Servicio Social"
       monthly_report: "Control Mensual de Horas"
       monthly_report_hour: "Registro de Hora"
-      # will translate User model name to "Dude"
+      bi_monthly_report: "Informe Bimensual de Actividades"
 
     # Translate model attribute names. Used in Model.human_attribute_name(attribute).
     attributes:

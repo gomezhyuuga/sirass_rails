@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 class PrestadorPagesController < ApplicationController
 	before_filter :require_login
+	before_filter :require_inscripcion_activa, only: :reporte_horas
+	before_filter :require_inscripcion, only: [:inscripcion, :edit_inscripcion]
 	layout 'prestador'
 	def index
 		require_role(:prestador)
@@ -30,6 +32,5 @@ class PrestadorPagesController < ApplicationController
 	end
 
 	def reporte_horas
-		require_inscripcion
 	end
 end

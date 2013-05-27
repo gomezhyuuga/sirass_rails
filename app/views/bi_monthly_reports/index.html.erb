@@ -1,0 +1,15 @@
+<% provide :title, "Lista de Informes Bimensuales" %>
+<% provide :sidebar_active, :revBim %>
+
+<h1>Informes Bimensuales</h1>
+<p>
+	A continuación se presenta la lista de <em>Informes Bimensuales de Actividades</em> que haz enviado.
+</p>
+
+<% if @reportes.any? %>
+	<%= render 'bi_monthly_reports/table', reportes: @reportes %>
+<% else %>
+	<p class="lead">
+		Aún no haz enviado ningún reporte.
+	</p>
+<% end %>
