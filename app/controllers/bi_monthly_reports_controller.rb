@@ -70,12 +70,23 @@ class BiMonthlyReportsController < ApplicationController
 
 	def destroy
 		reporte = BiMonthlyReport.find( params[:id] )
-		if reporte.destroy
-			flash[:success] = "Reporte eliminado correctamente."
+		puede_eliminar = false
+		if current_user.prestador
+		  inscripcion = Inscripcion.find(current_user.prestador.inscripcion_actual)
+		  puede_eliminar = true if inscripcion.bi_monthly_reports.include? reporte
 		else
-			flash[:error] = "Lo sentimos pero ha ocurrido un error eliminando el reporte."
+		  authorize! :manage, BiMonthlyReport
+		  puede_eliminar = true
 		end
-		redirect_to informe_bimensual_index_path
+
+		if puede_eliminar
+			if reporte.destroy
+				flash[:success] = "Reporte eliminado correctamente."
+			else
+				flash[:error] = "Lo sentimos pero ha ocurrido un error eliminando el reporte."
+			end
+		end
+		redirect_to current_user.user_page
 	end
 
 	def cambiar_estado

@@ -114,7 +114,6 @@ class MonthlyReportsController < ApplicationController
     end
     
     if puede_eliminar
-      @control_horas = MonthlyReport.find(params[:id])
       if @control_horas.destroy
         flash[:success] = "Reporte eliminado correctamente"
       else
