@@ -38,7 +38,7 @@
 class Inscripcion < ActiveRecord::Base
   attr_accessible :ano_ingreso, :area, :avance_cursos, :cargoResponsable, :carrera, :cprograma_id, :creditos, :cve_programa_institucional, :difundir, :estado_inscripcion_id, :fecha_fin, :fecha_inicio, :hora_entrada, :hora_salida, :institucion_id, :matricula, :nCursos_basicos, :nCursos_superio, :observaciones, :plantel_id, :practicas, :prestador_id, :programa_institucional, :promedio, :responsable, :semestre, :dia_ids, :institucion_attributes, :ncontrol
 
-  validates_presence_of :prestador_id, :institucion, :plantel_id, :carrera, :matricula, :semestre, :avance_cursos, :promedio, :cprograma_id, :fecha_inicio, :fecha_fin, :responsable, :dia_ids
+  validates_presence_of :prestador_id, :institucion, :plantel_id, :carrera, :matricula, :semestre, :ano_ingreso, :avance_cursos, :promedio, :cprograma_id, :fecha_inicio, :fecha_fin, :responsable, :dia_ids, :area, :hora_entrada, :hora_salida, :cargoResponsable
 
   # Relaciones
   belongs_to :prestador
