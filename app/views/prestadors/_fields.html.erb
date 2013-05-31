@@ -7,7 +7,7 @@
 		<%= f.input :apaterno, placeholder: 'Rodríguez' %>
 		<%= f.input :amaterno, label: 'Apellido Materno', placeholder: 'Perea' %>
 		<%= f.input :nacimiento, label: 'Fecha de nacimiento', as: :string,
-			input_html: { 'data-behaviour' => 'datepicker', class: 'input-small'} %>
+			input_html: { 'data-behaviour' => 'datepicker', class: 'input-small', value: f.object.nacimiento } %>
 		<%= f.input :sexo, collection: [:Masculino, :Femenino], as: :radio_buttons, item_wrapper_class: 'inline' %>
 		<%= f.input :estudiante_uacm, as: :radio_buttons, item_wrapper_class: 'inline' %>
 	</div> <!-- fin datos personales -->

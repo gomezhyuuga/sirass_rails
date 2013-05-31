@@ -1,0 +1,21 @@
+<% unless object.observaciones.blank? %>
+	<h2>Observaciones</h2>
+	<div class="well well-small text-error">
+		<%= simple_format h(object.observaciones) %>
+	</div>
+<% end %>
+<hr/>
+<h2>Actualizar observaciones</h2>
+<p>
+	<i class="icon-question-sign"></i>
+	Escribir en el siguiente campo solamente si hay alg&uacute;n error en los datos reportados (<em>especificar dato</em>) o si es necesario hacerle notificar algo a la persona que envi&oacute; la información.
+</p>
+<%= simple_form_for object, url: url do |f| %>
+	<%= f.input :observaciones, input_html: { rows: 6, class: 'input-block-level' } %>
+	<div class="form-actions">
+		<button class="btn btn-warning" name="commit" type="submit">
+			<i class="icon-warning-sign icon-white"></i>
+			Actualizar observaciones
+		</button>
+	</div>
+<% end %>

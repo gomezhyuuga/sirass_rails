@@ -93,6 +93,10 @@ class MonthlyReportsController < ApplicationController
   def update
     @control_horas = MonthlyReport.find(params[:id])
     params[:monthly_report][:estado_reporte_id] = EstadoReporte::ACTUALIZADO
+    if params[:monthly_report][:observaciones]
+      params[:monthly_report][:estado_reporte_id] = EstadoReporte::CON_ERRORES
+    end
+    
     if @control_horas.update_attributes(params[:monthly_report])
       flash[:success] = "Reporte actualizado correctamente"
       redirect_to current_user.user_page
