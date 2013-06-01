@@ -1,0 +1,39 @@
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th colspan="4" class="center">
+				<h2>Datos de la inscripción</h2>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="span3">Dependencia receptora:</th>
+			<td colspan="3">
+				<%= programa.institucion_user.institucion.nombre %>
+			</td>
+		</tr>
+		<tr>
+			<th>Domicilio:</th>
+			<td colspan="3">
+				<%= programa.institucion_user.domicilio %>
+			</td>
+		</tr>
+		<tr>
+			<th>Responsable:</th>
+			<td colspan="3">
+				<%= programa.institucion_user.responsable %>
+			</td>
+		</tr>
+		<tr>
+			<th>Fecha de inicio:</th>
+			<td>
+				<%= inscripcion.fecha_inicio %>
+			</td>
+			<th>Fecha de término:</th>
+			<td>
+				<%= inscripcion.fecha_fin %>
+			</td>
+		</tr>
+	</tbody>
+</table>

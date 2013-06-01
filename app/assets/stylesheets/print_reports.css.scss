@@ -1,0 +1,40 @@
+// Place all the styles related to the reports controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+	background: #fff;
+}
+
+header {
+	padding-top: 4px;
+	border-top: 20px solid #adab95;
+
+	img {
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+	}
+}
+h1 {
+		font-size: 1.5em;
+		text-transform: uppercase;
+		text-decoration: underline;
+		text-align: center;
+	}
+
+span.date { text-decoration: underline; }
+
+table {
+	td {
+		background-color: #fff !important;
+	}
+	th {
+		background-color: silver;
+		h2 {
+			font-size: 1.2em;
+			text-transform: uppercase;
+			line-height: 0.5em;
+		}
+	}
+}
+p { font-size: 12px; }

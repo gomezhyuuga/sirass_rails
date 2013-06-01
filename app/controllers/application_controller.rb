@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include UsersHelper
 
   rescue_from CanCan::AccessDenied do |exception|
-  	flash[:error] = exception.message || "No tienes los permisos suficientes para ver esta página"
+  	flash[:error] = "No tienes los permisos suficientes para ver esta página"
   	redirect_to root_url
     # render file: "#{Rails.root}/public/403", formats: [:html], status: 403, layout: false
   end

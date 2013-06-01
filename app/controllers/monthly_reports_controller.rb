@@ -130,6 +130,15 @@ class MonthlyReportsController < ApplicationController
     end
   end
 
+  def print
+    @reporte = MonthlyReport.find(params[:id])
+    @inscripcion = @reporte.inscripcion
+    @programa = @inscripcion.cprograma
+    @prestador = @inscripcion.prestador
+
+    render layout: 'print'
+  end
+
   def cambiar_estado
     authorize! :manage, MonthlyReport
     reporte = MonthlyReport.find( params[:id] )

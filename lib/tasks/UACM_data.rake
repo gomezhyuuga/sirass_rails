@@ -7,7 +7,12 @@ namespace :db do
 
 		desc "Users de admin"
 		task dev_users: :environment do
-			Admin.create!(nombre: "Fernando",apaterno: "Gómez",amaterno: "Herrera",nacimiento: "04/02/1994",cargo: "Desarrollador de Sistema",user_attributes: {username: "a_gomezhyuuga",email: "gomezhyuuga@gmail.com",password: "a_ghyuuga852456",password_confirmation: "a_ghyuuga852456"})
+			Admin.create!(nombre: "Fernando",apaterno: "Gómez",amaterno: "Herrera",nacimiento: "04/02/1994",
+				cargo: "Desarrollador de Sistema",user_attributes: {
+					username: "a_gomezhyuuga",
+					email: "gomezhyuuga@gmail.com",
+					password: "a_ghyuuga852456",
+					password_confirmation: "a_ghyuuga852456"})
 		end
 
 		desc "Catálogo de Instituciones"

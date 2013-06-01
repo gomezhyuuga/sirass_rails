@@ -1,0 +1,28 @@
+<% provide :title, "CARTA COMPROMISO DEL SERVICIO SOCIAL" %>
+<% today = Date.today %>
+
+<p>
+	Con el fin de dar cumplimiento a lo establecido en la Ley Reglamentaria del Artículo 5º Constitucional relativo al ejercicio de profesiones, el suscrito:
+</p>
+<%= render 'shared/prestador/datos_personales', object: @prestador %>
+<%= render 'shared/prestador/datos_domicilio', object: @prestador %>
+<%= render 'shared/prestador/datos_escolaridad', object: @inscripcion %>
+<%= render 'shared/prestador/datos_inscripcion', inscripcion: @inscripcion, programa: @programa %>
+
+<p>
+	Me comprometo a realizar el Servicio Social acatando el Reglamento General de Servicio Social de la Universidad Autónoma de la Ciudad de México y llevarlo a cabo en el lugar y periodos manifestados, así como participar con mis conocimientos e iniciativa en las actividades que desempeñe, procurando dar una imagen positiva en el organismo o dependencia oficial, de no hacerlo así, quedo enterado(a) de la cancelación respectiva, la cual procederá automáticamente.
+</p>
+<p>
+	En la Ciudad de México, Distrito Federal a los <span class="date"><%= l Date.today, format: :full %></span>.
+</p>
+<div class="center">
+	<p>De conformidad</p>
+	<br>
+	<p>
+		________________________________________
+	</p>
+	<p>
+		Firma del prestador de servicio social
+	</p>
+</div>
+<strong class="pull-right">Formato 004</strong>

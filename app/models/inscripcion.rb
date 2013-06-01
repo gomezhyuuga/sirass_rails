@@ -65,4 +65,8 @@ class Inscripcion < ActiveRecord::Base
     self.practicas ? "Práctica Profesional" : "Servicio Social"
   end
 
+  def nombre_plantel
+    self.plantel.nombre if self.plantel
+  end
+
 end

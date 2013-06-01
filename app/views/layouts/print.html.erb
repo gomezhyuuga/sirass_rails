@@ -9,27 +9,24 @@
   <%= render 'shared/seo' %>
 
   <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "print_reports", :media => "all" %>
   <%= yield(:head) %>
 </head>
 <body id="<%= controller_name %>-<%= action_name %>">
-  <div id="wrapper">
-    <%= render 'layouts/header' %>
-    
-    <div class="container solid">
-      <%= render 'shared/flash', flash: flash %>
-      
-      <%= yield %>
-    </div> <!-- /container -->
+  
+  <div class="container">
+    <header class="clearfix">
+      <%= image_tag 'UACM_logo.jpeg' %>
+      <h1>
+        <%= yield :title %>
+      </h1>
+    </header>
+    <%= yield %>
+  </div> <!-- /container -->
 
-
-    <%= render 'shared/debug' %>
-    <div id="push"></div>
-  </div>
-  <%= render 'layouts/footer' %>
   <!-- Javascripts
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
   <%= javascript_include_tag "application" %>
-  <%= yield(:javascript) %>
 </body>
 </html>

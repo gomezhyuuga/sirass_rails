@@ -33,4 +33,19 @@ class PrestadorPagesController < ApplicationController
 
 	def reporte_horas
 	end
+
+	def carta_compromiso
+		@prestador = current_user.prestador
+		@inscripcion = Inscripcion.find(@prestador.inscripcion_actual)
+		@programa = @inscripcion.cprograma
+		eid = @inscripcion.estado_inscripcion_id
+		correcto = EstadoInscripcion::CORRECTA
+		en_servicio = EstadoInscripcion::EN_SERVICIO
+		if eid == correcto || eid == en_servicio
+			render layout: 'print'
+		else
+			flash[:error] = "Necesitas que aprueben tu inscripción para poder imprimir tu carta compromiso."
+			redirect_to current_user.user_page
+		end
+	end
 end

@@ -32,6 +32,7 @@ es:
         one: "1 día"
         other: "%{count} días"
   date:
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
     month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
     order:
       - day
@@ -41,6 +42,7 @@ es:
       default: '%d/%m/%Y'
       long: '%A, %d de %B de %Y'
       short: '%d de %b'
+      full: '%d días del mes de %B del año %Y'
   # Attributes names common to most models
   attributes:
     created_at: "Creado el"

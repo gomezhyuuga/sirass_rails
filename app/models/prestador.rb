@@ -41,4 +41,10 @@ class Prestador < ActiveRecord::Base
   def nombre_completo
     "#{self.nombre} #{self.apaterno} #{self.amaterno}"
   end
+
+  def dnumero_completo
+    numero = self.dNumExt
+    numero += " | #{self.dNumInt}" if self.dNumInt
+    numero
+  end
 end

@@ -4,6 +4,8 @@ Sirass::Application.routes.draw do
   get "t/visual", to: "test_pages#visual"
   get "t/info", to: "test_pages#info"
 
+  get "reportes", to: 'reports#index'
+
   resources :prestadors, path: "prestadores"
   resources :institucion_users, path: "institucions"
   resources :admins
@@ -43,7 +45,13 @@ Sirass::Application.routes.draw do
     get 'mi_inscripcion/edit',  to: 'prestador_pages#edit_inscripcion'
     put 'estudianteUACM',       to: 'prestador_pages#estudianteDe'
     get 'reporte_horas',        to: 'prestador_pages#reporte_horas'
-    resources :monthly_reports,     path: 'control_horas', as: 'control_horas'
+    get 'carta_compromiso',     to: 'prestador_pages#carta_compromiso'
+    resources :monthly_reports,     path: 'control_horas', as: 'control_horas' do
+      member do
+        get 'print'
+      end
+    end
+
     resources :bi_monthly_reports,  path: 'informe_bimensual', as: 'informe_bimensual'
   end
   # Institucion

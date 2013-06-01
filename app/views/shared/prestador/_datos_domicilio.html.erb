@@ -1,0 +1,39 @@
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th colspan="6" class="center">
+				<h2>Domicilio</h2>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="span1">Calle:</th>
+			<td class="span5">
+				<%= object.dCalle %>
+			</td>
+			<th class="span1">Núm. ext.:</th>
+			<td>
+				<%= object.dNumExt || "S/N" %>
+			</td>
+			<th class="span1">Núm. int.:</th>
+			<td>
+				<%= object.dNumInt || "S/N" %>
+			</td>
+		</tr>
+		<tr>
+			<th>Colonia:</th>
+			<td>
+				<%= object.dColonia %>
+			</td>
+			<th class="span1">Código postal:</th>
+			<td>
+				<%= object.dCP %>
+			</td>
+			<th>Delegación:</th>
+			<td>
+				<%= object.dDelegacion %>
+			</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,41 @@
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th colspan="4" class="center">
+				<h2>Escolaridad</h2>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="span1">Colegio:</th>
+			<td>
+				<%= object.institucion.nombre %>
+			</td>
+			<th class="span1">Plantel:</th>
+			<td>
+				<%= object.nombre_plantel || "Sin plantel" %>
+			</td>
+		</tr>
+		<tr>
+			<th class="span1">Licenciatura:</th>
+			<td>
+				<%= object.carrera %>
+			</td>
+			<th class="span1">Matrícula:</th>
+			<td>
+				<%= object.matricula %>
+			</td>
+		</tr>
+		<tr>
+			<th class="span1">Semestre:</th>
+			<td>
+				<%= object.semestre %><%=  %>
+			</td>
+			<th class="span1">Promedio:</th>
+			<td>
+				<%= object.promedio %>
+			</td>
+		</tr>
+	</tbody>
+</table>

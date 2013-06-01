@@ -1,0 +1,41 @@
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th colspan="4" class="center">
+				<h2>Datos personales</h2>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th class="span3">Nombre:</th>
+			<td>
+				<%= object.nombre_completo %>
+			</td>
+			<th class="span2">Usuario:</th>
+			<td>
+				<%= object.user.username %>
+			</td>
+		</tr>
+		<tr>
+			<th class="span3">Fecha de nacimiento:</th>
+			<td>
+				<%= object.nacimiento %>
+			</td>
+			<th class="span2">Sexo:</th>
+			<td>
+				<%= object.sexo %>
+			</td>
+		</tr>
+		<tr>
+			<th class="span3">Teléfono (casa):</th>
+			<td>
+				<%= object.telCasa || "- - -" %>
+			</td>
+			<th class="span2">Teléfono (celular):</th>
+			<td>
+				<%= object.telCel || "- - -" %>
+			</td>
+		</tr>
+	</tbody>
+</table>
