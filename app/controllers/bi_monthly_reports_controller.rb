@@ -59,6 +59,9 @@ class BiMonthlyReportsController < ApplicationController
 	def update
 		@reporte = BiMonthlyReport.find( params[:id] )
 		params[:bi_monthly_report][:estado_reporte_id] = EstadoReporte::ACTUALIZADO
+		if params[:bi_monthly_report][:observaciones]
+		  params[:bi_monthly_report][:estado_reporte_id] = EstadoReporte::CON_ERRORES
+		end
 		if @reporte.update_attributes( params[:bi_monthly_report] )
 			flash[:success] = "Reporte actualizado correctamente."
 			redirect_to informe_bimensual_path(@reporte)

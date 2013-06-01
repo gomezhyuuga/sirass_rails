@@ -72,7 +72,7 @@
 	<% end %>
 	</tbody>
 </table>
-
 <% if can? :manage, MonthlyReport %>
+	<%= render 'shared/observaciones', object: @reporte, url: control_hora_path(@reporte) %>
 	<%= render 'shared/back_button', link: admin_reportes_mensuales_path %>
 <% end %>

@@ -51,3 +51,4 @@
 <div class="well well-small">
 	<%= simple_format h(@reporte.actividades) %>
 </div>
+<%= render 'shared/observaciones', object: @reporte, url: informe_bimensual_path(@reporte) %>
