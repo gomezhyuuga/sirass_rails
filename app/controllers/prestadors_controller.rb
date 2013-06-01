@@ -68,7 +68,8 @@ class PrestadorsController < ApplicationController
 			flash[:success] = "Datos actualizados correctamente"
 			redirect_to current_user.user_page
 		else
-			render 'edit'
+			flash.now[:error] = "Ocurrió un error actualizando tus datos"
+			render 'edit', layout: layoutForUser()
 		end
 	end
 
@@ -80,7 +81,7 @@ class PrestadorsController < ApplicationController
 			if current_user.prestador != @prestador
 				authorize! :read, Prestador, message: 'No tienes permisos suficientes para ver esta página'
 			else
-				render	layout: 'prestador'
+				render layout: prestador
 			end			
 		else
 			no_encontrado
@@ -99,5 +100,17 @@ class PrestadorsController < ApplicationController
 			flash[:error] = msg
 			page ||= current_user.user_page
 			redirect_to page
+		end
+
+		def layoutForUser
+			if current_user.prestador
+				"prestador"
+			elsif current_user.admin
+				"admin"
+			elsif current_user.institucion_user
+				"institucion"
+			else
+				"application"
+			end
 		end
 end
