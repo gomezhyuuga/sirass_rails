@@ -4,6 +4,17 @@ namespace :db do
 	task reset_all: [:environment, 'db:reset', 'db:migrate', 'db:uacm:all'] do
 		
 	end
+
+	desc "Configuraciones iniciales"
+	task :configs => [:environment] do
+		puts "Importando configuraciones iniciales"
+		csv_text = File.read('db/csv/configs.csv')
+		csv = CSV.parse(csv_text, :headers => true)
+		csv.each do |row|
+			row = row.to_hash.with_indifferent_access
+			Configuracion.create!(row.to_hash.symbolize_keys)
+		end
+	end 
 end
 
 namespace :utils do

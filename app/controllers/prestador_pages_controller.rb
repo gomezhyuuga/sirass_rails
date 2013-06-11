@@ -48,4 +48,14 @@ class PrestadorPagesController < ApplicationController
 			redirect_to current_user.user_page
 		end
 	end
+
+	def informe_bimensual
+		# @prestador = current_user.prestador
+		# @inscripcion = Inscripcion.find(@prestador.inscripcion_actual)
+
+	end
+
+	def informe_final
+		
+	end
 end
