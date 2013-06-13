@@ -88,6 +88,7 @@ GEM
     mime-types (1.21)
     multi_json (1.6.1)
     multipart-post (1.2.0)
+    newrelic_rpm (3.6.3.111)
     oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -185,6 +186,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   libv8 (~> 3.11.8)
+  newrelic_rpm
   quiet_assets
   rails (= 3.2.9)
   sass-rails (~> 3.2.3)

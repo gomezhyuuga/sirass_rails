@@ -5,6 +5,7 @@ if RUBY_VERSION =~ /1.9/
   Encoding.default_internal = Encoding::UTF_8
 end
 
+gem 'newrelic_rpm'
 gem 'rails', '3.2.9'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
