@@ -24,4 +24,11 @@ class BiMonthlyReport < ActiveRecord::Base
 
   belongs_to :estado_reporte
   belongs_to :inscripcion
+  after_save :update_horas_servicio
+  after_destroy :update_horas_servicio
+
+  private
+	  def update_horas_servicio
+	  	self.inscripcion.calcular_horas_servicio
+	  end
 end

@@ -31,6 +31,7 @@ es:
             responsable: "Lic. Javier Aguilar"
             cargoResponsable: "Supervisor de área de informática"
             observaciones: "Escribe alguna observación"
+            horas_servicio: "00:00"
         monthly_report:
             supervisor: "Nombre de la persona que supervisó tu servicio"
             numero: "#"
@@ -55,6 +56,7 @@ es:
             responsable: "La persona que validará tus horas de servicio social"
             hora_entrada: "Hora en formato de 24hrs (HH:MM)"
             hora_salida: "Hora en formato de 24hrs (HH:MM)"
+            horas_servicio: "Horas de servicio en formato HRS:MINS"
         cprograma:  
             observaciones: "Si el programa contiene errores, anótalos en el campo de arriba."
     labels:

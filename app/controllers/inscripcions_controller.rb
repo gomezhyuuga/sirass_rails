@@ -77,7 +77,8 @@ class InscripcionsController < ApplicationController
 		@inscripcion.estado_inscripcion_id = EstadoInscripcion::VALIDANDO
 		# Valores por defecto
 		@inscripcion.programa_institucional = "PENDIENTE"
-		@inscripcion.cve_programa_institucional = "###############"
+		@inscripcion.cve_programa_institucional = "PENDIENTE"
+		@inscripcion.horas_servicio = @inscripcion.articulo_91 == true ? "480:00" : "00:00"
 		if @inscripcion.save && Prestador.update(@inscripcion.prestador.id, inscripcion_actual: @inscripcion.id)
 			programa = @inscripcion.cprograma
 			programa.vacantes -= 1
@@ -126,6 +127,13 @@ class InscripcionsController < ApplicationController
 	def reportes_mensuales
 		@inscripcion = Inscripcion.find(params[:id])
 		@reportes = @inscripcion.monthly_reports
+		@usuario = @inscripcion.prestador.user
+		@prestador = @inscripcion.prestador
+		render layout: 'admin'
+	end
+	def reportes_bimensuales
+		@inscripcion = Inscripcion.find(params[:id])
+		@reportes = @inscripcion.bi_monthly_reports
 		@usuario = @inscripcion.prestador.user
 		@prestador = @inscripcion.prestador
 		render layout: 'admin'

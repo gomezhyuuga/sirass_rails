@@ -140,7 +140,7 @@ class MonthlyReportsController < ApplicationController
     @programa = @inscripcion.cprograma
     @prestador = @inscripcion.prestador
 
-    render layout: 'print'
+    render layout: '/shared/print'
   end
 
   def cambiar_estado

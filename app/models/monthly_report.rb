@@ -29,4 +29,12 @@ class MonthlyReport < ActiveRecord::Base
   has_many :monthly_report_hours, dependent: :destroy
   accepts_nested_attributes_for :monthly_report_hours, allow_destroy: true
   validates_associated :monthly_report_hours
+
+  after_save :update_horas_servicio
+  after_destroy :update_horas_servicio
+
+  private
+	  def update_horas_servicio
+	  	self.inscripcion.calcular_horas_servicio
+	  end
 end

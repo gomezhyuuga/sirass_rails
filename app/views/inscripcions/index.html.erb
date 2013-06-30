@@ -29,7 +29,7 @@
 					<%= link_to "#{i.prestador.nombre} #{i.prestador.apaterno} #{i.prestador.amaterno}", i.prestador %>
 				</td>
 				<td>
-					<%= i.ncontrol || "Sin definir" %>
+					<%= link_to (i.ncontrol || "Sin definir"), i %>
 				</td>
 				<td>
 					<%= link_to i.cprograma.nombre, i.cprograma %>

@@ -145,6 +145,7 @@ es:
         fecha_inicio: "Fecha de inicio"
         fecha_fin: "Fecha de término"
         cargoResponsable: "Cargo del responsable"
+        horas_servicio: "Horas de Servicio"
       monthly_report:
         numero: "Número de reporte"
         fecha_inicio: 'De la fecha'

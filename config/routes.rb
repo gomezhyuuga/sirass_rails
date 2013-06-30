@@ -77,6 +77,7 @@ Sirass::Application.routes.draw do
       match 'update_status/:status',  to: 'inscripcions#update_status', as: 'update_status'
       get   'generar_nuevo_ncontrol', to: 'inscripcions#generar_nuevo_ncontrol', as: 'generar_ncontrol'
       get   'reportes_mensuales',     to: 'inscripcions#reportes_mensuales', on: :member
+      get   'reportes_bimensuales',     to: 'inscripcions#reportes_bimensuales', on: :member
     end
   end
 
