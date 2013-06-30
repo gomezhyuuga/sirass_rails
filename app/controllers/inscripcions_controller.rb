@@ -35,6 +35,7 @@ class InscripcionsController < ApplicationController
 	def update_status
 		if Inscripcion.update(params[:inscripcion_id], estado_inscripcion_id: params[:status])
 			flash[:success] = "Estado actualizado correctamente!"
+			InscripcionMailer.estado_actualizado(Inscripcion.find_by_id(params[:inscripcion_id])).deliver
 		else
 			flash[:error] = "Ocurrió un error actualizando el estado"
 		end
@@ -101,6 +102,7 @@ class InscripcionsController < ApplicationController
 		observaciones = params[:inscripcion][:observaciones]
 		if Inscripcion.update(params[:inscripcion_id], observaciones: observaciones, estado_inscripcion_id: EstadoInscripcion::ERRORES)
 			flash[:success] = "Observaciones actualizadas con éxito"
+			InscripcionMailer.observaciones_actualizadas(Inscripcion.find_by_id(params[:inscripcion_id])).deliver
 			redirect_to inscripcion_path(params[:inscripcion_id])
 		else
 			flash[:error] = "Ocurrió un error actualizando las observaciones"
