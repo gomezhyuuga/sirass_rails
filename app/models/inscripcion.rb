@@ -83,6 +83,12 @@ class Inscripcion < ActiveRecord::Base
     self.articulo_91 == true ? "Sí" : "No"
   end
 
+  def self.calcular_horas_all_inscripciones
+    Inscripcion.all.each do |i|
+      i.calcular_horas_servicio()
+    end
+  end
+
   def calcular_horas_servicio
     horas = 0
     mins = 0
@@ -115,5 +121,4 @@ class Inscripcion < ActiveRecord::Base
     def delete_prestador_relation
       Prestador.update(self.prestador.id, inscripcion_actual: nil)
     end
-
 end

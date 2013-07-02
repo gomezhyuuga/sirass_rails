@@ -50,4 +50,9 @@ namespace :utils do
 		p.inscripcion_actual = i.id
 		p.save
 	end
+
+	desc "Recalcular horas de servicio de todas las inscripciones"
+	task :calcular_horas => [:environment] do
+		Inscripcion.calcular_horas_all_inscripciones()
+	end
 end

@@ -56,6 +56,7 @@ group :development do
   gem 'quiet_assets'
   gem 'annotate'
   gem 'better_errors'
+  gem 'capistrano'
 end
 
 group :production do
