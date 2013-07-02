@@ -7,7 +7,18 @@
 <%= simple_form_for @inscripcion, defaults: { input_html: { class: 'input-block-level' } } do |f| %>
 	<%= f.input :programa_institucional %>
 	<%= f.input :cve_programa_institucional %>
-	<%= f.input :horas_servicio %>
+	<!-- <%= f.input :horas_servicio %> -->
+	<h4>Horas de servicio</h4>
+	<div class="input-append">
+		<%= f.text_field :horas_servicio, class: 'input-medium' %>
+		<%= link_to 'Calcular horas', inscripcion_calcular_horas_servicio_path(@inscripcion), remote: true,
+		class: 'btn btn-warning' %>
+	</div>
+	<p>
+		El formato de las horas debe ser: <strong>HRS:MIMS</strong> (ej: 480:00)
+	</p>
+	<h4>Artículo 91</h4>
+	<%= f.input :articulo_91, :as => :radio_buttons, label: false %>
 	<h4>Número de Control</h4>
 	<div class="input-append">
 		<%= f.text_field :ncontrol, class: 'input-large' %>

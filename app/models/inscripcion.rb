@@ -105,6 +105,27 @@ class Inscripcion < ActiveRecord::Base
     self.update_attribute(:horas_servicio, "%02d:%02d" % [horas, mins] )
   end
 
+  def self.calcular_horas(id)
+    horas = 0
+    mins = 0
+    # Acumular horas y mins
+    i = Inscripcion.find_by_id(id)
+    if i 
+      i.monthly_reports.each do |r|
+        horas += r.horas.split(':').first.to_i
+        mins += r.horas.split(':').last.to_i
+      end
+      # Convertir mins sobrantes a horas
+      horas += mins / 60
+      mins = mins % 60
+
+      "%02d:%02d" % [horas, mins]
+    else
+      "Inscripción no válida"
+    end
+    
+  end
+
   def horas_servicio_horas
     self.horas_servicio.split(":").first.to_i
   end

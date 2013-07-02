@@ -14,6 +14,9 @@ class InscripcionsController < ApplicationController
 
 	def update
 		@inscripcion = Inscripcion.find(params[:id])
+		if params[:inscripcion][:articulo_91] == "true" && params[:inscripcion][:horas_servicio].blank?
+			params[:inscripcion][:horas_servicio] = "480:00"
+		end
 		if @inscripcion.update_attributes( params[:inscripcion] )
 			flash[:success] = "Inscripción actualizada correctamente"
 			if logged_as? :admin
@@ -121,6 +124,15 @@ class InscripcionsController < ApplicationController
 			categoria = "E"
 		end
 		@ncontrol = "SS-#{categoria}-#{consecutivo}"
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def calcular_horas_servicio
+		@horas = Inscripcion.calcular_horas(params[:inscripcion_id])
+		puts @horas
+
 		respond_to do |format|
 			format.js
 		end

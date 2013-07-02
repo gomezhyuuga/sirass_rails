@@ -1,6 +1,7 @@
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
+			<th class="center valign" rowspan="2">Ver</th>
 			<th class="center valign" colspan="2">Periodo</th>
 			<th class="center valign" colspan="2">Horas</th>
 			<th class="center valign" rowspan="2">Estado</th>
@@ -16,24 +17,29 @@
 	<tbody>
 		<% reportes.each do |r| %>
 		<tr>
-			<td>
+			<td class="center valign">
+				<%= link_to informe_bimensual_path(r) do  %>
+					<%= glyph(:eye_open) %>
+				<% end %>
+			</td>
+			<td class="center valign">
 				<%= r.periodo_inicio %>
 			</td>
-			<td>
+			<td class="center valign">
 				<%= r.periodo_fin %>
 			</td>
-			<td>
+			<td class="center valign">
 				<%= r.horas %>
 			</td>
-			<td>
+			<td class="center valign">
 				<%= r.horas_acumuladas %>
 			</td>
-			<td>
+			<td class="center valign">
 				<span class="label <%= lbl_estado_reporte(r) %>">
 					<%= r.estado_reporte.descripcion %>
 				</span>
 			</td>
-			<td>
+			<td class="center valign">
 				<%= render 'bi_monthly_reports/admin_btn', obj: r %>
 			</td>
 		</tr>
