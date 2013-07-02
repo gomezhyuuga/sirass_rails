@@ -33,6 +33,6 @@ namespace :deploy do
   	run "cd #{current_path} && thin stop"
   end
   task :restart do
-    run "cd #{current_path} && thin restart"
+    run "cd #{current_path} && thin stop && thin start -e production -d"
   end
 end
