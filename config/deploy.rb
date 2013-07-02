@@ -1,6 +1,11 @@
+# $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+require 'rvm/capistrano'
+
 set :application, "cocoasirass"
 set :repository,  "git@github.com:gomezhyuuga/sirass_rails.git"
 set :deploy_to, "/home/sirass/app"
+set :branch, "master"
+set :deploy_via, :remote_cache
 
 set :user, "sirass"
 set :use_sudo, false
@@ -8,11 +13,11 @@ set :use_sudo, false
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "serviciosocial.uacm.edu.mx"                          # Your HTTP server, Apache/etc
-role :app, "serviciosocial.uacm.edu.mx"                          # This may be the same as your `Web` server
-role :db,  "serviciosocial.uacm.edu.mx", :primary => true # This is where Rails migrations will run
+role :web, "sirass.uacm.edu.mx"                          # Your HTTP server, Apache/etc
+role :app, "sirass.uacm.edu.mx"                          # This may be the same as your `Web` server
+role :db,  "sirass.uacm.edu.mx", :primary => true # This is where Rails migrations will run
 # role :db,  "your slave db-server here"
-server "serviciosocial.uacm.edu.mx", :app, :web, :db, :primary => true
+server "sirass.uacm.edu.mx", :app, :web, :db, :primary => true
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
 

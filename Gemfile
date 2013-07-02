@@ -57,6 +57,7 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'capistrano'
+  gem 'rvm-capistrano'
 end
 
 group :production do
