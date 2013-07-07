@@ -12,6 +12,7 @@
 db/*.sqlite3
 db/*.sqlite3*
 db/schema.rb
+db/backup
 
 *.rbc
 *.sassc
@@ -39,3 +40,5 @@ pickle-email-*.html
 # Sublime
 *.sublime-project
 *.sublime-workspace
+
+next_commit.txt

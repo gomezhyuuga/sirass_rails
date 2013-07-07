@@ -1,6 +1,0 @@
-- Agregado artículo 91 a Inscripción
-- NewRelic RPM off en development
-- Inscripción after_destroy eliminar inscripcion_actual de Prestador
-- Ajustes de usabilidad
-- Lista de Informes Bimensuales asociados a un usuario en específico
-- Cálculo de horas de servicio para una inscripción

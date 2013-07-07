@@ -1,6 +1,7 @@
 <table class="table table-bordered">
 	<thead>
 		<tr>
+			<th>Ver</th>
 			<% if can? :manage, MonthlyReport %>
 			<th>Prestador</th>
 			<% end %>
@@ -14,6 +15,11 @@
 	<tbody>
 	<% reportes.each do |r| %>
 		<tr>
+			<td class="valign center">
+				<%= link_to control_hora_path(r) do %>
+				<i class="icon-eye-open"></i>
+				<% end %>
+			</td>
 			<% if can? :manage, MonthlyReport %>
 			<td class="valign">
 				<%= link_to r.inscripcion.prestador.nombre_completo, r.inscripcion.prestador %>

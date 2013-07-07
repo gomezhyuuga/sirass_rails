@@ -15,6 +15,13 @@ namespace :db do
 					password_confirmation: "a_ghyuuga852456"})
 		end
 
+		desc "Datos de configuración de la app"
+		task :configs => [:environment] do
+			puts "Estableciendo configuración inicial..."
+			Configuracion.create!(nombre: "responsable_ss", valor: "Martha G. Tera Ponce")
+			Configuracion.create!(nombre: "convocatoria", valor: "on")
+		end
+
 		desc "Catálogo de Instituciones"
 		task :instituciones => :environment do
 			puts "Importando catálogo de Instituciones"
