@@ -13,10 +13,12 @@
 		</p>
 	</div>
 	<div class="span3 pull-right">
-		<p><strong>Horas realizadas:</strong> 0</p>
+		<p><strong>Horas realizadas:</strong> <%= inscripcion.horas_servicio %></p>
 		<p><strong>Usuario:</strong> <%= link_to inscripcion.prestador.user.username, inscripcion.prestador %></p>
+		<p><strong>Titulación por Art. 91:</strong> <%= t inscripcion.articulo_91_to_s %></p>
 	</div>
 </div>
+<h4>Horas de servicio: <small><%= inscripcion.horas_servicio %></small></h4>
 <ul class="nav nav-tabs">
 	<li class="active">
 		<a href="#datosPrestador" data-toggle="tab">Datos del prestador</a>

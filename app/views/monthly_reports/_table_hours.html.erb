@@ -1,0 +1,18 @@
+<table class="table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th class="center">Fecha</th>
+			<th class="center">Entrada</th>
+			<th class="center">Salida</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @reporte.monthly_report_hours.each do |r| %>
+		<tr>
+			<td class="center"><%= r.fecha %></td>
+			<td class="center"><%= r.entrada.strftime("%H:%M")	 %></td>
+			<td class="center"><%= r.salida.strftime("%H:%M") %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

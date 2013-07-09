@@ -1,9 +1,21 @@
 <% provide :title, "Informe Bimensual de Actividades" %>
 
-<h1>Informe Bimensual de Actividades</h1>
-<p>
-	A continuación se presentan los detalles del reporte.
+<h1>Detalles del reporte</h1>
+<p class="lead">
+	A continuación se presentan los detalles del <strong><em>Informe Bimensual de Actividades</em></strong>.
 </p>
+<div class="row">
+	<div class="span2">
+		<p>
+			<strong>Inscripción:</strong> <%= link_to "##{@reporte.inscripcion.id}", @reporte.inscripcion %>
+		</p>
+	</div>
+	<div class="span5 offset1">
+		<p>
+			<strong>Prestador:</strong> <%= link_to @reporte.inscripcion.prestador.nombre_completo, @reporte.inscripcion.prestador %>
+		</p>
+	</div>
+</div>
 <p>
 	<strong>Número:</strong> <%= @reporte.numero %>
 </p>

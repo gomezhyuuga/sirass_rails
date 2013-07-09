@@ -1,9 +1,20 @@
 <% provide(:title, "Detalles de Control de Horas") %>
 <h1>Detalles del reporte</h1>
 <p class="lead">
-	A continuación se presentan los detalles del <em>Control Mensual de Horas</em>
+	A continuación se presentan los detalles del <strong><em>Control Mensual de Horas</em></strong>.
 </p>
-
+<div class="row">
+	<div class="span2">
+		<p>
+			<strong>Inscripción:</strong> <%= link_to "##{@reporte.inscripcion.id}", @reporte.inscripcion %>
+		</p>
+	</div>
+	<div class="span5 offset1">
+		<p>
+			<strong>Prestador:</strong> <%= link_to @reporte.inscripcion.prestador.nombre_completo, @reporte.inscripcion.prestador %>
+		</p>
+	</div>
+</div>
 <p>
 	<strong>Número:</strong> <%= @reporte.numero %>
 </p>

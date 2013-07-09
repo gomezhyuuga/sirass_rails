@@ -66,3 +66,9 @@
 .bgred {
 	background-color: #f2dede;
 }
+
+.small table {
+	font-size: 0.8em !important;
+
+	td { padding: 2px !important; }
+}

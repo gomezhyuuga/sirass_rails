@@ -1,3 +1,7 @@
+<%
+	hrs = porcentaje_horas_servicio(inscripcion)
+	hrs_p = hrs == "0.00" ? "0.5" : hrs
+%>
 <p>Actualmente est&aacute;s inscrito en el siguiente programa de Servicio Social:</p>
 <blockquote class="lead">
 	<%= inscripcion.cprograma.nombre %>
@@ -9,7 +13,10 @@
 </p>
 
 <h3>Horas acumuladas</h3>
-<div class="progress progress-success" style="height: 30px; border: 1px solid #8c8c8c;">
-	<div class="bar" style="width: 0%; height: 30px;"></div>
+<div class="progress <%= progress_bar_label_horas_servicio(inscripcion.horas_servicio_horas) %>" style="height: 30px; border: 1px solid #8c8c8c;">
+	<div class="bar" style="width: <%= hrs_p %>%; height: 30px;"></div>
 </div>
-<h6>0/480 - 0%</h8>
+<h6>
+	<%= inscripcion.horas_servicio_horas %>/480
+	( <%= porcentaje_horas_servicio(inscripcion) %>% )
+</h8>

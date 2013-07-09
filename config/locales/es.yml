@@ -43,6 +43,13 @@ es:
       long: '%A, %d de %B de %Y'
       short: '%d de %b'
       full: '%d días del mes de %B del año %Y'
+  time:
+     am: am
+     formats:
+       default: '%A, %d de %B de %Y %H:%M:%S %z'
+       long: '%d de %B de %Y %H:%M'
+       short: '%H:%M:%S'
+     pm: pm
   # Attributes names common to most models
   attributes:
     created_at: "Creado el"
@@ -51,7 +58,7 @@ es:
   # Default error messages
   errors:
     messages:
-      taken: "ya lo utiliza otro usuario"
+      taken: "ya está utilizado"
       not_a_number: "debe ser un número"
       less_than: "debe ser menor a %{count}"
       greater_than: "debe ser mayor a %{count}"
@@ -145,6 +152,7 @@ es:
         fecha_inicio: "Fecha de inicio"
         fecha_fin: "Fecha de término"
         cargoResponsable: "Cargo del responsable"
+        horas_servicio: "Horas de Servicio"
       monthly_report:
         numero: "Número de reporte"
         fecha_inicio: 'De la fecha'

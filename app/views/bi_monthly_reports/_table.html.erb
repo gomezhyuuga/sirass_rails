@@ -1,8 +1,12 @@
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
+			<th class="center valign" rowspan="2">Ver</th>
+			<% if can? :manage, MonthlyReport %>
+			<th>Prestador</th>
+			<% end %>
 			<th class="center valign" colspan="2">Periodo</th>
-			<th class="center valign" colspan="2">Horas</th>
+			<th class="center valign" rowspan="2">Horas</th>
 			<th class="center valign" rowspan="2">Estado</th>
 			<th class="center valign" rowspan="2">Acción</th>
 		</tr>
@@ -10,30 +14,40 @@
 			<th class="center valign">Del</th>
 			<th class="center valign">Al</th>
 			<th class="center valign">Reporte</th>
-			<th class="center valign">Acumuladas</th>
+			<!-- <th class="center valign">Acumuladas</th> -->
 		</tr>
 	</thead>
 	<tbody>
 		<% reportes.each do |r| %>
 		<tr>
-			<td>
+			<td class="center valign">
+				<%= link_to informe_bimensual_path(r) do  %>
+					<i class="icon-eye-open"></i>
+				<% end %>
+			</td>
+			<% if can? :manage, MonthlyReport %>
+			<td class="valign">
+				<%= link_to r.inscripcion.prestador.nombre_completo, r.inscripcion.prestador %>
+			</td>
+			<% end %>
+			<td class="center valign">
 				<%= r.periodo_inicio %>
 			</td>
-			<td>
+			<td class="center valign">
 				<%= r.periodo_fin %>
 			</td>
-			<td>
+			<td class="center valign">
 				<%= r.horas %>
 			</td>
-			<td>
-				<%= r.horas_acumuladas %>
-			</td>
-			<td>
+			<!-- <td class="center valign">
+				<#%= r.horas_acumuladas %>
+			</td> -->
+			<td class="center valign">
 				<span class="label <%= lbl_estado_reporte(r) %>">
 					<%= r.estado_reporte.descripcion %>
 				</span>
 			</td>
-			<td>
+			<td class="center valign">
 				<%= render 'bi_monthly_reports/admin_btn', obj: r %>
 			</td>
 		</tr>

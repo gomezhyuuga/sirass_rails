@@ -1,0 +1,15 @@
+Observaciones de inscripción actualizadas
+========================================================
+
+Hola <%= @prestador.nombre_completo %>,
+
+Estás recibiendo automáticamente este mensaje porque se han actualizado las
+observaciones en tu solicitud de inscripción al Servicio Social de la UACM dentro
+del programa "<%= @programa.nombre %>" con clave interna <%= @programa.cveprograma %>.
+
+Las observaciones que se te hicieron son las siguientes:
+
+<%= simple_format( h @inscripcion.observaciones ) %>
+
+Para cualquier modificación en los datos de tu inscripción, accede al sistema con
+tu nombre de usuario: <%= @user.username %> y tu respectiva contraseña.

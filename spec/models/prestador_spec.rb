@@ -18,7 +18,7 @@
 #  dColonia           :string(255)
 #  telCasa            :string(255)
 #  telCel             :string(255)
-#  estudiante_uacm    :boolean
+#  estudiante_uacm    :boolean          default(FALSE)
 #  inscripcion_actual :integer
 #
 

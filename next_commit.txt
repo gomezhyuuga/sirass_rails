@@ -1,4 +1,0 @@
-- Actualización de observaciones para CMH e IBA
-- Correcciones en formato de fechas
-- Agregado email a prestadors#show
-- Corrección cambiado campo de observaciones a :text de CMH

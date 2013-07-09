@@ -135,12 +135,25 @@ class MonthlyReportsController < ApplicationController
   end
 
   def print
+    allow = false
     @reporte = MonthlyReport.find(params[:id])
     @inscripcion = @reporte.inscripcion
     @programa = @inscripcion.cprograma
     @prestador = @inscripcion.prestador
 
-    render layout: 'print'
+    if can? :manage, MonthlyReport
+      allow = true
+    end
+    if current_user.prestador && current_user.prestador.id == @reporte.inscripcion.prestador.id
+      allow = true
+    end
+    
+    if allow
+      render layout: 'print'
+    else
+      flash[:error] = "¡No puedes imprimir este reporte!"
+      redirect_to current_user.user_page
+    end
   end
 
   def cambiar_estado

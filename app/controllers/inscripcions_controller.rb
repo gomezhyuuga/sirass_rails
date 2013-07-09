@@ -14,6 +14,9 @@ class InscripcionsController < ApplicationController
 
 	def update
 		@inscripcion = Inscripcion.find(params[:id])
+		if params[:inscripcion][:articulo_91] == "true" && params[:inscripcion][:horas_servicio].blank?
+			params[:inscripcion][:horas_servicio] = "480:00"
+		end
 		if @inscripcion.update_attributes( params[:inscripcion] )
 			flash[:success] = "Inscripción actualizada correctamente"
 			if logged_as? :admin
@@ -35,6 +38,7 @@ class InscripcionsController < ApplicationController
 	def update_status
 		if Inscripcion.update(params[:inscripcion_id], estado_inscripcion_id: params[:status])
 			flash[:success] = "Estado actualizado correctamente!"
+			InscripcionMailer.estado_actualizado(Inscripcion.find_by_id(params[:inscripcion_id])).deliver
 		else
 			flash[:error] = "Ocurrió un error actualizando el estado"
 		end
@@ -77,7 +81,8 @@ class InscripcionsController < ApplicationController
 		@inscripcion.estado_inscripcion_id = EstadoInscripcion::VALIDANDO
 		# Valores por defecto
 		@inscripcion.programa_institucional = "PENDIENTE"
-		@inscripcion.cve_programa_institucional = "###############"
+		@inscripcion.cve_programa_institucional = "PENDIENTE"
+		@inscripcion.horas_servicio = @inscripcion.articulo_91 == true ? "480:00" : "00:00"
 		if @inscripcion.save && Prestador.update(@inscripcion.prestador.id, inscripcion_actual: @inscripcion.id)
 			programa = @inscripcion.cprograma
 			programa.vacantes -= 1
@@ -100,6 +105,7 @@ class InscripcionsController < ApplicationController
 		observaciones = params[:inscripcion][:observaciones]
 		if Inscripcion.update(params[:inscripcion_id], observaciones: observaciones, estado_inscripcion_id: EstadoInscripcion::ERRORES)
 			flash[:success] = "Observaciones actualizadas con éxito"
+			InscripcionMailer.observaciones_actualizadas(Inscripcion.find_by_id(params[:inscripcion_id])).deliver
 			redirect_to inscripcion_path(params[:inscripcion_id])
 		else
 			flash[:error] = "Ocurrió un error actualizando las observaciones"
@@ -123,9 +129,25 @@ class InscripcionsController < ApplicationController
 		end
 	end
 
+	def calcular_horas_servicio
+		@horas = Inscripcion.calcular_horas(params[:inscripcion_id])
+		puts @horas
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	def reportes_mensuales
 		@inscripcion = Inscripcion.find(params[:id])
 		@reportes = @inscripcion.monthly_reports
+		@usuario = @inscripcion.prestador.user
+		@prestador = @inscripcion.prestador
+		render layout: 'admin'
+	end
+	def reportes_bimensuales
+		@inscripcion = Inscripcion.find(params[:id])
+		@reportes = @inscripcion.bi_monthly_reports
 		@usuario = @inscripcion.prestador.user
 		@prestador = @inscripcion.prestador
 		render layout: 'admin'

@@ -100,12 +100,18 @@ input.use-timepicker {
 }
 
 table#firmas {
+	td, th {
+		text-align: center !important;
+		padding: 2px;
+	}
 	.placeholder {
-		height: 5em;
+		height: 4em;
 		display: block;
 	}
-
-	td { text-align: center; }
+	h5 {
+		padding: 10px 0px 0px 0px !important;
+		color: #dbdbdb;
+	}
 }
 
 body#cprogramas-print {

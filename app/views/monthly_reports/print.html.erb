@@ -1,0 +1,78 @@
+<% provide :title, "CONTROL MENSUAL DE HORAS" %>
+<% today = Date.today %>
+<div class="row">
+	<div class="span2">
+		<p>
+			<strong>Inscripción:</strong> <%= @reporte.inscripcion.id %>
+		</p>
+	</div>
+	<div class="span2 offset6">
+		<p>
+			<strong class="underline">Número:</strong> <%= @reporte.numero %>
+		</p>
+	</div>
+</div>
+
+<div class="row">
+	<p class="span4">
+		<strong>Prestador:</strong> <%= @reporte.inscripcion.prestador.nombre_completo %>
+	</p>
+	<p class="span3">
+		<strong>N. Control: </strong> <%= @reporte.inscripcion.ncontrol %>
+	</p>
+	<p class="span4 offset1">
+		<strong>Supervisor:</strong>
+		<%= @reporte.supervisor %>
+	</p>
+</div>
+
+
+<div class="row">
+	<div class="span4">
+		<strong>Periodo del:</strong>
+		<%= @reporte.fecha_inicio %>
+	</div>
+	<div class="span4">
+		<strong>Al:</strong>
+		<%= @reporte.fecha_fin %>
+	</div>
+	<div class="span4">
+		<strong>Estado:</strong>
+		<span class="label <%= lbl_estado_reporte(@reporte) %>">
+			<%= @reporte.estado_reporte.descripcion %>
+		</span>
+	</div>
+</div>
+<div class="row">
+	<div class="span3">
+		<strong>Horas:</strong>
+		<p class="well well-small center">
+			<%= @reporte.horas %>
+		</p>
+	</div>
+	<div class="span3 offset1">
+		<strong>Horas anteriores:</strong>
+		<p class="well well-small center">
+			<%= @reporte.horas_anteriores %>
+		</p>
+	</div>
+	<div class="span3 offset1">
+		<strong>Horas acumuladas:</strong>
+		<p class="well well-small center">
+			<%= @reporte.horas_acum %>
+		</p>
+	</div>
+</div>
+<h3>Registro de Horas</h3>
+<div class="small">
+	<%= render 'table_hours' %>
+</div>
+
+<h3>Firmas</h3>
+<%= render 'shared/firmas_reportes' %>
+
+<p>
+	Ciudad de México, Distrito Federal a los <span class="date"><%= l Date.today, format: :full %>, <%= l Time.now, format: :short %></span>.
+</p>
+
+<strong class="pull-right">Formato 012</strong>
