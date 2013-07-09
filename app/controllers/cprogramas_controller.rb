@@ -52,44 +52,56 @@ class CprogramasController < ApplicationController
 	end
 
 	def new
+		c = Configuracion.find_by_nombre("convocatoria")
 		require_role(:institucion)
-		@cprograma = Cprograma.new
-		@cprograma.licenciaturas.build
-		@cprograma.responsables.build
+		if c.valor == "Activar" or can? :manage, Cprograma
+			@cprograma = Cprograma.new
+			@cprograma.licenciaturas.build
+			@cprograma.responsables.build
+		else
+			flash[:error] = "La convocatoria no esta vigente; así que no puedes enviar o actualizar tus programas"
+			redirect_to current_user.user_page
+		end
 	end
 
 	def create
-		@cprograma = Cprograma.new(params[:cprograma])
-		#Asignar fecha en caso de ser indeterminado
-		d = Time.new()
-		anio = d.strftime("%Y").to_i + 1
-		if @cprograma.tiempo_indeterminado == true
-			@cprograma.ftiempo = d.strftime("%d")+"/"+d.strftime("%m")+"/"+anio.to_s
-		end
-		#Agregar el nuevo TipoPrograma en caso de existir
-		if params[:otroTipo] == 'false' 
-			ot = TipoPrograma.new(:descripcion => params[:nombreOtroTipo])
-			ot.save
-			@cprograma.tipo_programa_id = ot.id
-		end
-		# Asignar ID del usuario logueado
-		@cprograma.institucion_user_id = current_user.institucion_user.id
-		# Asignar categoría
-		@cprograma.categoria_interno = current_user.institucion_user.institucion.uacm? ? true : false
-		# Estado
-		@cprograma.estado_programa_id = EstadoPrograma::ESPERANDO
+		c = Configuracion.find_by_nombre("convocatoria")
+		if c.valor == "Activar" or can? :manage, Cprograma
+			@cprograma = Cprograma.new(params[:cprograma])
+			#Asignar fecha en caso de ser indeterminado
+			d = Time.new()
+			anio = d.strftime("%Y").to_i + 1
+			if @cprograma.tiempo_indeterminado == true
+				@cprograma.ftiempo = d.strftime("%d")+"/"+d.strftime("%m")+"/"+anio.to_s
+			end
+			#Agregar el nuevo TipoPrograma en caso de existir
+			if params[:otroTipo] == 'false' 
+				ot = TipoPrograma.new(:descripcion => params[:nombreOtroTipo])
+				ot.save
+				@cprograma.tipo_programa_id = ot.id
+			end
+			# Asignar ID del usuario logueado
+			@cprograma.institucion_user_id = current_user.institucion_user.id
+			# Asignar categoría
+			@cprograma.categoria_interno = current_user.institucion_user.institucion.uacm? ? true : false
+			# Estado
+			@cprograma.estado_programa_id = EstadoPrograma::ESPERANDO
 
-		# Calcular vacantes y plazas
-		solicitados = 0
-		@cprograma.licenciaturas.each { |l| solicitados += l.solicitados }
-		@cprograma.vacantes = solicitados
-		@cprograma.plazas = solicitados
-		if @cprograma.save
-			flash[:success] = "Programa creado correctamente"
-			redirect_to current_user.user_page
+			# Calcular vacantes y plazas
+			solicitados = 0
+			@cprograma.licenciaturas.each { |l| solicitados += l.solicitados }
+			@cprograma.vacantes = solicitados
+			@cprograma.plazas = solicitados
+			if @cprograma.save
+				flash[:success] = "Programa creado correctamente"
+				redirect_to current_user.user_page
+			else
+				flash.now[:error] = "Programa con errores"
+				render 'new'
+			end
 		else
-			flash.now[:error] = "Programa con errores"
-			render 'new'
+			flash[:error] = "La convocatoria no esta vigente; así que no puedes enviar o actualizar tus programas"
+			redirect_to current_user.user_page
 		end
 	end
 
@@ -107,36 +119,48 @@ class CprogramasController < ApplicationController
 	end
 
 	def edit
-		#require_role(:institucion)
-		@cprograma = Cprograma.find_by_id(params[:id])
-		if current_user.institucion_user &&
-			current_user.institucion_user.cprogramas.include?(@cprograma) &&
-			@cprograma.estado_programa_id != EstadoPrograma::ACTIVO
-			render 'edit'
-		else 
-			authorize! :manage, Cprograma
-			render 'edit', layout: 'admin'
+		c = Configuracion.find_by_nombre("convocatoria")
+		if c.valor == "Activar" or can? :manage, Cprograma
+			#require_role(:institucion)
+			@cprograma = Cprograma.find_by_id(params[:id])
+			if current_user.institucion_user &&
+				current_user.institucion_user.cprogramas.include?(@cprograma) &&
+				@cprograma.estado_programa_id != EstadoPrograma::ACTIVO
+				render 'edit'
+			else 
+				authorize! :manage, Cprograma
+				render 'edit', layout: 'admin'
+			end
+		else
+			flash[:error] = "La convocatoria no esta vigente; así que no puedes enviar o actualizar tus programas"
+			redirect_to current_user.user_page
 		end
 	end
 
 	def update
-		@cprograma = Cprograma.find(params[:id])
-		# Volver a calcular plazas y vacantes
-		plazas_ocupadas = @cprograma.plazas_ocupadas
-		solicitados = 0
-		@cprograma.licenciaturas.each { |l| solicitados += l.solicitados }
-		@cprograma.plazas = solicitados
-		@cprograma.vacantes = solicitados - plazas_ocupadas
-		
-		@cprograma.estado_programa_id = EstadoPrograma::ACTUALIZADO
-		if @cprograma.update_attributes(params[:cprograma]) &&
-			eliminar_licenciaturas(params[:cprograma][:licenciaturas_attributes]) &&
-			eliminar_responsables(params[:cprograma][:responsables_attributes])
-				flash[:success] = "Programa actualizado correctamente :-)"
-				redirect_to current_user.user_page
+		c = Configuracion.find_by_nombre("convocatoria")
+		if c.valor == "Activar" or can? :manage, Cprograma
+			@cprograma = Cprograma.find(params[:id])
+			# Volver a calcular plazas y vacantes
+			plazas_ocupadas = @cprograma.plazas_ocupadas
+			solicitados = 0
+			@cprograma.licenciaturas.each { |l| solicitados += l.solicitados }
+			@cprograma.plazas = solicitados
+			@cprograma.vacantes = solicitados - plazas_ocupadas
+			
+			@cprograma.estado_programa_id = EstadoPrograma::ACTUALIZADO
+			if @cprograma.update_attributes(params[:cprograma]) &&
+				eliminar_licenciaturas(params[:cprograma][:licenciaturas_attributes]) &&
+				eliminar_responsables(params[:cprograma][:responsables_attributes])
+					flash[:success] = "Programa actualizado correctamente :-)"
+					redirect_to current_user.user_page
+			else
+				flash.now[:error] = "Ocurrió un error actualizando el programa."
+				render 'edit'
+			end
 		else
-			flash.now[:error] = "Ocurrió un error actualizando el programa."
-			render 'edit'
+			flash[:error] = "La convocatoria no esta vigente; así que no puedes enviar o actualizar tus programas"
+			redirect_to current_user.user_page
 		end
 	end
 

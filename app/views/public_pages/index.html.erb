@@ -50,17 +50,18 @@
 		============================== -->
 		<div class="container content solid">
 			<ul class="thumbnails">
-				<li class="span6">
+				<li class="<%= @span1 %>">
 					<h2>Programas</h2>
 					<%#= link_to programas_path, {class: "thumbnail", id: "programas"} do %>
 						<%#= image_tag '300x108.gif' %>
 					<%# end %>
 					<p class="center">Conoce todos los programas de Servicio Social que ofrece para ti la UACM.</p>
-					<%= link_to programas_path, class: 'btn btn-warning btn-large span5' do %>
+					<%= link_to programas_path, class: 'btn btn-warning btn-large span5 ' + @osv do %>
 						<i class="icon-white icon-book"></i>
 						Revisa la lista de Programas 
 					<% end %>
 				</li>
+				<% if @c.valor == "Activar" %>
 				<li class="span6">
 					<h2><strong>REGISTRO PARA INSTITUCIÓN</strong></h2>
 					<p class="center">Registrate aquí, envía tus programas y comienza a recibir prestadores</p>
@@ -70,6 +71,7 @@
 						Registro de Institución
 					<% end %>
 				</li>
+				<% end %>
 				<!-- <li class="span4">
 					<h2>Proceso</h2> -->
 					<%#= link_to proceso_path, {class: "thumbnail", id: "proceso"} do %>

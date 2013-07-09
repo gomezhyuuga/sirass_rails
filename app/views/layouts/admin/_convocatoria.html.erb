@@ -1,0 +1,16 @@
+<% c = Configuracion.find_by_nombre('convocatoria') %>
+<li class="nav-header">Convocatoria</li>
+<% if c.valor == "Activar" 
+	value = "btn-danger"
+	param = "Desactivar"
+   else
+   	value = "btn-success"
+	param = "Activar"
+   end
+%>
+<%= link_to Convocatoria_path() do %>
+<li id="sidebar_convoca" class="btn <%= value %>">
+	<i class="icon-file"></i>
+	<%= param %>
+</li>
+<% end %>
