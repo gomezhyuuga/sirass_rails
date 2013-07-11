@@ -1,0 +1,36 @@
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th class="center valign">Ver</th>
+			<th class="center valign">Prestador</th>
+			<th class="center valign">Horas reportadas</th>
+			<th class="center valign">Estado</th>
+			<th class="center valign">Acción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% reportes.each do |r| %>
+		<tr>
+			<td class="center valign">
+				<%= link_to final_report_path(r) do  %>
+					<i class="icon-eye-open"></i>
+				<% end %>
+			</td>
+			<td class="valign">
+				<%= link_to r.inscripcion.prestador.nombre_completo, r.inscripcion.prestador %>
+			</td>
+			<td class="center valign">
+				<%= r.horas %>
+			</td>
+			<td class="center valign">
+				<span class="label <%= lbl_estado_reporte(r) %>">
+					<%= r.estado_reporte.descripcion %>
+				</span>
+			</td>
+			<td class="center valign">
+				<%= render 'final_reports/admin_btn', obj: r %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

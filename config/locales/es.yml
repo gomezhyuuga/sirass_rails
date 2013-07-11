@@ -158,3 +158,10 @@ es:
         fecha_inicio: 'De la fecha'
         fecha_fin: 'A la fecha'
         horas_acum: 'Horas acumuladas'
+      final_report:
+        introduccion: "Introducción"
+        metodologia: "Metodología"
+        resultados: "Resultados y Conclusiones"
+        actividades: "Actividades realizadas"
+        obj_gral: "Objetivo General"
+        obj_esp: "Objetivos Específicos"

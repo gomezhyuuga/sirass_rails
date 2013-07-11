@@ -15,6 +15,8 @@ class EstadoReporte < ActiveRecord::Base
   # Relaciones
   has_and_belongs_to_many :control_horas # Está mal la relación!
   has_many :monthly_reports
+  has_many :bi_monthly_reports
+  has_one :final_report
 
   # CONSTANTES
   SIN_REVISION 	= 1

@@ -1,0 +1,18 @@
+<% provide :title, "Editar Informe Final" %>
+
+<h1>Editar Informe Final</h1>
+<p class="lead">
+	Si te hicieron observaciones debido a algún error en tu informe, desde aquí puedes actualizar los datos necesarios.
+</p>
+
+<%= render 'shared/observaciones', object: @reporte, url: final_report_path %>
+
+<h2>Editar detalles del reporte</h2>
+
+<%= simple_form_for @reporte, url: informe_final_path,
+	defaults: { input_html: { class: 'input-block-level' } } do |f| %>
+	<%= render 'fields', obj: f %>
+	<div class="form-actions">
+		<%= f.submit "Actualizar datos", class: "btn btn-success btn-block" %>
+	</div>
+<% end %>

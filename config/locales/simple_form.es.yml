@@ -47,6 +47,29 @@ es:
             horas_acumuladas: "140:00"
         plantel:
             nombre: "Nombre del plantel"
+        final_report:
+            horas: "HH:MM"
+            introduccion: |
+                Describir con precisión que es lo que se intentó realizar, planteando las diferentes formas 
+                posibles en que se abordo el estudio. Referir, de acuerdo con las características del programa, 
+                por qué se eligió y explicar la relevancia el tema para la sociedad.
+            obj_gral: |
+                Debe ser resultado de la interacción de elementos del nivel del conocimiento del problema, 
+                de los intentos de solución y claridad del alcance de su investigación en el tiempo, espacio, 
+                del acceso a tecnología, de los limitantes de recursos humanos, de infraestructura y de recursos 
+                financieros.
+            obj_esp: "Además de ser concretos y puntuales deben ser medibles y evaluables."
+            metodologia: |
+                Deben responder a las particularidades de la investigación que se realizó y a la propuesta del 
+                prestador para su identificación. "Es el qué hacer".
+            actividades: |
+                Describir en forma clara y concreta el método con los instrumentos que se utilizaron para dar 
+                respuesta a cada uno de los interrogantes planteados en los objetivos específicos, responde al 
+                "cómo hacerlo".
+            metas: "Describir de manera detallada las actividades realizadas durante el periodo de servicio social."
+            resultados: |
+                Redactar los resultados finales a donde se llego con la ejecución del programa. De la claridad de 
+                la meta del prestador de servicio social depende el éxito de su trabajo.
     hints:
         defaults:
             nacimiento: 'Fecha en formato dd/mm/aaaa'
@@ -59,6 +82,8 @@ es:
             horas_servicio: "Horas de servicio en formato HRS:MINS"
         cprograma:  
             observaciones: "Si el programa contiene errores, anótalos en el campo de arriba."
+        final_report:
+            horas: "La cantidad de horas que acumulaste durante tu servicio. Mínimo deben ser 480:00. Formato HRS:MINS"
     labels:
         # Usar mejor es.yml para human_attributes
         # inscripcion:

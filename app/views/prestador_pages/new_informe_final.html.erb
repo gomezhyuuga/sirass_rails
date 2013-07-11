@@ -1,0 +1,20 @@
+<h1>Enviar Informe Final</h1>
+
+<p>
+	Si ya cumpliste con tus horas de servicio, es momento de que envíes tu <em>Informe Final de Actividades</em>.
+	Éste será el último informe y en él tienes que detallar todas las actividades que realizaste durante tu servicio.
+</p>
+<p>
+	Por favor, llena <strong>todos</strong> los siguientes campos:
+</p>
+
+<%= render 'shared/error_messages', object: @reporte %>
+
+<%= simple_form_for @reporte, url: informe_final_path(@reporte),
+		defaults: { input_html: { class: 'input-block-level no-resize' } } do |f| %>
+	<%= render 'final_reports/fields', obj: f %>
+
+	<div class="form-actions">
+		<%= f.submit "Enviar reporte", class: 'btn btn-success btn-block btn-large' %>
+	</div>
+<% end %>

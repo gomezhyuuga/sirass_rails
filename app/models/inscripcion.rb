@@ -63,6 +63,8 @@ class Inscripcion < ActiveRecord::Base
   has_and_belongs_to_many :dias, join_table: :inscripcions_dias
   has_many :monthly_reports, dependent: :destroy
   has_many :bi_monthly_reports, dependent: :destroy
+  has_one :final_report, dependent: :destroy
+
   def tipo_inscripcion
     if self.practicas?
       "Práctica Profesional"

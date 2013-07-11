@@ -53,7 +53,16 @@ Sirass::Application.routes.draw do
     end
 
     resources :bi_monthly_reports,  path: 'informe_bimensual', as: 'informe_bimensual'
+    get 'informe_final/new',        to: 'prestador_pages#new_informe_final'
+    get 'informe_final/edit',       to: 'prestador_pages#edit_informe_final'
+    match 'informe_final',          to: 'prestador_pages#create_informe_final', via: :post
+    match 'informe_final',          to: 'prestador_pages#update_informe_final', via: :put
+    get 'informe_final/ver',        to: 'prestador_pages#show_informe_final'
+    get 'informe_final/print',      to: 'prestador_pages#print_informe_final'
   end
+
+  # resources :final_report
+
   # Institucion
   scope "/institucion" do
     get 'home',         to: 'institucion_pages#index',      as: :institucion_home
@@ -64,14 +73,20 @@ Sirass::Application.routes.draw do
   get '/admin/home',                  to: 'admin_pages#index'
   get '/admin/reportes_mensuales',    to: 'admin_pages#reportes_mensuales'
   get '/admin/reportes_bimensuales',  to: 'admin_pages#reportes_bimensuales'
+  get '/admin/reportes_finales',      to: 'admin_pages#reportes_finales'
+
   match '/admin/reportes_mensuales/:id/cambiar_estado/:estado_id',  to: 'monthly_reports#cambiar_estado', as: :cambiar_estado_reporte, via: :put
   match '/admin/reportes_bimensuales/:id/cambiar_estado/:estado_id',  to: 'bi_monthly_reports#cambiar_estado', as: :cambiar_estado_reporte_bim, via: :put
+  match '/admin/reportes_finales/:id/cambiar_estado/:estado_id',  to: 'final_reports#cambiar_estado', as: :cambiar_estado_reporte_fin, via: :put
   # Admin
   # resources :institucions, :path => "/admin/institucions"
   # resources :plantels, :path => "/admin/plantels"
   scope "/admin" do
     resources :institucions
     resources :plantels
+    resources :final_reports, except: [:create, :new, :index] do
+      get 'print', to: "final_reports#print", on: :member
+    end
     resources :inscripcions,        path: "inscripciones" do
       match 'update_observaciones',   to: 'inscripcions#update_observaciones', via: :put
       match 'update_status/:status',  to: 'inscripcions#update_status', as: 'update_status'

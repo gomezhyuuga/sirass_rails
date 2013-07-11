@@ -1,0 +1,21 @@
+<% provide(:title, "Gestionar Informes Finales") %>
+<% provide(:sidebar_active, :reportes_ifa) %>
+
+<h1>
+	Lista de reportes
+	<small>Informe Final</small>
+</h1>
+
+<p>
+	Listar por categoría:
+	<%= links_to_estado EstadoReporte, controller: controller_name, action: action_name  %>
+</p>
+
+<% if @reportes.any? %>
+
+	<%= will_paginate(@reportes) %>
+	<%= render 'final_reports/table', reportes: @reportes %>
+
+<% else %>
+<p class="lead">No se encontró ningún reporte.</p>
+<% end %>

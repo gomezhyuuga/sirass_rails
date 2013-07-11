@@ -33,7 +33,9 @@
 		<li id="sidebar_informeBim">
 			<%= link_to "Informe Bimensual", new_informe_bimensual_path %>
 		</li>
-		<li id="sidebar_informeFin"><a href="#">Informe Final</a></li>
+		<li id="sidebar_informeFin">
+			<%= link_to "Informe Final", informe_final_new_path %>
+		</li>
 		<li class="divider"></li>
 		<!-- pendientes -->
 		<li class="nav-header">Revisiones</li>
@@ -44,14 +46,16 @@
 			<% end %>
 		</li>
 		<li id="sidebar_revBim">
-			<%= link_to informe_bimensual_index_path do |f| %>
+			<%= link_to informe_bimensual_index_path do %>
 				<i class="icon-tasks"></i>
 				Informe Bimensual
 			<% end %>
 		</li>
-		<li id="sidebar_revFin"><a href="#">
-			<i class="icon-eye-open"></i>
-			Informe Final
+		<li id="sidebar_revFin">
+			<%= link_to informe_final_ver_path do %>
+				<i class="icon-eye-open"></i>
+				Informe Final
+			<% end %>
 		</a>
 		</li>
 		<!-- avisos -->

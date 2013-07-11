@@ -1,0 +1,99 @@
+<% provide :title, "INFORME FINAL DE ACTIVIDADES" %>
+
+<div class="row">
+	<div class="span2">
+		<p>
+			<strong>Inscripción:</strong> #<%= @reporte.inscripcion.id %>
+		</p>
+	</div>
+	<div class="span5 offset1">
+		<p>
+			<strong>Prestador:</strong> <%= @reporte.inscripcion.prestador.nombre_completo %>
+		</p>
+	</div>
+</div>
+<p>
+	<strong>Estado:</strong>
+	<span class="label <%= lbl_estado_reporte(@reporte) %>">
+		<%= @reporte.estado_reporte.descripcion %>
+	</span>
+</p>
+<hr>
+<p>
+	<strong>Horas:</strong> <%= @reporte.horas %>
+</p>
+
+<h4>Introducción</h4>
+<%= simple_format h( @reporte.introduccion ) %>
+
+<h4>Objetivo General</h4>
+<%= simple_format h( @reporte.obj_gral ) %>
+
+<h4>Objetivos Específicos</h4>
+<%= simple_format h( @reporte.obj_esp ) %>
+
+<h4>Metodología</h4>
+<%= simple_format h( @reporte.metodologia ) %>
+
+<h4>Actividades realizadas</h4>
+<%= simple_format h( @reporte.actividades ) %>
+
+<h4>Metas</h4>
+<%= simple_format h( @reporte.metas ) %>
+
+<h4>Resultados y Conclusiones</h4>
+<%= simple_format h( @reporte.resultados ) %>
+
+<table class="table table-bordered" id="firmas">
+	<thead>
+		<tr>
+			<th colspan="3">AUTORIZACIÓN</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<span class="placeholder"></span>
+			</td>
+			<td>
+				<span class="placeholder"></span>
+			</td>
+			<td>
+				<span class="placeholder"></span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span class="muted">Firma del prestador de Servicio Social</span>
+			</td>
+			<td>
+				<span class="muted">(Nombre, Firma y Cargo del Responsable del Programa)</span>
+			</td>
+			<td>
+				<span class="muted">Responsable de la Oficina de Servicio Social de la UACM</span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span class="placeholder"></span>
+			</td>
+			<td rowspan="2">
+				<strong class="sello">SELLO</strong>
+			</td>
+			<td rowspan="2">
+				<strong class="sello">SELLO</strong>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span class="muted">(Nombre, firma y Cargo del Supervisor o Jefe Inmediato)</span>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>
+	Ciudad de México, Distrito Federal a los <span class="date"><%= l Date.today, format: :full %>, <%= l Time.now, format: :short %></span>.
+</p>
+
+<strong class="pull-right">Formato 011</strong>

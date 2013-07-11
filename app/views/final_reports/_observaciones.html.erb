@@ -1,0 +1,8 @@
+<h4>Observaciones</h4>
+<blockquote class="text-warning">
+	<% if r.observaciones.blank? %>
+		No se te hizo ninguna observación.
+	<% else %>
+		<%= simple_format h( r.observaciones ) %>
+	<% end %>
+</blockquote>

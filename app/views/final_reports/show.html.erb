@@ -1,0 +1,65 @@
+<% provide :title, "Ver Informe Final" %>
+
+<h1>Informe Final de Actividades</h1>
+<p class="lead">
+	A continuación se muestran los detalles de tu <em>Informe Final de Actividades</em>.
+</p>
+<div class="row">
+	<div class="span2">
+		<p>
+			<strong>Inscripción:</strong> <%= link_to "##{@reporte.inscripcion.id}", @reporte.inscripcion %>
+		</p>
+	</div>
+	<div class="span5 offset1">
+		<p>
+			<strong>Prestador:</strong> <%= link_to @reporte.inscripcion.prestador.nombre_completo, @reporte.inscripcion.prestador %>
+		</p>
+	</div>
+</div>
+<p class="pull-right">
+<% if can? :manage, FinalReport %>
+	<%= render 'admin_btn', obj: @reporte %>
+<% else %>
+	<%= link_to informe_final_edit_path, class: 'btn btn-primary' do %>
+		<i class="icon-pencil"></i>
+		Editar
+	<% end %>
+	<%= link_to informe_final_print_path, class: 'btn btn-primary' do %>
+		<i class="icon-print"></i>
+		Imprimir
+	<% end %>
+<% end %>
+</p>
+<p>
+	<strong>Estado:</strong>
+	<span class="label <%= lbl_estado_reporte(@reporte) %>">
+		<%= @reporte.estado_reporte.descripcion %>
+	</span>
+</p>
+<hr>
+<%= render 'observaciones', r: @reporte %>
+<hr>
+<p>
+	<strong>Horas:</strong> <%= @reporte.horas %>
+</p>
+
+<h4>Introducción</h4>
+<%= simple_format h( @reporte.introduccion ) %>
+
+<h4>Objetivo General</h4>
+<%= simple_format h( @reporte.obj_gral ) %>
+
+<h4>Objetivos Específicos</h4>
+<%= simple_format h( @reporte.obj_esp ) %>
+
+<h4>Metodología</h4>
+<%= simple_format h( @reporte.metodologia ) %>
+
+<h4>Actividades realizadas</h4>
+<%= simple_format h( @reporte.actividades ) %>
+
+<h4>Metas</h4>
+<%= simple_format h( @reporte.metas ) %>
+
+<h4>Resultados y Conclusiones</h4>
+<%= simple_format h( @reporte.resultados ) %>

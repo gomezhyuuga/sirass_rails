@@ -1,9 +1,11 @@
-<% unless object.observaciones.blank? %>
-	<h2>Observaciones</h2>
-	<div class="well well-small text-error">
+<h2>Observaciones</h2>
+<blockquote class="text-error">
+	<% if object.observaciones.blank? %>
+		No se ha hecho ninguna observación.
+	<% else %>
 		<%= simple_format h(object.observaciones) %>
-	</div>
-<% end %>
+	<% end %>
+</blockquote>
 <hr/>
 <h2>Actualizar observaciones</h2>
 <p>
