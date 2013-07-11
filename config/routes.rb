@@ -78,6 +78,7 @@ Sirass::Application.routes.draw do
   match '/admin/reportes_mensuales/:id/cambiar_estado/:estado_id',  to: 'monthly_reports#cambiar_estado', as: :cambiar_estado_reporte, via: :put
   match '/admin/reportes_bimensuales/:id/cambiar_estado/:estado_id',  to: 'bi_monthly_reports#cambiar_estado', as: :cambiar_estado_reporte_bim, via: :put
   match '/admin/reportes_finales/:id/cambiar_estado/:estado_id',  to: 'final_reports#cambiar_estado', as: :cambiar_estado_reporte_fin, via: :put
+  get '/Convocatoria', to: 'admin_pages#update_convocatoria'
   # Admin
   # resources :institucions, :path => "/admin/institucions"
   # resources :plantels, :path => "/admin/plantels"
