@@ -33,6 +33,7 @@ class AdminPagesController < ApplicationController
 			conditions[:estado_reporte_id] = params[:estado].to_i
 		end
 		@reportes = FinalReport.paginate(page: params[:page]).where(conditions)
+	end
 	def update_convocatoria
 		param = "Desactivar"
 		@c = Configuracion.find_by_nombre('convocatoria')
