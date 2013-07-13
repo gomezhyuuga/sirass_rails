@@ -10,8 +10,13 @@
     form { display: none; }
   }
 
-  table, th, tr {
-  	background-color: #fff
+  table {
+  	border-collapse: collapse;
+    margin-bottom: 5px !important;
+    td, th {
+      border: 1px solid #ADADAD !important;
+      vertical-align: middle !important;
+    }
   }
 
   body#cprogramas-print {

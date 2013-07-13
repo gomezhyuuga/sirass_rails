@@ -1,0 +1,165 @@
+<% provide :title, "SOLICITUD DE SERVICIO SOCIAL" %>
+<style type="text/css">
+	td, th {
+		text-align: center !important;
+		padding: 3px !important;
+	}
+</style>
+<%= render 'shared/prestador/datos_personales', object: @prestador %>
+<%= render 'shared/prestador/datos_domicilio', object: @prestador %>
+<%= render 'shared/prestador/datos_escolaridad', object: @inscripcion %>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th colspan="2">
+				<h2>Datos del programa</h2>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2">
+				<%= @inscripcion.programa_institucional %>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="2">
+				Nombre del Programa Institucional
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<%= @programa.cveprograma %>
+			</td>
+			<td>
+				<%= @inscripcion.area %>
+			</td>
+		</tr>
+		<tr>
+			<th>Clave</th>
+			<th>Área</th>
+		</tr>
+		<tr>
+			<td colspan="2" class="valign">
+				<%= @programa.nombre %>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="2">Asignado al Programa Interno</th>
+		</tr>
+		<tr>
+			<td>
+				<%= @inscripcion.cve_programa_institucional %>
+			</td>
+			<td>
+				<%= @inscripcion.dias_asistencia_join %>
+			</td>
+		</tr>
+		<tr>
+			<th>Clave</th>
+			<th>Días de asistencia</th>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<%= @inscripcion.responsable_y_cargo %>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="2">Responsable de programa y cargo</th>
+		</tr>
+		<tr>
+			<td>
+				<%= @inscripcion.fecha_inicio %>
+			</td>
+			<td>
+				<%= @inscripcion.fecha_fin %>
+			</td>
+		</tr>
+		<tr>
+			<th>Fecha de inicio</th>
+			<th>Fecha de Término</th>
+		</tr>
+	</tbody>
+</table>
+
+<table class="table table-bordered table-print">
+	<thead>
+		<tr>
+			<th colspan="2">PARA USO EXCLUSIVO DEL RESPONSABLE DE PROGRAMA DE SERVICIO SOCIAL</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="span6 left">Vo.Bo.:</td>
+			<td rowspan="4" class="valign">
+				<strong>Importante:</strong> <br>
+				El llenado de esta solicitud, no representa la inscripción formal al Servicio Social, es sólo el inicio 
+				del trámite, por lo que deberás continuar con el proceso en la Oficina de Servicio Social.
+			</td>
+		</tr>
+		<tr><td style="padding: 25px !important;"></td></tr>
+		<tr>
+			<td>
+				<span class="muted">Nombre y Firma</span>
+			</td>
+		</tr>
+		<tr>
+			<td>Vo.Bo. del responsable del programa</td>
+		</tr>
+	</tbody>
+</table>
+<strong class="pull-right">Formato 003</strong>
+
+<header class="clearfix page-break">
+	<%= image_tag 'UACM_logo.jpeg' %>
+</header>
+<p class="justify lead">
+	Con fundamento en los artículos 9 y 16 de la Ley de Protección de Datos Personales para el Distrito Federal, los 
+	datos personales recabados serán protegidos, incorporados y tratados en el Sistema de Datos Personales de los 
+	Prestadores de Servicio Social y Prácticas Profesionales, cuya finalidad es, el registro de prestadores de servicio 
+	social y prácticas profesionales y no podrán ser difundidos sin su consentimiento expreso, salvo las excepciones de 
+	transmisión previstas en la Ley antes mencionada.
+</p>
+
+<p class="justify lead">
+	La responsable del Sistema de Datos Personales de los Prestadores de Servicio Social y Prácticas Profesionales es la 
+	Licenciada Martha Gloria Tera Ponce, responsable del área de Servicio Social, y la dirección donde podrá ejercer los 
+	derechos de acceso, rectificación, cancelación y oposición, así como la revocación del consentimiento es a través de 
+	la Oficina de Información Pública de la Universidad Autónoma de la Ciudad de México, ubicada en Avenida Fray Servando 
+	Teresa de Mier número 92, cuarto piso, colonia Centro, código postal 06080, delegación Cuauhtémoc, Distrito Federal; 
+	teléfono 5134-9804, extensión 11412, con un horario de atención de 9:00 a 15:00 horas, en días hábiles, correo 
+	electrónico oipuacm@uacm.edu.mx.
+</p>
+<p class="justify lead">
+	Asimismo, el interesado podrá dirigirse al Instituto de Acceso a la Información Pública del Distrito Federal, donde 
+	recibirá asesoría sobre los derechos que tutela la Ley de Protección de Datos Personales para el Distrito Federal al 
+	teléfono: 5636-4636; correo electrónico: datos.personales@infodf.org.mx o www.infodf.org.mx
+</p>
+
+<hr>
+
+<p>
+	<label for="difundir">
+		<input type="radio" id="difundir" name="difundir" />
+		Sí autorizo que mis datos sean difundidos
+	</label>
+	<label for="difundir_no">
+		<input type="radio" id="difundir_no" name="difundir" />
+		No autorizo que mis datos sean difundidos
+	</label>
+</p>
+<hr>
+
+<p class="center">
+	<br><br>
+	__________________________________________________ <br>
+	Nombre y Firma
+</p>
+
+<hr>
+
+<p>
+	Ciudad de México, Distrito Federal a los <span class="date"><%= l Date.today, format: :full %>, <%= l Time.now, format: :short %></span>.
+</p>
+
+<strong class="pull-right">Formato 003</strong>

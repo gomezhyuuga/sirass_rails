@@ -46,6 +46,7 @@ Sirass::Application.routes.draw do
     put 'estudianteUACM',       to: 'prestador_pages#estudianteDe'
     get 'reporte_horas',        to: 'prestador_pages#reporte_horas'
     get 'carta_compromiso',     to: 'prestador_pages#carta_compromiso'
+    get 'solicitud_servicio',   to: 'prestador_pages#solicitud_servicio'
     resources :monthly_reports,     path: 'control_horas', as: 'control_horas' do
       member do
         get 'print'

@@ -50,6 +50,13 @@ class PrestadorPagesController < ApplicationController
 		end
 	end
 
+	def solicitud_servicio
+		@prestador = current_user.prestador
+		@inscripcion = Inscripcion.find(@prestador.inscripcion_actual)
+		@programa = @inscripcion.cprograma
+		render layout: 'print'
+	end
+
 	def informe_bimensual
 		# @prestador = current_user.prestador
 		# @inscripcion = Inscripcion.find(@prestador.inscripcion_actual)

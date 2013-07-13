@@ -73,6 +73,18 @@ class Inscripcion < ActiveRecord::Base
     end
   end
 
+  def dias_asistencia_join
+    self.dias.each.map { |d| d.dia_semana }.join(', ')
+  end
+
+  def responsable_y_cargo
+    if self.cargoResponsable.blank?
+      "#{self.responsable}"
+    else
+      "#{self.responsable} (#{self.cargoResponsable})"
+    end
+  end
+
   def tipo_servicio
     self.practicas ? "Práctica Profesional" : "Servicio Social"
   end
