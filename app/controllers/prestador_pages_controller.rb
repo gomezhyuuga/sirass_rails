@@ -1,9 +1,9 @@
 # -*- encoding : utf-8 -*-
 class PrestadorPagesController < ApplicationController
 	before_filter :require_login
-	before_filter :require_inscripcion_activa, only: [:reporte_horas, :new_informe_final, :create_informe_final]
+	before_filter :require_inscripcion_activa, only: [:reporte_horas, :new_informe_final, :create_informe_final, :show_informe_final]
 	before_filter :require_inscripcion, only: [:inscripcion, :edit_inscripcion]
-  	# before_filter :already_sent, only: [:new_informe_final, :create_informe_final]
+  	before_filter :already_sent, only: [:new_informe_final, :create_informe_final]
 	layout 'prestador'
 	def index
 		require_role(:prestador)
@@ -65,6 +65,10 @@ class PrestadorPagesController < ApplicationController
 
 	def show_informe_final
 		@reporte = FinalReport.find_by_inscripcion_id current_user.prestador.inscripcion_actual
+		unless @reporte
+			flash[:error] = "Aún no envías tu reporte."
+			redirect_to current_user.user_page
+		end
 	end
 
 	def new_informe_final
