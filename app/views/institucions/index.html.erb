@@ -19,7 +19,7 @@
 			<% @institucions.each do |i| %>
 			<tr>
 				<td><%= i.id %></td>
-				<td><%= link_to i.nombre, institucion_path(i) %></td>
+				<td><%= link_to i, institucion_path(i) %></td>
 				<td><%= boolean_to_icon i.educativa %></td>
 				<td>
 					<%= render 'institucion_admin_btn', obj: i, size: 'btn-small' %>

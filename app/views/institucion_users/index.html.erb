@@ -24,10 +24,10 @@
 				<% @institucion_users.each do |i| %>
 					<tr>
 						<td>
-							<%= link_to i.user.username, i %>
+							<%= link_to i.user, i %>
 						</td>
 						<td>
-							<%= link_to truncate(i.institucion.nombre, length: 50), institucion_path(i.institucion) %>
+							<%= link_to i.institucion, institucion_path(i.institucion) %>
 						</td>
 						<td>
 							<%= truncate(i.nombre_plantel) %>

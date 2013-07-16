@@ -19,6 +19,6 @@ class Admin < ActiveRecord::Base
   validates_presence_of :nombre, :amaterno, :apaterno, :nacimiento, :cargo, :user
 
   # Relaciones
-  has_one :user
+  has_one :user, dependent: :destroy
 	accepts_nested_attributes_for :user
 end

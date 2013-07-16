@@ -16,11 +16,15 @@ class Institucion < ActiveRecord::Base
   validates :nombre, presence: true, uniqueness: true
 
   has_many :plantels, dependent: :destroy
-  has_many :institucion_users
-  has_many :inscripcions
+  has_many :institucion_users, dependent: :nullify
+  has_many :inscripcions, dependent: :nullify
   accepts_nested_attributes_for :plantels
 
   def find_uacm
   	Institucion.where(uacm: true).first
+  end
+
+  def to_s
+  	self.nombre || "-- Fue borrado --"
   end
 end

@@ -50,5 +50,7 @@ class User < ActiveRecord::Base
       '/institucion/home'
     end
   end
-
+  def to_s
+    self.username || "-- Fue borrado --"
+  end
 end

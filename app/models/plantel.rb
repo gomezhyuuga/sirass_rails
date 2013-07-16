@@ -16,6 +16,10 @@ class Plantel < ActiveRecord::Base
   validates_presence_of :institucion, :nombre
 
   belongs_to :institucion
-  has_one :institucion_user
-  has_many :inscripcions
+  has_one :institucion_user, dependent: :nullify
+  has_many :inscripcions, dependent: :nullify
+
+  def to_s
+  	self.nombre || "-- Fue borrado --"
+  end
 end

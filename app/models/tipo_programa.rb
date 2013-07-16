@@ -10,5 +10,5 @@
 
 class TipoPrograma < ActiveRecord::Base
   attr_accessible :descripcion
-  has_many :cprograma
+  has_many :cprograma, dependent: :nullify
 end
