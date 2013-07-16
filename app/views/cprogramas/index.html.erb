@@ -39,7 +39,7 @@
 			</td>
 			<td>
 				<abbr title="<%= p.institucion_user.institucion.nombre %>" >
-					<%= truncate(p.institucion_user.institucion.nombre, length: 70) %>
+					<%= truncate(p.institucion_user.institucion.nombre || " - - - ", length: 70) %>
 				</abbr>
 			</td>
 			<% if can? :manage, Cprograma %>
