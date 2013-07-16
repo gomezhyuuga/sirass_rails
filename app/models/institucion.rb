@@ -16,8 +16,8 @@ class Institucion < ActiveRecord::Base
   validates :nombre, presence: true, uniqueness: true
 
   has_many :plantels, dependent: :destroy
-  has_many :institucion_users, dependent: :nullify
-  has_many :inscripcions, dependent: :nullify
+  has_many :institucion_users, dependent: :destroy
+  has_many :inscripcions, dependent: :destroy
   accepts_nested_attributes_for :plantels
 
   def find_uacm
