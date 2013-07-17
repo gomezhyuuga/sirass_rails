@@ -1,0 +1,20 @@
+<% provide :title, "INFORME BIMENSUAL DE ACTIVIDADES" %>
+<% today = Date.today %>
+<div class="row">
+	<div class="span2 offset1">
+		<p>
+			<strong>Reporte</strong> <%= @reporte.numero %> de 3
+		</p>
+	</div>
+	<div class="span2 offset5">
+		<p class="pull-right">
+			<strong >N° Control:</strong> <%= @reporte.inscripcion.ncontrol %>
+		</p>
+	</div>
+</div>
+<%= render 'table_datosEsc' %>
+<%= render 'table_datosProg' %>
+<h1>Actividades</h1>
+<p class="justify"><%= @reporte.actividades %></p>
+<%= render 'firmas' %>
+<strong class="pull-right">Formato 008</strong>

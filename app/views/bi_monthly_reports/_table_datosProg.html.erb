@@ -1,0 +1,51 @@
+<h1>DATOS DEL PROGRAMA</h1>
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th class="center">Programa Institucional</th>
+			<th class="center">Clave</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="center"><%= @reporte.inscripcion.programa_institucional %></td>
+			<td class="center"><%= @reporte.inscripcion.cve_programa_institucional %></td>
+		</tr>
+		<tr>
+			<th class="center">Asignado al programa interno</th>
+			<th class="center">Clave interna</th>
+		</tr>
+		<tr>
+			<td class="center"><%= @reporte.inscripcion.cprograma.nombre %></td>
+			<td class="center"><%= @reporte.inscripcion.cprograma.cveprograma %></td>
+		</tr>
+		<tr>
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr><th class="center">Área o Dependencia</th></tr>
+				</thead>
+				<tbody>
+					<tr><td class="center"><%= @reporte.inscripcion.area %></td></tr>
+				</tbody>
+			</table>
+		</tr>
+		<tr>
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th class="center">Periodo Reportado</th>
+						<th class="center">Total de horas reportadas</th>
+						<th class="center">Total de horas acumuladas</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="center"><%= @reporte.periodo_inicio %> al <%= @reporte.periodo_fin %></td>
+						<td class="center"><%= @reporte.horas %></td>
+						<td class="center"><%= @reporte.horas_acumuladas %></td>
+					</tr>
+				</tbody>
+			</table>
+		</tr>
+	</tbody>
+</table>
