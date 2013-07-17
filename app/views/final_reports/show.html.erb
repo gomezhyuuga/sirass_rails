@@ -63,3 +63,8 @@
 
 <h4>Resultados y Conclusiones</h4>
 <%= simple_format h( @reporte.resultados ) %>
+
+<% if can? :manage, FinalReport %>
+	<%= render 'shared/observaciones', object: @reporte, url: final_report_path(@reporte) %>
+	<%= render 'shared/back_button', link: admin_reportes_finales_path %>
+<% end %>
