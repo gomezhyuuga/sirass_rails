@@ -1,0 +1,47 @@
+<h1>DATOS ESCOLARES</h1>
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th class="center">Nombre</th>
+			<th class="center">Apellido Paterno</th>
+			<th class="center">Apellido Materno</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="center"><%= @reporte.inscripcion.prestador.nombre %></td>
+			<td class="center"><%= @reporte.inscripcion.prestador.apaterno %></td>
+			<td class="center"><%= @reporte.inscripcion.prestador.amaterno %></td>
+		</tr>
+		<tr>
+			<th class="center">Matrícula</th>
+			<th class="center">Semestre</th>
+			<th class="center">Colegio</th>
+		</tr>
+		<tr>
+			<td class="center"><%= @reporte.inscripcion.matricula %></td>
+			<td class="center"><%= @reporte.inscripcion.semestre %></td>
+			<td class="center"><%= @reporte.inscripcion.institucion.nombre %></td>
+		</tr>
+			<tr>
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<% if @reporte.inscripcion.plantel %>
+								<th class="center">Plantel</th>
+							<% end %>
+							<th class="center">Carrera</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<% if @reporte.inscripcion.plantel %>
+								<td class="center"><%= @reporte.inscripcion.plantel.nombre %></td>
+							<% end %>
+							<td class="center"><%= @reporte.inscripcion.carrera %></td>
+						</tr>
+					</tbody>
+				</table>
+			</tr>
+	</tbody>
+</table>

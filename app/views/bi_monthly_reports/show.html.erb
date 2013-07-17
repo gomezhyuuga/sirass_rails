@@ -63,4 +63,7 @@
 <div class="well well-small">
 	<%= simple_format h(@reporte.actividades) %>
 </div>
-<%= render 'shared/observaciones', object: @reporte, url: informe_bimensual_path(@reporte) %>
+<% if can? :manage, MonthlyReport %>
+	<%= render 'shared/observaciones', object: @reporte, url: informe_bimensual_path(@reporte) %>
+	<%= render 'shared/back_button', link: admin_reportes_bimensuales_path %>
+<% end %>

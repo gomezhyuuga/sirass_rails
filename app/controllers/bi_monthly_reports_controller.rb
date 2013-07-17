@@ -44,6 +44,16 @@ class BiMonthlyReportsController < ApplicationController
 		end
 	end
 
+	def imprimir
+		@reporte = BiMonthlyReport.find(params[:id])
+		if can? :manage, BiMonthlyReport or current_user.prestador && current_user.prestador.id == @reporte.inscripcion.prestador.id
+			render layout: 'print'
+		else
+      		flash[:error] = "¡No puedes imprimir este reporte!"
+      		redirect_to current_user.user_page
+    	end
+	end
+
 	def show
 		@reporte = BiMonthlyReport.find( params[:id] )
 	end

@@ -53,7 +53,11 @@ Sirass::Application.routes.draw do
       end
     end
 
-    resources :bi_monthly_reports,  path: 'informe_bimensual', as: 'informe_bimensual'
+    resources :bi_monthly_reports,  path: 'informe_bimensual', as: 'informe_bimensual' do
+      member do
+        get 'imprimir'
+      end
+    end
     get 'informe_final/new',        to: 'prestador_pages#new_informe_final'
     get 'informe_final/edit',       to: 'prestador_pages#edit_informe_final'
     match 'informe_final',          to: 'prestador_pages#create_informe_final', via: :post
