@@ -2,11 +2,13 @@
 <% content_for :stylesheet do %>
 	<%= stylesheet_link_tag "institucion_pages" %>
 <% end %>
+<% content_for :javascript do %>
+	<%= javascript_include_tag "cprogramas" %>
+<% end %>
 
 <h2>Registra tu programa de Servicio Social</h2>
 <%= render 'shared/error_messages', object: @cprograma %>
 <%= simple_form_for @cprograma, html: { class: 'form-horizontal' },
 	defaults: { input_html: { class: 'input-block-level' } } do |f| %>
 	<%= render 'cprogramas/forms/fields', f: f, type: 'nuevo' %>
-	<%= javascript_include_tag "cprogramas" %>
 <% end %>

@@ -1,16 +1,16 @@
 <tr id="lic0">
 	<td>
-		<%= f.input_field :carrera %>
+		<%= f.input_field :carrera, id:"18" %>
 	</td>
 	<td> 
-		<%= f.input_field :solicitados, :class => "input-mini", :collection => 1..30, include_blank: false %>
+		<%= f.input_field :solicitados, id:"19", :class => "input-mini", :collection => 1..30, include_blank: false %>
 	</td>
 	<td>
-		<%= f.text_area :actividad, :rows => 5 %>
+		<%= f.text_area :actividad, :rows => 5, id:"20" %>
 	</td>
 	<td>
 		<% ya_registrada = !f.object.new_record? %>
-		<%= link_to_function "Eliminar", "eliminar_licenciatura(this, #{ya_registrada})", class: 'btn btn-mini btn-danger btn-eliminar' %>
+		<%= link_to_function "Eliminar", "eliminar_licenciatura(this, #{ya_registrada})", id:"21", class: 'btn btn-mini btn-danger btn-eliminar' %>
 		<%= f.hidden_field :_destroy %>
 	</td>
 </tr>

@@ -1,16 +1,16 @@
 <tr id="res0">
     <td>
-        <%= f.input_field :encargado, :class => "input-medium" %>
+        <%= f.input_field :encargado, id:"23", :class => "input-medium" %>
     </td>
     <td> 
-        <%= f.input_field :cargo, :class => "input-medium" %>
+        <%= f.input_field :cargo, id:"24", :class => "input-medium" %>
     </td>
     <td>
-        <%= f.input_field :email, :class => "input-medium" %>
+        <%= f.input_field :email,id:"25", :class => "input-medium" %>
     </td>
     <td>
         <% ya_registrado = !f.object.new_record? %>
-        <%= link_to_function "Eliminar", "eliminar_responsable(this, #{ya_registrado})", class: 'btn btn-mini btn-danger btn-eliminar' %>
+        <%= link_to_function "Eliminar", "eliminar_responsable(this, #{ya_registrado})", id:"26", class: 'btn btn-mini btn-danger btn-eliminar' %>
         <%= f.hidden_field :_destroy %>
     </td>
 </tr>

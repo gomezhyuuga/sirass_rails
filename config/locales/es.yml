@@ -141,6 +141,7 @@ es:
         lugar:         "Lugar de Realización"
         notas:         "Observaciones del programa"
         ftiempo:       "Fecha de duración"
+        categoria_interno: "Categoría interno"
       inscripcion:
         dia_ids: "Días de asistencia"
         carrera: "Especialidad"

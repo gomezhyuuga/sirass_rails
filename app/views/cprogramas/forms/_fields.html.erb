@@ -1,6 +1,6 @@
 <% type ||= '' %>
 <div class="tabbable">
-	<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs" id="tabs">
 		<li class="active"><a href="#datos_programa" data-toggle="tab">Datos</a></li>
 		<li><a href="#caract_programa" 	data-toggle="tab">Caracter&iacute;sticas</a></li>
 		<li><a href="#perfil_programa" 	data-toggle="tab">Perfil Acad&eacute;mico</a></li>
@@ -12,66 +12,75 @@
 <div class="tab-content">
 	<!-- DATOOS DEL PROGRAMA -->
 	<div class="tab-pane active" id="datos_programa">
-		<%= f.input :categoria_interno, as: :radio_buttons %>
-		<%= f.input :nombre, 				:input_html => {:class => "input-large" } %>
-		<%= f.input :objGeneral, 		:input_html => { :rows => 5 } %>
-		<%= f.input :justificacion, :input_html => { :rows => 5 } %>
-		<%= f.input :desarrollo, 		:input_html => { :rows => 5 } %>
-		<%= f.input :recursos,		 	:input_html => { :rows => 5 } %>
-		<%= f.input :evaluacion, 		:input_html => { :rows => 5 } %>
-		<%= f.input :resultados, 		:input_html => { :rows => 5 } %>
+		<% if action_name == 'new' or can? :manage,Cprograma %>
+			<p>¿NO SABES COMO LLENAR EL FORMULARIO?, Da click en el botón
+			<a href="#" class="btn btn-medium btn-success" onclick="activar(1)" >¿Cómo llenar?</a>
+			</p>
+		<% end %>
+		<%= f.input :categoria_interno, as: :radio_buttons, :input_html => {id: "1"}%>
+		<%= f.input :nombre, 			:input_html => {id: "2", :class => "input-large"} %>
+		<%= f.input :objGeneral, 		:input_html => {id: "3", :rows => 5 } %>
+		<%= f.input :justificacion, :input_html => {id: "4", :rows => 5 } %>
+		<%= f.input :desarrollo, 		:input_html => {id: "5", :rows => 5 } %>
+		<%= f.input :recursos,		 	:input_html => {id: "6", :rows => 5 } %>
+		<%= f.input :evaluacion, 		:input_html => {id: "7", :rows => 5 } %>
+		<%= f.input :resultados, 		:input_html => {id: "8", :rows => 5 } %>
 		<div class="well well-small center">
-			<h6>Pulsa en <%= link_to 'Características del programa', '#' , :id => 'nextC' %> para continuar</h6>
+			<h6>Pulsa en <%= link_to 'Características del programa', '#' , :id => 'nextC', :onclick => "next('caract_programa')" %> para continuar</h6>
 		</div>
 	</div>
 	<!-- CARACTERÍSTICAS -->
 	<div class="tab-pane" id="caract_programa">
-		<%= f.association :tipo_programa, label_method: :descripcion, :input_html => {:class => "input-xlarge use-select2"},
-			include_blank: false %>
+		<div class="control-group" id="9">
+			<%= f.association :tipo_programa, label_method: :descripcion, :input_html => {:class => "input-xlarge use-select2"},
+				include_blank: false %>
+		</div>
 		<div class="control-group " id="nuevoTipo">
-			<div class="control-label">
-				<input type="checkbox" onclick = otroTipoPrograma(this) id="otroTipo" name="otroTipo" value= "true" />Otro tipo
+			<div class="control-label" id="10">
+				<input type="checkbox" onclick = otroTipoPrograma(this) name="otroTipo" value= "true" />Otro tipo
 			</div>
 			<div class="control-group hide" id="otroTipoP">
 				<input type="text" id="nombreOtroTipo" name="nombreOtroTipo" />
 			</div>
 		</div>
 		<br>
-		<%= f.input :tiempo_indeterminado, as: :radio_buttons, collection: [["Indeterminado", true], ["Determinado", false]], :input_html => {:onclick => "fDuracion(this)"} %>
+		<%= f.input :tiempo_indeterminado, as: :radio_buttons, collection: [["Indeterminado", true], ["Determinado", false]], :input_html => {id:"11", :onclick => "fDuracion(this)"} %>
 		<div class="control-group hide" id="fDuraOculta">
 			<%= f.input :ftiempo , as: :string,
-			input_html: { 'data-behaviour' => 'datepicker', class: 'input-small'} %>
+			input_html: {id:"duraHide", 'data-behaviour' => 'datepicker', class: 'input-small'} %>
 		</div>
-		<%= f.association :alcance_programas, label_method: :descripcion, input_html: { class: 'input-medium' } %>
-		<%= f.association :poblacion_programas, label_method: :descripcion, input_html: { class: 'input-medium' } %>
-		<%= f.input :lugar, :input_html => {:class => "input-large"} %>
-		<%= f.association :dias, label_method: :dia_semana, input_html: { class: 'input-medium' } %>
-		<%= f.association :horario_programa, label_method: :descripcion, :input_html => {:class => "input-xlarge use-select2"}, include_blank: false %>
+		<%= f.association :alcance_programas, label_method: :descripcion, input_html: {id:"12", class: 'input-medium' } %>
+		<%= f.association :poblacion_programas, label_method: :descripcion, input_html: {id:"13", class: 'input-medium' } %>
+		<%= f.input :lugar, :input_html => {id:"14", :class => "input-large"} %>
+		<%= f.association :dias, label_method: :dia_semana, input_html: {id:"15", class: 'input-medium' } %>
+		<div class="control-group" id="16">
+			<%= f.association :horario_programa, label_method: :descripcion, :input_html => {:class => "input-xlarge use-select2"}, include_blank: false %>
+		</div>
 		<div class="well well-small center">
-			<h6>Pulsa en <%= link_to 'Perfil Académico', '#' , :id => 'nextP' %> para continuar</h6>
+			<h6>Pulsa en <%= link_to 'Perfil Académico', '#' , :id => 'nextP', :onclick => "next('perfil_programa')" %> para continuar</h6>
 		</div>
 	</div>
 	<!-- LICENCIATURAS -->
 	<div class="tab-pane" id="perfil_programa">
 		<%= render 'cprogramas/forms/licenciaturas_table', f: f %>
 		<div class="well well-small center">
-			<h6>Pulsa en <%= link_to 'Responsable', '#' , :id => 'nextR' %> para continuar</h6>
+			<h6>Pulsa en <%= link_to 'Responsable', '#' , :id => 'nextR', :onclick => "next('respon_programa')" %> para continuar</h6>
 		</div>
 	</div>
 	<!-- RESPONSABLES -->
 	<div class="tab-pane" id="respon_programa">
 		<%= render 'cprogramas/forms/responsables_table', f: f %>
 		<div class="well well-small center">
-			<h6>Pulsa en <%= link_to 'Observaciones', '#' , :id => 'nextO' %> para continuar</h6>
+			<h6>Pulsa en <%= link_to 'Observaciones', '#' , :id => 'nextO', :onclick => "next('obser_programa')" %> para continuar</h6>
 		</div>
 	</div>
 	<!-- OBSERVACIONES DE PROGRAMA -->
 	<div class="tab-pane" id="obser_programa">
-		<%= f.input :notas, :input_html => { :rows => 5 } %>
+		<%= f.input :notas, :input_html => {id:"27", :rows => 5 } %>
 		<div class="form-actions">
 			<% button_title = action_name == 'new' ? "Enviar programa" : "Actualizar programa" %>
-			<%= f.submit button_title, :class => 'btn btn-success'%>
-			<%= button_tag "Limpiar campos", type: "reset", class: "btn " %>
+			<%= f.submit button_title, id:"29", :class => 'btn btn-success'%>
+			<%= button_tag "Limpiar campos", id:"28", type: "reset", class: "btn " %>
 		</div>
 	</div>
 </div>
