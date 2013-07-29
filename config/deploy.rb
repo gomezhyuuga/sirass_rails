@@ -35,4 +35,11 @@ namespace :deploy do
   task :restart do
     run "cd #{current_path} && thin stop && thin start -e production -d"
   end
+
+  namespace :db do
+  	desc "Backup database"
+  	task :backup do
+  		run "cd ~/backup/ && pg_dump -U sirass sirass -f `date '+%d-%m-%Y_%H:%M:%S'`_backup.sql"
+  	end
+  end
 end
