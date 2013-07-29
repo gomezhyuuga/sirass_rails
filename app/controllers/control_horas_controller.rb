@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ControlHorasController < ApplicationController
   def index
   end
