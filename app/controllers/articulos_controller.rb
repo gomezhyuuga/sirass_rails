@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ArticulosController < ApplicationController
   before_filter :require_login
   layout 'prestador'
