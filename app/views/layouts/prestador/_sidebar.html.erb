@@ -1,3 +1,4 @@
+
 <nav class="span3" id="sidebar">
 	<ul class="nav nav-list well well-small">
 		<li id="sidebar_home">
@@ -8,10 +9,13 @@
 		<li id="sidebar_inscripcion">
 			<% 
 				ruta_inscripcion = ""
-				if current_user.prestador and current_user.prestador.inscripcion_actual
+				if current_user.prestador and current_user.prestador.inscripcion_actual and !current_user.prestador.articulo_id
 					ruta_inscripcion = mi_inscripcion_path
 				else
 					ruta_inscripcion = inscripcion_servicio_path
+				end
+				if current_user.prestador and current_user.prestador.articulo_id and !current_user.prestador.inscripcion_actual
+					ruta_inscripcion = mi_inscripcion_art_path
 				end
 			%>
 			<%= link_to ruta_inscripcion do %>

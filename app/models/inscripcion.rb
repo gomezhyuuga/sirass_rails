@@ -33,7 +33,6 @@
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
 #  ncontrol                   :string(255)
-#  articulo_91                :boolean          default(FALSE)
 #  horas_servicio             :string(255)      default("00:00")
 #
 
@@ -43,7 +42,7 @@ class Inscripcion < ActiveRecord::Base
   :estado_inscripcion_id, :fecha_fin, :fecha_inicio, :hora_entrada, :hora_salida,
   :institucion_id, :matricula, :nCursos_basicos, :nCursos_superio, :observaciones,
   :plantel_id, :practicas, :prestador_id, :programa_institucional, :promedio, :responsable,
-  :semestre, :dia_ids, :institucion_attributes, :ncontrol, :articulo_91, :horas_servicio
+  :semestre, :dia_ids, :institucion_attributes, :ncontrol, :horas_servicio
 
   validates_presence_of :prestador_id, :institucion, :plantel_id, :carrera, :matricula,
   :semestre, :ano_ingreso, :avance_cursos, :promedio, :cprograma_id, :fecha_inicio,
@@ -91,10 +90,6 @@ class Inscripcion < ActiveRecord::Base
 
   def nombre_plantel
     self.plantel.nombre if self.plantel
-  end
-
-  def articulo_91_to_s
-    self.articulo_91 == true ? "Sí" : "No"
   end
 
   def self.calcular_horas_all_inscripciones

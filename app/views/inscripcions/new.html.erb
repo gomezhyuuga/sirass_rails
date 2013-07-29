@@ -19,10 +19,8 @@
 	<%= f.association :cprograma, collection: programas_for_current_user,
 	label_method: :nombre, value_method: :id,
 	input_html: { class: 'use-select2 input-block-level', 'data-placeholder' => 'Selecciona el programa' } %>
-	<p>
-		Importante: ¿Titulación por <strong>Artículo 91</strong>?
-		<%= f.input :articulo_91, as: :radio_buttons, label: false, item_wrapper_class: 'inline' %>
-	</p>
+	<p>Importante: ¿Titulación por <strong>Artículo 91</strong>? Da click en el botón</p>
+	<%= link_to " Inscripción por Artículo 91", by_articulo_path, :class => 'btn btn-info icon-thumbs-up' %>
 
 	<p>Para continuar llena los siguientes datos.</p>
 

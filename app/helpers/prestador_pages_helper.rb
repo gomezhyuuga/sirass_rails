@@ -13,6 +13,11 @@ module PrestadorPagesHelper
 			return Inscripcion.find_by_id(current_user.prestador.inscripcion_actual)
 		end
 	end
+	def current_articulo
+		if current_user.prestador && current_user.prestador.articulo_id
+			return Articulo.find_by_prestador_id(current_user.prestador.id)
+		end
+	end
 
 	def porcentaje_horas_servicio(inscripcion)
 		"%.2f" % inscripcion.porcentaje_horas_servicio

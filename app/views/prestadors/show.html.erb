@@ -80,5 +80,29 @@
 		<% end %>
 	<% end %>
 <% else %>
+<% if @articulo %>
+	<h2>Inscripción</h2>
+	<p>
+		Este usuario tiene una solicitud de inscripción vía Artículo 91
+		<strong>Estado:</strong> <span class="label <%= label_color_for_inscripcion(@articulo) %>"><%= @articulo.estado_inscripcion.descripcion %></span>
+	</p>
+	<% if can? :manage, Articulo %>
+		<p>
+			<%= link_to articulo_path(@prestador.articulo_id), class: 'btn btn-warning' do %>
+				<i class="icon-info-sign"></i>
+				Ver detalles
+			<% end %>
+		</p>
+		<p>
+			<%= render 'shared/back_button', link: prestadors_path %>
+		</p>
+	<% else %>
+		<%= link_to mi_inscripcion_art_path, class: 'btn btn-warning' do %>
+			<i class="icon-info-sign"></i>
+			Ver detalles
+		<% end %>
+	<% end %>
+<% else %>
 <p class="lead">Este usuario aún no ha enviado ninguna solicitud de inscripción a un programa de servicio social.</p>
+<% end %>
 <% end %>

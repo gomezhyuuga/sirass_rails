@@ -20,13 +20,14 @@
 #  telCel             :string(255)
 #  estudiante_uacm    :boolean          default(FALSE)
 #  inscripcion_actual :integer
+#  articulo_id        :integer
 #
 
 # -*- encoding : utf-8 -*-
 class Prestador < ActiveRecord::Base
   attr_accessible :amaterno, :apaterno, :nacimiento, :nombre, :user_attributes,
   	:sexo, :dCalle, :dNumExt, :dNumInt, :dCP, :dDelegacion, :dColonia, :telCasa, :telCel,
-  	:inscripcion_actual, :estudiante_uacm
+  	:inscripcion_actual, :estudiante_uacm, :articulo_id
   	
   validates_presence_of :nombre, :amaterno, :apaterno, :nacimiento, :user,
   	:sexo, :dCalle, :dNumExt, :dCP, :dDelegacion, :dColonia
@@ -36,6 +37,8 @@ class Prestador < ActiveRecord::Base
 	accepts_nested_attributes_for :user
 
 	has_many :inscripcions, dependent: :destroy
+
+  has_one :articulo, dependent: :destroy
 
   
   def nombre_completo

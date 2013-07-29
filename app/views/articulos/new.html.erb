@@ -1,0 +1,14 @@
+<% provide(:title, 'Artículo 91') %>
+<% provide(:sidebar_active, :inscripcion) %>
+<% content_for :javascript do %>
+	<%= javascript_include_tag "articulos" %>
+<% end %>
+<div class="page-header">
+	<h1>Inscripción al Servicio social por Artículo 91</h1>
+</div>
+
+<%= render 'shared/error_messages', object: @articulo %>
+<%= simple_form_for @articulo, html: { class: 'input-block-level' },
+	defaults: { input_html: { class: 'input-large' } } do |f| %>
+	<%= render 'articulos/forms/fields', f: f %>
+<% end %>

@@ -82,7 +82,6 @@ class InscripcionsController < ApplicationController
 		# Valores por defecto
 		@inscripcion.programa_institucional = "PENDIENTE"
 		@inscripcion.cve_programa_institucional = "PENDIENTE"
-		@inscripcion.horas_servicio = @inscripcion.articulo_91 == true ? "480:00" : "00:00"
 		if @inscripcion.save && Prestador.update(@inscripcion.prestador.id, inscripcion_actual: @inscripcion.id)
 			programa = @inscripcion.cprograma
 			programa.vacantes -= 1

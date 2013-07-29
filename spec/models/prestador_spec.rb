@@ -20,6 +20,7 @@
 #  telCel             :string(255)
 #  estudiante_uacm    :boolean          default(FALSE)
 #  inscripcion_actual :integer
+#  articulo_id        :integer
 #
 
 # -*- encoding : utf-8 -*-

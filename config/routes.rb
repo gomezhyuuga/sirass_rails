@@ -1,6 +1,18 @@
 # -*- encoding : utf-8 -*-
 Sirass::Application.routes.draw do
 
+  get "articulos/index"
+
+  get "articulos/show"
+
+  get "articulos/new"
+
+  get "articulos/create"
+
+  get "articulos/edit"
+
+  get "articulos/update"
+
   get "t/visual", to: "test_pages#visual"
   get "t/info", to: "test_pages#info"
 
@@ -41,12 +53,17 @@ Sirass::Application.routes.draw do
     get 'home',                 to: 'prestador_pages#index', as: :prestador_home
     get 'search',               to: 'prestadors#search', as: :prestador_search
     get 'inscripcion',          to: 'inscripcions#new', as: :inscripcion_servicio
+    get 'Articulo_91',          to: 'articulos#new', as: :by_articulo
+    get 'Articulo_91/delete',   to: 'articulos#delete'
+    get 'Articulo91',           to: 'prestador_pages#ins_articulo', as: :mi_inscripcion_art
+    get 'articulo/edit',        to: 'prestador_pages#edit_articulo'
     get 'mi_inscripcion',       to: 'prestador_pages#inscripcion'
     get 'mi_inscripcion/edit',  to: 'prestador_pages#edit_inscripcion'
     put 'estudianteUACM',       to: 'prestador_pages#estudianteDe'
     get 'reporte_horas',        to: 'prestador_pages#reporte_horas'
     get 'carta_compromiso',     to: 'prestador_pages#carta_compromiso'
     get 'solicitud_servicio',   to: 'prestador_pages#solicitud_servicio'
+
     resources :monthly_reports,     path: 'control_horas', as: 'control_horas' do
       member do
         get 'print'
@@ -65,6 +82,9 @@ Sirass::Application.routes.draw do
     get 'informe_final/ver',        to: 'prestador_pages#show_informe_final'
     get 'informe_final/print',      to: 'prestador_pages#print_informe_final'
   end
+
+  #Articulo 91
+  resources :articulos, path: 'Articulo_91'
 
   # resources :final_report
 

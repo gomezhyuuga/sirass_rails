@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="span3">
+		<p><strong>Tipo</strong>: Arículo 91</p>
+		<p>
+			<strong>Estado</strong>:
+			<span class="label <%= label_color_for_inscripcion(articulo) %>">
+				<%= articulo.estado_inscripcion.descripcion %>
+			</span>
+		</p>
+	</div>
+	<div class="span3 pull-right">
+		<p><strong>Usuario:</strong> <%= link_to articulo.prestador.user.username, articulo.prestador %></p>
+	</div>
+</div>
+<h2>Nombre del solicitante</h2>
+<p><%= "#{articulo.prestador.nombre} #{articulo.prestador.apaterno} #{articulo.prestador.amaterno}" %></p>
+<div class="row">
+	<div class="span6">
+		<h2>Dependencia</h2>
+		<p><%= articulo.Dependencia %></p>
+		<h2>Área de adscripción</h2>
+		<p><%= articulo.Area %></p>
+		<h2>Puesto</h2>
+		<p><%= articulo.Puesto %></p>
+		<h2>Fecha de ingreso</h2>
+		<p><%= articulo.Fecha_Ingreso %></p>
+		<h2>Antigüedad</h2>
+		<p><%= articulo.antiguedad %></p>
+		<h2>Tipo de contratación</h2>
+		<p><%= articulo.Contratacion %></p>
+		<h2>Nombre del jefe inmediato</h2>
+		<p><%= articulo.Jefe_inmediato %></p>
+		<h2>Cargo</h2>
+		<p><%= articulo.Cargo %></p>
+	</div>
+</div>

@@ -18,6 +18,14 @@ class PrestadorPagesController < ApplicationController
 		@inscripcion = Inscripcion.find(current_user.prestador.inscripcion_actual)
 	end
 
+	def ins_articulo
+		@articulo = Articulo.find(current_user.prestador.articulo_id)
+	end
+
+	def edit_articulo
+		@articulo = Articulo.find(current_user.prestador.articulo_id)		
+	end
+
 	def estudianteDe
 		@p = Prestador.find(current_user.prestador.id)
 		@p.estudiante_uacm = params[:prestador][:estudiante_uacm]

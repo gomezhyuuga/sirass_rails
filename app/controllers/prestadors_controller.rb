@@ -77,11 +77,12 @@ class PrestadorsController < ApplicationController
 		@prestador = Prestador.find_by_id(params[:id])
 		if @prestador
 			@inscripcion = Inscripcion.find(@prestador.inscripcion_actual) if @prestador.inscripcion_actual
+			@articulo = Articulo.find(@prestador.articulo_id) if @prestador.articulo_id
 			# Autorizar acceso
 			if current_user.prestador != @prestador
 				authorize! :read, Prestador, message: 'No tienes permisos suficientes para ver esta página'
 			else
-				render layout: prestador
+				render layout: 'prestador'
 			end			
 		else
 			no_encontrado

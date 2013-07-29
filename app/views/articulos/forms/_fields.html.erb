@@ -1,0 +1,17 @@
+<%= f.input :Dependencia %>
+<%= f.input :Area %>
+<%= f.input :Puesto %>
+<%= f.input :Fecha_Ingreso , as: :string, input_html: {:id => "ingreso", 'data-behaviour' => 'datepicker', class: 'input-small'} %>
+<p>Antigüedad</p>
+<div class="input-append">
+	<%= f.text_field :antiguedad, :placeholder => "3 Años con 35 días", :id => "antig" %>
+	<%= link_to_function "Obtener Antigüedad", "getAntiguedad(this)", class: 'btn btn-warning' %>
+</div>
+<%= f.input :Contratacion %>
+<%= f.input :Jefe_inmediato %>
+<%= f.input :Cargo %>
+<div class="form-actions">
+	<% button_title = action_name == 'new' ? "Enviar" : "Actualizar" %>
+	<%= f.submit button_title, id:"30", :class => 'btn btn-success'%>
+	<%= button_tag "Limpiar campos", id:"31", type: "reset", class: "btn " %>
+</div>

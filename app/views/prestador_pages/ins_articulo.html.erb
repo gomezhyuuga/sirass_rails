@@ -1,0 +1,18 @@
+<% provide(:title, "Inscripción actual") %>
+<% provide(:sidebar_active, :inscripcion) %>
+
+<h1>Datos de tu inscripción actual</h1>
+
+<% if @articulo.observaciones and !@articulo.observaciones.blank? %>
+	<h2 class="text-error center">Observaciones</h2>
+	<blockquote class="text-warning">
+		<%= simple_format @articulo.observaciones %>
+	</blockquote>
+<% end %>
+
+<%= link_to articulo_edit_path, class: 'btn pull-right btn-warning' do %>
+	<i class="icon-pencil"></i>
+	Editar
+<% end %>
+
+<%= render 'articulos/show_fields', articulo: @articulo %>

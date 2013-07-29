@@ -166,3 +166,9 @@ es:
         actividades: "Actividades realizadas"
         obj_gral: "Objetivo General"
         obj_esp: "Objetivos Específicos"
+      articulo:
+        Dependencia: 'Dependencia donde laboras'
+        Area: 'Área de adscripción'
+        Fecha_Ingreso: 'Fecha de ingreso'
+        Contratacion: 'Tipo de contratación'
+        Jefe_inmediato: 'Nombre del jefe inmediato'
