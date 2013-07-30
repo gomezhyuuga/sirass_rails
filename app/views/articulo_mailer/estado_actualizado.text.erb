@@ -1,0 +1,12 @@
+Estado de inscripción actualizado
+========================================
+
+Hola <%= @prestador.nombre_completo %>,
+
+Estás recibiendo automáticamente este mensaje porque se ha actualizado el estado de tu inscripción al Servicio Social de la UACM dentro del la opción "Artículo 91"
+
+El nuevo estado de tu inscripción es: <%= @articulo.estado_inscripcion.descripcion %>
+
+Para cualquier modificación en los datos de tu inscripción, accede al sistema con
+tu nombre de usuario: <%= @user.username %> y tu respectiva contraseña; y revisa las observaciones
+hechas por los responsables de servicio social de la UACM

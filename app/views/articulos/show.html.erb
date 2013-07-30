@@ -1,2 +1,17 @@
-<h1>Articulos#show</h1>
-<p>Find me in app/views/articulos/show.html.erb</p>
+<% provide(:title, "Detalles de inscripción") %>
+<div class="page-header">
+	<h1>Detalles de inscripci&oacute;n </h1>
+	<h1>(Artículo 91)</h1>
+</div>
+<% if can? :manage, Articulo %>
+<div class="pull-right">
+	<%= render 'articulos/forms/admin_btn', obj: @articulo %>
+</div>
+<% end %>
+<%= render 'show_fields', articulo: @articulo %>
+<% if can? :manage, Articulo %>
+	<hr />
+	<%= render 'articulos/observaciones', articulo: @articulo %>
+	<%= render 'shared/record_info', record: @articulo %>
+	<%= render 'shared/back_button', link: articulos_path %>
+<% end %>

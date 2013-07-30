@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+	<h1>Observaciones de inscripción actualizadas</h1>
+	Hola <%= @prestador.nombre_completo %>,
+	<p>
+		Estás recibiendo automáticamente este mensaje porque se han actualizado las
+		observaciones en tu solicitud de inscripción al Servicio Social de la UACM dentro
+		de la categoría  <em><strong>"Artículo 91"</strong></em>.
+	</p>
+	<p>
+		Las observaciones que se te hicieron son las siguientes:
+	</p>
+	<p>
+		<%= simple_format( h @articulo.observaciones ) %>
+	</p>
+
+	<p>
+		Para cualquier modificación en los datos de tu inscripción, accede al sistema con
+		tu nombre de usuario: <strong><%= @user.username %></strong> y tu respectiva contraseña.
+	</p>
+</body>
+</html>

@@ -63,7 +63,7 @@ class InscripcionsController < ApplicationController
 
 	def new
 		require_role(:prestador)
-		if current_user.prestador && !current_user.prestador.inscripcion_actual
+		if current_user.prestador && !current_user.prestador.inscripcion_actual or can? :manage, Inscripcion
 			@inscripcion = Inscripcion.new
 		else
 			redirect_to prestador_home_path

@@ -1,0 +1,46 @@
+<div class="btn-group btn-block">
+	<a href="#" class="btn btn-mini btn-primary btn-block dropdown-toggle" data-toggle="dropdown">
+		Administrar
+		<span class="caret"></span>
+	</a>
+	<ul class="dropdown-menu left" role="menu" aria-labelledby="dLabel">
+		<li>
+			<%= link_to obj do %>
+				<i class="icon-eye-open"></i>
+				Ver detalles
+			<% end %>
+		</li>
+		<li>
+			<%= link_to edit_articulo_path(obj) do %>
+			<i class="icon-pencil"></i>
+			Editar
+			<% end %>
+		</li>
+		<li>
+			<%= link_to articulo_path(obj), method: :delete, confirm: 'Estás seguro?' do %>
+			<i class="icon-trash"></i>
+			Eliminar
+			<% end %>
+		</li>
+		<!-- CAMBIO DE ESTADO -->
+		<li class="dropdown-submenu pull-left">
+			<a href="#" tabindex="-1">
+				<i class="icon-wrench"></i>
+				Cambiar estado
+			</a>
+			<ul class="dropdown-menu">
+				<% EstadoInscripcion.all.each do |e| %>
+					<% if e.id == 1 or e.id == 4 or e.id == 5 or e.id == 6 or e.id == 8 %>
+						<li>
+							<%= link_to articulo_update_stat_path(obj, e.id), confirm: "Actualizando estado de inscripción",
+							method: :put do %>
+								<i class="<%= icon_for_estado_inscripcion(e.id) %>"></i>
+								<%= e.descripcion %>
+							<% end %>
+						</li>
+					<% end %>
+				<% end %>
+			</ul>
+		</li>
+	</ul>
+</div>

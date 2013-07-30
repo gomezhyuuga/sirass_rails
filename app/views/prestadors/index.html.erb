@@ -25,7 +25,11 @@
 							<% if prestador.inscripcion_actual %>
 								<%= link_to prestador.inscripcion_actual, inscripcion_path(prestador.inscripcion_actual), class: 'btn btn-block btn-warning' %>
 							<% else %>
-								<i class="icon-remove"></i>
+								<% if prestador.articulo_id %>
+									<%= link_to prestador.articulo_id, articulos_path(prestador.articulo_id), class: 'btn btn-block btn-warning' %>
+								<% else %>
+									<i class="icon-remove"></i>
+								<% end %>
 							<% end %>
 						</td>
 						<td>

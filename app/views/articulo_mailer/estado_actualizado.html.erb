@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+	<h1>Estado de inscripción actualizado</h1>
+	Hola <%= @prestador.nombre_completo %>,
+	<p>
+		Estás recibiendo automáticamente este mensaje porque se ha actualizado el estado de tu inscripción al Servicio Social de la UACM dentro del la opción <em><strong>"Artículo 91"</strong></em>
+	</p>
+	<p>
+		El nuevo estado de tu inscripción es: <strong><%= @articulo.estado_inscripcion.descripcion %></strong>
+	</p>
+
+	<p>
+		Para cualquier modificación en los datos de tu inscripción, accede al sistema con
+		tu nombre de usuario: <strong><%= @user.username %></strong> y tu respectiva contraseña; y revisa las observaciones
+		hechas por los responsables de servicio social de la UACM
+	</p>
+</body>
+</html>

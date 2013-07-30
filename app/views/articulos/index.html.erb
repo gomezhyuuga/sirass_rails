@@ -1,2 +1,40 @@
-<h1>Articulos#index</h1>
-<p>Find me in app/views/articulos/index.html.erb</p>
+<% provide :title, "Lista de inscripciones" %>
+<% provide(:sidebar_active, :articulos) %>
+
+<h1>Lista de inscripciones</h1>
+<p>Mostrar inscripciones por estado:</p>
+<p>
+	<%= links_to_estado_articulo %>
+</p>
+<% if @articulos.any? %>
+<%= will_paginate @articulos %>
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<!-- <th>ID</th> -->
+			<th>Prestador</th>
+			<th>Estado</th>
+			<th>Acción</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @articulos.each do |a| %>
+			<tr>
+				<td>
+					<%= link_to "#{a.prestador.nombre} #{a.prestador.apaterno} #{a.prestador.amaterno}", a.prestador %>
+				</td>
+				<td>
+					<span class="label <%= label_color_for_inscripcion(a) %>">
+						<%= a.estado_inscripcion.descripcion %>
+					</span>
+				</td>
+				<td>
+					<%= render 'articulos/forms/admin_btn', obj: a %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<% else %>
+<p class="lead">No hay ningún registro en la base de datos.</p>
+<% end %>

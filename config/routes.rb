@@ -1,18 +1,6 @@
 # -*- encoding : utf-8 -*-
 Sirass::Application.routes.draw do
 
-  get "articulos/index"
-
-  get "articulos/show"
-
-  get "articulos/new"
-
-  get "articulos/create"
-
-  get "articulos/edit"
-
-  get "articulos/update"
-
   get "t/visual", to: "test_pages#visual"
   get "t/info", to: "test_pages#info"
 
@@ -83,9 +71,6 @@ Sirass::Application.routes.draw do
     get 'informe_final/print',      to: 'prestador_pages#print_informe_final'
   end
 
-  #Articulo 91
-  resources :articulos, path: 'Articulo_91'
-
   # resources :final_report
 
   # Institucion
@@ -120,6 +105,11 @@ Sirass::Application.routes.draw do
       get   'calcular_horas_servicio', to: 'inscripcions#calcular_horas_servicio', as: 'calcular_horas_servicio'
       get   'reportes_mensuales',     to: 'inscripcions#reportes_mensuales', on: :member
       get   'reportes_bimensuales',     to: 'inscripcions#reportes_bimensuales', on: :member
+    end
+    #Articulo 91
+    resources :articulos, path: 'Articulo_91' do
+      match 'Actualizar/:status',     to: 'articulos#update_stat', as: :update_stat
+      match 'update_observaciones',   to: 'articulos#update_observaciones', via: :put
     end
   end
 

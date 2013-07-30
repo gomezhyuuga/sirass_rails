@@ -1,2 +1,14 @@
-<h1>Articulos#edit</h1>
-<p>Find me in app/views/articulos/edit.html.erb</p>
+<%= provide(:title, "Editar datos de Artículo") %>
+<% content_for :javascript do %>
+	<%= javascript_include_tag "articulos" %>
+<% end %>
+
+<div class="page-header">
+	<h1>Editar datos de inscripción</h1>
+</div>
+
+<%= render 'shared/error_messages', object: @articulo %>
+<%= simple_form_for @articulo, html: { class: 'input-block-level' },
+	defaults: { input_html: { class: 'input-large' } } do |f| %>
+	<%= render 'articulos/forms/fields', f: f %>
+<% end %>

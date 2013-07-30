@@ -21,7 +21,7 @@
 
 class Articulo < ActiveRecord::Base
   attr_accessible :Area, :Cargo, :Contratacion, :Dependencia, :Fecha_Ingreso, :Jefe_inmediato, :Puesto, :antiguedad, 
-  :observaciones
+  :observaciones, :estado_inscripcion_id
 
   validates_presence_of :Area, :Cargo, :Contratacion, :Dependencia, :Fecha_Ingreso, :Jefe_inmediato, :Puesto, :antiguedad
 
