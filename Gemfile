@@ -5,6 +5,9 @@ if RUBY_VERSION =~ /1.9/
   Encoding.default_internal = Encoding::UTF_8
 end
 
+#Environment Variables para proteccion de cuentas y contraseñas
+gem 'figaro'
+
 gem 'newrelic_rpm'
 gem 'rails', '3.2.9'
 gem 'will_paginate'
