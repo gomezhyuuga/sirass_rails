@@ -16,6 +16,7 @@ gem 'cancan'
 gem 'libv8', '~> 3.11.8'
 gem 'jquery-rails'
 gem 'thin'
+gem 'figaro'
 # gem 'capistrano'
 # Gems used only for assets and not required
 # in production environments by default.

@@ -64,8 +64,8 @@ Sirass::Application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'gmail.com',
-    user_name:            'sirassapp@gmail.com',
-    password:             'Vp42fhz6',
+    user_name:            Figaro.env.gmail_account,
+    password:             Figaro.env.gmail_password,
     authentication:       'plain',
     enable_starttls_auto: true  }
 
