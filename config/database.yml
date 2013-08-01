@@ -25,12 +25,3 @@ test:
   database: db/test.sqlite3
   pool: 5
   timeout: 5000
-
-production:
-  adapter: postgresql
-  encoding: utf-8
-  database: sirass
-  pool: 5
-  username: sirass
-  password: sirass_852456
-  host: localhost
