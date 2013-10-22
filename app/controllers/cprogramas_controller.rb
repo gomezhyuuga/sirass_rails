@@ -87,14 +87,18 @@ class CprogramasController < ApplicationController
 			# Estado
 			@cprograma.estado_programa_id = EstadoPrograma::ESPERANDO
 
-			# Calcular vacantes y plazas
-			solicitados = 0
-			@cprograma.licenciaturas.each { |l| solicitados += l.solicitados }
-			@cprograma.vacantes = solicitados
-			@cprograma.plazas = solicitados
 			if @cprograma.save
-				flash[:success] = "Programa creado correctamente"
-				redirect_to current_user.user_page
+				#Obtener la suma de licenciaturas solicitadas
+				sumLicen = Licenciatura.sum(:solicitados, :group => :cprograma)
+      				@cprograma.plazas = sumLicen[@cprograma]
+      				@cprograma.vacantes = sumLicen[@cprograma]
+      				if @cprograma.save
+					flash[:success] = "Programa creado correctamente"
+					redirect_to current_user.user_page
+				else
+					flash.now[:error] = "Programa con errores"
+					render 'new'
+				end
 			else
 				flash.now[:error] = "Programa con errores"
 				render 'new'
