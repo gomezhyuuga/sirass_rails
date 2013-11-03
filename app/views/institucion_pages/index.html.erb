@@ -1,2 +1,6 @@
 <% provide(:title, 'Bienvenido ' + current_user.username) %>
-<h1>Bienvenido, <%= current_user.username %></h1>
+<% content_for :javascript do %>
+	<%= javascript_include_tag "tooltipsIns" %>
+<% end %>
+<h1 id="indes">Bienvenido, <%= current_user.username %></h1>
+<%= render 'shared/tooltips/ayuda', obj: @institucion %>

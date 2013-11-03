@@ -1,4 +1,5 @@
 jQuery ->
+	$('#Alerta').modal('show')
 	actualizar_plantel = ->
 		instituciones = $('select[id$=_institucion_id]')
 		_planteles = $('select[id$=_plantel_id]')

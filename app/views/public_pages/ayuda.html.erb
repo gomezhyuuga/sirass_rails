@@ -1,3 +1,4 @@
 <% provide(:title, 'Ayuda') %>
-<h1>PublicPages#ayuda</h1>
-<p>Find me in app/views/public_pages/ayuda.html.erb</p>
+<% content_for :javascript do %>
+	<%= javascript_include_tag "tooltips" %>
+<% end %>
