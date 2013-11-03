@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 # == Schema Information
 #
 # Table name: institucion_users
@@ -14,8 +13,10 @@
 #  telExt         :string(255)      not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  paseo          :boolean          default(FALSE)
 #
 
+# -*- encoding : utf-8 -*-
 require 'spec_helper'
 
 describe InstitucionUser do

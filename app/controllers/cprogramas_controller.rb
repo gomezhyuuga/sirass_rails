@@ -90,9 +90,15 @@ class CprogramasController < ApplicationController
 			if @cprograma.save
 				#Obtener la suma de licenciaturas solicitadas
 				sumLicen = Licenciatura.sum(:solicitados, :group => :cprograma)
+<<<<<<< HEAD
       				@cprograma.plazas = sumLicen[@cprograma]
       				@cprograma.vacantes = sumLicen[@cprograma]
       				if @cprograma.save
+=======
+      			@cprograma.plazas = sumLicen[@cprograma]
+      			@cprograma.vacantes = sumLicen[@cprograma]
+      			if @cprograma.save
+>>>>>>> TooltipPaseoInstitut
 					flash[:success] = "Programa creado correctamente"
 					redirect_to current_user.user_page
 				else

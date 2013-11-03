@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# encoding: UTF-8
 # == Schema Information
 #
 # Table name: institucion_users
@@ -14,10 +14,12 @@
 #  telExt         :string(255)      not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  paseo          :boolean          default(FALSE)
 #
 
+# -*- encoding : utf-8 -*-
 class InstitucionUser < ActiveRecord::Base
-  attr_accessible :area, :cargo, :domicilio, :responsable, :tel, :telExt, :user_attributes, :plantel_attributes, :institucion_attributes, :institucion_id, :plantel_id
+  attr_accessible :area, :cargo, :domicilio, :responsable, :tel, :telExt, :user_attributes, :plantel_attributes, :institucion_attributes, :institucion_id, :plantel_id, :paseo
   
   validates_presence_of :area, :cargo, :domicilio, :responsable, :tel, :institucion_id, :user
 

@@ -1,0 +1,68 @@
+<%  nombre = ""
+    path = ""
+    action = ""
+    paseo = ""
+    if current_user.admin
+      nombre = obj.nombre
+      path = admins_path
+    elsif current_user.institucion_user
+      nombre = obj.responsable
+      path = desact_ins_path
+      paseo = obj.paseo
+    elsif current_user.prestador
+      nombre = obj.nombre 
+      path = prestadors_path
+    end
+%>
+<% if paseo == false %>
+  <div id="ayuda" class="modal hide fade">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">×</a>
+      <h3>Bienvenido a SiRASS <strong><%= nombre %></strong></h3>
+    </div>
+    <div class="modal-body">
+      <p>A continuación te presentaremos el nuevo sistema que se usa en las oficinas de Servicio Social de la <em>UACM.</em></p>
+      <p>Paso a paso te enseñaremos como usar el sistema mediante instrucciones o mensajes interactivos, que apareceran en cada uno de los links el cual tiene una función diferente que, nosotros creemos, debes conocer.</p>
+      <p><strong>RECUERDA:</strong> que no debes dar click hasta que veas "<strong class=" icon-share-alt">Da Click</strong>"</p>
+      <p>Si te interesa el paseo por el sistema da click en "Continuar" y si no en "Cerrar"</p>
+    </div>
+    <div class="modal-footer">
+      <%= link_to  "Cerrar", desact_ins_path(current_user.institucion_user) , :class => "btn btn-danger" %>
+      <%= link_to_function "Continuar", "Act('sirass',null,0,2)", :class => " btn btn-success" %>
+    </div>
+  </div>
+  <div id="Terminado" class="modal hide fade">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">×</a>
+      <h3>El paseo por la aplicación a terminado <strong><%= nombre %></strong></h3>
+    </div>
+    <div class="modal-body">
+      <p><strong>RECUERDA:</strong> que si tienes más dudas sobre la aplicación puedes consultar dando click en "Ayuda"</p>
+    </div>
+    <div class="modal-footer">
+      <%= link_to  "TERMINADO", desact_ins_path(current_user.institucion_user) , :class => "btn btn-success" %>
+    </div>
+  </div>
+<% elsif paseo == true  %>
+  <div id="ayudaN" class="modal hide fade">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">×</a>
+        <h3>Ayuda</strong></h3>
+    </div>
+    <div class="modal-body">
+      <h4>Aquí estan las opciones, que fueron mostradas en tu primer acercamiento al sistema, y en las que se te puede ayudar, <strong>¿En cuál tienes duda?</strong></h4>
+      <p><%= link_to_function 'SiRASS', "Act('sirass',null,0,2,1)" %></p>
+      <p><%= link_to_function 'Programas', "Act('programas',null,1,2,1)" %></p>
+      <p><%= link_to_function 'Proceso', "Act('proceso',null,2,2,1)" %></p>
+      <p><%= link_to_function 'Ayuda', "Act('help',null,3,2,1)" %></p>
+      <p><%= link_to_function 'Inicio', "Act('home',null,5,2,1)" %></p>
+      <p><%= link_to_function 'Editar Datos', "Act('perfil',null,6,2,1)" %></p>
+      <p><%= link_to_function 'Nueva Propuesta',"Act('sendPropues',null,7,2,1)" %></p>
+      <p><%= link_to_function 'Actualizar Programa',"Act('actualPropues',null,8,2,1)" %></p>
+      <p><%= link_to_function 'Avisos', "Act('avisosPropues',null,9,2,1)" %></p>
+    </div>
+    <div class="modal-footer">
+      <%= link_to  "Cerrar", ayuda_ins_path(), :class => "btn btn-danger" %>
+    </div>
+  </div>
+<% end %>

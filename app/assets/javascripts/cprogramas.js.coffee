@@ -26,10 +26,10 @@
 	@popovers(el)
 	anterior = el-1
 	$('#'+anterior+'').popover('hide')
-	$('#'+el+'').popover('show')
+	$('#'+el+'').popover('toggle')
 @actInfo = (el) ->
 	@popovers(el)
-	$('#'+el+'').popover('show')
+	$('#'+el+'').popover('toggle')
 @desact = (el) ->
 	$('#'+el+'').popover('hide')
 @next = (el) ->
@@ -44,7 +44,7 @@
 	else
 		campoOculto.fadeIn()
 		if $('#11').popover('show')
-			$('#duraHide').popover('show')
+			$('#duraHide').popover('toggle')
 			for i in [0..11] by 1
 				$('#'+i+'').popover('hide')
 @otroTipoPrograma = (el) ->

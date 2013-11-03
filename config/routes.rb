@@ -78,6 +78,8 @@ Sirass::Application.routes.draw do
     get 'home',         to: 'institucion_pages#index',      as: :institucion_home
     get 'actualizar_programas',   to: 'institucion_pages#actualizar', as: :actualizar_programa_institucion
     get 'avisos',     to: 'institucion_pages#avisos'
+    get 'Cancelar_Paseo', to: 'institucion_pages#paseo', as: :desact_ins
+    get 'Ayuda', to: 'institucion_pages#ayuda', as: :ayuda_ins
   end
   # Admin pages
   get '/admin/home',                  to: 'admin_pages#index'
