@@ -44,6 +44,9 @@
 	@tr_responsable.find('input[id*="_attributes"]').each (index, element) ->
 		@el 	= $(element)
 		# Crear nuevo ID y NAME
+		expReg = '[a-zA-Z]+'
+		alert @el.attr('name')
+		alert expReg.match(@el.attr('name'))
 		name 	= @el.attr('name').substr 36
 		id 		= @el.attr('id').substr 35
 		@el.attr 'name', "#{new_name}#{name}"

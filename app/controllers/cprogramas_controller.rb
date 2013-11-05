@@ -90,9 +90,9 @@ class CprogramasController < ApplicationController
 			if @cprograma.save
 				#Obtener la suma de licenciaturas solicitadas
 				sumLicen = Licenciatura.sum(:solicitados, :group => :cprograma)
-      				@cprograma.plazas = sumLicen[@cprograma]
-      				@cprograma.vacantes = sumLicen[@cprograma]
-      				if @cprograma.save
+      			@cprograma.plazas = sumLicen[@cprograma]
+      			@cprograma.vacantes = sumLicen[@cprograma]
+      			if @cprograma.save
 					flash[:success] = "Programa creado correctamente"
 					redirect_to current_user.user_page
 				else
@@ -147,17 +147,19 @@ class CprogramasController < ApplicationController
 			@cprograma = Cprograma.find(params[:id])
 			# Volver a calcular plazas y vacantes
 			plazas_ocupadas = @cprograma.plazas_ocupadas
-			solicitados = 0
-			@cprograma.licenciaturas.each { |l| solicitados += l.solicitados }
-			@cprograma.plazas = solicitados
-			@cprograma.vacantes = solicitados - plazas_ocupadas
-			
+
 			@cprograma.estado_programa_id = EstadoPrograma::ACTUALIZADO
 			if @cprograma.update_attributes(params[:cprograma]) &&
 				eliminar_licenciaturas(params[:cprograma][:licenciaturas_attributes]) &&
 				eliminar_responsables(params[:cprograma][:responsables_attributes])
-					flash[:success] = "Programa actualizado correctamente :-)"
+				#Obtener la suma de licenciaturas solicitadas
+				sumLicen = Licenciatura.sum(:solicitados, :group => :cprograma)
+      			@cprograma.plazas = sumLicen[@cprograma]
+      			@cprograma.vacantes = sumLicen[@cprograma] - plazas_ocupadas
+      			if @cprograma.save
+					flash[:success] = "Programa actualizadoy correctamente"
 					redirect_to current_user.user_page
+				end
 			else
 				flash.now[:error] = "Ocurrió un error actualizando el programa."
 				render 'edit'
